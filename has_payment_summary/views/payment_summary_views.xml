@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   
+	<record id="payments_summary_tree" model="ir.ui.view">
+        <field name="name">account.payment.report.view.tree</field>
+        <field name="model">account.payment.report</field>
+         <!-- <field name="type">tree</field> -->
+        <field name="arch" type="xml">
+            <tree>
+                <field name="number_invoice"/>
+                <field name="payment_date"/>
+                <field name="partner_id"/>
+                <field name="user_id"/>
+                <field name="tipo_comision"/>
+                <field name="amount" sum="Total"/>
+                <field name="material" sum="Total"/>
+                <field name="amount_untaxed" sum="Total"/>
+                <field name="commission" sum="Total"/>
+				<field name="retencion" sum="Total"/>
+				<field name="net_commission" sum="Total"/>
+                <field name="net_amount_usd" sum="Total"/>
+            </tree>
+        </field>
+    </record>
+
+
+
+   <record id="action_payment_summary" model="ir.actions.act_window">
+        <field name="name">Cobros realizados</field>
+        <field name="res_model">account.payment.report</field>
+		<field name="type">ir.actions.act_window</field>
+        <!-- <field name="view_type">form</field> -->
+        <field name="view_mode">tree</field>
+        <field name="context">{'search_default_periodo': True}</field>
+		<field name="view_id" ref="payments_summary_tree"/>
+    </record>
+
+    
+	
+	<record id="payments_summary_search" model="ir.ui.view">
+        <field name="name">account.payment.report.search</field>
+        <field name="model">account.payment.report</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="number_invoice"/>
+                <field name="payment_date"/>
+                <field name="partner_id"/>
+                <field name="user_id"/>
+                <field name="amount"/>
+                <field name="material"/>
+                <field name="amount_untaxed"/>
+                <field name="commission"/>
+                <field name="tipo_comision"/>
+				<filter string="Periodo actual" name="periodo" domain="[('payment_date','&lt;=', time.strftime('2024-03-31')),('payment_date','&gt;=',time.strftime('2023-04-01'))]"/>
+                <filter string="Año actual" name="year" domain="[('payment_date','&lt;=', time.strftime('%%Y-12-31')),('payment_date','&gt;=',time.strftime('%%Y-01-01'))]"/>
+				<filter string="Mes anterior" name="prev_month" domain="[('payment_date','&gt;=',(context_today()-relativedelta(months=1)).strftime('%Y-%m-01')),('payment_date','&lt;',time.strftime('%Y-%m-01'))]"/>
+				<filter string="Mes actual" name="month" domain="[('payment_date','&lt;=',(datetime.date.today()+relativedelta(day=31)).strftime('%Y-%m-%d')),('payment_date','&gt;=',(datetime.date.today()-relativedelta(day=1)).strftime('%Y-%m-%d'))]"/>
+				<group expand="0" string="Group by">
+				<filter string="Fecha" name="group_by_date" context="{'group_by':'payment_date:month'}"/>
+				<filter string="Vendedor" name="group_by_user" context="{'group_by':'user_id'}"/>
+                <filter string="Tipo de comisión" name="group_by_tipo" context="{'group_by':'tipo_comision'}"/>
+				</group>
+            </search>
+        </field>
+    </record>
+	
+   <!--  <record id="payment_summary_action_tree" model="ir.actions.act_window.view">
+        <field eval="1" name="sequence"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="payments_summary_tree"/>
+        <field name="act_window_id" ref="action_payment_summary"/>
+    </record> -->
+	
+    <record id="payment_sumarty_form" model="ir.ui.view">
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form"/>
+        <field name="arch" type="xml">
+              <field name="ref" position="after">
+                <field name="material" invisible="payment_type != 'inbound'"/>
+                <field name="consultoria" widget="boolean_toggle" invisible="payment_type != 'inbound'"/>
+                <!--  <field name="amount_signed"/> -->
+            </field>
+        </field>
+    </record> 
+	
+</odoo>

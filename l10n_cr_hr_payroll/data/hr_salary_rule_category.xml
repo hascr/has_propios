@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- OTRAS DEDUCCIONES - ODED -->
+    <record id="ODED" model="hr.salary.rule.category">
+        <field name="name">Other Deduction</field>
+        <field name="code">ODED</field>
+    </record>
+
+    <!-- OTROS SUBSIDIOS - OSUB -->
+    <record id="OSUB" model="hr.salary.rule.category">
+        <field name="name">Other Allowance</field>
+        <field name="code">OSUB</field>
+    </record>
+
+</odoo>

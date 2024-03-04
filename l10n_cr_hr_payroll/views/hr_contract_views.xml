@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="hr_contract_view_form" model="ir.ui.view">
+        <field name="name">hr.contract.view.form.payroll</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='yearly_benefits']" position="inside">
+                <field name="christmas_savings" />
+                <label for="school_salary"/>
+                <div class="o_row mw-50" name="school_salary">
+                    <field name="school_salary" class="oe_inline o_hr_narrow_field" nolabel="1"/>
+                    <div class="mb-3">%</div>
+                </div>
+            </xpath>
+            <xpath expr="//group[@name='salary']" position="attributes">
+                <attribute name="string">Salary Information</attribute>
+            </xpath>
+            <xpath expr="//group[@name='yearly_benefits']" position="attributes">
+                <attribute name="string">Yearly Benefits</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

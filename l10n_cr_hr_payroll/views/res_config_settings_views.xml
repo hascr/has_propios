@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.hr.payroll</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="45" />
+        <field name="inherit_id" ref="om_hr_payroll.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='om_hr_payroll_account']" position="after">
+                <h2>Costa Rica Payroll</h2>
+                <div class="row mt16 o_settings_container" name="payroll_l10n_cr_setting_container">
+                    <div class="col-12 col-lg-6 o_setting_box" id="config_limit_rent">
+                        <div class="o_setting_left_pane">
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <span class="o_form_label">Configuration of limits for rent</span>
+                            <div class="text-muted">
+                                Set limits for rentals
+                            </div>
+
+                            <div class="content-group">
+                                <div class="row mt16">
+                                    <label for="first_wage_tax" class="col-lg-3 o_light_label"/>
+                                    <field name="first_wage_tax" string="First"/>
+                                </div>
+                                <div class="row">   
+                                    <label for="second_wage_tax" class="col-lg-3 o_light_label"/>
+                                    <field name="second_wage_tax" string="Second"/>
+                                </div>
+                                <div class="row">
+                                    <label for="third_wage_tax" class="col-lg-3 o_light_label"/>
+                                    <field name="third_wage_tax" string="Third"/>
+                                </div>
+                                <div class="row">
+                                    <label for="fourth_wage_tax" class="col-lg-3 o_light_label"/>
+                                    <field name="fourth_wage_tax" string="Fourth"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 o_setting_box" id="config_rent">
+                        <div class="o_setting_left_pane">
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <span class="o_form_label">Rental Configuration</span>
+                            <div class="text-muted">
+                                Set up information for rentals
+                            </div>
+
+                            <div class="content-group">
+                                <div class="row mt16">
+                                    <label for="amount_children" class="col-lg-3 o_light_label"/>
+                                    <field name="amount_children" string="Amount for Children"/>
+                                </div>
+                                <div class="row">   
+                                    <label for="amount_spouse" class="col-lg-3 o_light_label"/>
+                                    <field name="amount_spouse" string="Amount for Spouse"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 o_setting_box" id="config_rent">
+                        <div class="o_setting_left_pane">
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <span class="o_form_label">Costa Rica</span>
+                            <div class="text-muted">
+                                Set up data for salary rules
+                            </div>
+
+                            <div class="content-group">
+                                <div class="row mt16">
+                                    <label for="hr_rule_D001" class="col-lg-3 o_light_label"/>
+                                    <field name="hr_rule_D001" string="Cuota Obrera CCSS %"/>
+                                </div>
+                                <div class="row">
+                                    <label for="hr_rule_D002" class="col-lg-3 o_light_label"/>
+                                    <field name="hr_rule_D002" string="Cuota Obrera BPDC"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 o_setting_box" id="config_rent">
+                        <div class="o_setting_left_pane">
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <span class="o_form_label">INS</span>
+                            <div class="text-muted">
+                                Set up the information for the INS report
+                            </div>
+
+                            <div class="content-group">
+                                <div class="row mt16">
+                                    <label for="ins_number" class="col-lg-3 o_light_label"/>
+                                    <field name="ins_number" string="Number"/>
+                                </div>
+                                <div class="row">
+                                    <label for="ins_fax" class="col-lg-3 o_light_label"/>
+                                    <field name="ins_fax" string="Fax"/>
+                                </div>
+                                <div class="row mt16">
+                                    <label for="ins_header" class="col-lg-3 o_light_label"/>
+                                    <field name="ins_header" string="Header"/>
+                                </div>
+                                <div class="row">
+                                    <label for="ins_email" class="col-lg-3 o_light_label"/>
+                                    <field name="ins_email" string="Email"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

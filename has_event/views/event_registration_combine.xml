@@ -1,0 +1,62 @@
+<odoo>
+  <data>
+        <!-- Vista tree de contratos -->
+    
+<record id="view_event_contrato_tree" model="ir.ui.view">
+    <field name="name">Contratos</field>
+    <field name="model">event.event</field>
+    <field name="arch" type="xml">
+        <tree editable="bottom">
+            <field name="id" readonly="1" string="Código"/>
+            <field name="name" readonly="1"/>
+            <field name="instructor_id" readonly="1"/>
+            <field name="date_begin" readonly="1"/>
+            <field name="date_end" readonly="1"/>
+            <field name="facturado" widget="boolean_toggle"/>
+            <field name="contrato_firmado"/>
+        </tree>
+    </field>
+</record>
+
+        <!-- Vista de búsqueda -->
+
+<record id="view_event_contrato_search" model="ir.ui.view">
+    <field name="name">Contratos</field>
+    <field name="model">event.event</field>
+    <field name="arch" type="xml">
+        <search>
+    <field name="name" string="Buscar por código, curso, instructor" filter_domain="['|','|', ('id','ilike',self), ('name','ilike',self), ('instructor_id', 'ilike', self)]">
+    <filter name="filter_cpendientes" string="Contratos pendientes" domain="[['contrato_firmado', '=', False]]"></filter>
+    <separator/>
+    <filter name="filter_fpendientes" string="Facturas pendientes" domain="[['facturado', '=', False]]"></filter>
+</field>
+    <group expand="0" string="Group by">
+				<filter string="Instructor" name="instructor" context="{'group_by':'instructor_id'}"/>
+				</group>
+        </search>
+    </field>
+</record>
+
+        <!-- acción de apertura de vista en modelos -->
+
+<record id="action_contratos" model="ir.actions.act_window">
+        <field name="name">Contratos</field>
+        <field name="res_model">event.event</field>
+		<field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{'search_default_filter_cpendientes': False}</field>
+        <field name="search_view_id" ref="view_event_contrato_search"/>
+        <field name="view_id" ref="view_event_contrato_tree"/>
+    </record>
+
+        <!-- Menú superior -->
+
+<menuitem 	name="Contratos"
+				id="contratos_id"
+				sequence="4"
+				action="action_contratos"
+				parent="event.event_main_menu"/>	
+
+    </data>
+
+</odoo>

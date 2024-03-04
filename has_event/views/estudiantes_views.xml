@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- View estudiantes View Tree -->
+    <record id="view_estudiantes_tree" model="ir.ui.view">
+        <field name="name">view.estudiantes.tree</field>
+        <field name="model">estudiantes</field>
+        <field name="arch" type="xml">
+            <tree string="Estudiantes">
+                <field name="nombre"/>
+                <field name="codest"/>
+                <field name="correo"/>
+                <field name="codigo"/>
+                <field name="curso"/>
+                <field name="matricula"/>
+                <field name="cuenta"/>
+                <field name="inicio"/>
+                <field name="inicio_corto"/>
+                <field name="final"/>
+                <field name="nota"/>
+                <field name="tiempototal"/>
+                <field name="horas"/>
+                <field name="asesor"/>
+                <field name="estudiante"/>
+                <field name="presencial"/>
+                <field name="noenviar"/>
+                <field name="licencia"/>
+                <field name="lugar"/>
+                <field name="fechas"/>
+                <field name="nombres"/>
+            </tree>
+        </field>
+    </record>
+
+    
+
+</odoo>

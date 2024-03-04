@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data> 
+
+        <!-- Campo en vista ciente/proveedor -->
+
+        <record id="res_partner_form_inherit" model="ir.ui.view">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <field name="category_id" position="after">
+                    <field name="instructor" widget="boolean_toggle"/>
+                    <field name="IBAN"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- Campo en vista de factura de proveedor -->
+
+        <record id="res_account_move_form_inherit" model="ir.ui.view">
+            <field name="name">account.move.form</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <field name="ref" position="after">
+                    <!-- <field name="instructor" widget="boolean_toggle" attrs="{'invisible':[('move_type', 'in', ('out_invoice', 'out_refund'))]}"/> -->
+                    <field name="instructor" widget="boolean_toggle" invisible="move_type in ('out_invoice', 'out_refund')"/>
+                    <!-- <field name="aprobada" widget="boolean_toggle" attrs="{'invisible':[('move_type', 'in', ('out_invoice', 'out_refund'))]}"/> -->
+                    <field name="aprobada" widget="boolean_toggle" invisible="move_type in ('out_invoice', 'out_refund')"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- Filtro en vista de facturas de proveedor -->
+
+        <record id="account_move_filter_inherit" model="ir.ui.view">
+            <field name="name">account.move.form</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+            <field name="arch" type="xml">
+                <field name="journal_id" position="after">
+                    <filter name="instructor" string="Instructor" domain="[('instructor','=',True)]"/>
+                    <filter name="pago_instructor" string="Pagar instructor" domain="[('instructor','=',True),('payment_state','=','not_paid'),('state','=','posted'),('aprobada','=',True)]"/>
+                    <filter name="pago_pend_instructor" string="Autorizar pago instructor" domain="[('instructor','=',True),('payment_state','=','not_paid'),('state','=','posted'),('aprobada','=',False)]"/>
+                </field>
+            </field>
+        </record>
+        
+    </data>
+</odoo>

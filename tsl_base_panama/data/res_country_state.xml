@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+	<data noupdate="1">
+
+		<!--
+			Informacion obtenida de : http://www.statoids.com/upa.html
+			y del documento pdf del sistema de facturacion electronica
+		-->
+
+		<record id="base.pa" model="res.country">
+			<field name="zip_required" eval="False" />
+		</record>
+
+		
+		<record model="res.country.state" id="provincia_PA_BC">
+			<field name="code">PA.BC</field>
+			<field name="name">Bocas del Toro</field>
+			<field name='country_id' model='res.country' search="[('code','=','PA')]"/> 
+		</record>
+		
+		<record model="res.country.state" id="provincia_PA_CC">
+			<field name="code">PA.CC</field>
+			<field name="name">Coclé</field>
+			<field name='country_id' model='res.country' search="[('code','=','PA')]"/> 
+		</record>
+		
+		<record model="res.country.state" id="provincia_PA_CL">
+			<field name="code">PA.CL</field>
+			<field name="name">Colón</field>
+			<field name='country_id' model='res.country' search="[('code','=','PA')]"/> 
+		</record>
+		
+		<record model="res.country.state" id="provincia_PA_CH">
+			<field name="code">PA.CH</field>
+			<field name="name">Chiriquí</field>
+			<field name='country_id' model='res.country' search="[('code','=','PA')]"/> 
+		</record>
+		
+		<record model="res.country.state" id="provincia_PA_DA">
+			<field name="code">PA.DA</field>
+			<field name="name">Darién</field>
+			<field name='country_id' model='res.country' search="[('code','=','PA')]"/> 
+		</record>
+		
+		<record model="res.country.state" id="provincia_PA_HE">
+			<field name="code">PA.HE</field>
+			<field name="name">Herrera</field>
+			<field name='country_id' model='res.country' search="[('code','=','PA')]"/> 
+		</record>
+		
+		<record model="res.country.state" id="provincia_PA_LS">
+			<field name="code">PA.LS</field>
+			<field name="name">Los Santos</field>
+			<field name='country_id' model='res.country' search="[('code','=','PA')]"/> 
+		</record>
+		
+		<record model="res.country.state" id="provincia_PA_PM">
+			<field name="code">PA.PM</field>
+			<field name="name">Panamá</field>
+			<field name='country_id' model='res.country' search="[('code','=','PA')]"/> 
+		</record>
+		
+		<record model="res.country.state" id="provincia_PA_VR">
+			<field name="code">PA.VR</field>
+			<field name="name">Veraguas</field>
+			<field name='country_id' model='res.country' search="[('code','=','PA')]"/> 
+		</record>
+		
+		<record model="res.country.state" id="provincia_PA_SB">
+			<field name="code">PA.SB</field>
+			<field name="name">Guna Yala</field>
+			<field name='country_id' model='res.country' search="[('code','=','PA')]"/> 
+		</record>
+		
+		<record model="res.country.state" id="provincia_PA_EM">
+			<field name="code">PA.EM</field>
+			<field name="name">Emberá-Wounaan</field>
+			<field name='country_id' model='res.country' search="[('code','=','PA')]"/> 
+		</record>
+		
+		<record model="res.country.state" id="provincia_PA_NB">
+			<field name="code">PA.NB</field>
+			<field name="name">Ngäbe-Buglé</field>
+			<field name='country_id' model='res.country' search="[('code','=','PA')]"/> 
+		</record>
+		
+		<record model="res.country.state" id="provincia_PA_PO">
+			<field name="code">PA.PO</field>
+			<field name="name">Panamá Oeste</field>
+			<field name='country_id' model='res.country' search="[('code','=','PA')]"/> 
+		</record>
+		
+	</data>
+</odoo>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="hr_payroll_salary_structure_general" model="hr.payroll.structure">
+        <field name="code">General</field>
+        <field name="name">Costa Rica</field>
+        <field
+            eval="[(6, 0, [
+            ref('l10n_cr_hr_payroll.hr_rule_BASIC'),
+            ref('l10n_cr_hr_payroll.hr_rule_COMIS'),
+            ref('l10n_cr_hr_payroll.hr_rule_AUSEN'),
+            ref('l10n_cr_hr_payroll.hr_rule_GROSS'),
+            ref('l10n_cr_hr_payroll.hr_rule_EXTRA'),
+            ref('l10n_cr_hr_payroll.hr_rule_CPAT'),
+            ref('l10n_cr_hr_payroll.hr_rule_OBR'),
+            ref('l10n_cr_hr_payroll.hr_rule_RETSAL'),
+            ref('l10n_cr_hr_payroll.hr_rule_OTADI'),
+            ref('l10n_cr_hr_payroll.hr_rule_OTDED'),
+            ref('l10n_cr_hr_payroll.hr_rule_AGUIN'),
+            ref('l10n_cr_hr_payroll.hr_rule_ESCOLAR'),
+            ref('l10n_cr_hr_payroll.hr_rule_NET'),
+        ])]"
+            name="rule_ids"
+        />
+        <field name="company_id" ref="base.main_company" />
+        <!-- <field name="parent_id" ref="hr_payroll.structure_base"/> -->
+    </record>
+
+</odoo>

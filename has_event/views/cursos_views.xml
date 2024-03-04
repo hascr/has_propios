@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- View vistas View Tree -->
+    <record id="view_cursos_tree" model="ir.ui.view">
+        <field name="name">cursos</field>
+        <field name="model">cursos</field>
+        <field name="arch" type="xml">
+            <tree string="Cursos">
+                <field name="codigo"/>
+                <field name="curso"/>
+                <field name="instructor"/>
+                <field name="idinstructor"/>
+                <field name="inicio"/>
+                <field name="final"/>
+                <field name="fecha_aviso"/>
+                <field name="matricula"/>
+                <field name="goto"/>
+                <field name="sesiones"/>
+                <field name="horassesion"/>
+                <field name="horausd"/>
+                <field name="enoficina"/>
+                <field name="creacion"/>
+                <field name="presencial"/>
+                <field name="noenviar"/>
+                <field name="urllearn"/>
+                <field name="materiallearn"/>
+                <field name="asesor"/>
+                <field name="actualizacion"/>
+            </tree>
+        </field>
+    </record>
+
+
+</odoo>

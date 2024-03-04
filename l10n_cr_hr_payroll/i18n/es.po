@@ -1,0 +1,485 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_cr_hr_payroll
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0-20230613\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-06-25 23:01+0000\n"
+"PO-Revision-Date: 2023-06-25 17:02-0600\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es_CR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 3.3.1\n"
+
+#. module: l10n_cr_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_cr_hr_payroll.res_config_settings_view_form
+msgid "<span class=\"o_form_label\">Configuration of limits for rent</span>"
+msgstr ""
+"<span class=\"o_form_label\">Configuración de límites para el renta</span>"
+
+#. module: l10n_cr_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_cr_hr_payroll.res_config_settings_view_form
+#, fuzzy
+msgid "<span class=\"o_form_label\">Costa Rica</span>"
+msgstr "<span class=\"o_form_label\">Costa Rica</span>"
+
+#. module: l10n_cr_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_cr_hr_payroll.res_config_settings_view_form
+msgid "<span class=\"o_form_label\">INS</span>"
+msgstr "<span class=\"o_form_label\">INS</span>"
+
+#. module: l10n_cr_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_cr_hr_payroll.res_config_settings_view_form
+msgid "<span class=\"o_form_label\">Rental Configuration</span>"
+msgstr "<span class=\"o_form_label\">Configuración de Renta</span>"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule,name:l10n_cr_hr_payroll.hr_rule_AGUINALDO
+#, fuzzy
+msgid "AGUINALDO"
+msgstr "AGUINALDO"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule,name:l10n_cr_hr_payroll.hr_rule_P004
+#, fuzzy
+msgid "Ajuste al salario base de referencia"
+msgstr "Ajuste al salario base de referencia"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule.category,name:l10n_cr_hr_payroll.ALW
+msgid "Allowance"
+msgstr "Tolerancia"
+
+#. module: l10n_cr_hr_payroll
+#: model:ir.model.fields,field_description:l10n_cr_hr_payroll.field_res_company__amount_children
+#: model:ir.model.fields,field_description:l10n_cr_hr_payroll.field_res_config_settings__amount_children
+msgid "Amount Children"
+msgstr "Monto por hijo"
+
+#. module: l10n_cr_hr_payroll
+#: model:ir.model.fields,field_description:l10n_cr_hr_payroll.field_res_company__amount_spouse
+#: model:ir.model.fields,field_description:l10n_cr_hr_payroll.field_res_config_settings__amount_spouse
+msgid "Amount Spouse"
+msgstr "Monto por cónyuge"
+
+#. module: l10n_cr_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_cr_hr_payroll.res_config_settings_view_form
+msgid "Amount for Children"
+msgstr "Monto por hijo"
+
+#. module: l10n_cr_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_cr_hr_payroll.res_config_settings_view_form
+msgid "Amount for Spouse"
+msgstr "Monto por cónyuge"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule,name:l10n_cr_hr_payroll.hr_rule_P240
+#, fuzzy
+msgid "BPDC"
+msgstr "BPDC"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule.category,name:l10n_cr_hr_payroll.BASIC
+msgid "Basic"
+msgstr "Básico"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule,name:l10n_cr_hr_payroll.hr_rule_P200
+#: model:hr.salary.rule,name:l10n_cr_hr_payroll.hr_rule_P250
+#, fuzzy
+msgid "CCSS PATRONAL"
+msgstr "CCSS PATRONAL"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule,name:l10n_cr_hr_payroll.hr_rule_P019
+#, fuzzy
+msgid "CXC"
+msgstr "CXC"
+
+#. module: l10n_cr_hr_payroll
+#: model:ir.model.fields,field_description:l10n_cr_hr_payroll.field_hr_contract__christmas_savings
+msgid "Christmas Savings"
+msgstr "Ahorros navideños"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule,name:l10n_cr_hr_payroll.hr_rule_COMMISSIONS
+#, fuzzy
+msgid "Comisiones"
+msgstr "Comisiones"
+
+#. module: l10n_cr_hr_payroll
+#: model:ir.model,name:l10n_cr_hr_payroll.model_res_company
+msgid "Companies"
+msgstr "Compañías"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule.category,name:l10n_cr_hr_payroll.COMP
+msgid "Company Contribution"
+msgstr "Contribución de la empresa"
+
+#. module: l10n_cr_hr_payroll
+#: model:ir.model,name:l10n_cr_hr_payroll.model_res_config_settings
+msgid "Config Settings"
+msgstr "Opciones de configuración"
+
+#. module: l10n_cr_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_cr_hr_payroll.res_config_settings_view_form
+msgid "Costa Rica Payroll"
+msgstr "Nómina de Costa Rica"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule,name:l10n_cr_hr_payroll.hr_rule_D002
+#: model_terms:ir.ui.view,arch_db:l10n_cr_hr_payroll.res_config_settings_view_form
+#, fuzzy
+msgid "Cuota Obrera BPDC"
+msgstr "Cuota Obrera BPDC"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule,name:l10n_cr_hr_payroll.hr_rule_D001
+#, fuzzy
+msgid "Cuota Obrera CCSS"
+msgstr "Cuota Obrera CCSS"
+
+#. module: l10n_cr_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_cr_hr_payroll.res_config_settings_view_form
+#, fuzzy
+msgid "Cuota Obrera CCSS %"
+msgstr "Cuota Obrera CCSS %"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule.category,name:l10n_cr_hr_payroll.DED
+msgid "Deduction"
+msgstr "Deducción"
+
+#. module: l10n_cr_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_cr_hr_payroll.view_employee_form_inherit
+msgid "Dependent"
+msgstr "Dependiente"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule,name:l10n_cr_hr_payroll.hr_rule_P005
+#, fuzzy
+msgid "EXTRAS"
+msgstr "EXTRAS"
+
+#. module: l10n_cr_hr_payroll
+#: model:ir.model.fields,field_description:l10n_cr_hr_payroll.field_res_config_settings__ins_email
+#: model_terms:ir.ui.view,arch_db:l10n_cr_hr_payroll.res_config_settings_view_form
+#, fuzzy
+msgid "Email"
+msgstr "Correo electrónico"
+
+#. module: l10n_cr_hr_payroll
+#: model:ir.model,name:l10n_cr_hr_payroll.model_hr_employee
+msgid "Employee"
+msgstr "Empleado"
+
+#. module: l10n_cr_hr_payroll
+#: model:ir.model,name:l10n_cr_hr_payroll.model_hr_contract
+msgid "Employee Contract"
+msgstr "Contrato de empleado"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule,name:l10n_cr_hr_payroll.hr_rule_P270
+#, fuzzy
+msgid "FCL"
+msgstr "FCL"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule,name:l10n_cr_hr_payroll.hr_rule_P230
+#, fuzzy
+msgid "FODESAF"
+msgstr "FODESAF"
+
+#. module: l10n_cr_hr_payroll
+#: model:ir.model.fields,field_description:l10n_cr_hr_payroll.field_res_config_settings__ins_fax
+#: model_terms:ir.ui.view,arch_db:l10n_cr_hr_payroll.res_config_settings_view_form
+#, fuzzy
+msgid "Fax"
+msgstr "Fax"
+
+#. module: l10n_cr_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_cr_hr_payroll.res_config_settings_view_form
+msgid "First"
+msgstr "Primero"
+
+#. module: l10n_cr_hr_payroll
+#: model:ir.model.fields,field_description:l10n_cr_hr_payroll.field_res_company__first_wage_tax
+#: model:ir.model.fields,field_description:l10n_cr_hr_payroll.field_res_config_settings__first_wage_tax
+msgid "First Wage Tax"
+msgstr "Primer impuesto salarial"
+
+#. module: l10n_cr_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_cr_hr_payroll.res_config_settings_view_form
+msgid "Fourth"
+msgstr "Cuarto"
+
+#. module: l10n_cr_hr_payroll
+#: model:ir.model.fields,field_description:l10n_cr_hr_payroll.field_res_company__fourth_wage_tax
+#: model:ir.model.fields,field_description:l10n_cr_hr_payroll.field_res_config_settings__fourth_wage_tax
+msgid "Fourth Wage Tax"
+msgstr "Cuarto Impuesto Salarial"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule.category,name:l10n_cr_hr_payroll.GROSS
+msgid "Gross"
+msgstr "Bruto"
+
+#. module: l10n_cr_hr_payroll
+#: model:ir.model.fields,field_description:l10n_cr_hr_payroll.field_res_config_settings__ins_header
+#: model_terms:ir.ui.view,arch_db:l10n_cr_hr_payroll.res_config_settings_view_form
+#, fuzzy
+msgid "Header"
+msgstr "Encabezado"
+
+#. module: l10n_cr_hr_payroll
+#: model:ir.model.fields,field_description:l10n_cr_hr_payroll.field_res_company__hr_rule_D001
+#: model:ir.model.fields,field_description:l10n_cr_hr_payroll.field_res_config_settings__hr_rule_D001
+#, fuzzy
+msgid "Hr Rule D001"
+msgstr "Regla D001 de RRHH"
+
+#. module: l10n_cr_hr_payroll
+#: model:ir.model.fields,field_description:l10n_cr_hr_payroll.field_res_company__hr_rule_D002
+#: model:ir.model.fields,field_description:l10n_cr_hr_payroll.field_res_config_settings__hr_rule_D002
+msgid "Hr Rule D002"
+msgstr "Regla D002 de los RH"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule,name:l10n_cr_hr_payroll.hr_rule_P210
+#, fuzzy
+msgid "IMAS"
+msgstr "IMAS"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule,name:l10n_cr_hr_payroll.hr_rule_P220
+#, fuzzy
+msgid "INA"
+msgstr "INA"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule,name:l10n_cr_hr_payroll.hr_rule_INCCCSS
+#, fuzzy
+msgid "Incapacidades CCSS"
+msgstr "Incapacidades CCSS"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule,name:l10n_cr_hr_payroll.hr_rule_INCINS
+#, fuzzy
+msgid "Incapacidades INS"
+msgstr "Incapacidades INS"
+
+#. module: l10n_cr_hr_payroll
+#: model:ir.model.fields,field_description:l10n_cr_hr_payroll.field_res_company__ins_email
+msgid "Ins Email"
+msgstr "Correo electrónico de INS"
+
+#. module: l10n_cr_hr_payroll
+#: model:ir.model.fields,field_description:l10n_cr_hr_payroll.field_res_company__ins_fax
+msgid "Ins Fax"
+msgstr "INS Fax"
+
+#. module: l10n_cr_hr_payroll
+#: model:ir.model.fields,field_description:l10n_cr_hr_payroll.field_res_company__ins_header
+#, fuzzy
+msgid "Ins Header"
+msgstr "Encabezado Ins"
+
+#. module: l10n_cr_hr_payroll
+#: model:ir.model.fields,field_description:l10n_cr_hr_payroll.field_res_company__ins_number
+#, fuzzy
+msgid "Ins Number"
+msgstr "Número Ins"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule,name:l10n_cr_hr_payroll.hr_rule_INCMAT
+#, fuzzy
+msgid "Licencia por Maternidad"
+msgstr "Licencia por Maternidad"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule.category,name:l10n_cr_hr_payroll.NET
+msgid "Net"
+msgstr "Neto"
+
+#. module: l10n_cr_hr_payroll
+#: model:ir.model.fields,field_description:l10n_cr_hr_payroll.field_res_config_settings__ins_number
+#: model_terms:ir.ui.view,arch_db:l10n_cr_hr_payroll.res_config_settings_view_form
+#, fuzzy
+msgid "Number"
+msgstr "Número"
+
+#. module: l10n_cr_hr_payroll
+#: model:ir.model.fields,field_description:l10n_cr_hr_payroll.field_hr_employee__children_to_report
+msgid "Number of children to report"
+msgstr "Número de hijos a reportar"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule.category,name:l10n_cr_hr_payroll.ODED
+msgid "Other Deduction"
+msgstr "Otra deducción"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule,name:l10n_cr_hr_payroll.hr_rule_VACPROV
+#, fuzzy
+msgid "Provisión Vacaciones"
+msgstr "Provisión Vacaciones"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule,name:l10n_cr_hr_payroll.hr_rule_P260
+msgid "Regimen Pensión Complementaria"
+msgstr "Régimen Pensión Complementaria"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule,name:l10n_cr_hr_payroll.hr_rule_RENTA
+#, fuzzy
+msgid "Renta Neta"
+msgstr "Renta Neta"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule,name:l10n_cr_hr_payroll.hr_rule_P018
+#, fuzzy
+msgid "Retenciones BPDC"
+msgstr "Retenciones BPDC"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule,name:l10n_cr_hr_payroll.hr_rule_P017
+#, fuzzy
+msgid "Retenciones Judiciales"
+msgstr "Retenciones Judiciales"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule,name:l10n_cr_hr_payroll.hr_rule_RETINC
+#, fuzzy
+msgid "Retroactivo Incapacidades"
+msgstr "Retroactivo Incapacidades"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule,name:l10n_cr_hr_payroll.hr_rule_P001
+#, fuzzy
+msgid "Retroactivo por aumento anual"
+msgstr "Retroactivo por aumento anual"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule,name:l10n_cr_hr_payroll.hr_rule_ESCOLAR
+#, fuzzy
+msgid "SALARIO ESCOLAR"
+msgstr "SALARIO ESCOLAR"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule,name:l10n_cr_hr_payroll.hr_rule_BASIC
+#, fuzzy
+msgid "Salario Básico Total"
+msgstr "Salario Básico Total"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule,name:l10n_cr_hr_payroll.hr_rule_BRUTO
+#, fuzzy
+msgid "Salario Devengado"
+msgstr "Salario Devengado"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule,name:l10n_cr_hr_payroll.hr_rule_T003
+#, fuzzy
+msgid "Salario Neto"
+msgstr "Salario Neto"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule,name:l10n_cr_hr_payroll.hr_rule_NET
+#, fuzzy
+msgid "Salario Neto a Pagar"
+msgstr "Salario Neto a Pagar"
+
+#. module: l10n_cr_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_cr_hr_payroll.hr_contract_view_form
+msgid "Salary Information"
+msgstr "Información salarial"
+
+#. module: l10n_cr_hr_payroll
+#: model:ir.model.fields,field_description:l10n_cr_hr_payroll.field_hr_contract__school_salary
+msgid "School Salary"
+msgstr "Salario escolar"
+
+#. module: l10n_cr_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_cr_hr_payroll.res_config_settings_view_form
+msgid "Second"
+msgstr "Segundo"
+
+#. module: l10n_cr_hr_payroll
+#: model:ir.model.fields,field_description:l10n_cr_hr_payroll.field_res_company__second_wage_tax
+#: model:ir.model.fields,field_description:l10n_cr_hr_payroll.field_res_config_settings__second_wage_tax
+msgid "Second Wage Tax"
+msgstr "Segundo impuesto salarial"
+
+#. module: l10n_cr_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_cr_hr_payroll.res_config_settings_view_form
+msgid "Set limits for rentals"
+msgstr "Establecer límites para la renta"
+
+#. module: l10n_cr_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_cr_hr_payroll.res_config_settings_view_form
+#, fuzzy
+msgid "Set up data for salary rules"
+msgstr "Configurar datos para reglas salariales"
+
+#. module: l10n_cr_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_cr_hr_payroll.res_config_settings_view_form
+msgid "Set up information for rentals"
+msgstr "Configurar información para rentas"
+
+#. module: l10n_cr_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_cr_hr_payroll.res_config_settings_view_form
+#, fuzzy
+msgid "Set up the information for the INS report"
+msgstr "Configurar la información para el informe del INS"
+
+#. module: l10n_cr_hr_payroll
+#: model:ir.model.fields,field_description:l10n_cr_hr_payroll.field_hr_employee__spouse_report
+msgid "Spouse Report"
+msgstr "Cónyugue Reporta"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule,name:l10n_cr_hr_payroll.hr_rule_T007
+#, fuzzy
+msgid "TOTAL CUOTAS PATRONALES"
+msgstr "TOTAL CUOTAS PATRONALES"
+
+#. module: l10n_cr_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_cr_hr_payroll.res_config_settings_view_form
+msgid "Third"
+msgstr "Tercero"
+
+#. module: l10n_cr_hr_payroll
+#: model:ir.model.fields,field_description:l10n_cr_hr_payroll.field_res_company__third_wage_tax
+#: model:ir.model.fields,field_description:l10n_cr_hr_payroll.field_res_config_settings__third_wage_tax
+msgid "Third Wage Tax"
+msgstr "Tercer impuesto salarial"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule,name:l10n_cr_hr_payroll.hr_rule_T005
+#, fuzzy
+msgid "Total Otras Retenciones"
+msgstr "Total Otras Retenciones"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule,name:l10n_cr_hr_payroll.hr_rule_T002
+#, fuzzy
+msgid "Total Retenciones Obrera"
+msgstr "Total Retenciones Obrera"
+
+#. module: l10n_cr_hr_payroll
+#: model:hr.salary.rule,name:l10n_cr_hr_payroll.hr_rule_P002
+#, fuzzy
+msgid "Vacaciones"
+msgstr "Vacaciones"
+
+#. module: l10n_cr_hr_payroll
+#: model_terms:ir.ui.view,arch_db:l10n_cr_hr_payroll.hr_contract_view_form
+msgid "Yearly Advantages"
+msgstr "Ventajas anuales"

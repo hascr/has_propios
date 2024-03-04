@@ -1,0 +1,52 @@
+<odoo>
+  <data>
+        <!-- Vista de eventos modificada -->
+    
+<record id="view_view_event_form" model="ir.ui.view">
+        <field name="name">view_event_form</field>
+        <field name="model">event.event</field>
+        <field name="inherit_id" ref="event.view_event_form"/>
+        <field name="arch" type="xml">
+            <field name="tag_ids" position="after">
+                    <field name="contrato_firmado"/>
+                    <field name="presencial"/>
+                    <field name="noenviar"/>
+                    <field name="enofi"/>
+                    <field name="titulo"/>
+                    <field name="cuenta_id"/>
+                    <field name="asesor"/>
+            </field>
+            <field name="badge_format" position="after">
+                    <field name="id" string="Código de curso"/>
+                    <field name="instructor_id"/>
+                    <field name="materiallearn"/>
+                    <field name="urllearn"/>
+                    <field name="urlmatricula"/>
+                    <field name="fechas_teams_pres"/>
+                    <field name="cantsesion"/>
+                    <field name="hsesion"/>
+                    <field name="husd"/>
+            </field>
+            <field name="organizer_id" position="attributes">
+                    <attribute name="invisible">1</attribute>
+            </field>
+            <field name="tag_ids" position="attributes">
+                    <attribute name="invisible">1</attribute>
+            </field>
+            <field name="user_id" position="attributes">
+                    <attribute name="invisible">1</attribute>
+            </field>
+            <field name="address_id" position="attributes">
+                    <attribute name="invisible">1</attribute>
+            </field>
+            <field name="badge_format" position="attributes">
+                    <attribute name="invisible">1</attribute>
+            </field>
+            <field name="badge_image" position="attributes">
+                    <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+
+    </data>
+</odoo>

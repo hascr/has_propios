@@ -1,0 +1,111 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="labs_tree">
+      <field name="name">has.view.tree</field>
+      <field name="model">labs.report</field>
+      <field name="arch" type="xml">
+        <tree editable="bottom" decoration-danger="qty &gt; 1">
+          <field name="fecha" readonly="1"/>
+          <field name="pedido" readonly="1"/>
+          <field name="laboratorio" readonly="1"/>
+				  <field name="lab_canc"/>
+          <field name="mascota"/>
+          <field name="qty" sum="Total" readonly="1"/>
+          <field name="precio_unit" sum="Total" readonly="1"/>
+				  <field name="subtotal" sum="Total" readonly="1"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="labs_search">
+        <field name="name">labs.report.search</field>
+        <field name="model">labs.report</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="mascota" string="Buscar mascota, pedido, laboratorio" filter_domain="['|','|', ('mascota','ilike',self), ('pedido','ilike',self), ('laboratorio', 'ilike', self)]"/>
+				<separator/>
+				<filter string="Pendientes" name="labs_pending" domain="[('lab_canc','=',False)]"/>
+				<separator/>
+				<filter string="Año actual" name="year" domain="[('fecha','&lt;=', time.strftime('%%Y-12-31')),('fecha','&gt;=',time.strftime('%%Y-01-01'))]"/>
+				<separator/>
+				<filter string="Mes anterior" name="prev_month" domain="[('fecha','&gt;=',(context_today()-relativedelta(months=1)).strftime('%Y-%m-01')),('fecha','&lt;',time.strftime('%Y-%m-01'))]"/>
+				<separator/>
+				<filter string="Mes actual" name="month" domain="[('fecha','&lt;=',(datetime.date.today()+relativedelta(day=31)).strftime('%Y-%m-%d')),('fecha','&gt;=',(datetime.date.today()-relativedelta(day=1)).strftime('%Y-%m-%d'))]"/>
+				<separator/>
+				
+				<filter string="Ultrasonidos" name="ultra" domain="[('laboratorio','ilike','Ultrasonido')]"/>
+				
+				<filter string="Biopsias" name="biopsias" domain="[('laboratorio','ilike','Biopsia')]"/>
+				
+				<filter string="Laboratorios" name="labs" domain="[('laboratorio','not ilike','Ultrasonido'),('laboratorio','not ilike','Biopsia')]"/>
+				
+				<filter string="Sin mascota" name="masc_pend" domain="[('mascota','=','')]"/>
+				
+				<separator/>
+			
+				<group expand="0" string="Group by">
+				<filter string="Fecha" name="group_by_date" context="{'group_by':'fecha:month'}"/>
+				<filter name="group_lab" string="Laboratorio" context="{'group_by': 'laboratorio'}"/>
+				</group>
+            </search>
+        </field>
+    </record>
+
+
+
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="action_labs">
+      <field name="name">Laboratorios</field>
+      <field name="res_model">labs.report</field>
+      <field name="view_mode">tree,pivot</field>
+      <field name="context">{"search_default_labs_pending":1}</field>
+		  <field name="view_id" eval="False"/>
+    </record>
+
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="has_labs.action_server">
+      <field name="name">has_labs server</field>
+      <field name="model_id" ref="model_has_labs_has_labs"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="has_labs" id="has_labs.menu_root"/>
+-->
+	<menuitem 	name="Laboratorios"
+				id="labs_id"
+				sequence="4"
+				action="action_labs"
+				parent="account.menu_finance_receivables"/>
+
+
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="has_labs.menu_1" parent="has_labs.menu_root"/>
+    <menuitem name="Menu 2" id="has_labs.menu_2" parent="has_labs.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="has_labs.menu_1_list" parent="has_labs.menu_1"
+              action="has_labs.action_window"/>
+    <menuitem name="Server to list" id="has_labs" parent="has_labs.menu_2"
+              action="has_labs.action_server"/>
+-->
+  </data>
+</odoo>
