@@ -23,11 +23,11 @@
     #'depends': ['base','event','hr'],
 
     # always loaded
-    'data': [
-        'views/res_partner_view.xml',
-        'views/crm_lead_view.xml',
-        'views/sale_order_view.xml',
-        'views/account_move_view.xml',
+    "data": [
+        "views/res_partner_view.xml",
+        "views/crm_lead_view.xml",
+        "views/sale_order_view.xml",
+        "views/account_move_view.xml"
     ],
     # only loaded in demonstration mode
     #'demo': [
