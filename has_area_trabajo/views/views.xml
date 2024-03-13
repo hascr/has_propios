@@ -1,0 +1,54 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="has_area_trabajo.list">
+      <field name="name">Area de trabajo</field>
+      <field name="model">area.trabajo</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="area"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="has_area_trabajo.action_window">
+      <field name="name">Area de trabajo</field>
+      <field name="res_model">area.trabajo</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+
+    <!-- <record model="ir.actions.server" id="has_area_trabajo.action_server">
+      <field name="name">has_area_trabajo server</field>
+      <field name="model_id" ref="model_has_area_trabajo_has_area_trabajo"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": area_trabajo,
+        }
+      </field>
+    </record> -->
+
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="has_area_trabajo" id="has_area_trabajo.menu_root"/>
+-->
+    <!-- menu categories -->
+
+    <menuitem name="Área de trabajo" id="has_area_trabajo.menu" parent="sale.menu_sale_config"/>
+    
+    <!-- actions -->
+
+    <menuitem name="Área de trabajo" id="has_area_trabajo.menu_1_list" parent="has_area_trabajo.menu"
+              action="has_area_trabajo.action_window"/>
+  </data>
+</odoo>

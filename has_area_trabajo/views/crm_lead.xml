@@ -1,0 +1,20 @@
+<odoo>
+  <data>
+    <!-- Agregar campo en vista res_partner -->
+  
+<record id="crm_lead_view_form_area_inherit" model="ir.ui.view">
+        <field name="name">crm.lead.form.area</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form" />
+        <field name="arch" type="xml">
+                <field name="user_id" position="after">
+                    <field name="area_id"/>
+            </field>
+            <field name="function" position="before">
+                    <field name="area_id"/>
+            </field>
+        </field>
+     </record>  
+  </data>
+</odoo>
+

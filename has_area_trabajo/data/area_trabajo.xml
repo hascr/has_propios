@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- AREAS DE TRABAJO -->
+    <record id="Adm" model="area.trabajo">
+        <field name="area">Administración</field>
+    </record>
+
+    <record id="Edu" model="area.trabajo">
+        <field name="area">Educación</field>
+    </record>
+
+    <record id="Fin" model="area.trabajo">
+        <field name="area">Finanzas</field>
+    </record>
+
+    <record id="Ger" model="area.trabajo">
+        <field name="area">Gerencia</field>
+    </record>
+
+    <record id="Gfi" model="area.trabajo">
+        <field name="area">Gerente financiero</field>
+    </record>
+
+    <record id="Inf" model="area.trabajo">
+        <field name="area">Informática</field>
+    </record>
+
+    <record id="Mer" model="area.trabajo">
+        <field name="area">Mercadeo y ventas</field>
+    </record>
+
+    <record id="Pro" model="area.trabajo">
+        <field name="area">Proveeduría y compras</field>
+    </record>
+
+    <record id="Rec" model="area.trabajo">
+        <field name="area">Recursos humanos</field>
+    </record>
+
+    <record id="Ser" model="area.trabajo">
+        <field name="area">Servicio al cliente</field>
+    </record>
+</odoo>

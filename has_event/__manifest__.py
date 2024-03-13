@@ -31,12 +31,8 @@
         "views/event_registration.xml",
         "views/event_registration_combine.xml",
         "views/programacion_views.xml",
-        "security/ir.model.access.csv",
-        "views/programacion_views.xml",
         "views/cursos_views.xml",
-        "security/ir.model.access.csv",
         "views/estudiantes_views.xml",
-        "security/ir.model.access.csv"
     ],
     # only loaded in demonstration mode
     #'demo': [
