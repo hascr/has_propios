@@ -1,0 +1,17 @@
+<odoo>
+  <data>
+    <!-- Agregar campo en vista res_partner -->
+  
+<record id="sale_order_inherit" model="ir.ui.view">
+        <field name="name">sale.order.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <field name="user_id" position="after">
+                    <field name="asesor_comp" widget="many2many_tags"/>
+            </field>
+        </field>
+     </record>  
+  </data>
+</odoo>
+
