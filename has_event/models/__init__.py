@@ -9,3 +9,4 @@ from . import res_country
 from . import programacion
 from . import cursos
 from . import estudiantes
+from . import event_combinado
