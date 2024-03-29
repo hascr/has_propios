@@ -17,3 +17,4 @@ class has_eventregistration(models.Model):
     country_id = fields.Many2one(comodel_name='res.country', tracking=True, string='País')
     celular = fields.Char(string='Celular')
     puesto = fields.Char(string='Puesto')
+    area_id = fields.Many2one(comodel_name='area.trabajo', string='Area de trabajo')
