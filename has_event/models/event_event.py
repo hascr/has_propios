@@ -5,6 +5,7 @@ from odoo import models, fields, api
 
 class has_event(models.Model):
     _inherit = 'event.event'
+    
 
     presencial = fields.Boolean(string='Presencial', tracking=True)
     noenviar = fields.Boolean(string='No enviar recordatorios', tracking=True)

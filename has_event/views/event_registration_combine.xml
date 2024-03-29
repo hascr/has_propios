@@ -5,6 +5,7 @@
 <record id="view_event_contrato_tree" model="ir.ui.view">
     <field name="name">Contratos</field>
     <field name="model">event.event</field>
+    <field name="priority" eval="50"/>
     <field name="arch" type="xml">
         <tree editable="bottom">
             <field name="id" readonly="1" string="Código"/>
