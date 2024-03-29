@@ -8,10 +8,7 @@
     #'description': """Invoice Extend""",
     #'category': 'account',
     #'version': '1.0',
-    'depends': [
-        'base',
-        'account'
-    ],
+    'depends': ['base','account'],
     'data': [
         'views/account_move_views.xml',
     ],

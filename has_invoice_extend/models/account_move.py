@@ -25,3 +25,7 @@ class ResPartner(models.Model):
     IBAN = fields.Char(
         string='Cuenta IBAN'
     )
+
+    gobierno = fields.Boolean(
+        string='¿Gobierno?'
+    )

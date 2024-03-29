@@ -12,6 +12,7 @@
                 <field name="category_id" position="after">
                     <field name="instructor" widget="boolean_toggle"/>
                     <field name="IBAN"/>
+                    <field name="gobierno" widget="boolean_toggle"/>
                 </field>
             </field>
         </record>
