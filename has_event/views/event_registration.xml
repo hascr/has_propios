@@ -10,6 +10,7 @@
             <field name="email" position="before">
                     <field name="cedula"/>
                     <field name="correo"/>
+                    <field name="celular"/>
                     <field name="country_id"/>
             </field>
             <group name="event" position="after">
@@ -23,6 +24,8 @@
                     <group string="Otros" name="otros_link" groups="base.group_no_one">
                             <field name="placa"/>
                             <field name="colaborador"/>
+                            <field name="puesto"/>
+                            <field name="area_id"/>
                             <field name="asesor"/>
                         </group>
             </group>
