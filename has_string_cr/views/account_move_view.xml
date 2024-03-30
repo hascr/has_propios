@@ -27,6 +27,9 @@
                  <xpath expr="//field[@name='line_ids']/tree/field[@name='partner_id']" position="attributes">
                     <attribute name="options">{'no_create':True}</attribute>
             </xpath>
+            <field name="analytic_distribution" position="attributes">
+                    <attribute name="required">True</attribute>
+                    </field>
             </field>
         </record>
 

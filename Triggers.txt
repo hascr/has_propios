@@ -1,0 +1,18 @@
+
+--#CREAR CUENTAS ANALÍTICAS#--  (se debe cambiar el plan_id y company_id)
+
+CREATE OR REPLACE FUNCTION create_analytic_account()
+RETURNS TRIGGER AS $$
+BEGIN
+    INSERT INTO account_analytic_account (name, code, plan_id, active, company_id)
+    VALUES (NEW.name, NEW.id, 2, true,1);
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER create_analytic_account
+AFTER INSERT
+  ON public.event_event
+  FOR EACH ROW
+  EXECUTE PROCEDURE public.create_analytic_account();
+
