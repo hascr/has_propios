@@ -30,6 +30,13 @@
                     <!-- <field name="aprobada" widget="boolean_toggle" attrs="{'invisible':[('move_type', 'in', ('out_invoice', 'out_refund'))]}"/> -->
                     <field name="aprobada" widget="boolean_toggle" invisible="move_type in ('out_invoice', 'out_refund')"/>
                 </field>
+
+                <field name="invoice_date" position="after">
+                    <field name="fecha_arreglo" invisible="move_type not in ('in_invoice', 'in_refund')"/>
+                </field>
+
+
+
             </field>
         </record>
 

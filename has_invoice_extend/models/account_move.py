@@ -12,6 +12,9 @@ class AccountMove(models.Model):
     aprobada = fields.Boolean(
         string='Pago aprobado'
     )
+    fecha_arreglo = fields.Date(
+        string='Fecha programada de pago'
+    )
     
 
 
