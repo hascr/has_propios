@@ -28,7 +28,7 @@
                     <attribute name="options">{'no_create':True}</attribute>
             </xpath>
             <field name="analytic_distribution" position="attributes">
-                    <attribute name="required">True</attribute>
+                    <attribute name="required">parent.move_type in ('out_invoice','out_refund')</attribute>
                     </field>
             </field>
         </record>
