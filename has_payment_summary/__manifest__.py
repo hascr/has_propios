@@ -13,6 +13,7 @@
         'security/ir.model.access.csv',
         'security/ir_rules.xml',
         'views/payment_summary_views.xml',
+        'wizards/payment_extra.xml',
         'views/menu.xml',
     ],
     'application': True,

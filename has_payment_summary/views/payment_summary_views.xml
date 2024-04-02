@@ -51,7 +51,7 @@
                 <field name="amount_untaxed"/>
                 <field name="commission"/>
                 <field name="tipo_comision"/>
-				<filter string="Periodo actual" name="periodo" domain="[('payment_date','&lt;=', time.strftime('2024-03-31')),('payment_date','&gt;=',time.strftime('2023-04-01'))]"/>
+				<filter string="Periodo actual" name="periodo" domain="[('payment_date','&lt;=', time.strftime('2025-03-31')),('payment_date','&gt;=',time.strftime('2024-04-01'))]"/>
                 <filter string="Año actual" name="year" domain="[('payment_date','&lt;=', time.strftime('%%Y-12-31')),('payment_date','&gt;=',time.strftime('%%Y-01-01'))]"/>
 				<filter string="Mes anterior" name="prev_month" domain="[('payment_date','&gt;=',(context_today()-relativedelta(months=1)).strftime('%Y-%m-01')),('payment_date','&lt;',time.strftime('%Y-%m-01'))]"/>
 				<filter string="Mes actual" name="month" domain="[('payment_date','&lt;=',(datetime.date.today()+relativedelta(day=31)).strftime('%Y-%m-%d')),('payment_date','&gt;=',(datetime.date.today()-relativedelta(day=1)).strftime('%Y-%m-%d'))]"/>
@@ -71,16 +71,35 @@
         <field name="act_window_id" ref="action_payment_summary"/>
     </record> -->
 	
-    <record id="payment_sumarty_form" model="ir.ui.view">
+    <!-- <record id="payment_sumary_form" model="ir.ui.view">
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_register_form"/>
+        <field name="arch" type="xml">
+              <field name="ref" position="after">
+                <field name="material" invisible="payment_type != 'inbound'"/>
+                <field name="consultoria" widget="boolean_toggle" invisible="payment_type != 'inbound'"/>
+            </field>
+        </field>
+    </record>  -->
+
+
+
+    
+    
+    
+    
+    
+    
+    <!-- <record id="payment_sumary_form" model="ir.ui.view">
         <field name="model">account.payment</field>
         <field name="inherit_id" ref="account.view_account_payment_form"/>
         <field name="arch" type="xml">
               <field name="ref" position="after">
                 <field name="material" invisible="payment_type != 'inbound'"/>
                 <field name="consultoria" widget="boolean_toggle" invisible="payment_type != 'inbound'"/>
-                <!--  <field name="amount_signed"/> -->
+                 <field name="amount_signed"/>
             </field>
         </field>
-    </record> 
+    </record>  -->
 	
 </odoo>
