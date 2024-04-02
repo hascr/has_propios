@@ -22,5 +22,6 @@ class srAccountPaymentRegister(models.TransientModel):
         payment_vals = super(srAccountPaymentRegister,self)._create_payment_vals_from_wizard(batch_result)
         if payment_vals:
             payment_vals.update({'material': self.material})
+            payment_vals.update({'consultoria': self.consultoria})
         return payment_vals
 
