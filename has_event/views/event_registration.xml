@@ -14,18 +14,18 @@
                     <field name="country_id"/>
             </field>
             <group name="event" position="after">
-                    <group string="Resultado" name="resultado_link" groups="base.group_no_one">
+                    <group string="Resultado" name="resultado_link" groups="event.group_event_manager">
                             <field name="licencia"/>
                             <field name="asistencia"/>
                             <field name="nota"/>
                         </group>
             </group>
             <group name="event" position="after">
-                    <group string="Otros" name="otros_link" groups="base.group_no_one">
+                    <group string="Otros" name="otros_link" groups="event.group_event_manager">
                             <field name="placa"/>
                             <field name="colaborador"/>
                             <field name="puesto"/>
-                            <field name="area_id"/>
+                            <!-- <field name="area_id"/> #REVISAR ESTE TEMA#-->
                             <field name="asesor"/>
                         </group>
             </group>
