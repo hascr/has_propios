@@ -29,7 +29,7 @@
         'views/res_partner.xml',
         'views/crm_lead.xml',
         'views/mailing_contact.xml',
-       # 'views/templates.xml',
+        'views/event_registration.xml',
     ],
     'application': True,
     # only loaded in demonstration mode

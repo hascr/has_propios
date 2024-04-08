@@ -1,0 +1,18 @@
+<odoo>
+  <data>
+        <!-- Vista de eventos modificada -->
+    
+<record id="view_view_event_registration_area" model="ir.ui.view">
+        <field name="name">view_event_registration_area</field>
+        <field name="model">event.registration</field>
+        <field name="inherit_id" ref="event.view_event_registration_form"/>
+        <field name="arch" type="xml">
+            <field name="puesto" position="before">
+                    <field name="area_id"/>
+            </field>
+            </field>
+    </record>
+
+
+    </data>
+</odoo>
