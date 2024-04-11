@@ -1,6 +1,6 @@
 ------------------------------------------------------------------------------------------------------------------------------
 #1
-server > odoo > survey > views > survet_templates.xml
+server > odoo > survey > views > survey_templates.xml
 
 Líneas: 51 - 58
 

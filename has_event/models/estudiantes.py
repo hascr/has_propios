@@ -75,6 +75,9 @@ class estudiantes(models.Model):
     nombres = fields.Char(
         string='Nombres'
     )
+    apellidos = fields.Char(
+        string='Apellidos'
+    )
     
 
 
@@ -103,7 +106,8 @@ class estudiantes(models.Model):
     	e.licencia AS licencia,
     	t.enofi AS lugar,
     	t.fechas_teams_pres AS fechas,
-    	btrim((e.name)::text) AS nombres
+    	btrim((e.name)::text) AS nombres,
+		concat('(',e.id,')') AS apellidos 
 
    FROM event_registration e
    	JOIN event_event t ON t.id = e.event_id
