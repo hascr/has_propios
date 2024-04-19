@@ -22,6 +22,6 @@ class has_event(models.Model):
     instructor_id = fields.Many2one(comodel_name='res.partner', tracking=True, string='Instructor', domain=[('instructor', '=', True)],)
     #instructor_id = fields.Many2one(comodel_name='instructor.name', tracking=True, string='Instructor')
     asesor = fields.Many2one(comodel_name='res.users', tracking=True, string='Realizar evaluación', domain=lambda self: [("groups_id", "=", self.env.ref( "sales_team.group_sale_salesman" ).id)])
-    facturado = fields.Boolean(string='Facturado', tracking=True)
+    #facturado = fields.Boolean(string='Facturado', tracking=True)
     contrato_firmado = fields.Binary(attachment=True)
-    
+    account_move_id = fields.Many2one('account.move', string='Factura de Proveedor', domain=[('instructor', '=', True)])

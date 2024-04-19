@@ -108,5 +108,6 @@ class cursos(models.Model):
    (to_char(ee.write_date, 'dd-mm-yyyy'::text) = to_char(now(), 'dd-mm-yyyy'::text)) AS actualizacion
 FROM event_event ee
 LEFT JOIN res_users ru ON ru.id = ee.user_id
-LEFT JOIN res_partner rp ON rp.id = ru.partner_id);
+LEFT JOIN res_partner rp ON rp.id = ru.partner_id
+WHERE ee.stage_id != 5);
             """)

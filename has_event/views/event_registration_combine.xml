@@ -10,10 +10,11 @@
         <tree editable="bottom">
             <field name="id" readonly="1" string="Código"/>
             <field name="name" readonly="1"/>
-            <field name="instructor_id" readonly="1"/>
             <field name="date_begin" readonly="1"/>
             <field name="date_end" readonly="1"/>
-            <field name="facturado" widget="boolean_toggle"/>
+            <field name="instructor_id"/>
+            <field name="titulo" widget="boolean_toggle"/>
+            <field name="account_move_id"/>
             <field name="contrato_firmado"/>
         </tree>
     </field>
@@ -29,7 +30,11 @@
     <field name="name" string="Buscar por código, curso, instructor" filter_domain="['|','|', ('id','ilike',self), ('name','ilike',self), ('instructor_id', 'ilike', self)]">
     <filter name="filter_cpendientes" string="Contratos pendientes" domain="[['contrato_firmado', '=', False]]"></filter>
     <separator/>
-    <filter name="filter_fpendientes" string="Facturas pendientes" domain="[['facturado', '=', False]]"></filter>
+    <filter name="filter_fpendientes" string="Facturas pendientes" domain="[['account_move_id', '=', False]]"></filter>
+    <separator/>
+    <filter name="filter_tpendientes" string="Títulos pendientes" domain="[['titulo', '=', False]]"></filter>
+    <separator/>
+    <filter name="filter_ipendientes" string="Instructor pendiente" domain="[['instructor_id', '=', False]]"></filter>
 </field>
     <group expand="0" string="Group by">
 				<filter string="Instructor" name="instructor" context="{'group_by':'instructor_id'}"/>
@@ -37,6 +42,8 @@
         </search>
     </field>
 </record>
+
+
 
         <!-- acción de apertura de vista en modelos -->
 

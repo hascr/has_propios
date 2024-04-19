@@ -111,5 +111,6 @@ class estudiantes(models.Model):
 
    FROM event_registration e
    	JOIN event_event t ON t.id = e.event_id
-  	WHERE t.stage_id != 5);
+  	WHERE t.stage_id != 5
+	AND e.state != 'cancel');
             """)
