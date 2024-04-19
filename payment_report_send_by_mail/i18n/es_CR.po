@@ -1,0 +1,135 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* payment_report_send_by_mail
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0-20240227\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-04-19 15:55+0000\n"
+"PO-Revision-Date: 2024-04-19 09:59-0600\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es_CR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. module: payment_report_send_by_mail
+#: model:mail.template,body_html:payment_report_send_by_mail.mail_template_data_payment_receipt_supplier
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"        \n"
+"       <p>Estimado/a <strong><t t-out=\"object.partner_id.name or ''\">Azure "
+"Interior</t></strong></p>\n"
+"<p>Le información de la transferencia realizada a su cuenta bancaria de la "
+"factura <strong><span style=\"font-weight:bold;\" t-out=\"(object.ref or '')."
+"replace('/','-') or ''\">BNK1-2021-05-0002</span></strong> por un monto de "
+"<strong><span style=\"font-weight:bold;\" t-out=\"format_amount(object."
+"amount, object.currency_id) or ''\">$ 10.00</span></strong> por parte de "
+"<strong><t t-out=\"object.company_id.name or ''\">YourCompany</t>.</strong></"
+"p>\n"
+"<p><span style=\"color:#b71c1c;\"><strong><u>Importante:</u></strong></span> "
+"El pago puede verse reflejado en su cuenta bancaria inclusive uno o dos días "
+"hábiles después de la fecha indicada si se realizó transferencia SINPE.</p>\n"
+"<p>Si tiene alguna inquietud puede responder a este correo y estaremos "
+"solucionando a la mayor brevedad posible.</p>\n"
+"<p>Saludos,</p> \n"
+"        <t t-if=\"not is_html_empty(user.signature)\">\n"
+"            <br><br>\n"
+"            <t t-out=\"user.signature or ''\">--<br>Mitchell Admin</t>\n"
+"        </t>\n"
+"    </p>\n"
+"</div>\n"
+msgstr ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"        \n"
+"       <p>Estimado/a <strong><t t-out=\"object.partner_id.name or ''\">Azure "
+"Interior</t></strong></p>\n"
+"<p>Le información de la transferencia realizada a su cuenta bancaria de la "
+"factura <strong><span style=\"font-weight:bold;\" t-out=\"(object.ref or '')."
+"replace('/','-') or ''\">BNK1-2021-05-0002</span></strong> por un monto de "
+"<strong><span style=\"font-weight:bold;\" t-out=\"format_amount(object."
+"amount, object.currency_id) or ''\">$ 10.00</span></strong> por parte de "
+"<strong><t t-out=\"object.company_id.name or ''\">YourCompany</t>.</strong></"
+"p>\n"
+"<p><span style=\"color:#b71c1c;\"><strong><u>Importante:</u></strong></span> "
+"El pago puede verse reflejado en su cuenta bancaria inclusive uno o dos días "
+"hábiles después de la fecha indicada si se realizó transferencia SINPE.</p>\n"
+"<p>Si tiene alguna inquietud puede responder a este correo y estaremos "
+"solucionando a la mayor brevedad posible.</p>\n"
+"<p>Saludos,</p> \n"
+"        <t t-if=\"not is_html_empty(user.signature)\">\n"
+"            <br><br>\n"
+"            <t t-out=\"user.signature or ''\">--<br>Mitchell Admin</t>\n"
+"        </t>\n"
+"    </p>\n"
+"</div>\n"
+
+#. module: payment_report_send_by_mail
+#: model:ir.model.fields,field_description:payment_report_send_by_mail.field_res_partner__custom_allow_send_mail
+#: model:ir.model.fields,field_description:payment_report_send_by_mail.field_res_users__custom_allow_send_mail
+msgid "Allow to Send Mail"
+msgstr "Enviar comprobante de pago a proveedor"
+
+#. module: payment_report_send_by_mail
+#: model:ir.model,name:payment_report_send_by_mail.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: payment_report_send_by_mail
+#: model:mail.template,description:payment_report_send_by_mail.mail_template_data_payment_receipt_supplier
+msgid ""
+"Enviar manualmente al proveedor cuando se presiona en la acción de enviar "
+"recibo por correo electrónico"
+msgstr ""
+"Enviar manualmente al proveedor cuando se presiona en la acción de enviar "
+"recibo por correo electrónico"
+
+#. module: payment_report_send_by_mail
+#: model:ir.model.fields,help:payment_report_send_by_mail.field_res_partner__custom_allow_send_mail
+#: model:ir.model.fields,help:payment_report_send_by_mail.field_res_users__custom_allow_send_mail
+msgid ""
+"If you checkbox then customer will get payment receipt automatically by "
+"email on validation of Payment."
+msgstr ""
+"Si marca la casilla, el proveedor recibirá el comprobante de pago "
+"automáticamente por correo electrónico al validar el pago."
+
+#. module: payment_report_send_by_mail
+#: model:mail.template,name:payment_report_send_by_mail.mail_template_data_payment_receipt_supplier
+msgid "Pago: Comprobante de pago - Proveedor"
+msgstr "Pago: Comprobante de pago - Proveedor"
+
+#. module: payment_report_send_by_mail
+#: model:ir.actions.report,name:payment_report_send_by_mail.action_report_payment_receipt_supplier
+msgid "Payment Receipt Supplier"
+msgstr "Comprobante de pago de proveedor"
+
+#. module: payment_report_send_by_mail
+#: model:ir.model,name:payment_report_send_by_mail.model_account_payment
+msgid "Payments"
+msgstr "Pagos"
+
+#. module: payment_report_send_by_mail
+#: model:ir.actions.act_window,name:payment_report_send_by_mail.send_payment_receipt_by_email_action_supplier
+msgid "Send receipt by email Supplier"
+msgstr "Enviar comprobante por correo a proveedor"
+
+#. module: payment_report_send_by_mail
+#: model:ir.actions.act_window,name:payment_report_send_by_mail.send_payment_receipt_by_email_action_multi_supplier
+msgid "Send receipts by email"
+msgstr "Enviar comprobantes por correo a proveedores"
+
+#. module: payment_report_send_by_mail
+#: model:mail.template,subject:payment_report_send_by_mail.mail_template_data_payment_receipt_supplier
+msgid ""
+"{{ object.company_id.name }} - Confirmación de pago - Factura {{ object.ref "
+"or 'n/a' }}"
+msgstr ""
+"{{ object.company_id.name }} - Confirmación de pago - Factura {{ object.ref "
+"or 'n/a' }}"
