@@ -8,7 +8,8 @@ class has_event(models.Model):
     
 
     presencial = fields.Boolean(string='Presencial', tracking=True)
-    noenviar = fields.Boolean(string='No enviar recordatorios', tracking=True)
+    noenviar = fields.Boolean(string='No bienvenida', tracking=True)
+    nocontrato = fields.Boolean(string='Sin contrato', tracking=True)
     materiallearn = fields.Char(string='Material Learn', tracking=True)
     urllearn = fields.Char(string='URL Learn', tracking=True)
     urlmatricula = fields.Char(string='URL matrícula', tracking=True)

@@ -11,6 +11,7 @@
                     <field name="contrato_firmado"/>
                     <field name="presencial"/>
                     <field name="noenviar"/>
+                    <field name="nocontrato"/>
                     <field name="enofi"/>
                     <field name="titulo"/>
                     <field name="cuenta_id"/>

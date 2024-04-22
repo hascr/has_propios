@@ -58,7 +58,7 @@ class cursos(models.Model):
         string='Presencial'
     )
     noenviar = fields.Boolean(
-        string='No enviar recordatorios'
+        string='No bienvenida'
     )
     urllearn = fields.Char(
         string='URL Learn'
@@ -72,7 +72,27 @@ class cursos(models.Model):
     actualizacion = fields.Char(
         string='Actualización'
     )
-
+    cedula_contrato = fields.Char(
+        string='Cédula contrato'
+    )
+    nombre_contrato = fields.Char(
+        string='Nombre contrato'
+    )
+    correo_contrato = fields.Char(
+        string='Correo Contrato'
+    )
+    cedula_facturacion_contrato = fields.Char(
+        string='Cédula facturación contrato'
+    )
+    nombre_facturacion_contrato = fields.Char(
+        string='Nombre facturación contrato'
+    )
+    nacionalidad_contrato = fields.Char(
+        string='Nacionalidad contrato'
+    )
+    nocontrato = fields.Boolean(
+        string='Sin contrato'
+    )
 
 
 
@@ -105,7 +125,15 @@ class cursos(models.Model):
    ee.urllearn AS urllearn,
    ee.materiallearn AS materiallearn,
 	(SELECT rp1.email FROM res_partner rp1 JOIN res_users ru1 on ru1.partner_id = rp1.id WHERE ru1.id = ee.asesor) AS asesor,
-   (to_char(ee.write_date, 'dd-mm-yyyy'::text) = to_char(now(), 'dd-mm-yyyy'::text)) AS actualizacion
+	(to_char(ee.write_date, 'dd-mm-yyyy'::text) = to_char(now(), 'dd-mm-yyyy'::text)) AS actualizacion,
+	(SELECT 	l.value_char_box FROM	survey_user_input_line l JOIN	survey_user_input i ON l.user_input_id = i.id WHERE	l.question_id = 2 AND	i.partner_id = ee.instructor_id AND	l.answer_type = 'char_box') AS cedula_contrato,
+	(SELECT 	l.value_char_box FROM	survey_user_input_line l JOIN	survey_user_input i ON l.user_input_id = i.id WHERE	l.question_id = 1 AND	i.partner_id = ee.instructor_id AND	l.answer_type = 'char_box') AS nombre_contrato,
+	(SELECT 	l.value_char_box FROM	survey_user_input_line l JOIN	survey_user_input i ON l.user_input_id = i.id WHERE	l.question_id = 7 AND	i.partner_id = ee.instructor_id AND	l.answer_type = 'char_box') AS correo_contrato,
+	(SELECT 	l.value_char_box FROM	survey_user_input_line l JOIN	survey_user_input i ON l.user_input_id = i.id WHERE	l.question_id = 5 AND	i.partner_id = ee.instructor_id AND	l.answer_type = 'char_box') AS cedula_facturacion_contrato,
+	(SELECT 	l.value_char_box FROM	survey_user_input_line l JOIN	survey_user_input i ON l.user_input_id = i.id WHERE	l.question_id = 4 AND	i.partner_id = ee.instructor_id AND	l.answer_type = 'char_box') AS nombre_facturacion_contrato,
+	CASE WHEN (SELECT 	l.value_char_box FROM	survey_user_input_line l JOIN	survey_user_input i ON l.user_input_id = i.id WHERE	l.question_id = 3 AND	i.partner_id = ee.instructor_id AND	l.answer_type = 'char_box') IS NULL THEN 'Costarricense' ELSE (SELECT 	l.value_char_box FROM	survey_user_input_line l JOIN	survey_user_input i ON l.user_input_id = i.id WHERE	l.question_id = 3 AND	i.partner_id = ee.instructor_id AND	l.answer_type = 'char_box') END AS nacionalidad_contrato,
+	ee.nocontrato AS nocontrato
+   
 FROM event_event ee
 LEFT JOIN res_users ru ON ru.id = ee.user_id
 LEFT JOIN res_partner rp ON rp.id = ru.partner_id
