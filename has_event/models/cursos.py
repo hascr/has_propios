@@ -93,6 +93,9 @@ class cursos(models.Model):
     nocontrato = fields.Boolean(
         string='Sin contrato'
     )
+    estado = fields.Integer(
+        string='Estado'
+    )
 
 
 
@@ -132,7 +135,8 @@ class cursos(models.Model):
 	(SELECT 	l.value_char_box FROM	survey_user_input_line l JOIN	survey_user_input i ON l.user_input_id = i.id WHERE	l.question_id = 5 AND	i.partner_id = ee.instructor_id AND	l.answer_type = 'char_box') AS cedula_facturacion_contrato,
 	(SELECT 	l.value_char_box FROM	survey_user_input_line l JOIN	survey_user_input i ON l.user_input_id = i.id WHERE	l.question_id = 4 AND	i.partner_id = ee.instructor_id AND	l.answer_type = 'char_box') AS nombre_facturacion_contrato,
 	CASE WHEN (SELECT 	l.value_char_box FROM	survey_user_input_line l JOIN	survey_user_input i ON l.user_input_id = i.id WHERE	l.question_id = 3 AND	i.partner_id = ee.instructor_id AND	l.answer_type = 'char_box') IS NULL THEN 'Costarricense' ELSE (SELECT 	l.value_char_box FROM	survey_user_input_line l JOIN	survey_user_input i ON l.user_input_id = i.id WHERE	l.question_id = 3 AND	i.partner_id = ee.instructor_id AND	l.answer_type = 'char_box') END AS nacionalidad_contrato,
-	ee.nocontrato AS nocontrato
+	ee.nocontrato AS nocontrato,
+    ee.stage_id as estado
    
 FROM event_event ee
 LEFT JOIN res_users ru ON ru.id = ee.user_id
