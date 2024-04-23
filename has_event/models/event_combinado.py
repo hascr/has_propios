@@ -26,5 +26,5 @@ class eventcombinado(models.Model):
 
 FROM		event_event e
 
-WHERE		e.stage_id < 4);
+WHERE		e.stage_id = 3);
             """)
