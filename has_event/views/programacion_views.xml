@@ -6,13 +6,21 @@
         <field name="name">view.programacion.tree</field>
         <field name="model">programacion</field>
         <field name="arch" type="xml">
-            <tree string="Programacion" editable="bottom">
+            <tree string="Programacion">
+                <field name="codigo"/>
+                <field name="curso"/>
+                <field name="cuenta"/>
+                <field name="inicio"/>
+                <field name="fin"/>
+                <field name="u_clase"/>
+            </tree>
+            <!-- <tree string="Programacion" editable="bottom">
                 <field name="codigo" readonly="1"/>
                 <field name="curso" readonly="1"/>
                 <field name="cuenta" readonly="1"/>
                 <field name="inicio" readonly="1"/>
                 <field name="fin" readonly="1"/>
-            </tree>
+            </tree> -->
         </field>
     </record>
 
@@ -50,6 +58,7 @@
                 <field name="codigo" string="Buscar por código, curso, cuenta" filter_domain="['|','|', ('codigo','ilike',self), ('curso','ilike',self), ('cuenta', 'ilike', self)]"> </field>
                 <group expand="1" string="Group By">
                     <filter string="Cuenta" name="cuenta" domain="[]" context="{'group_by':'cuenta'}"/>
+                    <filter string="Última clase" name="u_clase" domain="[('u_clase', 'like', 'true')]"/>
                 </group>
             </search>
         </field>
@@ -57,10 +66,12 @@
 
     <!-- Action programacion -->
     <record id="action_programacion" model="ir.actions.act_window">
-        <field name="name">Programacion</field>
+        <field name="name">Programación</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">programacion</field>
-        <field name="view_mode">tree,form</field>
+        <!-- <field name="view_mode">tree,form,<reference model="ir.ui.view" id="programacion_calendar"/></field> -->
+        <field name="view_mode">calendar,tree,form</field>
+        <!-- <field name="search_view_id" ref="view_programacion_search"/> -->
         <field name="domain">[]</field>
         <field name="context">{}</field>
         <field name="help" type="html">
@@ -70,6 +81,24 @@
         </field>
     </record>
 
+    <record model="ir.ui.view" id="view_event_calendar">
+        <field name="name">programacion.calendar</field>
+        <field name="model">programacion</field>
+        <field eval="2" name="priority"/>
+        <field name="arch" type="xml">
+            <calendar date_start="inicio" date_stop="fin" string="Programación" mode="month" color="cuenta" event_limit="5">
+                <field name="cod_nombre" filters="1"/>
+                <!-- <field name="curso"/> -->
+                <field name="cuenta" filters="1"/>
+                <field name="u_clase"/>
+                <!-- <field name="event_type_id" filters="1" invisible="1"/> -->
+            </calendar>
+        </field>
+    </record>
+
+
+    
+
     <!-- Menú superior -->
 
     <menuitem 	name="Programación"
@@ -77,5 +106,7 @@
 				sequence="5"
 				action="action_programacion"
 				parent="event.event_main_menu"/>	
+
+
 
 </odoo>
