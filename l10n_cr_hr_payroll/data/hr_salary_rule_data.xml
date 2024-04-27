@@ -35,7 +35,8 @@ result = contract.wage / 2
         <field name="name">Comisiones</field>
         <field name="sequence" eval="2" />
         <field name="code">COMIS</field>
-        <field name="category_id" ref="om_hr_payroll.BASIC" />
+        <field name="category_id" ref="om_hr_payroll.ALW" />
+        <field name="appears_on_payslip">False</field>
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
@@ -93,7 +94,7 @@ result = contract.wage / 2 / 15 * 1 * worked_days.WORK100.number_of_days
         <field name="name">Salario bruto</field>
         <field name="sequence" eval="4" />
         <field name="code">GROSS</field>
-        <field name="category_id" ref="om_hr_payroll.DED" />
+        <field name="category_id" ref="om_hr_payroll.GROSS" />
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
@@ -123,6 +124,7 @@ result = categories.BASIC + categories.ALW - categories.DED
         <field name="code">EXTRA</field>
         <field name="category_id" ref="om_hr_payroll.ALW" />
         <field name="condition_select">none</field>
+        <field name="appears_on_payslip">False</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
 # Available variables:
@@ -155,8 +157,9 @@ result = contract.wage / 240 * 1.5 * worked_days.WORK100.number_of_hours
         <field name="name">Cuotas patronales CCSS</field>
         <field name="sequence" eval="10" />
         <field name="code">CPAT</field>
-        <field name="category_id" ref="om_hr_payroll.DED" />
+        <field name="category_id" ref="om_hr_payroll.COMP" />
         <field name="condition_select">none</field>
+        <field name="appears_on_payslip">False</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
 # Available variables:
@@ -183,7 +186,7 @@ result = GROSS * contract.company_id.hr_rule_D001 / 100
         <field name="name">Retención obrera CCSS</field>
         <field name="sequence" eval="5" />
         <field name="code">OBR</field>
-        <field name="category_id" ref="om_hr_payroll.DED" />
+        <field name="category_id" ref="l10n_cr_hr_payroll.RET" />
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
@@ -211,7 +214,7 @@ result = GROSS * contract.company_id.hr_rule_D002 / 100
         <field name="name">Retención impuesto al salario</field>
         <field name="sequence" eval="5" />
         <field name="code">RETSAL</field>
-        <field name="category_id" ref="om_hr_payroll.DED" />
+        <field name="category_id" ref="l10n_cr_hr_payroll.RET" />
         <field name="condition_select">none</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
@@ -236,6 +239,39 @@ else:
 
 result = max(0, impuesto - (depend + conyug))</field>
     </record>
+
+
+<record id="hr_rule_RETSAL_USD" model="hr.salary.rule">
+        <field name="name">Retención impuesto al salario USD</field>
+        <field name="sequence" eval="5" />
+        <field name="code">RETSALUSD</field>
+        <field name="category_id" ref="l10n_cr_hr_payroll.RET" />
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+tramo_25 = contract.company_id.fourth_wage_tax / 2
+tramo_20 = contract.company_id.third_wage_tax / 2
+tramo_15 = contract.company_id.second_wage_tax / 2
+tramo_10 = contract.company_id.first_wage_tax / 2
+salario = GROSS * payslip.original_rate
+depend = contract.company_id.amount_children * employee.children_to_report / 2
+conyug = contract.company_id.amount_spouse / 2 if employee.spouse_report else 0
+
+if salario = tramo_10:
+        impuesto = 0
+elif salario = tramo_15:
+        impuesto = (salario - tramo_10) * 0.10
+elif salario = tramo_20:
+        impuesto = ((salario - tramo_15) * 0.15) + ((tramo_15 - tramo_10) * 0.10)
+elif salario = tramo_25:
+        impuesto = ((salario - tramo_20) * 0.20) + ((tramo_15 - tramo_10) * 0.10) + ((tramo_20 - tramo_15) * 0.15)
+else:
+        impuesto = ((salario - tramo_25) * 0.25) + ((tramo_15 - tramo_10) * 0.10) + ((tramo_20 - tramo_15) * 0.15) + ((tramo_25 - tramo_20) * 0.20)
+
+result = max(0, impuesto - (depend + conyug)) / payslip.original_rate</field>
+    </record>
+
+
 
     <!-- BRUTO - GROSS -->
     
@@ -299,6 +335,33 @@ result = inputs.OD.amount
         </field>
     </record>
 
+<record id="hr_rule_TEL" model="hr.salary.rule">
+        <field name="name">Teléfono</field>
+        <field name="sequence" eval="8" />
+        <field name="code">TEL</field>
+        <field name="category_id" ref="l10n_cr_hr_payroll.ODED" />
+        <field name="condition_select">python</field>
+        <field name="amount_select">code</field>
+        <field name="condition_python">result = (inputs and inputs.TEL and inputs.TEL.amount) or False</field>
+        <field name="amount_python_compute">
+# Available variables:
+#-------------------------------
+# payslip: hr.payslip object
+# payslips: object containing payslips (browsable)
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories
+#    (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days.
+# inputs: object containing the computed inputs.
+# payroll: object containing miscellaneous values related to payroll
+# current_contract: object with values calculated from the current contract
+# result_rules: object with a dict of qty, rate, amount an total of calculated rules
+# tools: object that contain libraries and tools that can be used in calculations
+
+result = inputs.TEL.amount</field>
+    </record>
     
 
     
@@ -309,11 +372,12 @@ result = inputs.OD.amount
     
 
     <record id="hr_rule_AGUIN" model="hr.salary.rule">
-        <field name="name">Aguinaldo</field>
+        <field name="name">Aguinaldo CRC</field>
         <field name="sequence" eval="10" />
         <field name="code">AGUIN</field>
         <field name="category_id" ref="om_hr_payroll.COMP" />
         <field name="condition_select">none</field>
+        <field name="appears_on_payslip">False</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
 # Available variables:
@@ -336,12 +400,44 @@ result = GROSS / 12
         </field>
     </record>
 
+<record id="hr_rule_AGUIN_USD" model="hr.salary.rule">
+        <field name="name">Aguinaldo USD</field>
+        <field name="sequence" eval="10" />
+        <field name="code">AGUINUSD</field>
+        <field name="category_id" ref="om_hr_payroll.COMP" />
+        <field name="condition_select">none</field>
+        <field name="appears_on_payslip">False</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+# Available variables:
+#-------------------------------
+# payslip: hr.payslip object
+# payslips: object containing payslips (browsable)
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories
+#    (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days.
+# inputs: object containing the computed inputs.
+# payroll: object containing miscellaneous values related to payroll
+# current_contract: object with values calculated from the current contract
+# result_rules: object with a dict of qty, rate, amount an total of calculated rules
+# tools: object that contain libraries and tools that can be used in calculations
+
+result = GROSS / 12
+        </field>
+    </record>
+
+
+
     <record id="hr_rule_ESCOLAR" model="hr.salary.rule">
         <field name="name">Salario Escolar</field>
         <field name="sequence" eval="30" />
         <field name="code">ESCOLAR</field>
-        <field name="category_id" ref="om_hr_payroll.COMP" />
+        <field name="category_id" ref="l10n_cr_hr_payroll.ODED" />
         <field name="condition_select">none</field>
+        <field name="appears_on_payslip">False</field>
         <field name="amount_select">code</field>
         <field name="amount_python_compute">
 # Available variables:
@@ -370,7 +466,7 @@ result = -((contract.wage / 2) * (contract.school_salary / 100.0))
 
     <!-- NETO - NET -->
     <record id="hr_rule_NET" model="hr.salary.rule">
-        <field name="name">Salario Neto a Pagar</field>
+        <field name="name">Salario Neto a Pagar CRC</field>
         <field name="sequence" eval="33" />
         <field name="code">NET</field>
         <field name="category_id" ref="om_hr_payroll.NET" />
@@ -393,7 +489,35 @@ result = -((contract.wage / 2) * (contract.school_salary / 100.0))
 # result_rules: object with a dict of qty, rate, amount an total of calculated rules
 # tools: object that contain libraries and tools that can be used in calculations
 
-result = categories.NET + categories.DED + categories.ODED
+result = categories.GROSS - categories.RET - categories.ODED + categories.OSUB
+        </field>
+    </record>
+
+    <record id="hr_rule_NET_USD" model="hr.salary.rule">
+        <field name="name">Salario Neto a Pagar USD</field>
+        <field name="sequence" eval="33" />
+        <field name="code">NETUSD</field>
+        <field name="category_id" ref="om_hr_payroll.NET" />
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+# Available variables:
+#-------------------------------
+# payslip: hr.payslip object
+# payslips: object containing payslips (browsable)
+# employee: hr.employee object
+# contract: hr.contract object
+# rules: object containing the rules code (previously computed)
+# categories: object containing the computed salary rule categories
+#    (sum of amount of all rules belonging to that category).
+# worked_days: object containing the computed worked days.
+# inputs: object containing the computed inputs.
+# payroll: object containing miscellaneous values related to payroll
+# current_contract: object with values calculated from the current contract
+# result_rules: object with a dict of qty, rate, amount an total of calculated rules
+# tools: object that contain libraries and tools that can be used in calculations
+
+result = categories.GROSS - categories.RET - categories.ODED + categories.OSUB
         </field>
     </record>
 

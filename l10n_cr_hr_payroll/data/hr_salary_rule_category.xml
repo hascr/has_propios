@@ -13,4 +13,9 @@
         <field name="code">OSUB</field>
     </record>
 
+    <record id="RET" model="hr.salary.rule.category">
+        <field name="name">Retenciones</field>
+        <field name="code">RET</field>
+    </record>
+
 </odoo>
