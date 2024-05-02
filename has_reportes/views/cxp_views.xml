@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- View cxp View Tree -->
+    <record id="view_cxp_tree" model="ir.ui.view">
+        <field name="name">view.cxp.tree</field>
+        <field name="model">cxp</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="proveedor"/>
+                <field name="cedula"/>
+                <field name="moneda_factura"/>
+                <field name="banco"/>
+                <field name="cuenta"/>
+                <field name="moneda_cuenta"/>
+                <field name="factura"/>
+                <field name="fecha_factura"/>
+                <field name="fecha_pago"/>
+                <field name="saldo"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- View cxp form -->
+    <!-- <record id="view_cxp_form" model="ir.ui.view">
+        <field name="name">view.cxp.form</field>
+        <field name="model">cxp</field>
+        <field name="arch" type="xml">
+            <form string="Cxp">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="Name..."/>
+                        </h1>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record> -->
+
+    <!-- View cxp search -->
+    <record id="view_cxp_search" model="ir.ui.view">
+        <field name="name">view.cxp.search</field>
+        <field name="model">cxp</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="proveedor" string="Buscar por nombre, moneda de cuenta, factura" filter_domain="['|','|', ('proveedor','ilike',self), ('moneda_cuenta','ilike',self), ('factura', 'ilike', self)]"> </field>
+                <filter string="Colones" name="crc" domain="[('moneda_cuenta','=','CRC')]"/>
+                <filter string="Dólares" name="usd" domain="[('moneda_cuenta','=','USD')]"/>
+				<separator/>
+                <group expand="1" string="Group By">
+                    <filter string="Proveedor" name="name" domain="[]" context="{'group_by':'proveedor'}"/>
+                    <filter string="Fecha de pago" name="fecha_pago_month" context="{'group_by':'fecha_pago:month'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action cxp -->
+    <record id="action_cxp" model="ir.actions.act_window">
+        <field name="name">Cxp</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">cxp</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                There is no examples click here to add new Cxp.
+            </p>
+        </field>
+    </record>
+
+<!-- menú de categoría con acción -->
+
+    <menuitem name="Reportes de cuentas por pagar" id="has_reportes.menu_2_list" parent="has_reportes.menu"
+              action="action_cxp"/>
+
+
+</odoo>
