@@ -12,7 +12,8 @@
     "data": [
         "security/ir.model.access.csv",
         "views/nomina.xml",
-        "views/cxp_views.xml"
+        "views/cxp_views.xml",
+        "views/movimiento_bancario_views.xml"
     ],
     'application': True,
 }
