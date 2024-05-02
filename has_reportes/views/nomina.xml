@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- View programacion View Tree -->
+    <record id="view_reportes_nomina_tree" model="ir.ui.view">
+        <field name="name">view.reportes.nomina.tree</field>
+        <field name="model">nomina</field>
+        <field name="arch" type="xml">
+            <tree string="Reportes de nómina">
+                <field name="fecha"/>
+                <field name="identificador"/>
+                <field name="nombre"/>
+                <field name="moneda"/>
+                <field name="salario_crc"/>
+                <field name="salario_usd"/>
+                <field name="salario_colonizado"/>
+                <field name="retencion_salario"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- View programacion search -->
+    <record id="view_reportes_nomina_search" model="ir.ui.view">
+        <field name="name">view.reportes.nomina.search</field>
+        <field name="model">nomina</field>
+        <field name="arch" type="xml">
+            <search string="Reportes de nónima">
+                <field name="nombre" string="Buscar por nombre, identificador o moneda" filter_domain="['|','|', ('nombre','ilike',self), ('identificador','ilike',self), ('moneda', 'ilike', self)]"> </field>
+                <filter string="Colones" name="crc" domain="[('moneda','=','CRC')]"/>
+                <filter string="Dólares" name="usd" domain="[('moneda','=','USD')]"/>
+				<separator/>
+                <group expand="1" string="Group By">
+                    <filter string="Moneda" name="moneda" domain="[]" context="{'group_by':'moneda'}"/>
+                    <filter string="Colaborador" name="colaborador" domain="[]" context="{'group_by':'nombre'}"/>
+                    <filter string="Gasto mensual" name="expense_month" context="{'group_by':'fecha:month'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action programacion -->
+    <record id="action_reportes_nomina" model="ir.actions.act_window">
+        <field name="name">Nómina</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">nomina</field>
+        <field name="view_mode">pivot</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Agregue un nuevo registro.
+            </p>
+        </field>
+    </record>
+
+<!-- menu superior -->
+
+    <menuitem name="Reportes personalizados" id="has_reportes.menu" parent="account.menu_finance_reports"/>
+    
+    <!-- menú de categoría con acción -->
+
+    <menuitem name="Reportes de nómina" id="has_reportes.menu_1_list" parent="has_reportes.menu"
+              action="action_reportes_nomina"/>
+
+
+
+</odoo>
