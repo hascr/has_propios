@@ -38,9 +38,9 @@
             <field name="user_id" position="attributes">
                     <attribute name="invisible">1</attribute>
             </field>
-            <field name="address_id" position="attributes">
+            <!-- <field name="address_id" position="attributes">
                     <attribute name="invisible">1</attribute>
-            </field>
+            </field> -->
             <field name="badge_format" position="attributes">
                     <attribute name="invisible">1</attribute>
             </field>
