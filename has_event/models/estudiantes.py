@@ -99,7 +99,7 @@ class estudiantes(models.Model):
     	e.nota AS nota,
     	((t.cantsesion)::numeric * (t.hsesion)::numeric) AS tiempototal,
     	e.asistencia AS horas,
-    	(SELECT rp1.email FROM res_partner rp1 JOIN res_users ru1 on ru1.partner_id = rp1.id WHERE ru1.id = t.asesor) AS asesor,
+    	(SELECT rp1.email FROM res_partner rp1 JOIN res_users ru1 on ru1.partner_id = rp1.id WHERE ru1.id = e.asesor) AS asesor,
     	e.id AS estudiante,
     	t.presencial AS presencial,
     	t.noenviar AS noenviar,
