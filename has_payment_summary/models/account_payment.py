@@ -117,5 +117,6 @@ class AccountPaymentReport(models.Model):
 		
 	WHERE	a.payment_type = 'inbound'
 	AND	m.state = 'posted'
-	AND a.is_internal_transfer = false
+	AND a.is_internal_transfer = FALSE
+	AND a.partner_type = 'customer'
             )""")
