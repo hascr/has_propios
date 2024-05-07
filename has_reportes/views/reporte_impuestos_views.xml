@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- View reporte.impuestos View Tree -->
+    <record id="view_reporte_impuestos_tree" model="ir.ui.view">
+        <field name="name">view.reporte.impuestos.tree</field>
+        <field name="model">reporte.impuestos</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="fecha"/>
+                <field name="codigo_cuenta"/>
+                <field name="cuenta"/>
+                <field name="empresa"/>
+                <field name="impuesto"/>
+                <field name="tipo"/>
+                <field name="factura"/>
+                <field name="base_impuesto"/>
+                <field name="saldo"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- View reporte.impuestos form -->
+    <!-- <record id="view_reporte_impuestos_form" model="ir.ui.view">
+        <field name="name">view.reporte.impuestos.form</field>
+        <field name="model">reporte.impuestos</field>
+        <field name="arch" type="xml">
+            <form string="Reporte Impuestos">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="Name..."/>
+                        </h1>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record> -->
+
+    <!-- View reporte.impuestos search -->
+    <record id="view_reporte_impuestos_search" model="ir.ui.view">
+        <field name="name">view.reporte.impuestos.search</field>
+        <field name="model">reporte.impuestos</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="cuenta" string="Buscar por cuenta, empresa,factura" filter_domain="['|','|', ('cuenta','ilike',self), ('factura','ilike',self), ('empresa', 'ilike', self)]"> </field>
+                <filter string="Venta" name="venta" domain="[('tipo','=','venta')]"/>
+                <filter string="Compra" name="compra" domain="[('tipo','=','compra')]"/>
+                <filter string="Manual" name="manual" domain="[('tipo','=','manual')]"/>
+                <filter string="Mes anterior" name="prev_month" domain="[('fecha','&gt;=',(context_today()-relativedelta(months=1)).strftime('%Y-%m-01')),('fecha','&lt;',time.strftime('%Y-%m-01'))]"/>
+				<separator/>
+                <group expand="1" string="Group By">
+                    <filter string="Cuenta" name="cuenta" domain="[]" context="{'group_by':'cuenta'}"/>
+                    <filter string="Tipo" name="tipo" domain="[]" context="{'group_by':'tipo'}"/>
+                    <filter string="Impuesto" name="impuesto" domain="[]" context="{'group_by':'impuesto'}"/>
+                    <filter string="Fecha" name="fecha_pago_month" context="{'group_by':'fecha:month'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action reporte.impuestos -->
+    <record id="action_reporte_impuestos" model="ir.actions.act_window">
+        <field name="name">Reporte Impuestos</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">reporte.impuestos</field>
+        <field name="view_mode">tree,pivot</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                There is no examples click here to add new Reporte Impuestos.
+            </p>
+        </field>
+    </record>
+
+    <!-- menú de categoría con acción -->
+
+    <menuitem name="Reportes de impuestos" id="has_reportes.menu_4_list" parent="has_reportes.menu"
+              action="action_reporte_impuestos"/>
+
+</odoo>

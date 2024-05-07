@@ -2,3 +2,4 @@ id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
 access_reporte_nomina,reporte_nomina,model_nomina,account.group_account_user,1,1,1,1
 access_cxp_manager,cxp_manager,model_cxp,account.group_account_user,1,1,1,1
 access_movimiento_bancario_manager,movimiento_bancario_manager,model_movimiento_bancario,account.group_account_user,1,1,1,1
+access_reporte_impuestos_manager,reporte_impuestos_manager,model_reporte_impuestos,account.group_account_user,1,1,1,1
