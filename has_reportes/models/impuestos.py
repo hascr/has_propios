@@ -22,7 +22,7 @@ class reporte_impuestos(models.Model):
         string='Empresa'
     )
     impuesto = fields.Char(
-        string='Impuesto'
+        string='Nombre Impuesto'
     )
     base_impuesto = fields.Float(
         string='Monto base'
