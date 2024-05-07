@@ -54,6 +54,7 @@
                     <filter string="Cuenta" name="cuenta" domain="[]" context="{'group_by':'cuenta'}"/>
                     <filter string="Tipo" name="tipo" domain="[]" context="{'group_by':'tipo'}"/>
                     <filter string="Impuesto" name="impuesto" domain="[]" context="{'group_by':'impuesto'}"/>
+                    <filter string="Empresa" name="empresa" domain="[]" context="{'group_by':'empresa'}"/>
                     <filter string="Fecha" name="fecha_pago_month" context="{'group_by':'fecha:month'}"/>
                 </group>
             </search>
@@ -65,7 +66,7 @@
         <field name="name">Reporte Impuestos</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">reporte.impuestos</field>
-        <field name="view_mode">tree,pivot</field>
+        <field name="view_mode">pivot</field>
         <field name="domain">[]</field>
         <field name="context">{}</field>
         <field name="help" type="html">
