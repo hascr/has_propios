@@ -48,7 +48,12 @@
                 <filter string="Venta" name="venta" domain="[('tipo','=','venta')]"/>
                 <filter string="Compra" name="compra" domain="[('tipo','=','compra')]"/>
                 <filter string="Manual" name="manual" domain="[('tipo','=','manual')]"/>
+                <separator/>
+                <filter string="Mes actual" name="month" domain="[('fecha','&lt;=',(datetime.date.today()+relativedelta(day=31)).strftime('%Y-%m-%d')),('fecha','&gt;=',(datetime.date.today()-relativedelta(day=1)).strftime('%Y-%m-%d'))]"/>
                 <filter string="Mes anterior" name="prev_month" domain="[('fecha','&gt;=',(context_today()-relativedelta(months=1)).strftime('%Y-%m-01')),('fecha','&lt;',time.strftime('%Y-%m-01'))]"/>
+                <separator/>
+                <filter string="Año actual" name="year" domain="[('fecha','&lt;=', time.strftime('%%Y-12-31')),('fecha','&gt;=',time.strftime('%%Y-01-01'))]"/>
+                <filter string="Año anterior" name="last_year" domain="[('fecha','&lt;=', (datetime.date.today()-relativedelta(year=1)).strftime('%Y-%m-%d')), ('fecha','&gt;=', (datetime.date.today()-relativedelta(year=1, day=1, month=1)).strftime('%Y-%m-%d'))]"/>
 				<separator/>
                 <group expand="1" string="Group By">
                     <filter string="Cuenta" name="cuenta" domain="[]" context="{'group_by':'cuenta'}"/>
