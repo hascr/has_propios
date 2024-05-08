@@ -10,15 +10,15 @@
             <field name="tag_ids" position="after">
                     <field name="contrato_firmado"/>
                     <field name="presencial" widget="boolean_toggle"/>
+                    <field name="enofi" widget="boolean_toggle"/>
                     <field name="noenviar" widget="boolean_toggle"/>
                     <field name="nocontrato" widget="boolean_toggle"/>
-                    <field name="enofi" widget="boolean_toggle"/>
                     <field name="titulo" widget="boolean_toggle"/>
                     <field name="cuenta_id"/>
                     <field name="asesor"/>
+                    <field name="id" string="Código de curso"/>
             </field>
             <field name="badge_format" position="after">
-                    <field name="id" string="Código de curso"/>
                     <field name="instructor_id"/>
                     <field name="materiallearn"/>
                     <field name="urllearn"/>

@@ -7,7 +7,7 @@ class has_event(models.Model):
     _inherit = 'event.event'
     
 
-    presencial = fields.Boolean(string='Presencial', tracking=True)
+    presencial = fields.Boolean(string='Presencial', tracking=True, help='En oficina de Advance o instalaciones físicas del cliente')
     noenviar = fields.Boolean(string='No bienvenida', tracking=True)
     nocontrato = fields.Boolean(string='Sin contrato', tracking=True)
     materiallearn = fields.Char(string='Material Learn', tracking=True)
@@ -17,7 +17,7 @@ class has_event(models.Model):
     cantsesion = fields.Float (string='Cantidad de sesiones', tracking=True)
     hsesion = fields.Float (string='Horas por sesión', tracking=True)
     husd = fields.Float (string='Hora USD', tracking=True)
-    enofi = fields.Boolean(string='En Oficina', tracking=True)
+    enofi = fields.Boolean(string='En Oficina', tracking=True, help="Exclusivamente en oficina de Advance")
     titulo = fields.Boolean(string='Título entregado', tracking=True)
     cuenta_id = fields.Many2one(comodel_name='training.account', tracking=True, string='Cuenta Training')
     instructor_id = fields.Many2one(comodel_name='res.partner', tracking=True, string='Instructor', domain=[('instructor', '=', True)],)
