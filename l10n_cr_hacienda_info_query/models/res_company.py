@@ -36,7 +36,7 @@ class ResCompany(models.Model):
     # === API Answer fields === #
 
     ultima_respuesta_yo_contribuyo = fields.Text(
-        string="Latest API response",
+        string="Latest API response yo contribuyo",
         help="Last API Response, this allows debugging errors if they exist"
     )
     ultima_respuesta = fields.Text(

@@ -2,7 +2,7 @@
 <odoo>
 
     <record id="hr_payroll_salary_structure_general_crc" model="hr.payroll.structure">
-        <field name="code">General_CRC</field>
+        <field name="code">Costa_Rica_CRC</field>
         <field name="name">Costa Rica CRC</field>
         <field
             eval="[(6, 0, [
@@ -27,7 +27,7 @@
     </record>
 
     <record id="hr_payroll_salary_structure_general_usd" model="hr.payroll.structure">
-        <field name="code">General_USD</field>
+        <field name="code">Costa_Rica_USD</field>
         <field name="name">Costa Rica USD</field>
         <field
             eval="[(6, 0, [
@@ -45,6 +45,35 @@
             ref('l10n_cr_hr_payroll.hr_rule_AGUIN_USD'),
             ref('l10n_cr_hr_payroll.hr_rule_ESCOLAR'),
             ref('l10n_cr_hr_payroll.hr_rule_NET_USD'),
+        ])]"
+            name="rule_ids"
+        />
+        <field name="company_id" ref="base.main_company" />
+        <!-- <field name="parent_id" ref="hr_payroll.structure_base"/> -->
+    </record>
+
+    <record id="hr_payroll_salary_structure_general_pan" model="hr.payroll.structure">
+        <field name="code">Panama</field>
+        <field name="name">Panamá</field>
+        <field
+            eval="[(6, 0, [
+            ref('l10n_cr_hr_payroll.hr_rule_BASIC'),
+            ref('l10n_cr_hr_payroll.hr_rule_COMIS'),
+            ref('l10n_cr_hr_payroll.hr_rule_AUSEN'),
+            ref('l10n_cr_hr_payroll.hr_rule_GROSS'),
+            ref('l10n_cr_hr_payroll.hr_rule_EXTRA'),
+            ref('l10n_cr_hr_payroll.hr_rule_SSE'),
+            ref('l10n_cr_hr_payroll.hr_rule_SEE'),
+            ref('l10n_cr_hr_payroll.hr_rule_RPE'),
+            ref('l10n_cr_hr_payroll.hr_rule_SSC'),
+            ref('l10n_cr_hr_payroll.hr_rule_SEC'),
+            ref('l10n_cr_hr_payroll.hr_rule_TEL'),
+            ref('l10n_cr_hr_payroll.hr_rule_RETSAL'),
+            ref('l10n_cr_hr_payroll.hr_rule_OTADI'),
+            ref('l10n_cr_hr_payroll.hr_rule_OTDED'),
+            ref('l10n_cr_hr_payroll.hr_rule_AGUIN'),
+            ref('l10n_cr_hr_payroll.hr_rule_ESCOLAR'),
+            ref('l10n_cr_hr_payroll.hr_rule_NET'),
         ])]"
             name="rule_ids"
         />
