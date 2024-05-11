@@ -12,7 +12,7 @@
     <p style="margin: 0px; padding: 0px; font-size: 13px;">
         
        <p>Estimado/a <strong><t t-out="object.partner_id.name or ''">Azure Interior</t></strong></p>
-<p>La información de la transferencia realizada a su cuenta bancaria de la factura <strong><span style="font-weight:bold;" t-out="(object.ref or '').replace('/','-') or ''">BNK1-2021-05-0002</span></strong> por un monto de <strong><span style="font-weight:bold;" t-out="format_amount(object.amount, object.currency_id) or ''">$ 10.00</span></strong> por parte de <strong><t t-out="object.company_id.name or ''">YourCompany</t>.</strong></p>
+<p>La información de la transferencia realizada a su cuenta bancaria de la factura <strong><span style="font-weight:bold;" t-out="(object.ref or '').replace('/','-') or ''">BNK1-2021-05-0002</span></strong> por un monto de <strong><span style="font-weight:bold;" t-out="format_amount(object.amount - object.bank_charge_amount, object.currency_id) or ''">$ 10.00</span></strong> por parte de <strong><t t-out="object.company_id.name or ''">YourCompany</t>.</strong></p>
 <p><span style="color:#b71c1c;"><strong><u>Importante:</u></strong></span> El pago puede verse reflejado en su cuenta bancaria inclusive uno o dos días hábiles después de la fecha indicada si se realizó transferencia SINPE.</p>
 <p>Si tiene alguna inquietud puede responder a este correo y estaremos solucionando a la mayor brevedad posible.</p>
 <p>Saludos,</p> 
