@@ -15,6 +15,9 @@ class AccountMove(models.Model):
     fecha_arreglo = fields.Date(
         string='Fecha programada de pago'
     )
+    validado = fields.Boolean(
+        string='Validado Hacienda'
+    )
     
 
 
