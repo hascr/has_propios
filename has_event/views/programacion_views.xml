@@ -61,6 +61,8 @@
                 <group expand="1" string="Group By">
                     <filter string="Cuenta" name="cuenta" domain="[]" context="{'group_by':'cuenta'}"/>
                     <filter string="Última clase" name="u_clase" domain="[('u_clase', 'like', 'true')]"/>
+                    <filter string="Fecha inicio" name="fecha_inicio_month" context="{'group_by':'inicio:month'}"/>
+                    <filter string="Próximos" name="fecha_inicio_ge_today" domain="[('inicio','&gt;=',(datetime.datetime.now().strftime('%Y-%m-%d')))]"/>
                 </group>
             </search>
         </field>
