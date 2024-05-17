@@ -1,0 +1,45 @@
+------------------------------------------------------------------------------------------------------------------------------
+#1
+tramo_25 = contract.company_id.fourth_wage_tax / 2
+tramo_20 = contract.company_id.third_wage_tax / 2
+tramo_15 = contract.company_id.second_wage_tax / 2
+tramo_10 = contract.company_id.first_wage_tax / 2
+salario = GROSS
+depend = contract.company_id.amount_children * employee.children_to_report / 2
+conyug = contract.company_id.amount_spouse / 2 if employee.spouse_report else 0
+
+if salario <= tramo_10:
+        impuesto = 0
+elif salario <= tramo_15:
+        impuesto = (salario - tramo_10) * 0.10
+elif salario <= tramo_20:
+        impuesto = ((salario - tramo_15) * 0.15) + ((tramo_15 - tramo_10) * 0.10)
+elif salario <= tramo_25:
+        impuesto = ((salario - tramo_20) * 0.20) + ((tramo_15 - tramo_10) * 0.10) + ((tramo_20 - tramo_15) * 0.15)
+else:
+        impuesto = ((salario - tramo_25) * 0.25) + ((tramo_15 - tramo_10) * 0.10) + ((tramo_20 - tramo_15) * 0.15) + ((tramo_25 - tramo_20) * 0.20)
+
+result = max(0, impuesto - (depend + conyug))
+------------------------------------------------------------------------------------------------------------------------------
+#2
+tramo_25 = contract.company_id.fourth_wage_tax / 2
+tramo_20 = contract.company_id.third_wage_tax / 2
+tramo_15 = contract.company_id.second_wage_tax / 2
+tramo_10 = contract.company_id.first_wage_tax / 2
+salario = GROSS * payslip.original_rate
+depend = contract.company_id.amount_children * employee.children_to_report / 2
+conyug = contract.company_id.amount_spouse / 2 if employee.spouse_report else 0
+
+if salario <= tramo_10:
+        impuesto = 0
+elif salario <= tramo_15:
+        impuesto = (salario - tramo_10) * 0.10
+elif salario <= tramo_20:
+        impuesto = ((salario - tramo_15) * 0.15) + ((tramo_15 - tramo_10) * 0.10)
+elif salario <= tramo_25:
+        impuesto = ((salario - tramo_20) * 0.20) + ((tramo_15 - tramo_10) * 0.10) + ((tramo_20 - tramo_15) * 0.15)
+else:
+        impuesto = ((salario - tramo_25) * 0.25) + ((tramo_15 - tramo_10) * 0.10) + ((tramo_20 - tramo_15) * 0.15) + ((tramo_25 - tramo_20) * 0.20)
+
+result = max(0, impuesto - (depend + conyug)) / payslip.original_rate
+------------------------------------------------------------------------------------------------------------------------------

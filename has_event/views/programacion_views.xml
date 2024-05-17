@@ -7,9 +7,11 @@
         <field name="model">programacion</field>
         <field name="arch" type="xml">
             <tree string="Programacion">
-                <field name="codigo"/>
-                <field name="curso"/>
+                <field name="codigo" readonly="1"/>
+                <field name="curso" readonly="1"/>
                 <field name="cuenta"/>
+                <field name="instructor"/>
+                <field name="matricula"/>
                 <field name="inicio"/>
                 <field name="fin"/>
                 <field name="u_clase"/>
@@ -90,6 +92,7 @@
                 <field name="cod_nombre" filters="1"/>
                 <!-- <field name="curso"/> -->
                 <field name="cuenta" filters="1"/>
+                <field name="instructor" filters="1"/>
                 <field name="u_clase"/>
                 <!-- <field name="event_type_id" filters="1" invisible="1"/> -->
             </calendar>
