@@ -7,13 +7,27 @@
         <field name="model">evaluaciones</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="fecha_evaluacion"/>
+                <field name="curso"/>
+                <field name="duracion"/>
+                <field name="instructor"/>
+                <field name="asesor"/>
+                <field name="nota"/>
                 <field name="name"/>
+                <field name="empresa"/>
+                <field name="correo"/>
+                <field name="telefono"/>
+                <field name="enviar_info"/>
+                <field name="intereses"/>
+                <field name="correo_intereses"/>
+                <field name="whatsapp"/>
+                <field name="comentarios"/>
             </tree>
         </field>
     </record>
 
     <!-- View evaluaciones form -->
-    <record id="view_evaluaciones_form" model="ir.ui.view">
+    <!-- <record id="view_evaluaciones_form" model="ir.ui.view">
         <field name="name">view.evaluaciones.form</field>
         <field name="model">evaluaciones</field>
         <field name="arch" type="xml">
@@ -28,7 +42,7 @@
                 </sheet>
             </form>
         </field>
-    </record>
+    </record> -->
 
     <!-- View evaluaciones search -->
     <record id="view_evaluaciones_search" model="ir.ui.view">
@@ -36,8 +50,13 @@
         <field name="model">evaluaciones</field>
         <field name="arch" type="xml">
             <search>
+                <field name="name" string="Buscar por nombre, curso, interes o instructor" filter_domain="['|','|','|', ('intereses','ilike',self), ('name','ilike',self), ('curso','ilike',self), ('instructor', 'ilike', self)]"> </field>
+                <filter string="Enviar Info" name="enviar" domain="[('enviar_info','=','Si')]"/>
                 <group expand="1" string="Group By">
-                    <filter string="Name" name="name" domain="[]" context="{'group_by':'name'}"/>
+                    <filter string="Curso" name="curso" domain="[]" context="{'group_by':'curso'}"/>
+                    <filter string="Asesor" name="asesor" domain="[]" context="{'group_by':'asesor'}"/>
+                    <filter string="Curso" name="curso" domain="[]" context="{'group_by':'curso'}"/>
+                    <filter string="Instructor" name="instructor" domain="[]" context="{'group_by':'instructor'}"/>
                 </group>
             </search>
         </field>
@@ -48,7 +67,7 @@
         <field name="name">Evaluaciones</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">evaluaciones</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,pivot,graph</field>
         <field name="domain">[]</field>
         <field name="context">{}</field>
         <field name="help" type="html">
@@ -57,5 +76,16 @@
             </p>
         </field>
     </record>
+
+ <!-- menu superior -->
+
+    <!-- <menuitem name="Evaluaciones" id="has_eval.menu" parent="account.menu_finance_reports"/> -->
+    
+    <!-- menú de categoría con acción -->
+
+    <menuitem name="Evaluaciones Virtuales" id="has_evaluaciones" parent="mass_mailing.menu_mass_mailing_report"
+              action="action_evaluaciones"/>
+
+
 
 </odoo>
