@@ -14,7 +14,7 @@ class evaluaciones(models.Model):
 
     name = fields.Char(_('Participante'))
     fecha_evaluacion = fields.Datetime(_('Realizada'))
-    nota = fields.Float(_('Nota'))
+    nota = fields.Float(_('Nota'), group_operator='avg')
     enviar_info = fields.Char(_('Enviar Información'))
     curso = fields.Char(_('Curso'))
     asesor = fields.Char(_('Asesor'))
