@@ -26,7 +26,7 @@ class evaluaciones(models.Model):
     correo = fields.Char(_('Correo Contacto'))
     telefono = fields.Char(_('Teléfono Contacto'))
     instructor = fields.Char(_('Instructor'))
-    duracion = fields.Float(_('Duración'))
+    duracion = fields.Float(_('Duración'), group_operator='avg')
 
     def init(self):
         self._cr.execute("""
