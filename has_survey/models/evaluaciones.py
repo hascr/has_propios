@@ -24,7 +24,7 @@ class evaluaciones(models.Model):
     whatsapp = fields.Char(_('WhatsApp'))
     comentarios = fields.Text(_('Comentarios'))
     correo = fields.Char(_('Correo Contacto'))
-    telefono = fields.Char(_('Teléfono'))
+    telefono = fields.Char(_('Teléfono Contacto'))
     instructor = fields.Char(_('Instructor'))
     duracion = fields.Float(_('Duración'))
 
@@ -54,3 +54,5 @@ WHERE			s.STATE = 'done'
 AND			s.survey_id = 3
                          );
             """)
+        
+

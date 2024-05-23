@@ -26,6 +26,7 @@
         </field>
     </record>
 
+
     <!-- View evaluaciones form -->
     <!-- <record id="view_evaluaciones_form" model="ir.ui.view">
         <field name="name">view.evaluaciones.form</field>
@@ -55,7 +56,6 @@
                 <group expand="1" string="Group By">
                     <filter string="Curso" name="curso" domain="[]" context="{'group_by':'curso'}"/>
                     <filter string="Asesor" name="asesor" domain="[]" context="{'group_by':'asesor'}"/>
-                    <filter string="Curso" name="curso" domain="[]" context="{'group_by':'curso'}"/>
                     <filter string="Instructor" name="instructor" domain="[]" context="{'group_by':'instructor'}"/>
                 </group>
             </search>
