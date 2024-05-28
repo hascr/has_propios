@@ -78,7 +78,7 @@
 
 <!-- menú de categoría con acción -->
 
-    <menuitem name="Presenciales" id="has_survey.menu_2_list" parent="has_survey.menu_1" action="action_evaluaciones"/>
+    <menuitem name="Presenciales" id="has_survey.menu_2_list" parent="has_survey.menu_1" action="action_presenciales"/>
 
 
 </odoo>
