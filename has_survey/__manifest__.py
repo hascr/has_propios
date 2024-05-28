@@ -10,7 +10,8 @@
     'depends': ['base', ],
     "data": [
         "views/evaluaciones_views.xml",
-        "security/ir.model.access.csv"
+        "security/ir.model.access.csv",
+        "views/presenciales_views.xml"
     ],
     'application': True,
     #'installable': True,
