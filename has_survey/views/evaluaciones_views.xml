@@ -64,7 +64,7 @@
 
     <!-- Action evaluaciones -->
     <record id="action_evaluaciones" model="ir.actions.act_window">
-        <field name="name">Evaluaciones</field>
+        <field name="name">Virtuales</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">evaluaciones</field>
         <field name="view_mode">tree,pivot,graph</field>

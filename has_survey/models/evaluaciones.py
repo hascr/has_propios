@@ -10,7 +10,7 @@ _logger = logging.getLogger(__name__)
 class evaluaciones(models.Model):
     _name = 'evaluaciones'
     _auto = False
-    _description = _('Evaluaciones')
+    _description = _('Virtuales')
 
     name = fields.Char(_('Participante'))
     fecha_evaluacion = fields.Datetime(_('Realizada'))
