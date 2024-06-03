@@ -13,7 +13,6 @@ Líneas: 51 - 58
                     </div>
                 </div>
 ------------------------------------------------------------------------------------------------------------------------------
-
 #2
 server > odoo > addons > sale > views > sale_order_views.xml
 
@@ -21,3 +20,11 @@ Líneas: 770 - 771
 
                 <field name="name" string="Order"
                     filter_domain="['|', '|', '|', ('order_line.name', 'ilike', self),('name', 'ilike', self), ('client_order_ref', 'ilike', self), ('partner_id', 'child_of', self)]"/>
+------------------------------------------------------------------------------------------------------------------------------
+#3
+server > odoo > addons > web > static > img
+
+Cambiar los archivos: logo - logo2 - nologo - odoo_logo_tiny - logo_inverse_white_206px
+
+Estos archivos están en la carpeta propios/img
+------------------------------------------------------------------------------------------------------------------------------

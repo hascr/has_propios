@@ -10,3 +10,4 @@ from . import programacion
 from . import cursos
 from . import estudiantes
 from . import event_combinado
+from . import asistencia
