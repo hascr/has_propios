@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- View asistencia View Tree -->
+    <record id="view_asistencia_tree" model="ir.ui.view">
+        <field name="name">view.asistencia.tree</field>
+        <field name="model">asistencia</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="codigo" readonly="1"/>
+                <field name="curso" readonly="1"/>
+                <field name="fecha" readonly="1"/>
+                <field name="nombre" readonly="1"/>
+                <field name="correo" readonly="1"/>
+                <field name="minutos" readonly="1"/>
+                <field name="tipo" readonly="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- View asistencia form -->
+    <!-- <record id="view_asistencia_form" model="ir.ui.view">
+        <field name="name">view.asistencia.form</field>
+        <field name="model">asistencia</field>
+        <field name="arch" type="xml">
+            <form string="Asistencia">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="Name..."/>
+                        </h1>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record> -->
+
+    <!-- View asistencia search -->
+    <record id="view_asistencia_search" model="ir.ui.view">
+        <field name="name">view.asistencia.search</field>
+        <field name="model">asistencia</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="codigo" string="Buscar por código, curso, nombre" filter_domain="['|','|', ('codigo','ilike',self), ('curso','ilike',self), ('nombre', 'ilike', self)]"> </field>
+                <group expand="1" string="Group By">
+                    <filter string="Código" name="codigo" domain="[]" context="{'group_by':'codigo'}"/>
+                    <filter string="Tipo" name="tipo" domain="[]" context="{'group_by':'tipo'}"/>
+                    <!-- <filter string="Última clase" name="u_clase" domain="[('u_clase', 'like', 'true')]"/> -->
+                    <!-- <filter string="Fecha inicio" name="fecha_inicio_month" context="{'group_by':'inicio:month'}"/>
+                    <filter string="Próximos" name="fecha_inicio_ge_today" domain="[('inicio','&gt;=',(datetime.datetime.now().strftime('%Y-%m-%d')))]"/> -->
+                </group>        
+            </search>
+        </field>
+    </record>
+
+    <!-- Action asistencia -->
+    <record id="action_asistencia" model="ir.actions.act_window">
+        <field name="name">Asistencia</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">asistencia</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                There is no examples click here to add new Asistencia.
+            </p>
+        </field>
+    </record>
+
+    <menuitem 	name="Asistencia"
+				id="asistencia_id"
+				sequence="6"
+				action="action_asistencia"
+				parent="event.event_main_menu"/>
+
+</odoo>

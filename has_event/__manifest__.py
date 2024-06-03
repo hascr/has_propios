@@ -33,6 +33,7 @@
         "views/programacion_views.xml",
         "views/cursos_views.xml",
         "views/estudiantes_views.xml",
+        "views/asistencia_views.xml"
     ],
     # only loaded in demonstration mode
     #'demo': [

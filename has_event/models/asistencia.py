@@ -16,7 +16,7 @@ class asistencia(models.Model):
     nombre = fields.Char(string="Nombre completo")
     correo = fields.Char(string="Correo electrónico")
     curso = fields.Char(string="Curso")
-    cuenta = fields.Char(string="Cuenta")
+    #cuenta = fields.Char(string="Cuenta")
     fecha = fields.Datetime(string="Fecha")
     minutos = fields.Float(string="Minutos conectados")
     tipo = fields.Char(string="Tipo")
