@@ -11,7 +11,7 @@
                 <button type="object" name="go_to_event_asistencia" string="Ir a" icon="fa-search-plus"/>
                 <!-- <field name="curso" readonly="1"/> -->
                 <field name="fecha" readonly="1"/>
-                <field name="nombre" readonly="1"/>
+                <field name="nombre"/>
                 <field name="correo" readonly="1"/>
                 <field name="minutos"/>
                 <field name="horas" readonly="1"/>
