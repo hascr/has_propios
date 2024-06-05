@@ -8,7 +8,7 @@
         <field name="arch" type="xml">
             <tree string="Programacion">
                 <field name="codigo" readonly="1"/>
-                <button type="object" name="go_to_event_event" icon="fa-search-plus"/>
+                <button type="object" name="go_to_event_programacion" string="Ir a" icon="fa-search-plus"/>
                 <field name="curso" readonly="1"/>
                 <field name="cuenta"/>
                 <field name="instructor"/>

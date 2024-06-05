@@ -6,14 +6,15 @@
         <field name="name">view.asistencia.tree</field>
         <field name="model">asistencia</field>
         <field name="arch" type="xml">
-            <tree>
-                <field name="codigo" readonly="1"/>
-                <button type="object" name="go_to_event_event" icon="fa-search-plus"/>
-                <field name="curso" readonly="1"/>
+            <tree editable="bottom">
+                <field name="cod_nombre" readonly="1"/>
+                <button type="object" name="go_to_event_asistencia" string="Ir a" icon="fa-search-plus"/>
+                <!-- <field name="curso" readonly="1"/> -->
                 <field name="fecha" readonly="1"/>
                 <field name="nombre" readonly="1"/>
                 <field name="correo" readonly="1"/>
-                <field name="minutos" readonly="1"/>
+                <field name="minutos"/>
+                <field name="horas" readonly="1"/>
                 <field name="tipo" readonly="1"/>
             </tree>
         </field>
@@ -60,7 +61,7 @@
         <field name="name">Asistencia</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">asistencia</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">pivot,tree</field>
         <field name="domain">[]</field>
         <field name="context">{}</field>
         <field name="help" type="html">
@@ -69,6 +70,20 @@
             </p>
         </field>
     </record>
+
+    <record id="view_asistencia_pivot" model="ir.ui.view">
+        <field name="name">asistencia.pivot</field>
+        <field name="model">asistencia</field>
+        <field name="arch" type="xml">
+            <pivot string="Asistencia">
+                <field name="fecha" type="column"/>
+                <field name="cod_nombre" type="row"/>
+                <field name="horas" type="measure"/>
+                <field name="minutos" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
 
     <menuitem 	name="Asistencia"
 				id="asistencia_id"

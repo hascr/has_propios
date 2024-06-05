@@ -14,7 +14,7 @@ class Programacion(models.Model):
 
     codigo = fields.Char(string="Código")
     curso = fields.Char(string="Curso")
-    cuenta = fields.Char(string="Cuenta")
+    cuenta = fields.Char(string="Cuenta", compute='_compute_cuenta')
     inicio = fields.Datetime(string="Inicio")
     fin = fields.Datetime(string="Fin")
     u_clase = fields.Boolean(string="Última clase")
@@ -37,6 +37,26 @@ class Programacion(models.Model):
                 record.instructor = curso_record.instructor  # Update instructor
             else:
                 record.instructor = ''  # Set empty string if no match
+    
+    """ @api.depends('curso')
+    def _compute_curso(self):
+        for record in self:
+            # Search for cursos records with matching codigo in the id field
+            curso_record = self.env['cursos'].search([('id', '=', record.codigo)])
+            if curso_record:
+                record.curso = curso_record.curso  # Update instructor
+            else:
+                record.curso = ''  # Set empty string if no match """
+
+    @api.depends('codigo')
+    def _compute_cuenta(self):
+        for record in self:
+            # Search for cursos records with matching codigo in the id field
+            curso_record = self.env['cursos'].search([('id', '=', record.codigo)])
+            if curso_record:
+                record.cuenta = curso_record.goto  # Update instructor
+            else:
+                record.cuenta = ''  # Set empty string if no match
 
     @api.depends('codigo')
     def _compute_urlmatricula(self):
@@ -52,7 +72,7 @@ class Programacion(models.Model):
         res = super(Programacion, self).write(vals)
         return res
     
-    def go_to_event_event(self):
+    def go_to_event_programacion(self):
         name_form = _('Cursos')
         return {
         'name': name_form,
