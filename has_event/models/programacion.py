@@ -48,7 +48,21 @@ class Programacion(models.Model):
             else:
                 record.matricula = ''  # Set empty string if no match
 
-
     def write(self, vals):
         res = super(Programacion, self).write(vals)
         return res
+    
+    def go_to_event_event(self):
+        name_form = _('Cursos')
+        return {
+        'name': name_form,
+        'type': 'ir.actions.act_window',
+        'view_type': 'form',
+        'view_mode': 'form',
+        'res_model': 'event.event',
+        'res_id': int(self.codigo),  # Reference to the other model
+        'target': 'new',
+        'view_id': self.env.ref(
+            'event.view_event_form').id,
+        'context': {} # Optional
+            }

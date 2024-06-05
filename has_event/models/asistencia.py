@@ -22,3 +22,18 @@ class asistencia(models.Model):
     tipo = fields.Char(string="Tipo")
     duplicados = fields.Char(string="revisar duplicados")
     _sql_constraints = [('duplicados_unique', 'unique(duplicados)', "El códdigo duplicados debe ser único")]
+
+def go_to_event_event(self):
+        name_form = _('Cursos')
+        return {
+        'name': name_form,
+        'type': 'ir.actions.act_window',
+        'view_type': 'form',
+        'view_mode': 'form',
+        'res_model': 'event.event',
+        'res_id': int(self.codigo),  # Reference to the other model
+        'target': 'new',
+        'view_id': self.env.ref(
+            'event.view_event_form').id,
+        'context': {} # Optional
+            }

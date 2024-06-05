@@ -24,5 +24,16 @@
                  </field>
             </field>
         </record>
+
+<template id="report_saleorder_document_inherit" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//div[@id='informations']" position="inside">
+            <div t-if="doc.pricelist_id.name" class="col-auto col-3 mw-100 mb-2">
+                    <strong>Moneda:</strong><br/>
+                    <span class="m-0" t-field="doc.pricelist_id">Colones</span>
+            </div>
+        </xpath>
+</template>
+
+
     </data>
 </odoo>
