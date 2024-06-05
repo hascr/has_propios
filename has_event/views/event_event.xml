@@ -60,6 +60,8 @@
             <xpath expr="//field[@name='name']" position="before">
                 <separator/>
                 <field name="name" string="Buscar por código, curso, instructor" filter_domain="['|','|', ('id','ilike',self), ('name','ilike',self), ('instructor_id', 'ilike', self)]"></field>
+                <filter string="Cursos" name="cursos" domain="[('event_type_id', '=', 1)]"/>
+                <filter string="Eventos" name="eventos" domain="[('event_type_id', '=', 2)]"/>
             </xpath>
         </field>
     </record>
