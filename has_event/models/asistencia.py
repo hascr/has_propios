@@ -22,7 +22,7 @@ class asistencia(models.Model):
     horas = fields.Float(string="Horas", compute='_compute_horas', store=True)
     tipo = fields.Char(string="Tipo")
     duplicados = fields.Char(string="revisar duplicados")
-    cod_nombre = fields.Char(string='N. Curso', compute='_computeVar', store=True)
+    cod_nombre = fields.Char(string='N. Curso')
     
     _sql_constraints = [('duplicados_unique', 'unique(duplicados)', "El códdigo duplicados debe ser único")]
 
@@ -41,16 +41,16 @@ class asistencia(models.Model):
         'context': {} # Optional
             }
     
-    @api.depends('minutos')
+    @api.depends('minutos','horas')
     def _compute_horas(self):
         for record in self:
-            record.horas = record.minutos / 60 if record.minutos else 0 # Calculate hours from minutes
+            record.horas = record.minutos / 60 #if record.minutos else 0 # Calculate hours from minutes
 
     """ def write(self, vals):
         res = super(asistencia, self).write(vals)
         return res """
     
-    @api.depends('codigo', 'curso')
+    """ @api.depends('codigo', 'curso')
     def _computeVar(self):
         for line in self:
-            line.cod_nombre = f"{line.codigo} - {line.curso}"
+            line.cod_nombre = f"{line.codigo} - {line.curso}" """
