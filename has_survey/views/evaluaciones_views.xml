@@ -8,6 +8,7 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="fecha_evaluacion"/>
+                <button type="object" name="go_to_virtuales" string="Ir a" icon="fa-search-plus"/>
                 <field name="curso"/>
                 <field name="duracion" avg="Promedio"/>
                 <field name="instructor"/>

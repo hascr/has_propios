@@ -56,3 +56,17 @@ AND			s.survey_id = 4
             """)
         
 
+    def go_to_presenciales(self):
+        name_form = _('Presenciales')
+        return {
+        'name': name_form,
+        'type': 'ir.actions.act_window',
+        'view_type': 'form',
+        'view_mode': 'form',
+        'res_model': 'survey.user_input',
+        'res_id': self.id,  # Reference to the other model
+        'target': 'new',
+        'view_id': self.env.ref(
+            'survey.survey_user_input_view_form').id,
+        'context': {} # Optional
+            }
