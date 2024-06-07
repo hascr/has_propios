@@ -19,10 +19,10 @@ class asistencia(models.Model):
     #cuenta = fields.Char(string="Cuenta")
     fecha = fields.Datetime(string="Fecha")
     minutos = fields.Float(string="Minutos conectados")
-    horas = fields.Float(string="Horas", compute='_compute_horas', store=True)
+    horas = fields.Float(string="Horas", compute='_compute_horas')
     tipo = fields.Char(string="Tipo")
     duplicados = fields.Char(string="revisar duplicados")
-    cod_nombre = fields.Char(string='N. Curso', compute='_computeVar', store=True)
+    cod_nombre = fields.Char(string='N. Curso', compute='_computeVar')
     
     _sql_constraints = [('duplicados_unique', 'unique(duplicados)', "El códdigo duplicados debe ser único")]
 
