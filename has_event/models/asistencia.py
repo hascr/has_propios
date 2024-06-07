@@ -19,10 +19,10 @@ class asistencia(models.Model):
     #cuenta = fields.Char(string="Cuenta")
     fecha = fields.Datetime(string="Fecha")
     minutos = fields.Float(string="Minutos conectados")
-    horas = fields.Float(string="Horas", compute='_compute_horas')
+    horas = fields.Float(string="Horas", compute='_compute_horas', store=True)
     tipo = fields.Char(string="Tipo")
     duplicados = fields.Char(string="revisar duplicados")
-    cod_nombre = fields.Char(string='N. Curso', compute='_computeVar')
+    cod_nombre = fields.Char(string='N. Curso', compute='_computeVar', store=True)
     
     _sql_constraints = [('duplicados_unique', 'unique(duplicados)', "El códdigo duplicados debe ser único")]
 
@@ -46,9 +46,9 @@ class asistencia(models.Model):
         for record in self:
             record.horas = record.minutos / 60 if record.minutos else 0 # Calculate hours from minutes
 
-    def write(self, vals):
+    """ def write(self, vals):
         res = super(asistencia, self).write(vals)
-        return res
+        return res """
     
     @api.depends('codigo', 'curso')
     def _computeVar(self):
