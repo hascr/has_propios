@@ -44,7 +44,7 @@
         <field name="model">asistencia</field>
         <field name="arch" type="xml">
             <search>
-                <field name="codigo" string="Buscar por código, curso, nombre" filter_domain="['|','|', ('codigo','ilike',self), ('curso','ilike',self), ('nombre', 'ilike', self)]"> </field>
+                <field name="cod_nombre" string="Buscar por código, curso, nombre, correo" filter_domain="['|','|', ('cod_nombre','ilike',self), ('correo','ilike',self), ('nombre', 'ilike', self)]"> </field>
                 <group expand="1" string="Group By">
                     <filter string="Código" name="codigo" domain="[]" context="{'group_by':'codigo'}"/>
                     <filter string="Tipo" name="tipo" domain="[]" context="{'group_by':'tipo'}"/>
