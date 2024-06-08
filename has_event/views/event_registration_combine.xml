@@ -29,11 +29,11 @@
     <field name="arch" type="xml">
         <search>
     <field name="name" string="Buscar por código, curso, instructor" filter_domain="['|','|', ('id','ilike',self), ('name','ilike',self), ('instructor_id', 'ilike', self)]">
-    <filter name="filter_cpendientes" string="Contratos pendientes" domain="[('contrato_firmado', '=', False),('nocontrato', '=', False)]"></filter>
+    <filter name="filter_cpendientes" string="Contratos pendientes" domain="[('contrato_firmado', '=', False),('nocontrato', '=', False),('date_end','&lt;=',(datetime.datetime.now().strftime('%Y-%m-%d')))]"></filter>
     <separator/>
-    <filter name="filter_fpendientes" string="Facturas pendientes" domain="[('account_move_id', '=', False),('nocontrato', '=', False)]"></filter>
+    <filter name="filter_fpendientes" string="Facturas pendientes" domain="[('account_move_id', '=', False),('nocontrato', '=', False),('date_end','&lt;=',(datetime.datetime.now().strftime('%Y-%m-%d')))]"></filter>
     <separator/>
-    <filter name="filter_tpendientes" string="Títulos pendientes" domain="[['titulo', '=', False]]"></filter>
+    <filter name="filter_tpendientes" string="Títulos pendientes" domain="[('titulo', '=', False),('date_end','&lt;=',(datetime.datetime.now().strftime('%Y-%m-%d')))]"></filter>
     <separator/>
     <filter name="filter_ipendientes" string="Instructor pendiente" domain="[['instructor_id', '=', False]]"></filter>
 </field>
