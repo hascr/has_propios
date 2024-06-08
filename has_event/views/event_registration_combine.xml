@@ -9,6 +9,7 @@
     <field name="arch" type="xml">
         <tree editable="bottom">
             <field name="id" readonly="1" string="Código"/>
+            <button type="object" name="go_to_contratos" string="Ir a" icon="fa-search-plus"/>
             <field name="name" readonly="1"/>
             <field name="date_begin" readonly="1"/>
             <field name="date_end" readonly="1"/>

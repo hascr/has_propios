@@ -26,3 +26,19 @@ class has_event(models.Model):
     #facturado = fields.Boolean(string='Facturado', tracking=True)
     contrato_firmado = fields.Binary(attachment=True)
     account_move_id = fields.Many2one('account.move', string='Factura de Proveedor', domain=[('instructor', '=', True)])
+
+
+    def go_to_contratos(self):
+        name_form = ('Contratos')
+        return {
+        'name': name_form,
+        'type': 'ir.actions.act_window',
+        'view_type': 'form',
+        'view_mode': 'form',
+        'res_model': 'event.event',
+        'res_id': self.id,  # Reference to the other model
+        'target': 'new',
+        'view_id': self.env.ref(
+            'event.view_event_form').id,
+        'context': {} # Optional
+            }
