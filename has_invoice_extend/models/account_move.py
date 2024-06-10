@@ -9,9 +9,9 @@ class AccountMove(models.Model):
         related='partner_id.instructor',
         string='Instructor'
     )
-    aprobada = fields.Boolean(
+    """ aprobada = fields.Boolean(
         string='Pago aprobado'
-    )
+    ) """
     fecha_arreglo = fields.Date(
         string='Fecha programada de pago'
     )

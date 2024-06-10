@@ -28,7 +28,7 @@
                     <!-- <field name="instructor" widget="boolean_toggle" attrs="{'invisible':[('move_type', 'in', ('out_invoice', 'out_refund'))]}"/> -->
                     <field name="instructor" widget="boolean_toggle" invisible="move_type in ('out_invoice', 'out_refund')"/>
                     <!-- <field name="aprobada" widget="boolean_toggle" attrs="{'invisible':[('move_type', 'in', ('out_invoice', 'out_refund'))]}"/> -->
-                    <field name="aprobada" widget="boolean_toggle" invisible="move_type in ('out_invoice', 'out_refund')"/>
+                    <!-- <field name="aprobada" widget="boolean_toggle" invisible="move_type in ('out_invoice', 'out_refund')"/> -->
                     <field name="validado" widget="boolean_toggle" invisible="move_type in ('out_invoice', 'out_refund')"/>
                 </field>
 
@@ -50,8 +50,8 @@
             <field name="arch" type="xml">
                 <field name="journal_id" position="after">
                     <filter name="instructor" string="Instructor" domain="[('instructor','=',True)]"/>
-                    <filter name="pago_instructor" string="Pagar instructor" domain="[('instructor','=',True),('payment_state','=','not_paid'),('state','=','posted'),('aprobada','=',True)]"/>
-                    <filter name="pago_pend_instructor" string="Autorizar pago instructor" domain="[('instructor','=',True),('payment_state','=','not_paid'),('state','=','posted'),('aprobada','=',False)]"/>
+                    <filter name="pago_instructor" string="Pagar instructor" domain="[('instructor','=',True),('payment_state','=','not_paid'),('state','=','posted')]"/>
+                    <!-- <filter name="pago_pend_instructor" string="Autorizar pago instructor" domain="[('instructor','=',True),('payment_state','=','not_paid'),('state','=','posted'),('aprobada','=',False)]"/> -->
                     <filter name="pend_validar_hacienda" string="Validar Hacienda" domain="[('validado','!=',True),('state','=','posted'),]"/>
                 </field>
             </field>
