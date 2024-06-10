@@ -11,6 +11,7 @@ class asistencia(models.Model):
     _name = 'asistencia'
     _description = _('Asistencia de sesiones de entrenamiento')
     _rec_name = 'nombre'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     codigo = fields.Char(string="Código")
     nombre = fields.Char(string="Nombre completo")
