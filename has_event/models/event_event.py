@@ -26,6 +26,7 @@ class has_event(models.Model):
     #facturado = fields.Boolean(string='Facturado', tracking=True)
     contrato_firmado = fields.Binary(attachment=True)
     account_move_id = fields.Many2one('account.move', string='Factura de Proveedor', domain=[('instructor', '=', True)])
+    monto_contrato = fields.Float(string="Monto contrato", compute='_monto_contrato')
 
 
     def go_to_contratos(self):
@@ -42,3 +43,8 @@ class has_event(models.Model):
             'event.view_event_form').id,
         'context': {} # Optional
             }
+    
+    @api.depends('cantsesion','hsesion','husd')
+    def _monto_contrato(self):
+        for record in self:
+            record.monto_contrato = record.cantsesion * record.hsesion * record.husd #if record.minutos else 0 # Calculate hours from minutes

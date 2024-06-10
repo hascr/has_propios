@@ -24,10 +24,10 @@
                     <field name="urllearn"/>
                     <field name="urlmatricula"/>
                     <field name="fechas_teams_pres"/>
-                    <field name="cantsesion"/>
-                    <field name="hsesion"/>
-                    <field name="husd"/>
-                    <field name="account_move_id"/>
+                    <field name="cantsesion" groups="event.group_event_manager"/>
+                    <field name="hsesion" groups="event.group_event_manager"/>
+                    <field name="husd" groups="event.group_event_manager"/>
+                    <field name="account_move_id" groups="event.group_event_manager"/>
             </field>
             <field name="organizer_id" position="attributes">
                     <attribute name="invisible">1</attribute>
