@@ -28,3 +28,8 @@ Cambiar los archivos: logo - logo2 - nologo - odoo_logo_tiny - logo_inverse_whit
 
 Estos archivos están en la carpeta propios/img
 ------------------------------------------------------------------------------------------------------------------------------
+#4
+FORMATO DE FECHA
+%d/%b/%Y
+FORMATO DE HORA
+%I:%M %p
