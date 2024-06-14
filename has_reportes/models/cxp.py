@@ -68,3 +68,19 @@ AND 			a.state IN ('posted')
 AND			a.payment_state NOT IN ('paid'))
                          ;
             """)
+        
+
+    def go_to_cxp(self):
+        name_form = _('CxP')
+        return {
+        'name': name_form,
+        'type': 'ir.actions.act_window',
+        'view_type': 'form',
+        'view_mode': 'form',
+        'res_model': 'account.move',
+        'res_id': self.id,  # Reference to the other model
+        'target': 'new',
+        'view_id': self.env.ref(
+            'account.view_move_form').id,
+        'context': {} # Optional
+            }

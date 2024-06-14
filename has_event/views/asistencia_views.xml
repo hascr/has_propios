@@ -37,6 +37,7 @@
                             <field name="minutos"/>
                             <field name="horas"/>
                             <field name="tipo"/>
+                            <field name="user_id"/>
                 </group>
                 </sheet>
                 <div class="oe_chatter">

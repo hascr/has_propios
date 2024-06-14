@@ -13,19 +13,21 @@ class asistencia(models.Model):
     _rec_name = 'nombre'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    codigo = fields.Char(string="Código")
-    nombre = fields.Char(string="Nombre completo")
-    correo = fields.Char(string="Correo electrónico")
-    curso = fields.Char(string="Curso")
+    codigo = fields.Char(string="Código", tracking=True)
+    nombre = fields.Char(string="Nombre completo", tracking=True)
+    correo = fields.Char(string="Correo electrónico", tracking=True)
+    curso = fields.Char(string="Curso", tracking=True)
     #cuenta = fields.Char(string="Cuenta")
-    fecha = fields.Datetime(string="Fecha")
-    minutos = fields.Float(string="Minutos conectados")
+    fecha = fields.Datetime(string="Fecha", tracking=True)
+    minutos = fields.Float(string="Minutos conectados", tracking=True)
     horas = fields.Float(string="Horas", compute='_compute_horas', store=True)
-    tipo = fields.Char(string="Tipo")
+    tipo = fields.Char(string="Tipo", tracking=True)
     duplicados = fields.Char(string="revisar duplicados")
-    cod_nombre = fields.Char(string='N. Curso')
+    cod_nombre = fields.Char(string='N. Curso', tracking=True)
+    #asesor = fields.Integer(string="Asesor", compute='_compute_asesor')
+    user_id = fields.Many2one('res.users', string='Asesor tecnológico', compute='_compute_asesor')
     
-    _sql_constraints = [('duplicados_unique', 'unique(duplicados)', "El códdigo duplicados debe ser único")]
+    _sql_constraints = [('duplicados_unique', 'unique(duplicados)', "El código duplicados debe ser único")]
 
     def go_to_event_asistencia(self):
         name_form = _('Cursos')
@@ -55,3 +57,21 @@ class asistencia(models.Model):
     def _computeVar(self):
         for line in self:
             line.cod_nombre = f"{line.codigo} - {line.curso}" """
+    
+    @api.depends('codigo', 'correo')
+    def _compute_asesor(self):
+            for record in self:
+                codigo_int = int(record.codigo)  # Convert codigo to integer
+                curso_record = self.env['event.registration'].search([('event_id', '=', codigo_int), ('email', '=', record.correo)])
+            if curso_record:
+                record.user_id = int(curso_record.asesor)
+            else:
+                record.user_id = 9  # Set asesor to None if no match
+
+    @api.depends('user_id')
+    def _compute_user_name(self):
+        for record in self:
+            if record.user_id:
+                record.user_name = record.user_id.name
+        else:
+                record.user_name = ''

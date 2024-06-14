@@ -27,6 +27,7 @@
                     <field name="cantsesion" groups="event.group_event_manager"/>
                     <field name="hsesion" groups="event.group_event_manager"/>
                     <field name="husd" groups="event.group_event_manager"/>
+                    <field name="monto_contrato" groups="event.group_event_manager"/>
                     <field name="account_move_id" groups="event.group_event_manager"/>
             </field>
             <field name="organizer_id" position="attributes">
