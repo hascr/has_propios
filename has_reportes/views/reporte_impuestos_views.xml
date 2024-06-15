@@ -6,7 +6,7 @@
         <field name="name">view.reporte.impuestos.tree</field>
         <field name="model">reporte.impuestos</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree default_order = "fecha desc">
                 <field name="fecha"/>
                 <field name="codigo_cuenta"/>
                 <field name="cuenta"/>

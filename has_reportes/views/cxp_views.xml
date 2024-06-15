@@ -6,7 +6,7 @@
         <field name="name">view.cxp.tree</field>
         <field name="model">cxp</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree default_order = "fecha_factura desc">
                 <field name="proveedor"/>
                 <button type="object" name="go_to_cxp" string="Ir a" icon="fa-search-plus"/>
                 <field name="cedula"/>

@@ -6,7 +6,7 @@
         <field name="name">view.programacion.tree</field>
         <field name="model">programacion</field>
         <field name="arch" type="xml">
-            <tree string="Programacion">
+            <tree string="Programacion" default_order = "codigo desc, inicio desc">
                 <field name="codigo" readonly="1"/>
                 <button type="object" name="go_to_event_programacion" string="Ir a" icon="fa-search-plus"/>
                 <field name="curso" readonly="1"/>

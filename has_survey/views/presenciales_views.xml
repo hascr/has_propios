@@ -6,7 +6,7 @@
         <field name="name">view.presenciales.tree</field>
         <field name="model">presenciales</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree default_order = "curso desc, fecha_evaluacion desc">
                 <field name="fecha_evaluacion"/>
                 <button type="object" name="go_to_presenciales" string="Ir a" icon="fa-search-plus"/>
                 <field name="curso"/>

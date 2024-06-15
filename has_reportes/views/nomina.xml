@@ -6,7 +6,7 @@
         <field name="name">view.reportes.nomina.tree</field>
         <field name="model">nomina</field>
         <field name="arch" type="xml">
-            <tree string="Reportes de nómina">
+            <tree string="Reportes de nómina" default_order = "fecha desc">
                 <field name="fecha"/>
                 <field name="identificador"/>
                 <field name="nombre"/>
@@ -19,6 +19,19 @@
         </field>
     </record>
 
+    <record id="view_nomina_pivot" model="ir.ui.view">
+        <field name="name">nomina.pivot</field>
+        <field name="model">nomina</field>
+        <field name="arch" type="xml">
+            <pivot string="Asistencia" default_order = "fecha desc">
+                <field name="salario_colonizado" type="measure"/>
+                <field name="retencion_salario" type="measure"/>
+                <field name="fecha" type="row"/>
+                <field name="nombre" type="row"/>
+            </pivot>
+        </field>
+    </record>
+
     <!-- View programacion search -->
     <record id="view_reportes_nomina_search" model="ir.ui.view">
         <field name="name">view.reportes.nomina.search</field>
@@ -26,6 +39,7 @@
         <field name="arch" type="xml">
             <search string="Reportes de nónima">
                 <field name="nombre" string="Buscar por nombre, identificador o moneda" filter_domain="['|','|', ('nombre','ilike',self), ('identificador','ilike',self), ('moneda', 'ilike', self)]"> </field>
+                <filter string="Mes anterior" name="prev_month" domain="[('fecha','&gt;=',(context_today()-relativedelta(months=1)).strftime('%Y-%m-01')),('fecha','&lt;',time.strftime('%Y-%m-01'))]"/>
                 <filter string="Colones" name="crc" domain="[('moneda','=','CRC')]"/>
                 <filter string="Dólares" name="usd" domain="[('moneda','=','USD')]"/>
 				<separator/>

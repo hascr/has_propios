@@ -7,7 +7,7 @@
     <field name="model">event.event</field>
     <field name="priority" eval="50"/>
     <field name="arch" type="xml">
-        <tree editable="bottom">
+        <tree editable="bottom" default_order = "codigo desc, date_end desc">
             <field name="id" readonly="1" string="Código"/>
             <button type="object" name="go_to_contratos" string="Ir a" icon="fa-search-plus"/>
             <field name="name" readonly="1"/>
