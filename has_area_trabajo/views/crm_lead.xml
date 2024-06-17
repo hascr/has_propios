@@ -24,6 +24,15 @@
                 <field name="country_id" position="after">
                     <field name="area_id" optional="show"/>
                 </field>
+                <field name="city" position="attributes">
+                    <attribute name="optional">hide</attribute>
+                </field>
+                <field name="partner_name" position="attributes">
+                    <attribute name="optional">show</attribute>
+                </field>
+                <field name="team_id" position="attributes">
+                    <attribute name="optional">hide</attribute>
+                </field>
             </field>
         </record>  
   </data>
