@@ -22,7 +22,7 @@
                 <field name="intereses"/>
                 <field name="correo_intereses"/>
                 <field name="whatsapp"/>
-                <field name="comentarios"/>
+                <field name="comentarios" optional="hide"/>
             </tree>
         </field>
     </record>
