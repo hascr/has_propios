@@ -80,7 +80,7 @@
 
  <!-- menu superior -->
 
-    <menuitem name="Evaluaciones" id="has_survey.menu_1" parent="mass_mailing.menu_mass_mailing_report"/>
+    <menuitem name="Evaluaciones" id="has_survey.menu_1" parent="event.menu_reporting_events"/>
     
     <!-- menú de categoría con acción -->
 
