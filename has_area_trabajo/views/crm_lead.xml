@@ -14,7 +14,18 @@
                     <field name="area_id"/>
             </field>
         </field>
-     </record>  
+     </record>
+
+<record id="view_crm_lead_tree_inherit" model="ir.ui.view">
+            <field name="name">crm.lead.tree.inherit</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_tree_view_leads"/>
+            <field name="arch" type="xml">
+                <field name="country_id" position="after">
+                    <field name="area_id" optional="show"/>
+                </field>
+            </field>
+        </record>  
   </data>
 </odoo>
 
