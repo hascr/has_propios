@@ -81,7 +81,7 @@ class Programacion(models.Model):
         'view_mode': 'form',
         'res_model': 'event.event',
         'res_id': int(self.codigo),  # Reference to the other model
-        'target': 'new',
+        'target': 'current',
         'view_id': self.env.ref(
             'event.view_event_form').id,
         'context': {} # Optional

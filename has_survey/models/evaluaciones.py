@@ -64,7 +64,7 @@ AND			s.survey_id = 3
         'view_mode': 'form',
         'res_model': 'survey.user_input',
         'res_id': self.id,  # Reference to the other model
-        'target': 'new',
+        'target': 'current',
         'view_id': self.env.ref(
             'survey.survey_user_input_view_form').id,
         'context': {} # Optional

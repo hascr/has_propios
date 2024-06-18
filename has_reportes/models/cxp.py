@@ -79,7 +79,7 @@ AND			a.payment_state NOT IN ('paid'))
         'view_mode': 'form',
         'res_model': 'account.move',
         'res_id': self.id,  # Reference to the other model
-        'target': 'new',
+        'target': 'current',
         'view_id': self.env.ref(
             'account.view_move_form').id,
         'context': {} # Optional
