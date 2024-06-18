@@ -51,6 +51,7 @@ class asistencia(models.Model):
         for record in self:
             record.horas = round(record.minutos / 60.0,2) #if record.minutos else 0 # Calculate hours from minutes
 
+    
     """ def write(self, vals):
         res = super(asistencia, self).write(vals)
         return res """
