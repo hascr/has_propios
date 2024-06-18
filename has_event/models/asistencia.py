@@ -49,7 +49,7 @@ class asistencia(models.Model):
     @api.depends('minutos','horas')
     def _compute_horas(self):
         for record in self:
-            record.horas = record.minutos / 60 #if record.minutos else 0 # Calculate hours from minutes
+            record.horas = round(record.minutos / 60.0,2) #if record.minutos else 0 # Calculate hours from minutes
 
     """ def write(self, vals):
         res = super(asistencia, self).write(vals)
