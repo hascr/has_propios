@@ -43,32 +43,28 @@ class reporte_impuestos(models.Model):
     def init(self):
         self._cr.execute("""
             CREATE OR REPLACE VIEW reporte_impuestos AS (
-            SELECT		a.id AS id,
-				c.code AS codigo_cuenta,
-				c.name->>'es_CR' AS cuenta,
---				(SELECT	y.name FROM res_currency y WHERE a.currency_id = y.id) AS moneda_cuenta,
---				a.balance / (t.amount/100) AS base,
-				CASE WHEN r.name IS NULL THEN 'No definido' ELSE r.name END AS empresa,
-				CASE WHEN t.name->>'es_CR' IS NULL THEN 'No definido' ELSE t.name->>'es_CR' END AS impuesto,
-				CASE WHEN -a.balance < 0 THEN CASE WHEN a.tax_base_amount IS NULL THEN 0 ELSE -a.tax_base_amount END ELSE CASE WHEN a.tax_base_amount IS NULL THEN 0 ELSE a.tax_base_amount END END AS base_impuesto,
---				t.type_tax_use AS tipo_impuesto,
-				CASE WHEN t.type_tax_use = 'purchase' THEN 'compra' ELSE	CASE WHEN t.type_tax_use = 'sale' THEN 'venta' ELSE 'manual' END END AS tipo,
-				a.ref AS factura,
---				a.name AS descripcion,
-				a.date AS fecha,
-				-a.balance saldo
---				a.amount_currency AS saldo_usd,
---				CASE WHEN (SELECT	y.name FROM res_currency y WHERE a.currency_id = y.id) = 'CRC' THEN a.balance ELSE a.amount_currency END AS saldo
---				a.parent_state AS estado
-				
-FROM			account_move_line a
-LEFT JOIN	account_account c ON a.account_id = c.id
-LEFT JOIN	res_partner r ON a.partner_id = r.id
-LEFT JOIN	account_tax t ON a.tax_line_id = t.id
-LEFT JOIN	account_group g ON c.group_id = g.id
+            SELECT	a.id AS ID,
+			n.code AS codigo_cuenta,
+			n.name->>'es_CR' AS cuenta,
+			CASE WHEN r.name IS NULL THEN 'No definido' ELSE r.name END AS empresa,
+			CASE WHEN t.name->>'es_CR' IS NULL THEN 'No definido' ELSE t.name->>'es_CR' END AS impuesto,
+			-a.balance AS base_impuesto,
+			CASE WHEN t.type_tax_use = 'purchase' THEN 'compra' ELSE	CASE WHEN t.type_tax_use = 'sale' THEN 'venta' ELSE 'manual' END END AS tipo,
+			a.ref AS factura,
+			a.date AS fecha,
+			ROUND(-a.balance * t.amount / 100,2) AS saldo
+			
+			
 
-WHERE			(g.code_prefix_start LIKE '1106%' OR g.code_prefix_start LIKE '2103%')
-AND			a.parent_state = 'posted'
+
+FROM				account_move_line a
+LEFT JOIN		account_move_line_account_tax_rel l ON a.id = l.account_move_line_id
+LEFT JOIN		account_tax t ON l.account_tax_id = t.id
+LEFT JOIN		res_partner r ON a.partner_id = r.id
+LEFT JOIN		account_account n ON a.account_id = n.id
+
+WHERE				a.parent_state = 'posted'
+AND				t.name->>'es_CR' IS NOT NULL
                          )
                          ;
             """)
