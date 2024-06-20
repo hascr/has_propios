@@ -16,7 +16,7 @@
                 <field name="nombre"/>
                 <field name="correo" optional="show"/>
                 <field name="minutos" optional="show"/>
-                <field name="horas" optional="show" readonly="1" widget="float"/>
+                <field name="horas" optional="show" readonly="1"/>
                 <field name="tipo" optional="show" readonly="1"/>
             </tree>
         </field>
@@ -37,7 +37,7 @@
                             <field name="celular"/>
                             <field name="telefono"/>
                             <field name="minutos" readonly="1"/>
-                            <field name="horas" widget="float"/>
+                            <field name="horas"/>
                             <field name="tipo" readonly="1"/>
                             <field name="user_id"/>
                 </group>
