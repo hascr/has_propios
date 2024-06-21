@@ -30,6 +30,9 @@ class contactos_duplicados(models.Model):
     
     telefono = fields.Char(
         string='Teléfono')
+    
+    asesor = fields.Char(
+        string='Asesor')
         
     def init(self):
         self._cr.execute("""
@@ -42,7 +45,8 @@ class contactos_duplicados(models.Model):
 --			r.parent_id AS parent,
 --			r.complete_name AS nombre_completo,
 			r.vat AS cedula,
-			r.phone_sanitized AS telefono
+			r.phone_sanitized AS telefono,
+			(SELECt rp1.name FROM res_partner rp1 WHERE rp1.id = (SELECT r1.partner_id FROM res_users r1 WHERE r.user_id = r1.id)) AS asesor
 --			r.is_company AS es_empresa
 			
 

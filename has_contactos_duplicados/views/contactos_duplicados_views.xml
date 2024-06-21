@@ -13,6 +13,7 @@
                 <field name="email"/>
                 <field name="cedula"/>
                 <field name="telefono"/>
+                <field name="asesor"/>
                 <field name="creacion"/>
             </tree>
         </field>
@@ -45,6 +46,7 @@
             <field name="contacto" string="Buscar por nombre, empresa o correo" filter_domain="['|','|','|', ('contacto','ilike',self), ('empresa','ilike',self), ('correo','ilike',self), ('cedula', 'ilike', self)]"> </field>
                 <group expand="1" string="Group By">
                     <filter string="Correo" name="email" domain="[]" context="{'group_by':'email'}"/>
+                    <filter string="Asesor" name="asesor" domain="[]" context="{'group_by':'asesor'}"/>
                 </group>
             </search>
         </field>
@@ -55,7 +57,7 @@
         <field name="name">Contactos Duplicados</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">contactos.duplicados</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree</field>
         <field name="domain">[]</field>
         <field name="context">{}</field>
         <field name="help" type="html">
