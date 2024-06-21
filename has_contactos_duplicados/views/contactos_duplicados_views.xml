@@ -6,7 +6,7 @@
         <field name="name">view.contactos.duplicados.tree</field>
         <field name="model">contactos.duplicados</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree default_order = "email asc">
                 <field name="contacto"/>
                 <button type="object" name="go_to_contactos" string="Ir a" icon="fa-search-plus"/>
                 <field name="empresa"/>
