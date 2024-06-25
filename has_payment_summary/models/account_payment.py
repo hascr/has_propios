@@ -11,7 +11,7 @@ class AccountPayment(models.Model):
     )
 
     consultoria = fields.Boolean(
-        string='Pago de Consultoría'
+        string='Pago de consultoría'
     )
 
     certificacion_retenciones = fields.Binary(attachment=True)
@@ -55,7 +55,7 @@ class AccountPaymentReport(models.Model):
     )
     user_id = fields.Many2one(
         'res.users',
-        string='Vendedor',
+        string='Asesor',
     )
     amount = fields.Float(
         string='Cobro bruto'

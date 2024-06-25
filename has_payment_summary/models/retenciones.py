@@ -22,17 +22,17 @@ class retenciones(models.Model):
     )
     user_id = fields.Many2one(
         'res.users',
-        string='Vendedor',
+        string='Asesor',
     )
     amount = fields.Float(
-        string='Cobro bruto'
+        string='Monto'
     )
     number_invoice = fields.Char(
         string='Número de factura'
     )
 
     certificacion = fields.Binary(
-        attachment=True, store=True)
+        attachment=True, store=True, string="Certificación")
     
     
     def init(self):
@@ -42,7 +42,7 @@ class retenciones(models.Model):
 			        m.ref AS number_invoice,
 			        m.date AS payment_date,
 			        m.partner_id AS partner_id,
-			        ROUND(m.amount_total_signed * (SELECT m1.amount_untaxed/m1.amount_total FROM account_move m1 WHERE m1.payment_reference = m.ref AND m1.move_type <> 'entry' ),2) amount,
+			        a.amount as amount,
 			        (SELECT m1.invoice_user_id FROM account_move m1 WHERE m1.payment_reference = m.ref AND m1.move_type <> 'entry' ) AS user_id
                     --a.certificacion as certificacion
 
