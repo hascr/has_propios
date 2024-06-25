@@ -14,6 +14,8 @@ class AccountPayment(models.Model):
         string='Pago de Consultoría'
     )
 
+    certificacion_retenciones = fields.Binary(attachment=True)
+
 #    company_currency_id = fields.Many2one(
 #        comodel_name='res.currency',
 #        related='company_id.currency_id',
@@ -120,3 +122,18 @@ class AccountPaymentReport(models.Model):
 	AND a.is_internal_transfer = FALSE
 	AND a.partner_type = 'customer'
             )""")
+        
+    def go_to_pagos(self):
+        name_form = ('Pagos')
+        return {
+        'name': name_form,
+        'type': 'ir.actions.act_window',
+        'view_type': 'form',
+        'view_mode': 'form',
+        'res_model': 'account.payment',
+        'res_id': self.id,  # Reference to the other model
+        'target': 'current',
+        'view_id': self.env.ref(
+            'account.view_account_payment_form').id,
+        'context': {} # Optional
+            }

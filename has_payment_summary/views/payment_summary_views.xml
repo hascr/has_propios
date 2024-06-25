@@ -8,6 +8,7 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="number_invoice"/>
+                <button type="object" name="go_to_pagos" string="Ir a" icon="fa-search-plus" groups="event.group_event_manager"/>
                 <field name="payment_date"/>
                 <field name="partner_id"/>
                 <field name="user_id"/>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- View retenciones View Tree -->
+    <record id="view_retenciones_tree" model="ir.ui.view">
+        <field name="name">view.retenciones.tree</field>
+        <field name="model">retenciones</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom" default_order = "payment_date desc">
+                <field name="number_invoice" readonly="1"/>
+                <button type="object" name="go_to_pagos_ret" string="Ir a" icon="fa-search-plus" groups="event.group_event_manager"/>
+                <field name="payment_date" readonly="1"/>
+                <field name="partner_id" readonly="1"/>
+                <field name="user_id" readonly="1"/>
+                <field name="amount" sum="Total" readonly="1"/>
+                <field name="certificacion"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- View retenciones form -->
+    <!-- <record id="view_retenciones_form" model="ir.ui.view">
+        <field name="name">view.retenciones.form</field>
+        <field name="model">retenciones</field>
+        <field name="arch" type="xml">
+            <form string="Retenciones">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="Name..."/>
+                        </h1>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record> -->
+
+    <!-- View retenciones search -->
+    <record id="view_retenciones_search" model="ir.ui.view">
+        <field name="name">view.retenciones.search</field>
+        <field name="model">retenciones</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="number_invoice"/>
+                <field name="payment_date"/>
+                <field name="partner_id"/>
+                <field name="user_id"/>
+                <field name="amount"/>
+				<filter name="filter_cert_pend" string="Pendientes" domain="[('certificacion', '=', False)]"></filter>
+                <filter name="filter_cert_proc" string="Procesadas" domain="[('certificacion', '!=', False)]"></filter>
+                <!-- <filter string="Periodo actual" name="periodo" domain="[('payment_date','&lt;=', time.strftime('2025-03-31')),('payment_date','&gt;=',time.strftime('2024-04-01'))]"/>
+                <filter string="Año actual" name="year" domain="[('payment_date','&lt;=', time.strftime('%%Y-12-31')),('payment_date','&gt;=',time.strftime('%%Y-01-01'))]"/>
+				<filter string="Mes anterior" name="prev_month" domain="[('payment_date','&gt;=',(context_today()-relativedelta(months=1)).strftime('%Y-%m-01')),('payment_date','&lt;',time.strftime('%Y-%m-01'))]"/>
+				<filter string="Mes actual" name="month" domain="[('payment_date','&lt;=',(datetime.date.today()+relativedelta(day=31)).strftime('%Y-%m-%d')),('payment_date','&gt;=',(datetime.date.today()-relativedelta(day=1)).strftime('%Y-%m-%d'))]"/> -->
+				<group expand="0" string="Group by">
+				<filter string="Fecha" name="group_by_date" context="{'group_by':'payment_date:month'}"/>
+				<filter string="Vendedor" name="group_by_user" context="{'group_by':'user_id'}"/>
+				</group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action retenciones -->
+    <record id="action_retenciones" model="ir.actions.act_window">
+        <field name="name">Retenciones</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">retenciones</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[]</field>
+        <field name="context">{'search_default_filter_cert_pend': True}</field>
+        <field name="view_id" ref="view_retenciones_tree"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                There is no examples click here to add new Retenciones.
+            </p>
+        </field>
+    </record>
+
+    <menuitem 	name="Retenciones"
+				id="retenciones_id"
+				sequence="5"
+				action="action_retenciones"
+				parent="account.menu_finance_receivables"/>
+
+</odoo>

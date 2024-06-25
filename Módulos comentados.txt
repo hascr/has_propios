@@ -33,3 +33,11 @@ FORMATO DE FECHA
 %d/%b/%Y
 FORMATO DE HORA
 %I:%M %p
+------------------------------------------------------------------------------------------------------------------------------
+#5
+CAMPO DE AREA DE TRABAJO EN CREACIÓN DE CONTACTO
+server > odoo > addons > base > views > res_partner_views.xml
+
+Línea: 324 (después de function)
+
+<field name="area_id"/>

@@ -9,12 +9,13 @@
         'account',
         'base'
     ],
-    'data': [
-        'security/ir.model.access.csv',
-        'security/ir_rules.xml',
-        'views/payment_summary_views.xml',
-        'wizards/payment_extra.xml',
-        'views/menu.xml',
+    "data": [
+        "security/ir.model.access.csv",
+        "security/ir_rules.xml",
+        "views/payment_summary_views.xml",
+        "wizards/payment_extra.xml",
+        "views/menu.xml",
+        "views/retenciones_views.xml"
     ],
     'application': True,
 }

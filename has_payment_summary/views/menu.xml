@@ -5,8 +5,9 @@
 				id="payment_summary_id"
 				sequence="4"
 				action="action_payment_summary"
-				parent="account.menu_finance_receivables"/>	
+				parent="account.menu_finance_receivables"/>
+
+	
 			
-		
 <!--</data> -->
 </odoo>

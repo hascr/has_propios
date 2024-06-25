@@ -16,3 +16,23 @@ AFTER INSERT
   FOR EACH ROW
   EXECUTE PROCEDURE public.create_analytic_account();
 
+------------------------------------------------------------------------------------------------------------------------------
+#1
+CREATE OR REPLACE FUNCTION nombre_propio() RETURNS trigger
+   LANGUAGE plpgsql AS
+$$BEGIN 
+   NEW.nombre := initcap(NEW.nombre);
+   RETURN NEW; 
+END;$$;
+
+#2
+CREATE TRIGGER nombre_propio 
+   BEFORE INSERT ON public.asistencia FOR EACH ROW 
+   EXECUTE PROCEDURE nombre_propio();
+
+#3 (PARA ACTUALIZAR REGISTROS EXISTENTES)
+UPDATE asistencia
+SET nombre = initcap(nombre)
+RETURNING *;
+
+------------------------------------------------------------------------------------------------------------------------------
