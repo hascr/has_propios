@@ -30,7 +30,7 @@ class cursos(models.Model):
     final = fields.Datetime(
         string='Final'
     )
-    fecha_aviso = fields.Datetime(
+    fecha_aviso = fields.Date(
         string='Fecha aviso'
     )
     matricula = fields.Char(
