@@ -27,6 +27,7 @@ class has_event(models.Model):
     contrato_firmado = fields.Binary(attachment=True)
     account_move_id = fields.Many2one('account.move', string='Factura de Proveedor', domain=[('instructor', '=', True)])
     monto_contrato = fields.Float(string="Monto contrato", compute='_monto_contrato')
+    temario = fields.Binary(attachment=True, string="Temario")
 
 
     def go_to_contratos(self):

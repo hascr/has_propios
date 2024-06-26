@@ -17,6 +17,7 @@
                     <field name="cuenta_id"/>
                     <field name="asesor"/>
                     <field name="id" string="Código de curso"/>
+                    <field name="temario"/>
             </field>
             <field name="badge_format" position="after">
                     <field name="instructor_id"/>
@@ -61,6 +62,8 @@
             <xpath expr="//field[@name='name']" position="before">
                 <separator/>
                 <field name="name" string="Buscar por código, curso, instructor" filter_domain="['|','|', ('id','ilike',self), ('name','ilike',self), ('instructor_id', 'ilike', self)]"></field>
+                <filter name="filter_temarios" string="Temarios pendientes" domain="[('temario', '=', False)]"></filter>
+                <separator/>
                 <filter string="Cursos" name="cursos" domain="[('event_type_id', '=', 1)]"/>
                 <filter string="Eventos" name="eventos" domain="[('event_type_id', '=', 2)]"/>
             </xpath>
