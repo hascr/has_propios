@@ -28,9 +28,9 @@ class ResPartner(models.Model):
         string='Instructor'
     )
 
-    IBAN = fields.Char(
+    """ IBAN = fields.Char(
         string='Cuenta IBAN'
-    )
+    ) """
 
     gobierno = fields.Boolean(
         string='¿Gobierno?'

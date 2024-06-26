@@ -8,7 +8,8 @@
         <field name="inherit_id" ref="event.view_event_form"/>
         <field name="arch" type="xml">
             <field name="tag_ids" position="after">
-                    <field name="contrato_firmado"/>
+                    <field name="contrato_firmado" filename="contrato_name"/>
+                    <field name="contrato_name" invisible="1"/>
                     <field name="presencial" widget="boolean_toggle"/>
                     <field name="enofi" widget="boolean_toggle"/>
                     <field name="noenviar" widget="boolean_toggle"/>
@@ -17,7 +18,8 @@
                     <field name="cuenta_id"/>
                     <field name="asesor"/>
                     <field name="id" string="Código de curso"/>
-                    <field name="temario"/>
+                    <field name="temario" filename="temario_name"/>
+                    <field name="temario_name" invisible="1"/>
             </field>
             <field name="badge_format" position="after">
                     <field name="instructor_id"/>
