@@ -30,7 +30,7 @@ class cursos(models.Model):
     final = fields.Datetime(
         string='Final'
     )
-    fecha_aviso = fields.Date(
+    fecha_aviso = fields.Datetime(
         string='Fecha aviso'
     )
     matricula = fields.Char(
@@ -112,7 +112,7 @@ class cursos(models.Model):
    ee.instructor_id AS idinstructor,
    ee.date_begin AS inicio,
    ee.date_end AS final,
-   ee.date_begin AS fecha_aviso,
+   date(ee.date_begin) AS fecha_aviso,
    ee.urlmatricula AS matricula,
 	(SELECT ta.cuenta FROM training_account ta WHERE ta.id = ee.cuenta_id) AS goto,
 -- ee.x_azurepass AS azurepass,
