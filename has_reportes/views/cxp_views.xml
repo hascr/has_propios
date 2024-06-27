@@ -7,17 +7,17 @@
         <field name="model">cxp</field>
         <field name="arch" type="xml">
             <tree default_order = "fecha_factura desc">
-                <field name="proveedor"/>
+                <field name="proveedor" optional="show"/>
                 <button type="object" name="go_to_cxp" string="Ir a" icon="fa-search-plus"/>
-                <field name="cedula"/>
-                <field name="moneda_factura"/>
-                <field name="banco"/>
-                <field name="cuenta"/>
-                <field name="moneda_cuenta"/>
-                <field name="factura"/>
-                <field name="fecha_factura"/>
-                <field name="fecha_pago"/>
-                <field name="saldo"/>
+                <field name="cedula" optional="hide"/>
+                <field name="moneda_factura" optional="show"/>
+                <field name="banco" optional="hide"/>
+                <field name="cuenta" optional="show"/>
+                <field name="moneda_cuenta" optional="show"/>
+                <field name="factura" optional="show"/>
+                <field name="fecha_factura" optional="show"/>
+                <field name="fecha_pago" optional="show"/>
+                <field name="saldo" optional="show"/>
             </tree>
         </field>
     </record>
