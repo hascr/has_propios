@@ -7,21 +7,33 @@
         <field name="model">evaluaciones</field>
         <field name="arch" type="xml">
             <tree default_order = "curso desc, fecha_evaluacion desc">
-                <field name="fecha_evaluacion"/>
+                <field name="fecha_evaluacion" optional="show"/>
                 <button type="object" name="go_to_virtuales" string="Ir a" icon="fa-search-plus"/>
-                <field name="curso"/>
-                <field name="duracion" avg="Promedio"/>
-                <field name="instructor"/>
-                <field name="asesor"/>
-                <field name="nota" avg="Promedio"/>
-                <field name="name"/>
-                <field name="empresa"/>
-                <field name="correo"/>
-                <field name="telefono"/>
-                <field name="enviar_info"/>
-                <field name="intereses"/>
-                <field name="correo_intereses"/>
-                <field name="whatsapp"/>
+                <field name="curso" optional="show"/>
+                <field name="duracion" avg="Promedio" optional="hide"/>
+                <field name="instructor" optional="show"/>
+                <field name="asesor" optional="show"/>
+                <field name="nota" avg="Promedio" optional="show"/>
+                <field name="contenido" avg="Promedio" optional="show"/>
+                <field name="expectativa" avg="Promedio" optional="hide"/>
+                <field name="estructura" avg="Promedio" optional="hide"/>
+                <field name="instructor_nota" avg="Promedio" optional="show"/>
+                <field name="conocimiento" avg="Promedio" optional="hide"/>
+                <field name="puntualidad" avg="Promedio" optional="hide"/>
+                <field name="ejemplos" avg="Promedio" optional="hide"/>
+                <field name="dudas" avg="Promedio" optional="hide"/>
+                <field name="otros" avg="Promedio" optional="show"/>
+                <field name="material" avg="Promedio" optional="hide"/>
+                <field name="herramienta" avg="Promedio" optional="hide"/>
+                <field name="metodologia" avg="Promedio" optional="hide"/>
+                <field name="name" optional="show"/>
+                <field name="empresa" optional="hide"/>
+                <field name="correo" optional="show"/>
+                <field name="telefono" optional="hide"/>
+                <field name="enviar_info" optional="hide"/>
+                <field name="intereses" optional="hide"/>
+                <field name="correo_intereses" optional="hide"/>
+                <field name="whatsapp" optional="hide"/>
                 <field name="comentarios" optional="hide"/>
             </tree>
         </field>

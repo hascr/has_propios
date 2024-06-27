@@ -27,6 +27,18 @@ class evaluaciones(models.Model):
     telefono = fields.Char(_('Teléfono Contacto'))
     instructor = fields.Char(_('Instructor'))
     duracion = fields.Float(_('Duración'), group_operator='avg')
+    contenido = fields.Float(_('Contenido'), group_operator='avg')
+    expectativa = fields.Float(_('Expectativa'), group_operator='avg')
+    estructura = fields.Float(_('Estructura'), group_operator='avg')
+    instructor_nota = fields.Float(_('Instrucción'), group_operator='avg')
+    conocimiento = fields.Float(_('Conocimiento'), group_operator='avg')
+    puntualidad = fields.Float(_('Puntualidad'), group_operator='avg')
+    ejemplos = fields.Float(_('Uso de ejemplos'), group_operator='avg')
+    dudas = fields.Float(_('Atención de dudas'), group_operator='avg')
+    otros = fields.Float(_('Otros aspectos'), group_operator='avg')
+    material = fields.Float(_('Material de apoyo'), group_operator='avg')
+    herramienta = fields.Float(_('Herramienta utilizada'), group_operator='avg')
+    metodologia = fields.Float(_('Metodología'), group_operator='avg')
 
     def init(self):
         self._cr.execute("""
@@ -34,6 +46,40 @@ class evaluaciones(models.Model):
             SELECT		s.id AS id,
 				s.end_datetime AS fecha_evaluacion,
 				s.scoring_percentage AS nota,
+				
+				(	(SELECT a.answer_score FROM survey_question_answer a WHERE a.id = (SELECT MAX(l.suggested_answer_id) filter (WHERE l.question_id = 30) FROM	survey_user_input_line l WHERE l.user_input_id = s.id))*100 --AS expectativa
+					+
+					(SELECT a.answer_score FROM survey_question_answer a WHERE a.id = (SELECT MAX(l.suggested_answer_id) filter (WHERE l.question_id = 31) FROM	survey_user_input_line l WHERE l.user_input_id = s.id))*100 --AS estructura
+				) / 2 AS contenido,
+				
+				(SELECT a.answer_score FROM survey_question_answer a WHERE a.id = (SELECT MAX(l.suggested_answer_id) filter (WHERE l.question_id = 30) FROM	survey_user_input_line l WHERE l.user_input_id = s.id))*100 AS expectativa,
+				(SELECT a.answer_score FROM survey_question_answer a WHERE a.id = (SELECT MAX(l.suggested_answer_id) filter (WHERE l.question_id = 31) FROM	survey_user_input_line l WHERE l.user_input_id = s.id))*100 AS estructura,
+				
+				(	(SELECT a.answer_score FROM survey_question_answer a WHERE a.id = (SELECT MAX(l.suggested_answer_id) filter (WHERE l.question_id = 33) FROM	survey_user_input_line l WHERE l.user_input_id = s.id))*100 --AS conocimiento
+					+
+					(SELECT a.answer_score FROM survey_question_answer a WHERE a.id = (SELECT MAX(l.suggested_answer_id) filter (WHERE l.question_id = 34) FROM	survey_user_input_line l WHERE l.user_input_id = s.id))*100 --AS puntualidad
+					+
+					(SELECT a.answer_score FROM survey_question_answer a WHERE a.id = (SELECT MAX(l.suggested_answer_id) filter (WHERE l.question_id = 38) FROM	survey_user_input_line l WHERE l.user_input_id = s.id))*100 --AS ejemplos
+					+
+					(SELECT a.answer_score FROM survey_question_answer a WHERE a.id = (SELECT MAX(l.suggested_answer_id) filter (WHERE l.question_id = 36) FROM	survey_user_input_line l WHERE l.user_input_id = s.id))*100 --AS dudas
+				) / 4 AS instructor_nota,
+				
+				(SELECT a.answer_score FROM survey_question_answer a WHERE a.id = (SELECT MAX(l.suggested_answer_id) filter (WHERE l.question_id = 33) FROM	survey_user_input_line l WHERE l.user_input_id = s.id))*100 AS conocimiento,
+				(SELECT a.answer_score FROM survey_question_answer a WHERE a.id = (SELECT MAX(l.suggested_answer_id) filter (WHERE l.question_id = 34) FROM	survey_user_input_line l WHERE l.user_input_id = s.id))*100 AS puntualidad,
+				(SELECT a.answer_score FROM survey_question_answer a WHERE a.id = (SELECT MAX(l.suggested_answer_id) filter (WHERE l.question_id = 38) FROM	survey_user_input_line l WHERE l.user_input_id = s.id))*100 AS ejemplos,
+				(SELECT a.answer_score FROM survey_question_answer a WHERE a.id = (SELECT MAX(l.suggested_answer_id) filter (WHERE l.question_id = 36) FROM	survey_user_input_line l WHERE l.user_input_id = s.id))*100 AS dudas,
+				
+				(	(SELECT a.answer_score FROM survey_question_answer a WHERE a.id = (SELECT MAX(l.suggested_answer_id) filter (WHERE l.question_id = 35) FROM	survey_user_input_line l WHERE l.user_input_id = s.id))*100 --AS material
+					+
+					(SELECT a.answer_score FROM survey_question_answer a WHERE a.id = (SELECT MAX(l.suggested_answer_id) filter (WHERE l.question_id = 39) FROM	survey_user_input_line l WHERE l.user_input_id = s.id))*100 --AS herramienta
+					+
+					(SELECT a.answer_score FROM survey_question_answer a WHERE a.id = (SELECT MAX(l.suggested_answer_id) filter (WHERE l.question_id = 40) FROM	survey_user_input_line l WHERE l.user_input_id = s.id))*100 --AS metodologia
+				) / 3 AS Otros,
+				
+				(SELECT a.answer_score FROM survey_question_answer a WHERE a.id = (SELECT MAX(l.suggested_answer_id) filter (WHERE l.question_id = 35) FROM	survey_user_input_line l WHERE l.user_input_id = s.id))*100 AS material,
+				(SELECT a.answer_score FROM survey_question_answer a WHERE a.id = (SELECT MAX(l.suggested_answer_id) filter (WHERE l.question_id = 39) FROM	survey_user_input_line l WHERE l.user_input_id = s.id))*100 AS herramienta,
+				(SELECT a.answer_score FROM survey_question_answer a WHERE a.id = (SELECT MAX(l.suggested_answer_id) filter (WHERE l.question_id = 40) FROM	survey_user_input_line l WHERE l.user_input_id = s.id))*100 AS metodologia,
+				
 				(SELECT a."value"->> 'es_CR' FROM survey_question_answer a WHERE a.id = (SELECT MAX(l.suggested_answer_id) filter (WHERE l.question_id = 41) FROM	survey_user_input_line l WHERE l.user_input_id = s.id)) AS enviar_info,
 				(SELECT a."value"->> 'es_CR' FROM survey_question_answer a WHERE a.id = (SELECT MAX(l.suggested_answer_id) filter (WHERE l.question_id = 27) FROM	survey_user_input_line l WHERE l.user_input_id = s.id)) AS curso,
 				(SELECT a."value"->> 'es_CR' FROM survey_question_answer a WHERE a.id = (SELECT MAX(l.suggested_answer_id) filter (WHERE l.question_id = 28) FROM	survey_user_input_line l WHERE l.user_input_id = s.id)) AS asesor,
