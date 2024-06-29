@@ -27,6 +27,7 @@
                 <field name="materiallearn"/>
                 <field name="asesor"/>
                 <field name="actualizacion"/>
+                <field name="tipo"/>
             </tree>
         </field>
     </record>

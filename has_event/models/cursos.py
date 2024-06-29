@@ -96,6 +96,9 @@ class cursos(models.Model):
     estado = fields.Integer(
         string='Estado'
     )
+    tipo = fields.Integer(
+        string='Tipo'
+    )
 
 
 
@@ -136,11 +139,13 @@ class cursos(models.Model):
 	(SELECT 	l.value_char_box FROM	survey_user_input_line l JOIN	survey_user_input i ON l.user_input_id = i.id WHERE	l.question_id = 4 AND	i.partner_id = ee.instructor_id AND	l.answer_type = 'char_box' LIMIT 1) AS nombre_facturacion_contrato,
 	CASE WHEN (SELECT 	l.value_char_box FROM	survey_user_input_line l JOIN	survey_user_input i ON l.user_input_id = i.id WHERE	l.question_id = 3 AND	i.partner_id = ee.instructor_id AND	l.answer_type = 'char_box') IS NULL THEN 'Costarricense' ELSE (SELECT 	l.value_char_box FROM	survey_user_input_line l JOIN	survey_user_input i ON l.user_input_id = i.id WHERE	l.question_id = 3 AND	i.partner_id = ee.instructor_id AND	l.answer_type = 'char_box') END AS nacionalidad_contrato,
 	ee.nocontrato AS nocontrato,
-    ee.stage_id as estado
+    ee.stage_id as estado,
+    et."name" ->> 'es_CR' AS tipo
    
 FROM event_event ee
 LEFT JOIN res_users ru ON ru.id = ee.user_id
 LEFT JOIN res_partner rp ON rp.id = ru.partner_id
+LEFT JOIN event_type et ON ee.event_type_id = et.id
 WHERE ee.stage_id != 5
                          );
             """)
