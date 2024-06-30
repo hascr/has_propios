@@ -32,7 +32,7 @@
     <field name="name" string="Buscar por código, curso, instructor" filter_domain="['|','|', ('id','ilike',self), ('name','ilike',self), ('instructor_id', 'ilike', self)]">
     <filter name="filter_cpendientes" string="Contratos pendientes" domain="[('contrato_firmado', '=', False),('nocontrato', '=', False)]"></filter>
     <separator/>
-    <filter name="filter_temarios" string="Temarios pendientes" domain="[('temario', '=', False)]"></filter>
+    <filter name="filter_temarios" string="Temarios pendientes" domain="[('temario', '=', False),('event_type_id', '=', 1)]"></filter>
     <separator/>
     <filter name="filter_fpendientes" string="Facturas pendientes" domain="[('account_move_id', '=', False),('nocontrato', '=', False),('date_end','&lt;=',(datetime.datetime.now().strftime('%Y-%m-%d')))]"></filter>
     <separator/>
