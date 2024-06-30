@@ -8,7 +8,7 @@
         <field name="inherit_id" ref="event.view_event_form"/>
         <field name="arch" type="xml">
             <field name="tag_ids" position="after">
-                    <field name="contrato_firmado" filename="contrato_name" groups="event.group_event_manager"/>
+                    <field name="contrato_firmado" filename="contrato_name" groups="event.group_event_manager" widget="drag_and_drop"/>
                     <field name="contrato_name" invisible="1" groups="event.group_event_manager"/>
                     <field name="presencial" widget="boolean_toggle"/>
                     <field name="enofi" widget="boolean_toggle"/>
@@ -18,7 +18,7 @@
                     <field name="cuenta_id"/>
                     <field name="asesor"/>
                     <field name="id" string="Código de curso"/>
-                    <field name="temario" filename="temario_name"/>
+                    <field name="temario" filename="temario_name" widget="drag_and_drop"/>
                     <field name="temario_name" invisible="1"/>
             </field>
             <field name="badge_format" position="after">
@@ -102,6 +102,11 @@
                         <div t-attf-class="d-flex flex-column p-0 oe_kanban_card oe_kanban_global_click">
                             <div class="o_kanban_content p-0 m-0 position-relative row d-flex flex-fill">
                                 <div class="col-4 text-bg-primary p-2 text-center d-flex flex-column justify-content-center">
+                                    
+                                    <div class="o_event_fontsize_20 text-center">
+                                            <field name="id"/>
+                                        </div>
+                                    
                                     <div>
                                         <t t-esc="luxon.DateTime.fromISO(record.date_begin.raw_value).toFormat('d MMM yyyy t')"/>
                                     </div>
@@ -112,10 +117,10 @@
                                 </div>
                                 <div class="col-8 py-2 px-3 d-flex flex-column justify-content-between pt-3">
                                     <div>
-                                        <div class="o_kanban_record_title o_event_fontsize_09 d-flex ps-1">
+                                        <!-- <div class="o_kanban_record_title o_event_fontsize_09 d-flex ps-1">
                                             <field name="id"/>
-                                        </div>
-                                        <div class="o_kanban_record_title o_text_overflow" t-att-title="record.name.value">
+                                        </div> -->
+                                        <div class="o_kanban_record_title" t-att-title="record.name.value">
                                             <field name="name"/>
                                         </div>
                                         <div t-att-title="record.event_type_id">
@@ -123,16 +128,17 @@
                                         </div>
                                         <div class="d-flex ps-1">
                                             <i class="fa fa-group mt-1 me-2 text-center" title="Attendees"/>
-                                            <span t-out="record.seats_taken.raw_value" class="me-1"/> Attendees
+                                            <span t-out="record.seats_taken.raw_value" class="me-1"/> Participantes
                                         </div>
                                     </div>
                                     <div class="o_kanban_record_bottom">
                                         <div class="oe_kanban_bottom_left">
                                             <field name="activity_ids" widget="kanban_activity"/>
+                                            <field name="instructor_id" widget="many2one_avatar_user"/>
                                         </div>
                                         <div class="oe_kanban_bottom_right">
-                                            <field name="kanban_state" widget="state_selection"/>
-                                            <field name="user_id" widget="many2one_avatar_user"/>
+                                            <!-- <field name="kanban_state" widget="state_selection"/> -->
+                                            <field name="asesor" widget="many2one_avatar_employee"/>
                                         </div>
                                     </div>
                                 </div>

@@ -16,7 +16,7 @@
             <field name="instructor_id"/>
             <field name="titulo" widget="boolean_toggle"/>
             <field name="account_move_id"/>
-            <field name="contrato_firmado"/>
+            <field name="contrato_firmado" widget="drag_and_drop"/>
             <field name="monto_contrato"/>
         </tree>
     </field>
