@@ -8,8 +8,8 @@
         <field name="inherit_id" ref="event.view_event_form"/>
         <field name="arch" type="xml">
             <field name="tag_ids" position="after">
-                    <field name="contrato_firmado" filename="contrato_name"/>
-                    <field name="contrato_name" invisible="1"/>
+                    <field name="contrato_firmado" filename="contrato_name" groups="event.group_event_manager"/>
+                    <field name="contrato_name" invisible="1" groups="event.group_event_manager"/>
                     <field name="presencial" widget="boolean_toggle"/>
                     <field name="enofi" widget="boolean_toggle"/>
                     <field name="noenviar" widget="boolean_toggle"/>
