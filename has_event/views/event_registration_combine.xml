@@ -34,7 +34,7 @@
     <separator/>
     <filter name="filter_temarios" string="Temarios pendientes" domain="[('temario', '=', False),('event_type_id', '=', 1)]"></filter>
     <separator/>
-    <filter name="filter_fpendientes" string="Facturas pendientes" domain="[('account_move_id', '=', False),('nocontrato', '=', False),('date_end','&lt;=',(datetime.datetime.now().strftime('%Y-%m-%d')))]"></filter>
+    <filter name="filter_fpendientes" string="Facturas pendientes" domain="[('account_move_id', '=', False),('nocontrato', '=', False),('stage_id', '!=', 5),('date_end','&lt;=',(datetime.datetime.now().strftime('%Y-%m-%d')))]"></filter>
     <separator/>
     <filter name="filter_tpendientes" string="Títulos pendientes" domain="[('titulo', '=', False),('date_end','&lt;=',(datetime.datetime.now().strftime('%Y-%m-%d')))]"></filter>
     <separator/>
