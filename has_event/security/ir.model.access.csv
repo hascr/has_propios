@@ -3,7 +3,7 @@ access_training_account,training_account,model_training_account,event.group_even
 access_hr_employee,hr_employee,model_hr_employee,event.group_event_user,1,1,1,1
 access_res_country,res_country,model_res_country,event.group_event_user,1,1,1,1
 access_programacion_manager,programacion_manager,model_programacion,event.group_event_user,1,1,1,1
-access_vistas_manager,vistas_manager,model_cursos,event.group_event_manager,1,1,1,1
-access_estudiantes_manager,estudiantes_manager,model_estudiantes,event.group_event_manager,1,1,1,1
+access_vistas_manager,vistas_manager,model_cursos,event.group_event_user,1,1,1,1
+access_estudiantes_manager,estudiantes_manager,model_estudiantes,event.group_event_user,1,1,1,1
 access_event_combinado_manager,event_combinado_manager,model_event_combinado,event.group_event_user,1,1,1,1
 access_asistencia_manager,asistencia_manager,model_asistencia,event.group_event_user,1,1,1,1
