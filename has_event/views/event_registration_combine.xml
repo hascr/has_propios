@@ -7,17 +7,18 @@
     <field name="model">event.event</field>
     <field name="priority" eval="50"/>
     <field name="arch" type="xml">
-        <tree multi_edit="1" default_order = "date_end desc">
-            <field name="id" readonly="1" string="Código"/>
+        <tree editable="bottom" default_order = "date_end desc">
+            <field name="id" readonly="1" string="Código" optional="show"/>
             <button type="object" name="go_to_contratos" string="Ir a" icon="fa-search-plus"/>
-            <field name="name" readonly="1"/>
-            <field name="date_begin" readonly="1"/>
-            <field name="date_end" readonly="1"/>
-            <field name="instructor_id"/>
-            <field name="titulo" widget="boolean_toggle"/>
-            <field name="account_move_id"/>
-            <field name="contrato_firmado" widget="drag_and_drop"/>
-            <field name="monto_contrato"/>
+            <field name="name" readonly="1" optional="show"/>
+            <field name="date_begin" readonly="1" optional="show"/>
+            <field name="date_end" readonly="1" optional="show"/>
+            <field name="instructor_id" optional="show"/>
+            <field name="titulo" widget="boolean_toggle" optional="show"/>
+            <field name="account_move_id" optional="hide"/>
+            <field name="contrato_firmado" widget="drag_and_drop" optional="show"/>
+            <field name="monto_contrato" optional="show"/>
+            <field name="temario" widget="drag_and_drop" optional="hide"/>
         </tree>
     </field>
 </record>
