@@ -40,9 +40,12 @@
     <filter name="filter_tpendientes" string="Títulos pendientes" domain="[('titulo', '=', False),('date_end','&lt;=',(datetime.datetime.now().strftime('%Y-%m-%d'))),('stage_id', '!=', 5)]"></filter>
     <separator/>
     <filter name="filter_ipendientes" string="Instructor pendiente" domain="[('instructor_id', '=', False),('stage_id', '!=', 5)]"></filter>
+    <separator/>
+    <filter name="filter_spendiente" string="Soporte pendiente" domain="[('soporte', '=', False),('stage_id', '!=', 5)]"></filter>
 </field>
     <group expand="0" string="Group by">
 				<filter string="Instructor" name="instructor" context="{'group_by':'instructor_id'}"/>
+                <filter string="Soporte" name="soporte" context="{'group_by':'soporte'}"/>
 				</group>
         </search>
     </field>
