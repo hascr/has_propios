@@ -28,6 +28,7 @@
                 <field name="asesor"/>
                 <field name="actualizacion"/>
                 <field name="tipo"/>
+                <field name="soporte"/>
             </tree>
         </field>
     </record>
