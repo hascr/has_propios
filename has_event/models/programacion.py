@@ -11,6 +11,7 @@ class Programacion(models.Model):
     _name = 'programacion'
     _description = _('Programacion de sesiones de entrenamiento')
     _rec_name = 'cod_nombre'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     codigo = fields.Char(string="Código")
     curso = fields.Char(string="Curso")
