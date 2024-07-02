@@ -22,6 +22,7 @@ class Programacion(models.Model):
     cod_nombre = fields.Char(string='N. Curso', compute='_computeVar')
     instructor = fields.Char(string='Instructor', compute='_compute_instructor')
     matricula = fields.Char(string='URL matrícula', compute='_compute_urlmatricula')
+    soporte = fields.Many2one(comodel_name='hr.employee', string='Soporte',compute='_compute_soporte')
 
     @api.depends('codigo', 'curso')
     def _computeVar(self):
@@ -37,6 +38,16 @@ class Programacion(models.Model):
                 record.instructor = curso_record.instructor  # Update instructor
             else:
                 record.instructor = ''  # Set empty string if no match
+
+    @api.depends('codigo')
+    def _compute_soporte(self):
+        for record in self:
+            # Search for cursos records with matching codigo in the id field
+            curso_record = self.env['event.event'].search([('id', '=', int(record.codigo))])
+            if curso_record:
+                record.soporte = curso_record.soporte  # Update instructor
+            else:
+                record.soporte = ''  # Set empty string if no match
     
     """ @api.depends('curso')
     def _compute_curso(self):

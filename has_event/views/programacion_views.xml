@@ -10,6 +10,7 @@
                 <field name="codigo" readonly="1"/>
                 <button type="object" name="go_to_event_programacion" string="Ir a" icon="fa-search-plus"/>
                 <field name="curso" readonly="1"/>
+                <field name="soporte"/>
                 <field name="cuenta"/>
                 <field name="instructor"/>
                 <field name="matricula"/>
@@ -62,6 +63,7 @@
                 <field name="codigo" string="Buscar por código, curso, cuenta" filter_domain="['|','|', ('codigo','ilike',self), ('curso','ilike',self), ('cuenta', 'ilike', self)]"> </field>
                 <group expand="1" string="Group By">
                     <filter string="Cuenta" name="cuenta" domain="[]" context="{'group_by':'cuenta'}"/>
+                    <filter string="Soporte" name="soporte" domain="[]" context="{'group_by':'soporte'}"/>
                     <filter string="Última clase" name="u_clase" domain="[('u_clase', 'like', 'true')]"/>
                     <filter string="Fecha inicio" name="fecha_inicio_month" context="{'group_by':'inicio:month'}"/>
                     <filter string="Próximos" name="fecha_inicio_ge_today" domain="[('inicio','&gt;=',(datetime.datetime.now().strftime('%Y-%m-%d')))]"/>
@@ -96,8 +98,10 @@
                 <field name="cod_nombre" filters="1"/>
                 <!-- <field name="curso"/> -->
                 <field name="cuenta" filters="1"/>
+                <field name="soporte" filters="1"/>
                 <field name="instructor" filters="1"/>
-                <field name="u_clase"/>
+                <!-- <field name="u_clase"/> -->
+                <field name="soporte"/>
                 <!-- <field name="event_type_id" filters="1" invisible="1"/> -->
             </calendar>
         </field>
