@@ -51,7 +51,7 @@
         <field name="model">webinars</field>
         <field name="arch" type="xml">
             <search>
-                <field name="curso" string="Buscar por curso, correo, interes o instructor" filter_domain="['|','|','|', ('intereses','ilike',self), ('correo','ilike',self), ('curso','ilike',self), ('instructor', 'ilike', self)]"> </field>
+                <field name="correo" string="Buscar por curso, correo, interes o instructor" filter_domain="['|','|','|', ('intereses','ilike',self), ('correo','ilike',self), ('curso','ilike',self), ('instructor', 'ilike', self)]"> </field>
                 <filter string="Enviar Info" name="enviar" domain="[('enviar_info','=','Si')]"/>
                 <group expand="1" string="Group By">
                     <filter string="Curso" name="curso" domain="[]" context="{'group_by':'curso'}"/>
