@@ -25,8 +25,8 @@
             <field name="badge_format" position="after">
                     <field name="instructor_id"/>
                     <field name="materiallearn"/>
-                    <field name="urllearn"/>
-                    <field name="urlmatricula"/>
+                    <field name="urllearn" widget="url"/>
+                    <field name="urlmatricula" widget="url"/>
                     <field name="fechas_teams_pres"/>
                     <field name="cantsesion" groups="event.group_event_manager"/>
                     <field name="hsesion" groups="event.group_event_manager"/>

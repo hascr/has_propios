@@ -13,17 +13,17 @@ class Programacion(models.Model):
     _rec_name = 'cod_nombre'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    codigo = fields.Char(string="Código")
-    curso = fields.Char(string="Curso")
-    cuenta = fields.Char(string="Cuenta", compute='_compute_cuenta')
-    inicio = fields.Datetime(string="Inicio")
-    fin = fields.Datetime(string="Fin")
-    u_clase = fields.Boolean(string="Última clase")
+    codigo = fields.Char(string="Código", tracking=True)
+    curso = fields.Char(string="Curso", tracking=True)
+    cuenta = fields.Char(string="Cuenta", compute='_compute_cuenta', tracking=True)
+    inicio = fields.Datetime(string="Inicio", tracking=True)
+    fin = fields.Datetime(string="Fin", tracking=True)
+    u_clase = fields.Boolean(string="Última clase", tracking=True)
 
-    cod_nombre = fields.Char(string='N. Curso', compute='_computeVar')
-    instructor = fields.Char(string='Instructor', compute='_compute_instructor')
-    matricula = fields.Char(string='URL matrícula', compute='_compute_urlmatricula')
-    soporte = fields.Many2one(comodel_name='hr.employee', string='Soporte',compute='_compute_soporte')
+    cod_nombre = fields.Char(string='N. Curso', compute='_computeVar', tracking=True)
+    instructor = fields.Char(string='Instructor', compute='_compute_instructor', tracking=True)
+    matricula = fields.Char(string='URL matrícula', compute='_compute_urlmatricula', tracking=True)
+    soporte = fields.Many2one(comodel_name='hr.employee', string='Soporte',compute='_compute_soporte', tracking=True)
 
     @api.depends('codigo', 'curso')
     def _computeVar(self):

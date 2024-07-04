@@ -6,7 +6,7 @@
         <field name="name">view.programacion.tree</field>
         <field name="model">programacion</field>
         <field name="arch" type="xml">
-            <tree string="Programacion" default_order = "codigo desc, inicio desc">
+            <tree string="Programacion" default_order = "inicio desc, codigo desc">
                 <field name="codigo" readonly="1" optional="show"/>
                 <button type="object" name="go_to_event_programacion" string="Ir a" icon="fa-search-plus"/>
                 <field name="curso" readonly="1" optional="show"/>
@@ -44,9 +44,9 @@
                             <field name="cuenta" readonly="1"/>
                             <field name="instructor" readonly="1"/>
                             <field name="matricula" readonly="1"/>
-                            <field name="inicio" readonly="1"/>
-                            <field name="fin" readonly="1"/>
-                            <field name="u_clase" readonly="1"/>
+                            <field name="inicio"/>
+                            <field name="fin"/>
+                            <field name="u_clase"/>
                 </group>
                 </sheet>
                 <div class="oe_chatter">
@@ -64,7 +64,7 @@
         <field name="model">programacion</field>
         <field name="arch" type="xml">
             <search string="Programacion">
-                <field name="codigo" string="Buscar por código, curso, cuenta" filter_domain="['|','|', ('codigo','ilike',self), ('curso','ilike',self), ('cuenta', 'ilike', self)]"> </field>
+                <field name="codigo" string="Buscar por código y/o curso" filter_domain="['|',('codigo','ilike',self), ('curso','ilike',self)]"> </field>
                 <group expand="1" string="Group By">
                     <filter string="Cuenta" name="cuenta" domain="[]" context="{'group_by':'cuenta'}"/>
                     <filter string="Soporte" name="soporte" domain="[]" context="{'group_by':'soporte'}"/>
