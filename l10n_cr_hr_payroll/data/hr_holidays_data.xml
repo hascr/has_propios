@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <record id="vacaciones" model="hr.leave.type">
+            <field name="name">Vacaciones</field>
+            <field name="code">VAC</field>
+            <field name="leave_validation_type">hr</field>
+            <field name="requires_allocation">yes</field>
+            <field name="employee_requests">no</field>
+            <field name="allocation_validation_type">officer</field>
+            <!-- <field name="responsible_ids" eval="[(4, ref('base.user_admin'))]"/> -->
+            <field name="request_unit">half_day</field>
+            <field name="support_document">False</field>
+            <field name="time_type">leave</field>
+            <field name="allows_negative">True</field>
+            <field name="max_allowed_negative">5</field>
+            <field name="unpaid" eval="False"/>
+            <field name="leave_notif_subtype_id" ref="hr_holidays.mt_leave_unpaid"/>
+            <field name="icon_id" ref="hr_holidays.icon_15"/>
+        </record>
+        
+        <record id="cumpleanos" model="hr.leave.type">
+            <field name="name">Cumpleaños</field>
+            <field name="code">CUM</field>
+            <field name="leave_validation_type">hr</field>
+            <field name="requires_allocation">yes</field>
+            <field name="employee_requests">no</field>
+            <field name="allocation_validation_type">officer</field>
+            <!-- <field name="responsible_ids" eval="[(4, ref('base.user_admin'))]"/> -->
+            <field name="request_unit">day</field>
+            <field name="support_document">False</field>
+            <field name="time_type">leave</field>
+            <field name="allows_negative">False</field>
+            <field name="unpaid" eval="False"/>
+            <field name="leave_notif_subtype_id" ref="hr_holidays.mt_leave_unpaid"/>
+            <field name="icon_id" ref="hr_holidays.icon_18"/>
+        </record>
+
+        <record id="citas" model="hr.leave.type">
+            <field name="name">Citas médicas</field>
+            <field name="code">CITA</field>
+            <field name="leave_validation_type">hr</field>
+            <field name="requires_allocation">no</field>
+            <!-- <field name="employee_requests">no</field>
+            <field name="allocation_validation_type">officer</field> -->
+            <!-- <field name="responsible_ids" eval="[(4, ref('base.user_admin'))]"/> -->
+            <field name="request_unit">hour</field>
+            <field name="support_document">True</field>
+            <field name="time_type">leave</field>
+            <field name="allows_negative">False</field>
+            <field name="unpaid" eval="False"/>
+            <field name="leave_notif_subtype_id" ref="hr_holidays.mt_leave_unpaid"/>
+            <field name="icon_id" ref="hr_holidays.icon_22"/>
+        </record>
+
+        <record id="incapacidades" model="hr.leave.type">
+            <field name="name">Incapacidades</field>
+            <field name="code">INCA</field>
+            <field name="leave_validation_type">hr</field>
+            <field name="requires_allocation">no</field>
+            <!-- <field name="employee_requests">no</field>
+            <field name="allocation_validation_type">officer</field> -->
+            <!-- <field name="responsible_ids" eval="[(4, ref('base.user_admin'))]"/> -->
+            <field name="request_unit">day</field>
+            <field name="support_document">True</field>
+            <field name="time_type">leave</field>
+            <field name="allows_negative">False</field>
+            <field name="unpaid" eval="False"/>
+            <field name="leave_notif_subtype_id" ref="hr_holidays.mt_leave_unpaid"/>
+            <field name="icon_id" ref="hr_holidays.icon_22"/>
+        </record>
+
+        <record id="permiso_sin" model="hr.leave.type">
+            <field name="name">Permiso sin goce de salario</field>
+            <field name="code">PSG</field>
+            <field name="leave_validation_type">hr</field>
+            <field name="requires_allocation">no</field>
+            <field name="employee_requests">no</field>
+            <field name="allocation_validation_type">officer</field>
+            <!-- <field name="responsible_ids" eval="[(4, ref('base.user_admin'))]"/> -->
+            <field name="request_unit">half_day</field>
+            <field name="support_document">True</field>
+            <field name="time_type">leave</field>
+            <field name="allows_negative">False</field>
+            <field name="max_allowed_negative">5</field>
+            <field name="unpaid" eval="False"/>
+            <field name="leave_notif_subtype_id" ref="hr_holidays.mt_leave_unpaid"/>
+            <field name="icon_id" ref="hr_holidays.icon_29"/>
+        </record>
+
+        <record id="permiso_con" model="hr.leave.type">
+            <field name="name">Permiso con goce de salario</field>
+            <field name="code">PCG</field>
+            <field name="leave_validation_type">hr</field>
+            <field name="requires_allocation">no</field>
+            <field name="employee_requests">no</field>
+            <field name="allocation_validation_type">officer</field>
+            <!-- <field name="responsible_ids" eval="[(4, ref('base.user_admin'))]"/> -->
+            <field name="request_unit">half_day</field>
+            <field name="support_document">True</field>
+            <field name="time_type">leave</field>
+            <field name="allows_negative">False</field>
+            <field name="max_allowed_negative">5</field>
+            <field name="unpaid" eval="False"/>
+            <field name="leave_notif_subtype_id" ref="hr_holidays.mt_leave_unpaid"/>
+            <field name="icon_id" ref="hr_holidays.icon_8"/>
+        </record>
+
+    </data>
+</odoo>

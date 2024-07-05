@@ -1,5 +1,5 @@
 ------------------------------------------------------------------------------------------------------------------------------
-#1
+#1 RETSAL
 tramo_25 = contract.company_id.fourth_wage_tax / 2
 tramo_20 = contract.company_id.third_wage_tax / 2
 tramo_15 = contract.company_id.second_wage_tax / 2
@@ -21,7 +21,7 @@ else:
 
 result = max(0, impuesto - (depend + conyug))
 ------------------------------------------------------------------------------------------------------------------------------
-#2
+#2 RETSALUSD
 tramo_25 = contract.company_id.fourth_wage_tax / 2
 tramo_20 = contract.company_id.third_wage_tax / 2
 tramo_15 = contract.company_id.second_wage_tax / 2

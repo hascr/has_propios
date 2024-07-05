@@ -65,8 +65,9 @@ result = 0.0
         <field name="sequence" eval="3" />
         <field name="code">AUSEN</field>
         <field name="category_id" ref="om_hr_payroll.DED" />
-        <field name="condition_select">none</field>
+        <field name="condition_select">python</field>
         <field name="amount_select">code</field>
+        <field name="condition_python">result = worked_days.AUSEN or False</field>
         <field name="amount_python_compute">
 # Available variables:
 #-------------------------------
@@ -84,7 +85,7 @@ result = 0.0
 # result_rules: object with a dict of qty, rate, amount an total of calculated rules
 # tools: object that contain libraries and tools that can be used in calculations
 
-result = contract.wage / 2 / 15 * 1 * worked_days.WORK100.number_of_days
+result = contract.wage / 2 / 15 * -1 * worked_days.AUSEN.number_of_days
         </field>
     </record>
 
@@ -125,7 +126,9 @@ result = categories.BASIC + categories.ALW - categories.DED
         <field name="category_id" ref="om_hr_payroll.ALW" />
         <field name="condition_select">none</field>
         <field name="appears_on_payslip">False</field>
+        <field name="condition_select">python</field>
         <field name="amount_select">code</field>
+        <field name="condition_python">result = worked_days.EXTRA or False</field>
         <field name="amount_python_compute">
 # Available variables:
 #-------------------------------
@@ -143,7 +146,7 @@ result = categories.BASIC + categories.ALW - categories.DED
 # result_rules: object with a dict of qty, rate, amount an total of calculated rules
 # tools: object that contain libraries and tools that can be used in calculations
 
-result = contract.wage / 240 * 1.5 * worked_days.WORK100.number_of_hours
+result = contract.wage / 240 * 1.5 * worked_days.EXTRA.number_of_hours
         </field>
     </record>
 

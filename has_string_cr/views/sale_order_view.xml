@@ -25,6 +25,17 @@
             </field>
         </record>
 
+<record id="view_quotation_tree_inherit" model="ir.ui.view">
+        <field name="name">sale.order.tree.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree" />
+        <field name="arch" type="xml">
+               <field name="create_date" position="replace">
+                <field name="date_order" widget="date" optional="show"/>
+            </field>
+            </field>
+        </record>
+
 <template id="report_saleorder_document_inherit" inherit_id="sale.report_saleorder_document">
         <xpath expr="//div[@id='informations']" position="inside">
             <div t-if="doc.pricelist_id.name" class="col-auto col-3 mw-100 mb-2">
