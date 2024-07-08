@@ -24,11 +24,11 @@ class has_event(models.Model):
     soporte = fields.Many2one(comodel_name='hr.employee', tracking=True, string='Soporte', domain=[('department_id', '=', 1),('parent_id', '!=', False)])
     asesor = fields.Many2one(comodel_name='hr.employee', tracking=True, string='Realizar evaluación', domain=[('department_id', '=', 2),('parent_id', '!=', False)])
     #asesor = fields.Many2one(comodel_name='res.users', tracking=True, string='Realizar evaluación', domain=lambda self: [("groups_id", "=", self.env.ref( "sales_team.group_sale_salesman" ).id)])
-    contrato_firmado = fields.Binary(attachment=True, tracking=True)
+    contrato_firmado = fields.Binary(attachment=True)
     contrato_name = fields.Char()
     account_move_id = fields.Many2one('account.move', string='Factura de Proveedor', domain=[('instructor', '=', True)], tracking=True)
     monto_contrato = fields.Float(string="Monto contrato", compute='_monto_contrato', tracking=True)
-    temario = fields.Binary(attachment=True, string="Temario", tracking=True)
+    temario = fields.Binary(attachment=True, string="Temario")
     temario_name = fields.Char()
 
     def go_to_contratos(self):
