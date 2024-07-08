@@ -30,6 +30,7 @@ class has_event(models.Model):
     monto_contrato = fields.Float(string="Monto contrato", compute='_monto_contrato', tracking=True)
     temario = fields.Binary(attachment=True, string="Temario")
     temario_name = fields.Char()
+    grupo = fields.Selection([('1','1'),('2','2'),('3','3'),('4','4'),('5','5'),('6','6'),('7','7'),('8','8'),('9','9'),('10','10')])
 
     def go_to_contratos(self):
         name_form = ('Contratos')

@@ -23,6 +23,7 @@
                     <field name="id" string="Código de curso"/>
             </field>
             <field name="badge_format" position="after">
+                    <field name="grupo"/>
                     <field name="instructor_id"/>
                     <field name="materiallearn"/>
                     <field name="urllearn" widget="url"/>
