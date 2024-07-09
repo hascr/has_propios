@@ -69,7 +69,7 @@ class asistencia(models.Model):
             if curso_record:
                 record.user_id = int(curso_record.asesor)
             else:
-                record.user_id = 9  # Set asesor to None if no match
+                record.user_id = 10  # Set asesor to None if no match
 
     """ @api.depends('user_id')
     def _compute_user_name(self):
