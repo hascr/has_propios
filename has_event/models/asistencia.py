@@ -9,7 +9,7 @@ _logger = logging.getLogger(__name__)
 
 class asistencia(models.Model):
     _name = 'asistencia'
-    _description = _('Asistencia de sesiones de entrenamiento')
+    _description = _('Asistencia')
     _rec_name = 'nombre'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
