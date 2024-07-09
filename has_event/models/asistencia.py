@@ -63,13 +63,23 @@ class asistencia(models.Model):
     
     @api.depends('codigo', 'correo')
     def _compute_asesor(self):
-            for record in self:
-                codigo_int = int(record.codigo)  # Convert codigo to integer
-                curso_record = self.env['event.registration'].search([('event_id', '=', codigo_int), ('email', '=', record.correo)])
-            if curso_record:
-                record.user_id = int(curso_record.asesor)
-            else:
-                record.user_id = 10  # Set asesor to None if no match
+        for record in self:
+            codigo_int = int(record.codigo)  # Convertir codigo a entero
+            curso_record = self.env['event.registration'].search([
+            ('event_id', '=', codigo_int),
+            ('correo', '=', record.correo)  # Buscar primero en 'correo'
+        ])
+        if not curso_record:
+            curso_record = self.env['event.registration'].search([
+                ('event_id', '=', codigo_int),
+                ('email', '=', record.correo)  # Buscar en 'email' si no hay coincidencia
+            ])
+        if curso_record:
+            record.user_id = int(curso_record.asesor)
+        else:
+            record.user_id = 10  # Establecer asesor a None si no hay coincidencia
+
+
 
     """ @api.depends('user_id')
     def _compute_user_name(self):
