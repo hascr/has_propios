@@ -45,5 +45,69 @@
         </xpath>
 </template>
 
+<record id="view_invoice_tree_inherit" model="ir.ui.view">
+            <field name="name">account.invoice.tree.inherit</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_invoice_tree"/>
+            <field name="arch" type="xml">
+            <xpath expr="//tree" position="replace">
+                <tree string="Invoices"
+                      js_class="account_tree"
+                      decoration-info="state == 'draft'"
+                      decoration-muted="state == 'cancel'"
+                      expand="context.get('expand', False)"
+                      sample="1">
+                    <header>
+                        <button name="action_register_payment" type="object" string="Register Payment"
+                            groups="account.group_account_user"
+                            invisible="context.get('default_move_type') not in ('out_invoice', 'out_refund', 'out_receipt', 'in_invoice', 'in_refund','in_receipt')"/>
+                    </header>
+                    <field name="made_sequence_hole" column_invisible="True"/>
+                    <!-- <field name="name" decoration-bf="1" decoration-danger="made_sequence_hole"/> -->
+                    <field name="invoice_date" string="Fecha" optional="show" column_invisible="context.get('default_move_type') not in ('in_invoice', 'in_refund', 'in_receipt')" readonly="state != 'draft'"/>
+                    <field name="invoice_date" string="Fecha" optional="show" column_invisible="context.get('default_move_type') not in ('out_invoice', 'out_refund', 'out_receipt')" readonly="state != 'draft'"/>
+                    <field name="ref" string="Referencia" optional="show"/>
+                    <field name="name" decoration-bf="1" decoration-danger="made_sequence_hole" optional="hide"/>
+                    <field name="invoice_partner_display_name" string="Proveedor" column_invisible="context.get('default_move_type') not in ('in_invoice', 'in_refund', 'in_receipt')" groups="base.group_user"/>
+                    <field name="invoice_partner_display_name" string="cliente" column_invisible="context.get('default_move_type') not in ('out_invoice', 'out_refund', 'out_receipt')" groups="base.group_user"/>
+
+
+                    <field name="date" string="Fecha contable" optional="hide" readonly="state in ['cancel', 'posted']"/>
+                    <field name="invoice_date_due" widget="remaining_days" optional="show" invisible="payment_state in ('paid', 'in_payment', 'reversed') or state == 'cancel'"/>
+                    <field name="fecha_arreglo" widget="remaining_days" optional="show" invisible="payment_state in ('paid', 'in_payment', 'reversed') or state == 'cancel' or context.get('default_move_type') in ('out_invoice', 'out_refund', 'out_receipt')" />
+                    <field name="invoice_origin" string="Presupuesto" optional="hide"/>
+                    <field name="payment_reference" string="Referencia de pago" optional="hide" column_invisible="context.get('default_move_type') in ('out_invoice', 'out_refund', 'out_receipt')"/>
+                    <!-- <field name="ref" optional="hide"/> -->
+
+                    <field name="invoice_user_id" optional="hide" column_invisible="context.get('default_move_type') not in ('out_invoice', 'out_refund', 'out_receipt')" string="Asesor" widget="many2one_avatar_user"/>
+                    <field name="activity_ids" widget="list_activity" optional="show"/>
+                    <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}" optional="hide"/>
+                    <field name="company_id" groups="!base.group_multi_company" column_invisible="True"/>
+                    <!-- <field name="amount_untaxed_signed" string="Tax Excluded" sum="Total" optional="show"/> -->
+                    <field name="amount_untaxed_signed" string="Subtotal colones" sum="Total" optional="hide"/>
+                    <field name="amount_tax_signed" string="Impuesto colones" sum="Total" optional="hide"/>
+                    <!-- <field name="amount_total_signed" string="Total" sum="Total" decoration-bf="1" optional="show"/> -->
+                    <field name="amount_total_signed" string="Total colones" sum="Total" decoration-bf="1" optional="hide"/>
+                    <field name="amount_total_in_currency_signed" string="Total" optional="show" groups="base.group_multi_currency"/>
+                    <field name="amount_total_in_currency_signed" string="Total" optional="hide" groups="!base.group_multi_currency"/>
+                    <field name="amount_residual_signed" string="Pendiente" sum="Amount Due" optional="hide"/>
+                    <field name="currency_id" optional="hide" readonly="state in ['cancel', 'posted']"/>
+                    <field name="company_currency_id" column_invisible="True"/>
+                    <field name="to_check" optional="hide" widget="boolean_toggle"/>
+                    <field name="payment_state"
+                           string="Pago"
+                           widget="badge"
+                           decoration-danger="payment_state == 'not_paid'"
+                           decoration-warning="payment_state in ('partial', 'in_payment')"
+                           decoration-success="payment_state in ('paid', 'reversed')"
+                           invisible="payment_state == 'invoicing_legacy' or state != 'posted' or move_type == 'entry'"
+                           optional="show"/>
+                    <field name="state" widget="badge" decoration-success="state == 'posted'" decoration-info="state == 'draft'" optional="show"/>
+                    <field name="move_type" column_invisible="context.get('default_move_type', True)"/>
+                  </tree>
+            </xpath>
+            </field>
+        </record>
+
     </data>
 </odoo>
