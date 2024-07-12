@@ -52,7 +52,7 @@ class reporte_impuestos(models.Model):
 			CASE WHEN t.type_tax_use = 'purchase' THEN 'compra' ELSE	CASE WHEN t.type_tax_use = 'sale' THEN 'venta' ELSE 'manual' END END AS tipo,
 			a.ref AS factura,
 			a.date AS fecha,
-			ROUND(-a.balance * t.amount / 100,2) AS saldo
+			-a.balance * t.amount / 100 AS saldo
 			
 			
 
