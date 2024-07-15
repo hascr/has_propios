@@ -134,7 +134,7 @@ class cursos(models.Model):
 -- ee.learn AS learn,
    ee.urllearn AS urllearn,
    ee.materiallearn AS materiallearn,
-	(SELECT hr1.work_email FROM hr_employee hr1 WHERE hr1.id = ee.asesor) AS asesor,
+	(SELECT rp1.email FROM res_partner rp1 JOIN res_users ru1 on ru1.partner_id = rp1.id WHERE ru1.id = ee.asesor) AS asesor,
 	(to_char(ee.write_date, 'dd-mm-yyyy'::text) = to_char(now(), 'dd-mm-yyyy'::text)) AS actualizacion,
 	(SELECT 	l.value_char_box FROM	survey_user_input_line l JOIN	survey_user_input i ON l.user_input_id = i.id WHERE	l.question_id = 2 AND	i.partner_id = ee.instructor_id AND	l.answer_type = 'char_box' LIMIT 1) AS cedula_contrato,
 	(SELECT 	l.value_char_box FROM	survey_user_input_line l JOIN	survey_user_input i ON l.user_input_id = i.id WHERE	l.question_id = 1 AND	i.partner_id = ee.instructor_id AND	l.answer_type = 'char_box' LIMIT 1) AS nombre_contrato,

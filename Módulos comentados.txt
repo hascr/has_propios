@@ -41,3 +41,11 @@ server > odoo > addons > base > views > res_partner_views.xml
 Línea: 324 (después de function)
 
 <field name="area_id"/>
+------------------------------------------------------------------------------------------------------------------------------
+#6
+PARAMETROS DE SISTEMA
+
+    Permite tracking en pedidos en estado borrador
+        sale.track_draft_orders = True
+
+------------------------------------------------------------------------------------------------------------------------------
