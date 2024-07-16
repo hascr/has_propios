@@ -145,7 +145,8 @@ class cursos(models.Model):
 	ee.nocontrato AS nocontrato,
     ee.stage_id as estado,
     et."name" ->> 'es_CR' AS tipo,
-    ee.soporte as soporte
+    ee.soporte as soporte,
+    (SELECT rp1.email FROM res_partner rp1 WHERE rp1.id = ee.instructor_id) AS correo_instructor
    
 FROM event_event ee
 LEFT JOIN res_users ru ON ru.id = ee.user_id
