@@ -103,6 +103,9 @@ class cursos(models.Model):
         comodel_name='hr.employee',
         string='Soporte'
     )
+    correo_instructor = fields.Char(
+        string='Correo instructor'
+    )
 
 
 
