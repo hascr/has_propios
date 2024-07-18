@@ -50,7 +50,7 @@ class surveyasesor(models.Model):
             SELECT		s.id as id,
                          --s.id as user_input_id,
 				s.survey_id,
-				(SELECT a."value"->> 'es_CR' FROM survey_question_answer a WHERE a.id = (SELECT MAX(l.suggested_answer_id) filter (WHERE l.question_id IN ((SELECT sq.id FROM survey_question sq WHERE sq.title->> 'es_CR' ILIKE '%Asesor%'))) FROM	survey_user_input_line l WHERE l.user_input_id = s.id)) AS asesor
+				(SELECT a."value"->> 'es_CR' FROM survey_question_answer a WHERE a.id = (SELECT MAX(l.suggested_answer_id) filter (WHERE l.question_id IN ((SELECT sq.id FROM survey_question sq WHERE sq.title->> 'es_CR' ILIKE '%asesor%'))) FROM	survey_user_input_line l WHERE l.user_input_id = s.id)) AS asesor
 
 FROM			survey_user_input s
 
