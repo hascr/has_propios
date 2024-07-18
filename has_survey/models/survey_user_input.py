@@ -10,7 +10,7 @@ _logger = logging.getLogger(__name__)
 class SurveyUserInput(models.Model):
     _inherit = 'survey.user_input'
 
-    asesor = fields.Char(string="Asesor", compute='_compute_asesor')
+    asesor = fields.Char(string="Asesor", compute='_compute_asesor',store=True)
     asesor_correo = fields.Char(string="Correo", compute='_compute_asesor_correo',store=True)
 
     @api.depends('survey_id')
