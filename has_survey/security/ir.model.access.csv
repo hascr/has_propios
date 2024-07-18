@@ -2,5 +2,3 @@ id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
 access_evaluaciones_manager,evaluaciones_manager,model_evaluaciones,event.group_event_user,1,1,1,1
 access_presenciales_manager,presenciales_manager,model_presenciales,event.group_event_user,1,1,1,1
 access_webinars_manager,webinars_manager,model_webinars,event.group_event_user,1,1,1,1
-access_survey_user_input_manager,survey_user_input_manager,model_survey_user_input,event.group_event_user,1,1,1,1
-access_surveyasesor_manager,surveyasesor_manager,model_surveyasesor,event.group_event_user,1,1,1,1
