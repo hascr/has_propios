@@ -41,6 +41,8 @@ class presenciales(models.Model):
     lugar = fields.Float(_('Condiciones de lugar'), group_operator='avg')
     maquinas = fields.Float(_('Desempeño de máquinas'), group_operator='avg')
     refrigerio = fields.Float(_('Refrigerio'), group_operator='avg')
+    area_trabajo = fields.Char(_('Área de trabajo'))
+
 
     def init(self):
         self._cr.execute("""
@@ -101,7 +103,8 @@ class presenciales(models.Model):
 				(SELECT MAX(l.value_ans_sh_email) filter (WHERE l.question_id = 73) FROM	survey_user_input_line l WHERE l.user_input_id = s.id) AS correo,
 				(SELECT MAX(l.value_char_box) filter (WHERE l.question_id = 74) FROM	survey_user_input_line l WHERE l.user_input_id = s.id) AS telefono,
 				(SELECT c.instructor FROM cursos c WHERE concat(c.codigo,' - ',c.curso) = (SELECT a."value"->> 'es_CR' FROM survey_question_answer a WHERE a.id = (SELECT MAX(l.suggested_answer_id) filter (WHERE l.question_id = 51) FROM	survey_user_input_line l WHERE l.user_input_id = s.id))) AS instructor,
-				(SELECT c.sesiones * c.horassesion FROM cursos c WHERE concat(c.codigo,' - ',c.curso) = (SELECT a."value"->> 'es_CR' FROM survey_question_answer a WHERE a.id = (SELECT MAX(l.suggested_answer_id) filter (WHERE l.question_id = 51) FROM	survey_user_input_line l WHERE l.user_input_id = s.id))) AS duracion
+				(SELECT c.sesiones * c.horassesion FROM cursos c WHERE concat(c.codigo,' - ',c.curso) = (SELECT a."value"->> 'es_CR' FROM survey_question_answer a WHERE a.id = (SELECT MAX(l.suggested_answer_id) filter (WHERE l.question_id = 51) FROM	survey_user_input_line l WHERE l.user_input_id = s.id))) AS duracion,
+				(SELECT a."value"->> 'es_CR' FROM survey_question_answer a WHERE a.id = (SELECT MAX(l.suggested_answer_id) filter (WHERE l.question_id = 114) FROM	survey_user_input_line l WHERE l.user_input_id = s.id)) AS area_trabjo
 
 FROM			survey_user_input s
 

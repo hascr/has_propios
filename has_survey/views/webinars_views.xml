@@ -23,6 +23,7 @@
                 <field name="intereses" optional="hide"/>
                 <field name="correo_intereses" optional="hide"/>
                 <field name="whatsapp" optional="hide"/>
+                <field name="area_trabajo" optional="hide"/>
             </tree>
         </field>
     </record>
