@@ -104,7 +104,7 @@ class presenciales(models.Model):
 				(SELECT MAX(l.value_char_box) filter (WHERE l.question_id = 74) FROM	survey_user_input_line l WHERE l.user_input_id = s.id) AS telefono,
 				(SELECT c.instructor FROM cursos c WHERE concat(c.codigo,' - ',c.curso) = (SELECT a."value"->> 'es_CR' FROM survey_question_answer a WHERE a.id = (SELECT MAX(l.suggested_answer_id) filter (WHERE l.question_id = 51) FROM	survey_user_input_line l WHERE l.user_input_id = s.id))) AS instructor,
 				(SELECT c.sesiones * c.horassesion FROM cursos c WHERE concat(c.codigo,' - ',c.curso) = (SELECT a."value"->> 'es_CR' FROM survey_question_answer a WHERE a.id = (SELECT MAX(l.suggested_answer_id) filter (WHERE l.question_id = 51) FROM	survey_user_input_line l WHERE l.user_input_id = s.id))) AS duracion,
-				(SELECT a."value"->> 'es_CR' FROM survey_question_answer a WHERE a.id = (SELECT MAX(l.suggested_answer_id) filter (WHERE l.question_id = 114) FROM	survey_user_input_line l WHERE l.user_input_id = s.id)) AS area_trabjo
+				(SELECT a."value"->> 'es_CR' FROM survey_question_answer a WHERE a.id = (SELECT MAX(l.suggested_answer_id) filter (WHERE l.question_id = 114) FROM	survey_user_input_line l WHERE l.user_input_id = s.id)) AS area_trabajo
 
 FROM			survey_user_input s
 

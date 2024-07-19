@@ -60,7 +60,7 @@ class webinars(models.Model):
 				CONCAT((SELECT MAX(l.value_char_box) filter (WHERE l.question_id = 108) FROM	survey_user_input_line l WHERE l.user_input_id = s.id),(SELECT MAX(l.value_char_box) filter (WHERE l.question_id = 109) FROM	survey_user_input_line l WHERE l.user_input_id = s.id)) AS WhatsApp,
 				(SELECT MAX(l.value_ans_sh_email) filter (WHERE l.question_id = 111) FROM	survey_user_input_line l WHERE l.user_input_id = s.id) AS correo,
 				(SELECT c.instructor FROM cursos c WHERE concat(c.codigo,' - ',c.curso) = (SELECT a."value"->> 'es_CR' FROM survey_question_answer a WHERE a.id = (SELECT MAX(l.suggested_answer_id) filter (WHERE l.question_id = 103) FROM	survey_user_input_line l WHERE l.user_input_id = s.id))) AS instructor,
-				(SELECT a."value"->> 'es_CR' FROM survey_question_answer a WHERE a.id = (SELECT MAX(l.suggested_answer_id) filter (WHERE l.question_id = 115) FROM	survey_user_input_line l WHERE l.user_input_id = s.id)) AS area_trabjo
+				(SELECT a."value"->> 'es_CR' FROM survey_question_answer a WHERE a.id = (SELECT MAX(l.suggested_answer_id) filter (WHERE l.question_id = 115) FROM	survey_user_input_line l WHERE l.user_input_id = s.id)) AS area_trabajo
 
 
 FROM			survey_user_input s
