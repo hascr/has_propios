@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="PartnerDetailsEdit" t-inherit="point_of_sale.PartnerDetailsEdit" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('partner-details-box')]" position="inside">
+            <t t-if="pos.isCRCompany()">
+                <div class="partner-detail col">
+                    <label class="form-label" for="id_type">Identification Type</label>
+                    <select class="detail form-select" name="identification_id" id="id_type"
+                        t-model="changes.identification_id">
+                        <t t-foreach="pos.identification_types" t-as="identification_type" t-key="identification_type.id">
+                            <option t-att-value="identification_type.id">
+                                <t t-esc="identification_type.name" />
+                            </option>
+                        </t>
+                    </select>
+                </div>
+            </t>
+        </xpath>
+    </t>
+
+</templates>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="l10n_cr_pos.SetCardButton">
+        <div t-att-class="pos.selectedOrder.card_clicked?'btn-primary':'btn-light'" class="control-button btn rounded-0 fw-bolder" t-on-click="() => this.click()" >
+            <i class="fa fa-credit-card me-1" role="img" aria-label="Set Card"
+               title="Set Sale Order" /> Tarjeta
+        </div>
+    </t>
+
+</templates>

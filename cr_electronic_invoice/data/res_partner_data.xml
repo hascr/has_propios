@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="cr_final_consumer" model="res.partner">
+            <field name="name">Consumidor final</field>
+            <field name="country_id" ref="base.ec"/>
+            <field name="vat">9999999999999</field>
+        </record>
+    </data>
+</odoo>
