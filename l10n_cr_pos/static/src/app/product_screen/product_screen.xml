@@ -2,7 +2,8 @@
 <templates id="template" xml:space="preserve">
     <t t-name="l10n_cr_pos.ProductScreen" t-inherit="point_of_sale.ProductScreen" t-inherit-mode="extension">
         <xpath expr="//OrderWidget" position="attributes">
-            <attribute name="card_clicked">pos.card_clicked</attribute>
+            <attribute name="card_clicked">currentOrder.card_clicked</attribute>
+            <attribute name="dev_tax">env.utils.formatCurrency(currentOrder.get_dev_total_tax())</attribute>
         </xpath>
     </t>
 </templates>

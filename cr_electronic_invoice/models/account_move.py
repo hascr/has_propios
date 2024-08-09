@@ -1539,7 +1539,7 @@ class AccountInvoiceElectronic(models.Model):
 
             # Calcular si aplica IVA Devuelto
             # Sólo aplica para clínicas y para pago por tarjeta
-            actividad_iva_devuelto = 'CLINICA, CENTROS MEDICOS, HOSPITALES PRIVADOS Y OTROS'
+            """ actividad_iva_devuelto = 'CLINICA, CENTROS MEDICOS, HOSPITALES PRIVADOS Y OTROS'
             if inv.economic_activity_id.name == actividad_iva_devuelto and inv.payment_methods_id.sequence == '02':
                 prod_iva_devuelto = self.env.ref('cr_electronic_invoice.product_iva_devuelto')
                 iva_devuelto = 0
@@ -1558,7 +1558,7 @@ class AccountInvoiceElectronic(models.Model):
                         'account_id': prod_iva_devuelto.property_account_income_id.id,
                         'price_unit': -iva_devuelto,
                         'quantity': 1,
-                    })
+                    }) """
 
             super().action_post()
             if not inv.number_electronic:

@@ -8,5 +8,6 @@ patch(OrderWidget, {
     props: {
         ...OrderWidget.props,
         card_clicked: { type: Boolean, optional: true },
+        dev_tax: { type: String, optional: true },
     },
 });

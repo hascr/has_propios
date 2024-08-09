@@ -2,10 +2,10 @@
 <templates id="template" xml:space="preserve">
     <t t-name="l10n_cr_pos.OrderWidget" t-inherit="point_of_sale.OrderWidget" t-inherit-mode="extension">
         <xpath expr="//div[hasclass('order-summary')]/div" position="after">
-<!--            <div t-if="props.card_clicked" class="fs-6 text-muted subentry">-->
-<!--                Devolución impuesto: <span class="value">₡ 0.00</span>-->
-<!--            </div>-->
+            <div t-if="props.card_clicked" class="fs-6 text-muted subentry">
+                Devolución impuesto: <span t-esc="props.dev_tax" class="tax"/>
 
+            </div>
         </xpath>
     </t>
 </templates>

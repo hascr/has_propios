@@ -83,4 +83,43 @@ patch(Order.prototype, {
         }
         return result;
     },
+
+    get_dev_total_tax() {
+        var groupTaxes = {};
+        var dev_taxes = [];
+        var sum = 0;
+        this.orderlines.forEach(function (line) {
+            var taxDetails = line.get_tax_details();
+            var taxIds = Object.keys(taxDetails);
+            for (var t = 0; t < taxIds.length; t++) {
+                var taxId = taxIds[t];
+                if (!(taxId in groupTaxes)) {
+                    groupTaxes[taxId] = 0;
+                }
+                var taxes = line.get_taxes();
+                if (line.tax_ids) {
+                    for (const tax of taxes) {
+                        if (tax.dev_tax_id) {
+                            // Eliminar el elemento dev_tax_id del arreglo tax_ids si existe
+                            if (dev_taxes.indexOf(tax.dev_tax_id) === -1) {
+                                dev_taxes.push(tax.dev_tax_id);
+                            }
+                        }
+                    }
+                }
+                groupTaxes[taxId] += taxDetails[taxId].amount;
+            }
+        });
+        for (let i = 0; i < dev_taxes.length; i++) {
+            sum += groupTaxes[dev_taxes[i][0]];
+        }
+        return Math.abs(sum);
+    },
+
+    // get_total_tax() {
+    //     const sum = super.get_total_tax();
+    //     return sum;
+    // }
+
+
 });
