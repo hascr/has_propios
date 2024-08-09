@@ -1,26 +1,4 @@
 ------------------------------------------------------------------------------------------------------------------------------
-#1
-server > odoo > addons > survey > views > survey_templates.xml
-
-Líneas: 51 - 58
-
-<div class="o_survey_brand_message float-end rounded me-3 border">
-                    <div class="px-2 py-2 d-inline-block" t-call="web.brand_promotion_message">
-                        <t t-set="_message"></t>
-                        <t t-set="_utm_medium" t-valuef="survey"/>
-                    </div>
-                    <div class="o_survey_navigation_wrapper d-inline-block d-print-none" t-call="survey.survey_navigation">
-                    </div>
-                </div>
-------------------------------------------------------------------------------------------------------------------------------
-#2
-server > odoo > addons > sale > views > sale_order_views.xml
-
-Líneas: 770 - 771
-
-                <field name="name" string="Order"
-                    filter_domain="['|', '|', '|', ('order_line.name', 'ilike', self),('name', 'ilike', self), ('client_order_ref', 'ilike', self), ('partner_id', 'child_of', self)]"/>
-------------------------------------------------------------------------------------------------------------------------------
 #3
 server > odoo > addons > web > static > img
 
@@ -33,14 +11,6 @@ FORMATO DE FECHA
 %d/%b/%Y
 FORMATO DE HORA
 %I:%M %p
-------------------------------------------------------------------------------------------------------------------------------
-#5
-CAMPO DE AREA DE TRABAJO EN CREACIÓN DE CONTACTO
-server > odoo > addons > base > views > res_partner_views.xml
-
-Línea: 324 (después de function)
-
-<field name="area_id"/>
 ------------------------------------------------------------------------------------------------------------------------------
 #6
 PARAMETROS DE SISTEMA

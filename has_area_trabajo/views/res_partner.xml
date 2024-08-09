@@ -10,6 +10,9 @@
                 <field name="vat" position="after">
                     <field name="area_id"/>
             </field>
+            <xpath expr="//field[@name='child_ids']//form//sheet//group//group[1]//field[3]" position="after">
+                <field name="area_id"/>
+            </xpath>
         </field>
      </record>  
   </data>
