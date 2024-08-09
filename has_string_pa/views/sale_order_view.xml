@@ -115,10 +115,10 @@
         <field name="mode">primary</field>
         <field name="inherit_id" ref="sale.view_sales_order_filter"/>
         <field name="arch" type="xml">
-            <field name="name" position="replace">
-                <field name="name" string="Order"
+            <xpath expr="//search//field[@name='name']" position="replace">
+            <field name="name" string="Order"
                     filter_domain="['|', '|', '|', ('order_line.name', 'ilike', self),('name', 'ilike', self), ('client_order_ref', 'ilike', self), ('partner_id', 'child_of', self)]"/>
-            </field>
+            </xpath>
         </field>
     </record>
 
