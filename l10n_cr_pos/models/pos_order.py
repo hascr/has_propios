@@ -24,6 +24,16 @@ _logger = logging.getLogger(__name__)
 class PosOrder(models.Model):
     _inherit = "pos.order"
 
+    def _prepare_invoice_vals(self):
+        # EXTENDS 'point_of_sale'
+        vals = super()._prepare_invoice_vals()
+        if self.company_id.country_id.code == 'CR':
+            if self.partner_id.vat and self.partner_id.identification_id:
+                vals['tipo_documento'] = 'FE'
+            else:
+                vals['tipo_documento'] = 'TE'
+        return vals
+
     # se sobreescribe para llamar al action_post en vez del _post de account_move
     def _generate_pos_order_invoice(self):
         moves = self.env['account.move']
