@@ -1180,13 +1180,13 @@ def load_xml_data(invoice, load_lines, account_id, product_id=False, analytic_ac
                        'move_id': invoice.id,
                        'price_unit': line.xpath("inv:PrecioUnitario", namespaces=namespaces)[0].text,
                        'quantity': line.xpath("inv:Cantidad", namespaces=namespaces)[0].text,
-                       'product_uom_id': product_uom,
+                       # 'product_uom_id': product_uom,
                        'sequence': line.xpath("inv:NumeroLinea", namespaces=namespaces)[0].text,
                        'discount': discount_percentage,
                        'discount_note': discount_note,
-                       'product_id': product,
+                       'product_id': product.id,
                        'account_id': account_id.id,
-                       'analytic_account_id': analytic_account,
+                       # 'analytic_account_id': analytic_account,
                        'economic_activity_id': activity_id,
                        'tax_ids': taxes}
             new_lines.append((0, 0, columns))

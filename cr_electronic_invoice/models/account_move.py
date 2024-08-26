@@ -886,8 +886,7 @@ class AccountInvoiceElectronic(models.Model):
 
                                         self.message_post(
                                             body=message_description,
-                                            subtype='mail.mt_note',
-                                            content_subtype='html')
+                                            message_type='notification')
 
                                         _logger.info(_(f'E-INV CR - Document Status:{inv.state_tributacion}'))
 
@@ -935,7 +934,8 @@ class AccountInvoiceElectronic(models.Model):
 
     def action_send_mrs_to_hacienda(self):
         if self.state_invoice_partner:
-            self.state_tributacion = False
+            if self.state_tributacion not in ['procesando']:
+                self.state_tributacion = False
             self.send_mrs_to_hacienda()
         else:
             raise UserError(_('You must select the aceptance state: Accepted, Parcial Accepted or Rejected'))
@@ -1723,91 +1723,148 @@ class AccountInvoiceElectronic(models.Model):
                         self.sequence)
                     email_template.attachment_ids = [(5, 0, 0)]
 
-    def action_invoice_sent(self):
-        self.ensure_one()
+    def action_send_and_print(self):
 
-        if self.invoice_id.move_type in ['in_invoice', 'in_refund']:
-            email_template = self.env.ref('cr_electronic_invoice.email_template_invoice_vendor',
-                                          raise_if_not_found=False)
-        else:
-            email_template = self.env.ref('account.email_template_edi_invoice', raise_if_not_found=False)
+        template = self.env.ref(self._get_mail_template(), raise_if_not_found=False)
+        domain = [('res_model', '=', self._name),
+                  ('res_id', '=', self.id),
+                  ('res_field', '=', 'xml_comprobante')]
+        attachment = self.env['ir.attachment'].sudo().search(domain, limit=1)
+        if attachment:
+            # attachment.name = self.fname_xml_comprobante
 
-        email_template.attachment_ids = [(5, 0, 0)]
+            domain_resp = [('res_model', '=', self._name),
+                           ('res_id', '=', self.id),
+                           ('res_field', '=', 'xml_respuesta_tributacion')]
+            attachment_resp = self.env['ir.attachment'].sudo().search(domain_resp, limit=1)
 
-        lang = False
-        if email_template:
-            lang = email_template._render_lang(self.ids)[self.id]
-        if not lang:
-            lang = get_lang(self.env).code
-
-        if self.env.user.company_id.frm_ws_ambiente == 'disabled':
-            pass
-        elif self.partner_id and self.partner_id.email:  # and not i.partner_id.opt_out:
-
-            domain = [('res_model', '=', self._name),
-                      ('res_id', '=', self.id),
-                      ('res_field', '=', 'xml_comprobante')]
-            attachment = self.env['ir.attachment'].sudo().search(domain, limit=1)
-            if attachment:
-                # attachment.name = self.fname_xml_comprobante
-
-                domain_resp = [('res_model', '=', self._name),
-                               ('res_id', '=', self.id),
-                               ('res_field', '=', 'xml_respuesta_tributacion')]
-                attachment_resp = self.env['ir.attachment'].sudo().search(domain_resp, limit=1)
-
-                if attachment_resp:
-                    # attachment_resp.name = self.fname_xml_respuesta_tributacion
-                    """ fname_xml_comprobante = self.fname_xml_comprobante
-                    fname_xml_respuesta_tributacion = self.fname_xml_respuesta_tributacion
-                    attach_copy = self.env['ir.attachment'].create({'name': fname_xml_comprobante,
-                                                                    'type': 'binary',
-                                                                    'datas': self.xml_comprobante,
-                                                                    'res_name': fname_xml_comprobante,
-                                                                    'mimetype': 'text/xml'})
-                    attach_resp_copy = self.env['ir.attachment'].create({'name': fname_xml_respuesta_tributacion,
-                                                                         'type': 'binary',
-                                                                         'datas': self.xml_respuesta_tributacion,
-                                                                         'res_name': fname_xml_respuesta_tributacion,
-                                                                         'mimetype': 'text/xml'})
-                    email_template.attachment_ids = [(6, 0, [attach_copy.id, attach_resp_copy.id])] """
-                    attach_copy = attachment.copy()
-                    attach_resp_copy = attachment_resp.copy()
-                    email_template.attachment_ids = [(6, 0, [attach_copy.id, attach_resp_copy.id])]
-                    ##email_template.attachment_ids = [(6, 0, [attachment.id, attachment_resp.id])]
-                else:
-                    raise UserError(_('Response XML from Hacienda has not been received'))
+            if attachment_resp:
+                # attachment_resp.name = self.fname_xml_respuesta_tributacion
+                """ fname_xml_comprobante = self.fname_xml_comprobante
+                fname_xml_respuesta_tributacion = self.fname_xml_respuesta_tributacion
+                attach_copy = self.env['ir.attachment'].create({'name': fname_xml_comprobante,
+                                                                'type': 'binary',
+                                                                'datas': self.xml_comprobante,
+                                                                'res_name': fname_xml_comprobante,
+                                                                'mimetype': 'text/xml'})
+                attach_resp_copy = self.env['ir.attachment'].create({'name': fname_xml_respuesta_tributacion,
+                                                                     'type': 'binary',
+                                                                     'datas': self.xml_respuesta_tributacion,
+                                                                     'res_name': fname_xml_respuesta_tributacion,
+                                                                     'mimetype': 'text/xml'})
+                email_template.attachment_ids = [(6, 0, [attach_copy.id, attach_resp_copy.id])] """
+                attach_copy = attachment.copy()
+                attach_resp_copy = attachment_resp.copy()
+                template.attachment_ids = [(6, 0, [attach_copy.id, attach_resp_copy.id])]
+                ##email_template.attachment_ids = [(6, 0, [attachment.id, attachment_resp.id])]
             else:
-                raise UserError(_('Invoice XML has not been generated for id:' + str(self.id)))
-
+                raise UserError(_('Response XML from Hacienda has not been received'))
         else:
-            raise UserError(_('Partner is not assigne to this invoice'))
+            raise UserError(_('Invoice XML has not been generated for id:' + str(self.id)))
 
-        # compose_form = self.env.ref('account.account_invoice_send_wizard_form', raise_if_not_found=False).sudo()
-        # ctx = dict(
-        #     default_model='account.move',
-        #     default_res_id=self.id,
-        #     default_res_model='account.move',
-        #     default_use_template=bool(email_template),
-        #     default_template_id=email_template and email_template.id or False,
-        #     default_composition_mode='comment',
-        #     mark_invoice_as_sent=True,
-        #     custom_layout="mail.mail_notification_paynow",
-        #     model_description=self.with_context(lang=lang).type_name,
-        #     force_email=True
-        # )
-        #
-        # return {
-        #     'name': _('Send Invoice'),
-        #     'type': 'ir.actions.act_window',
-        #     'view_type': 'form',
-        #     'view_mode': 'form',
-        #     'res_model': 'account.invoice.send',
-        #     'views': [(compose_form.id, 'form')],
-        #     'view_id': compose_form.id,
-        #     'target': 'new',
-        #     'context': ctx,
-        # }
+
+
+        if any(not x.is_sale_document(include_receipts=True) for x in self):
+            raise UserError(_("You can only send sales documents"))
+
+        return {
+            'name': _("Send"),
+            'type': 'ir.actions.act_window',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'account.move.send',
+            'target': 'new',
+            'context': {
+                'active_ids': self.ids,
+                'default_mail_template_id': template and template.id or False,
+            },
+        }
+
+    # def action_invoice_sent(self):
+    #     self.ensure_one()
+    #
+    #     if self.invoice_id.move_type in ['in_invoice', 'in_refund']:
+    #         email_template = self.env.ref('cr_electronic_invoice.email_template_invoice_vendor',
+    #                                       raise_if_not_found=False)
+    #     else:
+    #         email_template = self.env.ref('account.email_template_edi_invoice', raise_if_not_found=False)
+    #
+    #     email_template.attachment_ids = [(5, 0, 0)]
+    #
+    #     lang = False
+    #     if email_template:
+    #         lang = email_template._render_lang(self.ids)[self.id]
+    #     if not lang:
+    #         lang = get_lang(self.env).code
+    #
+    #     if self.env.user.company_id.frm_ws_ambiente == 'disabled':
+    #         pass
+    #     elif self.partner_id and self.partner_id.email:  # and not i.partner_id.opt_out:
+    #
+    #         domain = [('res_model', '=', self._name),
+    #                   ('res_id', '=', self.id),
+    #                   ('res_field', '=', 'xml_comprobante')]
+    #         attachment = self.env['ir.attachment'].sudo().search(domain, limit=1)
+    #         if attachment:
+    #             # attachment.name = self.fname_xml_comprobante
+    #
+    #             domain_resp = [('res_model', '=', self._name),
+    #                            ('res_id', '=', self.id),
+    #                            ('res_field', '=', 'xml_respuesta_tributacion')]
+    #             attachment_resp = self.env['ir.attachment'].sudo().search(domain_resp, limit=1)
+    #
+    #             if attachment_resp:
+    #                 # attachment_resp.name = self.fname_xml_respuesta_tributacion
+    #                 """ fname_xml_comprobante = self.fname_xml_comprobante
+    #                 fname_xml_respuesta_tributacion = self.fname_xml_respuesta_tributacion
+    #                 attach_copy = self.env['ir.attachment'].create({'name': fname_xml_comprobante,
+    #                                                                 'type': 'binary',
+    #                                                                 'datas': self.xml_comprobante,
+    #                                                                 'res_name': fname_xml_comprobante,
+    #                                                                 'mimetype': 'text/xml'})
+    #                 attach_resp_copy = self.env['ir.attachment'].create({'name': fname_xml_respuesta_tributacion,
+    #                                                                      'type': 'binary',
+    #                                                                      'datas': self.xml_respuesta_tributacion,
+    #                                                                      'res_name': fname_xml_respuesta_tributacion,
+    #                                                                      'mimetype': 'text/xml'})
+    #                 email_template.attachment_ids = [(6, 0, [attach_copy.id, attach_resp_copy.id])] """
+    #                 attach_copy = attachment.copy()
+    #                 attach_resp_copy = attachment_resp.copy()
+    #                 email_template.attachment_ids = [(6, 0, [attach_copy.id, attach_resp_copy.id])]
+    #                 ##email_template.attachment_ids = [(6, 0, [attachment.id, attachment_resp.id])]
+    #             else:
+    #                 raise UserError(_('Response XML from Hacienda has not been received'))
+    #         else:
+    #             raise UserError(_('Invoice XML has not been generated for id:' + str(self.id)))
+    #
+    #     else:
+    #         raise UserError(_('Partner is not assigne to this invoice'))
+    #
+    #     compose_form = self.env.ref('account.account_invoice_send_wizard_form', raise_if_not_found=False).sudo()
+    #     ctx = dict(
+    #         default_model='account.move',
+    #         default_res_id=self.id,
+    #         default_res_model='account.move',
+    #         default_use_template=bool(email_template),
+    #         default_template_id=email_template and email_template.id or False,
+    #         default_composition_mode='comment',
+    #         mark_invoice_as_sent=True,
+    #         custom_layout="mail.mail_notification_paynow",
+    #         model_description=self.with_context(lang=lang).type_name,
+    #         force_email=True
+    #     )
+    #
+    #     return {
+    #         'name': _('Send Invoice'),
+    #         'type': 'ir.actions.act_window',
+    #         'view_type': 'form',
+    #         'view_mode': 'form',
+    #         'res_model': 'account.invoice.send',
+    #         'views': [(compose_form.id, 'form')],
+    #         'view_id': compose_form.id,
+    #         'target': 'new',
+    #         'context': ctx,
+    #     }
 
     @api.onchange('name', 'partner_id', 'invoice_date', 'tipo_documento')
     def default_payment_method(self):

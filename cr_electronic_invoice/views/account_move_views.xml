@@ -47,7 +47,7 @@
 
 
             <xpath expr="//button[@name='button_draft']" position="after">
-                <button name="update_dev_tax" type="object" string="AGG impuesto"/>
+                <button name="update_dev_tax" type="object" string="AGG impuesto" invisible="True"/>
                 <button name="action_send_mrs_to_hacienda" type="object" string="Send Receiver Message"
                         invisible="move_type not in ('in_invoice', 'in_refund', 'entry') or tipo_documento == 'FEC'"/>
                 <button name="action_create_fec" type="object" string="Send FEC"
@@ -73,7 +73,6 @@
                        invisible="move_type not in ('out_invoice', 'out_refund', 'in_invoice', 'in_refund')"/>
                 <field name="sequence" readonly="move_type not in ('in_invoice', 'in_refund') or state != 'draft'"
                        required="move_type in ('in_invoice', 'in_refund')"
-
                        invisible="move_type not in ('out_invoice', 'out_refund', 'in_invoice', 'in_refund')"/>
             </field>
 

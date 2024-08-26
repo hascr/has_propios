@@ -8,6 +8,7 @@
         <field name="categ_id" ref="product_category_otros_cargos" />
         <field name="code_type_id" ref="cr_electronic_invoice.CodeTypeProduct_99" />
         <field name="taxes_id" eval="[(5,0,0)]" />
+        <field name="active">False</field>
     </record>
     <record id="product_cruz_roja" model="product.template">
         <field name="name">Timbre de la Cruz Roja</field>
@@ -16,6 +17,7 @@
         <field name="categ_id" ref="product_category_otros_cargos" />
         <field name="code_type_id" ref="cr_electronic_invoice.CodeTypeProduct_99" />
         <field name="taxes_id" eval="[(5,0,0)]" />
+        <field name="active">False</field>
     </record>
     <record id="product_bomberos" model="product.template">
         <field name="name">Timbre de Benemérito Cuerpo de Bomberos de Costa Rica</field>
@@ -24,6 +26,7 @@
         <field name="categ_id" ref="product_category_otros_cargos" />
         <field name="code_type_id" ref="cr_electronic_invoice.CodeTypeProduct_99" />
         <field name="taxes_id" eval="[(5,0,0)]" />
+        <field name="active">False</field>
     </record>
     <record id="product_tercero" model="product.template">
         <field name="name">Cobro de un tercero</field>
@@ -32,6 +35,7 @@
         <field name="categ_id" ref="product_category_otros_cargos" />
         <field name="code_type_id" ref="cr_electronic_invoice.CodeTypeProduct_99" />
         <field name="taxes_id" eval="[(5,0,0)]" />
+        <field name="active">False</field>
     </record>
     <record id="product_exportacion" model="product.template">
         <field name="name">Costos de Exportación</field>
@@ -40,6 +44,7 @@
         <field name="categ_id" ref="product_category_otros_cargos" />
         <field name="code_type_id" ref="cr_electronic_invoice.CodeTypeProduct_99" />
         <field name="taxes_id" eval="[(5,0,0)]" />
+        <field name="active">False</field>
     </record>
     <record id="product_servicio" model="product.template">
         <field name="name">Impuesto de Servicio 10%</field>
@@ -48,6 +53,7 @@
         <field name="categ_id" ref="product_category_otros_cargos" />
         <field name="code_type_id" ref="cr_electronic_invoice.CodeTypeProduct_99" />
         <field name="taxes_id" eval="[(5,0,0)]" />
+        <field name="active">False</field>
     </record>
     <record id="product_profesionales" model="product.template">
         <field name="name">Timbre de Colegios Profesionales</field>
@@ -56,6 +62,7 @@
         <field name="categ_id" ref="product_category_otros_cargos" />
         <field name="code_type_id" ref="cr_electronic_invoice.CodeTypeProduct_99" />
         <field name="taxes_id" eval="[(5,0,0)]" />
+        <field name="active">False</field>
     </record>
     <record id="product_otros_cargos" model="product.template">
         <field name="name">Otros Cargos</field>
@@ -72,6 +79,7 @@
         <field name="categ_id" ref="product_category_otros_cargos" />
         <field name="code_type_id" ref="cr_electronic_invoice.CodeTypeProduct_99" />
         <field name="taxes_id" eval="[(5,0,0)]" />
+        <field name="active">False</field>
     </record>
 
 </odoo>

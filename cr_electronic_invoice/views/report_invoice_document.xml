@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+    <!-- The top margin on the default A4 format is way too big -->
+    <record id="paperformat_for_invoice" model="report.paperformat">
+        <field name="name">A4 - Invoice</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">5</field>
+        <field name="margin_bottom">5</field>
+        <field name="margin_left">7</field>
+        <field name="margin_right">7</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">0</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <!-- QWeb Reports -->
+    <record id="account.account_invoices" model="ir.actions.report">
+        <field name="paperformat_id" ref="paperformat_for_invoice"/>
+    </record>
+
+
+    <record id="account.account_invoices_without_payment" model="ir.actions.report">
+        <field name="paperformat_id" ref="paperformat_for_invoice"/>
+    </record>
+
     <template id="custom_header">
 
         <t t-set="report_date" t-value="o.invoice_date"/>
@@ -8,11 +35,26 @@
         <t t-set="pre_printed_report" t-value="report_type == 'pdf'"/>
         <t t-set="report_name" t-value="o.tipo_documento"/>
         <t t-set="header_address" t-value="o.company_id.partner_id"/>
-        <t t-set="custom_footer">
-            <t t-call="cr_electronic_invoice.custom_footer"/>
+<!--        <t t-set="custom_footer">-->
+<!--            <t t-call="cr_electronic_invoice.custom_footer"/>-->
+<!--        </t>-->
+        <div>
+        </div>
+    </template>
+
+    <template id="custom_footer">
+        <span>test</span>
+<!--        <div name="footer_left_column" class="col-8 text-center"/>-->
+    </template>
+
+    <template id="report_invoice_document" inherit_id="account.report_invoice_document">
+        <!--        reemplazar custom header-->
+        <t t-set="o" position="after">
+            <t t-set="custom_header" t-value="'cr_electronic_invoice.custom_header'"/>
+            <t t-set="custom_footer" t-value="'-'"/>
         </t>
 
-        <div>
+        <xpath expr="//t/div[1]" position="before">
             <div class="row">
                 <div name="left-upper-side" class="col-8">
                     <strong>
@@ -43,69 +85,26 @@
                     <div class="row">
                         <div name="right-upper-side" class="col-12">
                             <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)"
-                                 style="max-height: 45px;" alt="Logo"/>
+                                 style="max-height: 65px;" alt="Logo"/>
                             <br/>
                         </div>
                     </div>
                 </div>
 
             </div>
-
-        </div>
-    </template>
-
-    <template id="custom_footer">
-        <div name="footer_left_column" class="col-8 text-center"/>
-    </template>
-    <!-- Legally required data & barcode (re-used by withhold report) -->
-    <template id="report_invoice_header">
-        <table class="table table-borderless w-100 m-1">
-            <tr>
-                <td class="pe-1" style="width: 30%">
-                    <table class="table table-borderless">
-                        <tr>
-                            <td class="text-center p-1">
-                                <h4 style="letter-spacing: 2px;">
-                                    <span t-field="o.company_id.name"/>
-                                </h4>
-                                <div style="font-size: 12px;">
-                                    <strong>
-                                        Cédula No.
-                                    </strong>
-                                    <span t-field="o.company_id.partner_id.vat"/>
-                                    <br/>
-                                    <strong>Teléfono: </strong>
-                                    <span t-esc="o.company_id.phone"/>
-                                    <br/>
-                                    <strong>Dirección: </strong>
-                                    <span t-esc="o.company_id.street"/>
-                                    <br/>
-                                    <strong>Email: </strong>
-                                    <span t-esc="o.company_id.email"/>
-                                    <br/>
-                                    <strong>Actividad Económica: </strong>
-                                    <span t-esc="o.company_id.activity_id.name"/>
-                                    <br/>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-        </table>
-    </template>
-
-    <template id="report_invoice_document" inherit_id="account.report_invoice_document">
-
-        <xpath expr="//t/div[@class='mt-5 clearfix']" position="attributes">
-             <attribute name="class">clearfix</attribute>
         </xpath>
 
-        <!--        reemplazar custom header-->
-        <t t-set="o" position="after">
-            <t t-set="custom_header" t-value="'cr_electronic_invoice.custom_header'"/>
-        </t>
+        <!--        remover espacio de inicio-->
+        <xpath expr="//t/div[@class='mt-5 clearfix']" position="attributes">
+            <attribute name="class">clearfix</attribute>
+        </xpath>
 
+        <!--        se reemplaza el numero de factura que venia con el texto "Factura", se deja solo el numero-->
+        <xpath expr="//h2" position="replace">
+            <h2>
+                <span t-if="o.name != '/'" t-field="o.name">INV/2023/0001</span>
+            </h2>
+        </xpath>
 
         <!-- Remove the partner address -->
         <xpath expr="//div[@name='address_not_same_as_shipping']" position="replace">
@@ -121,27 +120,27 @@
         <!-- Add a few extra items to Informations (and rename a field) -->
         <xpath expr="//div[@id='informations']" position="replace">
             <div id="informations" class="row mt-3 mb-1">
-                <div class="col-6 mw-100 mb-2">
+                <div class="col-8 mw-100 mb-2">
                     <strong>Clave Númerica:</strong>
                     <p class="m-0" t-out="o.number_electronic"/>
                 </div>
-                <div class="col-3 mw-100 mb-2">
+                <div class="col-4 mw-100 mb-2">
                     <strong>Tipo Documento:</strong>
                     <p class="m-0" t-field="o.tipo_documento"/>
                 </div>
+            </div>
+            <div id="informations_2" class="row mt-3 mb-1">
                 <div class="col-3 mw-100 mb-2">
                     <strong>Fecha:</strong>
                     <p class="m-0" t-field="o.date_issuance"/>
                 </div>
-            </div>
-            <div id="informations_2" class="row mt-3 mb-1">
                 <div class="col-3 mw-100 mb-2">
                     <strong>Métodos de pagos:</strong>
                     <p class="m-0" t-out="o.payment_methods_id.name"/>
                 </div>
                 <div class="col-3 mw-100 mb-2">
                     <strong>Condición:</strong>
-                    <p class="m-0" t-field="o.invoice_payment_term_id.name"/>
+                    <p class="m-0" t-field="o.invoice_payment_term_id.sale_conditions_id.name"/>
                 </div>
             </div>
             <div id="receptor_line1" class="row mt-3 mb-1">
@@ -165,7 +164,7 @@
                 </div>
                 <div class="col-8 mb-2 mw-100">
                     <strong>Dirección:</strong><br/>
-                    <span t-out="o.partner_id._display_address()"/>
+                    <span t-out="o.partner_id._display_address(True)"/>
                 </div>
             </div>
         </xpath>
@@ -183,7 +182,7 @@
         </xpath>
 
         <!--        leyenda final -->
-        <xpath expr="//t/div[2]/div/div[last()]" position="after">
+        <xpath expr="//t/div[3]/div/div[last()]" position="after">
             <p class="text-center">
                 <span>Autorizada mediante resolución N° DGT-R-033-2019 del 20 de junio de 2019.</span>
                 <br></br>

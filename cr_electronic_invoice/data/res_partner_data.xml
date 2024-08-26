@@ -2,8 +2,8 @@
 <odoo>
     <data>
         <record id="cr_final_consumer" model="res.partner">
-            <field name="name">Consumidor final</field>
-            <field name="country_id" ref="base.ec"/>
+            <field name="name">Cliente de contado</field>
+            <field name="country_id" ref="base.cr"/>
             <field name="vat">9999999999999</field>
         </record>
     </data>

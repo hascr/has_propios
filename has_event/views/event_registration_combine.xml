@@ -31,7 +31,7 @@
     <field name="arch" type="xml">
         <search>
     <field name="name" string="Buscar por código, curso, instructor" filter_domain="['|','|', ('id','ilike',self), ('name','ilike',self), ('instructor_id', 'ilike', self)]">
-    <filter name="filter_cpendientes" string="Contratos pendientes" domain="[('contrato_firmado', '=', False),('nocontrato', '=', False),('stage_id', '!=', 5)]"></filter>
+    <filter name="filter_cpendientes" string="Contratos pendientes" domain="[('contrato_firmado', '=', False),('nocontrato', '=', False),('stage_id', '!=', 5),('date_begin','&lt;=',(datetime.datetime.now().strftime('%Y-%m-%d')))]"></filter>
     <separator/>
     <filter name="filter_temarios" string="Temarios pendientes" domain="[('temario', '=', False),('event_type_id', '=', 1),('stage_id', '!=', 5)]"></filter>
     <separator/>

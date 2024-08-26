@@ -37,11 +37,11 @@
         <field name="country_id" ref="base.cr"/>
     </record>
 
-<!--    <record id="tax_group_IVA13" model="account.tax.group">-->
-<!--        <field name="name">IVA 13%</field>-->
-<!--        <field name="sequence">0</field>-->
-<!--        <field name="country_id" ref="base.cr"/>-->
-<!--    </record>-->
+    <record id="tax_group_IVA13" model="account.tax.group">
+        <field name="name">IVA 13%</field>
+        <field name="sequence">0</field>
+        <field name="country_id" ref="base.cr"/>
+    </record>
 
     <record id="tax_group_IVA_ND" model="account.tax.group">
         <field name="name">IVA No deducible</field>
