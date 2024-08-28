@@ -25,6 +25,10 @@ class Programacion(models.Model):
     matricula = fields.Char(string='URL matrícula', compute='_compute_urlmatricula', tracking=True)
     soporte = fields.Many2one(comodel_name='hr.employee', string='Soporte',compute='_compute_soporte', tracking=True)
 
+    asistencia = fields.Boolean(string='Asistencia', tracking=True)
+    video = fields.Boolean(string='Videos', tracking=True)
+
+
     @api.depends('codigo', 'curso')
     def _computeVar(self):
         for line in self:
