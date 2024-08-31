@@ -53,7 +53,7 @@ class Programacion(models.Model):
                 record.soporte = curso_record.soporte  # Update instructor
             else:
                 record.soporte = ''  # Set empty string if no match
-    
+
     """ @api.depends('curso')
     def _compute_curso(self):
         for record in self:
@@ -87,7 +87,7 @@ class Programacion(models.Model):
     def write(self, vals):
         res = super(Programacion, self).write(vals)
         return res
-    
+
     def go_to_event_programacion(self):
         name_form = _('Cursos')
         return {

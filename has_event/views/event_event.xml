@@ -1,39 +1,41 @@
 <odoo>
   <data>
         <!-- Vista de eventos modificada -->
-    
+
 <record id="view_view_event_form" model="ir.ui.view">
         <field name="name">view_event_form</field>
         <field name="model">event.event</field>
         <field name="inherit_id" ref="event.view_event_form"/>
         <field name="arch" type="xml">
             <field name="tag_ids" position="after">
-                    <field name="contrato_firmado" filename="contrato_name" groups="event.group_event_manager" widget="drag_and_drop"/>
+                    <field name="tipo_certificado" widget="radio" invisible = "event_type_id == 2" required = "event_type_id != 2"/>
                     <field name="contrato_name" invisible="1" groups="event.group_event_manager"/>
-                    <field name="presencial" widget="boolean_toggle"/>
-                    <field name="enofi" widget="boolean_toggle"/>
+                    <field name="presencial" widget="boolean_toggle" invisible = "event_type_id == 2"/>
+                    <field name="enofi" widget="boolean_toggle" invisible = "not presencial"/>
                     <field name="noenviar" widget="boolean_toggle"/>
                     <field name="nocontrato" widget="boolean_toggle"/>
+                    <field name="contrato_firmado" filename="contrato_name" groups="event.group_event_manager" widget="drag_and_drop" invisible = "nocontrato"/>
                     <field name="titulo" widget="boolean_toggle"/>
                     <field name="cuenta_id"/>
                     <field name="asesor"/>
-                    <field name="temario" filename="temario_name" widget="drag_and_drop"/>
+                    <field name="temario" filename="temario_name" widget="drag_and_drop" invisible = "event_type_id == 2"/>
                     <field name="temario_name" invisible="1"/>
                     <field name="soporte"/>
                     <field name="id" string="Código de curso"/>
             </field>
             <field name="badge_format" position="after">
-                    <field name="grupo"/>
+                    <field name="grupo" invisible = "event_type_id == 2"/>
                     <field name="instructor_id"/>
-                    <field name="materiallearn"/>
-                    <field name="urllearn" widget="url"/>
+                    <field name="materiallearn" invisible = "event_type_id == 2"/>
+                    <field name="urllearn" widget="url" invisible = "event_type_id == 2"/>
                     <field name="urlmatricula" widget="url"/>
                     <field name="fechas_teams_pres"/>
                     <field name="cantsesion" groups="event.group_event_manager"/>
                     <field name="hsesion" groups="event.group_event_manager"/>
                     <field name="husd" groups="event.group_event_manager"/>
+                    <field name="total_horas"/>
                     <field name="monto_contrato" groups="event.group_event_manager"/>
-                    <field name="account_move_id" groups="event.group_event_manager"/>
+                    <field name="account_move_id" groups="event.group_event_manager" invisible = "nocontrato"/>
             </field>
             <field name="organizer_id" position="attributes">
                     <attribute name="invisible">1</attribute>
@@ -71,6 +73,7 @@
                 <filter name="filter_cpendientes" string="Contratos pendientes" domain="[('contrato_firmado', '=', False),('nocontrato', '=', False),('stage_id', '!=', 5),('date_begin','&lt;=',(datetime.datetime.now().strftime('%Y-%m-%d')))]"></filter>
                 <filter name="filter_ipendientes" string="Instructor pendiente" domain="[('instructor_id', '=', False),('stage_id', '!=', 5)]"></filter>
                 <filter name="filter_spendiente" string="Soporte pendiente" domain="[('soporte', '=', False),('stage_id', '!=', 5)]"></filter>
+                <filter name="filter_tpendientes" string="Títulos pendientes" domain="[('titulo', '=', False),('date_end','&lt;=',(datetime.datetime.now().strftime('%Y-%m-%d'))),('stage_id', '!=', 5)]"></filter>
                 <separator/>
                 <filter string="Cursos" name="cursos" domain="[('event_type_id', '=', 1)]"/>
                 <filter string="Eventos" name="eventos" domain="[('event_type_id', '=', 2)]"/>
@@ -109,11 +112,11 @@
                         <div t-attf-class="d-flex flex-column p-0 oe_kanban_card oe_kanban_global_click">
                             <div class="o_kanban_content p-0 m-0 position-relative row d-flex flex-fill">
                                 <div class="col-4 text-bg-primary p-2 text-center d-flex flex-column justify-content-center">
-                                    
+
                                     <div class="o_event_fontsize_20 text-center">
                                             <field name="id"/>
                                         </div>
-                                    
+
                                     <div>
                                         <t t-esc="luxon.DateTime.fromISO(record.date_begin.raw_value).toFormat('d MMM yyyy t')"/>
                                     </div>

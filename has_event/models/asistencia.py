@@ -28,7 +28,7 @@ class asistencia(models.Model):
     cod_nombre = fields.Char(string='N. Curso', tracking=True)
     #asesor = fields.Integer(string="Asesor", compute='_compute_asesor')
     user_id = fields.Many2one('res.users', string='Asesor tecnológico', compute='_compute_asesor')
-    
+
     _sql_constraints = [('duplicados_unique', 'unique(duplicados)', "El código duplicados debe ser único")]
 
     def go_to_event_asistencia(self):
@@ -45,22 +45,22 @@ class asistencia(models.Model):
             'event.view_event_form').id,
         'context': {} # Optional
             }
-    
+
     @api.depends('minutos','horas')
     def _compute_horas(self):
         for record in self:
             record.horas = round(record.minutos / 60.0,2) #if record.minutos else 0 # Calculate hours from minutes
 
-    
+
     """ def write(self, vals):
         res = super(asistencia, self).write(vals)
         return res """
-    
+
     """ @api.depends('codigo', 'curso')
     def _computeVar(self):
         for line in self:
             line.cod_nombre = f"{line.codigo} - {line.curso}" """
-    
+
     @api.depends('codigo', 'correo')
     def _compute_asesor(self):
         for record in self:

@@ -1,7 +1,7 @@
 <odoo>
   <data>
         <!-- Vista de eventos modificada -->
-    
+
 <record id="view_view_event_registration_form" model="ir.ui.view">
         <field name="name">view_event_registration_form</field>
         <field name="model">event.registration</field>
@@ -19,6 +19,7 @@
                             <field name="asistencia"/>
                             <field name="nota"/>
                             <field name="id" string="Estudiante N°"/>
+                            <field name="cumple" decoration-warning="cumple=='No cumple'" decoration-danger="cumple=='Reprobado'" decoration-success="cumple=='Aprobado'"/>
                         </group>
             </group>
             <group name="event" position="after">
@@ -60,7 +61,7 @@
     </record>
 
 
-    
+
 
    <!--         <field name="mobile" position="after">
                         <group string="Otros" name="otros_link" groups="base.group_no_one">
@@ -74,8 +75,8 @@
                             <field name="nota"/>
                         </group>
             </field> -->
-        
-    
+
+
 
 
     </data>
