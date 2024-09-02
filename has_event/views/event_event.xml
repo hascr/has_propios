@@ -12,11 +12,11 @@
                     <field name="contrato_name" invisible="1" groups="event.group_event_manager"/>
                     <field name="presencial" widget="boolean_toggle" invisible = "event_type_id == 2"/>
                     <field name="enofi" widget="boolean_toggle" invisible = "not presencial"/>
-                    <field name="noenviar" widget="boolean_toggle"/>
+                    <field name="noenviar" widget="boolean_toggle" invisible = "event_type_id == 2"/>
                     <field name="nocontrato" widget="boolean_toggle"/>
                     <field name="contrato_firmado" filename="contrato_name" groups="event.group_event_manager" widget="drag_and_drop" invisible = "nocontrato"/>
                     <field name="titulo" widget="boolean_toggle"/>
-                    <field name="cuenta_id"/>
+                    <field name="cuenta_id" invisible = "presencial"/>
                     <field name="asesor"/>
                     <field name="temario" filename="temario_name" widget="drag_and_drop" invisible = "event_type_id == 2"/>
                     <field name="temario_name" invisible="1"/>
@@ -28,14 +28,17 @@
                     <field name="instructor_id"/>
                     <field name="materiallearn" invisible = "event_type_id == 2"/>
                     <field name="urllearn" widget="url" invisible = "event_type_id == 2"/>
-                    <field name="urlmatricula" widget="url"/>
+                    <field name="urlmatricula" widget="url" invisible = "presencial"/>
                     <field name="fechas_teams_pres"/>
                     <field name="cantsesion" groups="event.group_event_manager"/>
                     <field name="hsesion" groups="event.group_event_manager"/>
-                    <field name="husd" groups="event.group_event_manager"/>
+                    <field name="husd" groups="event.group_event_manager" invisible = "nocontrato"/>
                     <field name="total_horas"/>
-                    <field name="monto_contrato" groups="event.group_event_manager"/>
+                    <field name="monto_contrato" groups="event.group_event_manager" invisible = "nocontrato"/>
                     <field name="account_move_id" groups="event.group_event_manager" invisible = "nocontrato"/>
+            </field>
+            <field name="address_id" position="attributes">
+                    <attribute name="invisible">not presencial</attribute>
             </field>
             <field name="organizer_id" position="attributes">
                     <attribute name="invisible">1</attribute>
