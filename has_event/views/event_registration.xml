@@ -19,7 +19,7 @@
                             <field name="asistencia"/>
                             <field name="nota"/>
                             <field name="id" string="Estudiante N°"/>
-                            <field name="cumple" decoration-warning="cumple=='No cumple'" decoration-danger="cumple=='Reprobado'" decoration-success="cumple=='Aprobado'"/>
+                            <field name="cumple" widget="badge" decoration-warning="cumple=='No cumple'" decoration-danger="cumple=='Reprobado'" decoration-success="cumple=='Aprobado'"/>
                         </group>
             </group>
             <group name="event" position="after">
@@ -49,7 +49,7 @@
                     <field name="asesor" optional="show"/>
             </field>
             <field name="puesto" position="after">
-                    <field name="cumple" optional="show" decoration-warning="cumple=='No cumple'" decoration-danger="cumple=='Reprobado'" decoration-success="cumple=='Aprobado'"/>
+                    <field name="cumple" optional="show" widget="badge" decoration-warning="cumple=='No cumple'" decoration-danger="cumple=='Reprobado'" decoration-success="cumple=='Aprobado'"/>
             </field>
         </field>
     </record>
