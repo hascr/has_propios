@@ -45,6 +45,12 @@
             <field name="phone" position="before">
                     <field name="celular" optional="show"/>
             </field>
+            <field name="name" position="before">
+                    <field name="asesor" optional="show"/>
+            </field>
+            <field name="puesto" position="after">
+                    <field name="cumple" optional="show" decoration-warning="cumple=='No cumple'" decoration-danger="cumple=='Reprobado'" decoration-success="cumple=='Aprobado'"/>
+            </field>
         </field>
     </record>
 
