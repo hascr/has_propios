@@ -103,11 +103,9 @@ class has_event(models.Model):
     @api.depends("cantsesion", "hsesion", "husd")
     def _monto_contrato(self):
         for record in self:
-            record.monto_contrato = (
-                record.cantsesion * record.hsesion * record.husd
-            )
+            record.monto_contrato = record.cantsesion * record.hsesion * record.husd
+
+    @api.depends("cantsesion", "hsesion")
     def _total_horas(self):
         for record in self:
-            record.total_horas = (
-                record.cantsesion * record.hsesion
-            )
+            record.total_horas = record.cantsesion * record.hsesion
