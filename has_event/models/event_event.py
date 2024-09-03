@@ -109,3 +109,17 @@ class has_event(models.Model):
     def _total_horas(self):
         for record in self:
             record.total_horas = record.cantsesion * record.hsesion
+
+    def solicitar_programacion(self):
+        return {
+            "type": "ir.actions.act_url",
+            "target": "new",
+            "url": "https://forms.office.com/r/0AVpVrJjDZ",
+        }
+
+    def crear_programacion(self):
+        return {
+            "type": "ir.actions.act_url",
+            "target": "new",
+            "url": "https://form.jotform.com/232511329331042",
+        }

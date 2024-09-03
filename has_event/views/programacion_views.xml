@@ -37,7 +37,9 @@
         <field name="model">programacion</field>
         <field name="arch" type="xml">
             <form string="Programacion">
-                <header></header>
+                <header>
+                <button name="solicitar_programacion" type="object" string="Solicitar programación" class="oe_highlight"/>
+                </header>
                 <sheet>
                     <group col="4">
                             <field name="codigo" readonly="1"/>
@@ -119,7 +121,7 @@
     </record>
 
 
-    
+
 
     <!-- Menú superior -->
 
@@ -127,7 +129,7 @@
 				id="programacion_id"
 				sequence="5"
 				action="action_programacion"
-				parent="event.event_main_menu"/>	
+				parent="event.event_main_menu"/>
 
 
 

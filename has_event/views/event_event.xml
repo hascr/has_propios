@@ -58,6 +58,10 @@
             <field name="badge_image" position="attributes">
                     <attribute name="invisible">1</attribute>
             </field>
+            <xpath expr="//header" position="inside">
+                <button name="solicitar_programacion" type="object" string="Solicitar programación" class="oe_highlight"/>
+                <button name="crear_programacion" type="object" string="Crear programación" groups="event.group_event_manager" class="oe_highlight"/>
+            </xpath>
         </field>
     </record>
 
