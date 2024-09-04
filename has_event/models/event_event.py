@@ -123,3 +123,45 @@ class has_event(models.Model):
             "target": "new",
             "url": "https://form.jotform.com/232511329331042",
         }
+
+    def videos_moodle(self):
+        return {
+            "type": "ir.actions.act_url",
+            "target": "new",
+            "url": "https://forms.office.com/r/JYTswkjtqr",
+        }
+
+    def generar_titulos(self):
+        return {
+            "type": "ir.actions.act_url",
+            "target": "new",
+            "url": "https://forms.office.com/r/9vjjdc9evX",
+        }
+
+    def enviar_titulos(self):
+        return {
+            "type": "ir.actions.act_url",
+            "target": "new",
+            "url": "https://forms.office.com/r/eHGK9Mc61t",
+        }
+
+    def generar_asistencia(self):
+        return {
+            "type": "ir.actions.act_url",
+            "target": "new",
+            "url": "https://forms.office.com/r/EDc3LbueEt",
+        }
+
+    def correo_bienvenida(self):
+        return {
+            "type": "ir.actions.act_url",
+            "target": "new",
+            "url": "https://forms.office.com/r/wUdm1upyPW",
+        }
+
+    def enviar_contratos(self):
+        return {
+            "type": "ir.actions.act_url",
+            "target": "new",
+            "url": "https://forms.office.com/r/eDYaKh78fg",
+        }

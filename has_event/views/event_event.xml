@@ -59,8 +59,31 @@
                     <attribute name="invisible">1</attribute>
             </field>
             <xpath expr="//header" position="inside">
-                <button name="solicitar_programacion" type="object" string="Solicitar programación" class="oe_highlight"/>
-                <button name="crear_programacion" type="object" string="Crear programación" groups="event.group_event_manager" class="oe_highlight"/>
+                <button name="solicitar_programacion" type="object" string="Solicitar prog." class="oe_highlight"/>
+                <button name="crear_programacion" type="object" string="Crear prog." groups="event.group_event_manager" class="oe_highlight"/>
+                <button name="correo_bienvenida" type="object" string="Correo bienv." groups="event.group_event_manager" invisible = "noenviar or stage_id != 2" class="oe_highlight"/>
+                <button name="enviar_contratos" type="object" string="Contrato manual" groups="event.group_event_manager" invisible = "nocontrato or contrato_firmado != False" class="oe_highlight"/>
+                <button name="videos_moodle" type="object" string="Videos" groups="event.group_event_manager" class="oe_highlight"/>
+                <button name="generar_asistencia" type="object" string="Asistencia manual" groups="event.group_event_manager" invisible = "titulo" class="oe_highlight"/>
+                <button name="generar_titulos" type="object" string="Generar títulos" groups="event.group_event_manager" invisible = "titulo" class="oe_highlight"/>
+                <button name="enviar_titulos" type="object" string="Enviar títulos" groups="event.group_event_manager" invisible = "titulo" class="oe_highlight"/>
+            </xpath>
+            <xpath expr="//header/button" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+<record id="view_view_event_form_inherit" model="ir.ui.view">
+        <field name="name">view_event_form_inherit</field>
+        <field name="model">event.event</field>
+        <field name="inherit_id" ref="mass_mailing_event.event_event_view_form_inherit_mass_mailing"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_mass_mailing_attendees']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_invite_contacts']" position="attributes">
+                <attribute name="invisible">1</attribute>
             </xpath>
         </field>
     </record>

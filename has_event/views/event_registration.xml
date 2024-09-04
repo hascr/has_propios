@@ -40,16 +40,17 @@
         <field name="inherit_id" ref="event.view_event_registration_tree"/>
         <field name="arch" type="xml">
             <field name="event_ticket_id" position="replace">
-                    <field name="puesto" optional="show"/>
+                <field name="puesto" optional="show"/>
             </field>
             <field name="phone" position="before">
-                    <field name="celular" optional="show"/>
+                <field name="celular" optional="show"/>
             </field>
             <field name="name" position="before">
-                    <field name="asesor" optional="show"/>
+                <field name="asesor" optional="show"/>
+                <field name="id" string="N° estudiante" optional="hide"/>
             </field>
             <field name="puesto" position="after">
-                    <field name="cumple" optional="show" widget="badge" decoration-warning="cumple=='No cumple'" decoration-danger="cumple=='Reprobado'" decoration-success="cumple=='Aprobado'"/>
+                <field name="cumple" optional="show" widget="badge" decoration-warning="cumple=='No cumple'" decoration-danger="cumple=='Reprobado'" decoration-success="cumple=='Aprobado'"/>
             </field>
         </field>
     </record>
