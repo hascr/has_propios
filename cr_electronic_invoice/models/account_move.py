@@ -141,7 +141,7 @@ class AccountInvoiceElectronic(models.Model):
     )
     payment_methods_id = fields.Many2one(
         comodel_name="payment.methods",
-        string="Payment methods"
+        string="Payment methods "
     )
     invoice_id = fields.Many2one(
         comodel_name="account.move",

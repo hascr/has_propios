@@ -15,7 +15,10 @@ class Programacion(models.Model):
 
     codigo = fields.Char(string="Código", tracking=True)
     curso = fields.Char(string="Curso", tracking=True)
-    cuenta = fields.Char(string="Cuenta", compute="_compute_cuenta", tracking=True)
+    cuenta = fields.Char(string="Cuenta ", compute="_compute_cuenta", tracking=True)
+    cuenta_nombre = fields.Char(
+        string="Cuenta", compute="_compute_cuenta_nombre", tracking=True, store=True
+    )
     inicio = fields.Datetime(string="Inicio", tracking=True)
     fin = fields.Datetime(string="Fin", tracking=True)
     u_clase = fields.Boolean(string="Última clase", tracking=True)
@@ -29,9 +32,15 @@ class Programacion(models.Model):
     )
     soporte = fields.Many2one(
         comodel_name="hr.employee",
-        string="Soporte",
+        string="Soporte ",
         compute="_compute_soporte",
         tracking=True,
+    )
+    soporte_nombre = fields.Char(
+        string="Soporte",
+        compute="_compute_soporte_nombre",
+        tracking=True,
+        store=True,
     )
 
     asistencia = fields.Boolean(string="Asistencia", tracking=True)
@@ -64,15 +73,19 @@ class Programacion(models.Model):
             else:
                 record.soporte = ""  # Set empty string if no match
 
-    """ @api.depends('curso')
-    def _compute_curso(self):
+    @api.depends("cuenta")
+    def _compute_cuenta_nombre(self):
         for record in self:
-            # Search for cursos records with matching codigo in the id field
-            curso_record = self.env['cursos'].search([('id', '=', record.codigo)])
-            if curso_record:
-                record.curso = curso_record.curso  # Update instructor
+            record.cuenta_nombre = record.cuenta
+
+    @api.depends('soporte')
+    def _compute_soporte_nombre(self):
+        for record in self:
+            if record.soporte:
+                # Access the employee name through the 'name' field of the related record
+                record.soporte_nombre = record.soporte.name
             else:
-                record.curso = ''  # Set empty string if no match """
+                record.soporte_nombre = False
 
     @api.depends("codigo")
     def _compute_cuenta(self):
