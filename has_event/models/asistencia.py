@@ -77,7 +77,7 @@ class asistencia(models.Model):
         if curso_record:
             record.user_id = int(curso_record.asesor)
         else:
-            record.user_id = 10  # Establecer asesor a None si no hay coincidencia
+            record.user_id = 14  # Establecer asesor a None si no hay coincidencia
 
 
 
