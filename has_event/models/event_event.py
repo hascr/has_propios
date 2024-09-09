@@ -86,6 +86,8 @@ class has_event(models.Model):
         string="Tipo de certificado",
     )
 
+    nombre_contrato = fields.Char(string="Nombre contrato", compute="_compute_nombre_contrato", store=True)
+
     def go_to_contratos(self):
         name_form = "Contratos"
         return {
