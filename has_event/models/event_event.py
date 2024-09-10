@@ -86,7 +86,7 @@ class has_event(models.Model):
         string="Tipo de certificado",
     )
 
-    #nombre_contrato = fields.Char(string="Nombre contrato", compute="_compute_nombre_contrato", store=True)
+    # nombre_contrato = fields.Char(string="Nombre contrato", compute="_compute_nombre_contrato", store=True)
 
     def go_to_contratos(self):
         name_form = "Contratos"
@@ -166,4 +166,11 @@ class has_event(models.Model):
             "type": "ir.actions.act_url",
             "target": "new",
             "url": "https://forms.office.com/r/eDYaKh78fg",
+        }
+
+    def enviar_instructor(self):
+        return {
+            "type": "ir.actions.act_url",
+            "target": "new",
+            "url": "https://forms.office.com/r/SrhgBh0u8v",
         }

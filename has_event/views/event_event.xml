@@ -67,6 +67,7 @@
                 <button name="generar_asistencia" type="object" string="Asistencia manual" groups="event.group_event_manager" invisible = "titulo" class="oe_highlight"/>
                 <button name="generar_titulos" type="object" string="Generar títulos" groups="event.group_event_manager" invisible = "titulo" class="oe_highlight"/>
                 <button name="enviar_titulos" type="object" string="Enviar títulos" groups="event.group_event_manager" invisible = "titulo" class="oe_highlight"/>
+                <button name="enviar_instructor" type="object" string="Enviar form. inst." groups="event.group_event_manager" class="oe_highlight"/>
             </xpath>
             <xpath expr="//header/button" position="attributes">
                 <attribute name="invisible">1</attribute>
