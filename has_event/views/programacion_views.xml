@@ -17,7 +17,7 @@
                 <field name="inicio" optional="show"/>
                 <field name="fin" optional="show"/>
                 <field name="u_clase" optional="show"/>
-                <field name="asistencia" optional="hide" invisible="[('cuenta_nombre', 'ilike', '%@advancecr.com%')]"/>
+                <field name="asistencia" optional="hide" invisible="cuenta not in ('Teams','Presencial')"/>
                 <field name="video" optional="hide" invisible="cuenta != 'Teams'"/>
                 <!-- <button type="object" name="go_to_event_event" string="Ir al curso" icon="fa-search"/> -->
             </tree>
@@ -48,7 +48,7 @@
                             <field name="inicio"/>
                             <field name="fin"/>
                             <field name="u_clase"/>
-                            <field name="asistencia" invisible="[('cuenta_nombre', 'ilike', '%@advancecr.com%')]"/>
+                            <field name="asistencia" invisible="cuenta not in ('Teams','Presencial')"/>
                             <field name="video" invisible="cuenta != 'Teams'"/>
                 </group>
                 </sheet>
@@ -74,7 +74,7 @@
                     <filter string="Última clase" name="u_clase" domain="[('u_clase', 'like', 'true')]"/>
                     <filter string="Fecha inicio" name="fecha_inicio_month" context="{'group_by':'inicio:month'}"/>
                     <filter string="Próximos" name="fecha_inicio_ge_today" domain="[('inicio','&gt;=',(datetime.datetime.now().strftime('%Y-%m-%d')))]"/>
-                    <filter name="filter_asispend" string="Asistencia pendiente" domain="[('asistencia', '=', False),('cuenta_nombre', 'not ilike', '%@advancecr.com%'),('fin','&lt;=',(datetime.datetime.now().strftime('%Y-%m-%d')))]"></filter>
+                    <filter name="filter_asispend" string="Asistencia pendiente" domain="[('asistencia', '=', False),('cuenta_nombre', 'not like', '%@advancecr.com'),('fin','&lt;=',(datetime.datetime.now().strftime('%Y-%m-%d')))]"></filter>
                     <filter name="filter_videopend" string="Video pendiente" domain="[('video', '=', False),('cuenta_nombre', '=', 'Teams'),('fin','&lt;=',(datetime.datetime.now().strftime('%Y-%m-%d')))]"></filter>
 
                 </group>
