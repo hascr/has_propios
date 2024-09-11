@@ -86,7 +86,7 @@ class has_event(models.Model):
         string="Tipo de certificado",
     )
 
-    # nombre_contrato = fields.Char(string="Nombre contrato", compute="_compute_nombre_contrato", store=True)
+    cedula_contrato = fields.Char(string="Nombre contrato", compute="_compute_contrato", store=True)
 
     def go_to_contratos(self):
         name_form = "Contratos"
@@ -174,3 +174,13 @@ class has_event(models.Model):
             "target": "new",
             "url": "https://forms.office.com/r/SrhgBh0u8v",
         }
+
+    @api.depends()
+    def _compute_contrato(self):
+        for record in self:
+            # Search for cursos records with matching codigo in the id field
+            curso_record = self.env["cursos"].search([("id", "=", record.id)])
+            if curso_record:
+                record.cedula_contrato = curso_record.cedula_contrato  # Update instructor
+            else:
+                record.cedula_contrato = ""  # Set empty string if no match
