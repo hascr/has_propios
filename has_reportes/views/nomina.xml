@@ -23,7 +23,7 @@
         <field name="name">nomina.pivot</field>
         <field name="model">nomina</field>
         <field name="arch" type="xml">
-            <pivot string="Asistencia" default_order = "fecha desc">
+            <pivot string="Planilla" default_order = "fecha desc">
                 <field name="salario_colonizado" type="measure"/>
                 <field name="retencion_salario" type="measure"/>
                 <field name="fecha" type="row"/>
@@ -70,7 +70,7 @@
 <!-- menu superior -->
 
     <menuitem name="Reportes personalizados" id="has_reportes.menu" parent="account.menu_finance_reports"/>
-    
+
     <!-- menú de categoría con acción -->
 
     <menuitem name="Reportes de nómina" id="has_reportes.menu_1_list" parent="has_reportes.menu"
