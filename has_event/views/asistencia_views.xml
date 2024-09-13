@@ -8,7 +8,7 @@
         <field name="arch" type="xml">
             <!-- <tree editable="bottom"> -->
             <tree default_order = "fecha desc" multi_edit="1">
-                <field name="cod_nombre_horas" readonly="1"/>
+                <field name="cod_nombre" readonly="1"/>
                 <button type="object" name="go_to_event_asistencia" string="Ir a" icon="fa-search-plus"/>
                 <!-- <field name="curso" readonly="1"/> -->
                 <field name="fecha" readonly="1"/>
@@ -32,7 +32,7 @@
                 <group col="4">
                             <field name="nombre" readonly="1"/>
                             <field name="fecha" readonly="1"/>
-                            <field name="cod_nombre_horas" readonly="1"/>
+                            <field name="cod_nombre" readonly="1"/>
                             <field name="correo" readonly="1"/>
                             <field name="celular"/>
                             <field name="telefono"/>
@@ -57,7 +57,7 @@
         <field name="model">asistencia</field>
         <field name="arch" type="xml">
             <search>
-                <field name="cod_nombre_horas" string="Buscar por código, curso, nombre, correo" filter_domain="['|','|', ('cod_nombre_horas','ilike',self), ('correo','ilike',self), ('nombre', 'ilike', self)]"> </field>
+                <field name="cod_nombre" string="Buscar por código, curso, nombre, correo" filter_domain="['|','|', ('cod_nombre','ilike',self), ('correo','ilike',self), ('nombre', 'ilike', self)]"> </field>
                 <group expand="1" string="Group By">
                     <filter string="Código" name="codigo" domain="[]" context="{'group_by':'codigo'}"/>
                     <filter string="Tipo" name="tipo" domain="[]" context="{'group_by':'tipo'}"/>
@@ -90,7 +90,7 @@
         <field name="arch" type="xml">
             <pivot string="Asistencia">
                 <field name="fecha" type="column"/>
-                <field name="cod_nombre_horas" type="row"/>
+                <field name="cod_nombre" type="row"/>
                 <field name="horas" type="measure"/>
                 <field name="minutos" type="measure"/>
             </pivot>
@@ -107,7 +107,7 @@
                 <div t-name="activity-box">
                     <div>
                         #Your Fields
-                        <field name="cod_nombre_horas" display="full"/>
+                        <field name="cod_nombre" display="full"/>
                         <field name="fecha"/>
                         <field name="nombre"/>
                         <field name="horas"/>

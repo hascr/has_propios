@@ -34,9 +34,8 @@ class asistencia(models.Model):
     )
     total_horas = fields.Integer(string="Total horas", compute="_compute_total_horas")
 
-    cod_nombre_horas = fields.Char(
-        string="Código y Horas", compute="_compute_cod_nombre_horas", store=True
-    )
+    #cod_nombre_horas = fields.Char(
+    #    string="Código y Horas", compute="_compute_cod_nombre_horas")
 
     _sql_constraints = [
         (
@@ -148,9 +147,9 @@ class asistencia(models.Model):
             else:
                 record.total_horas = ""  # Set empty string if no match
 
-    @api.depends("cod_nombre", "total_horas")
+    """ @api.depends("cod_nombre", "total_horas")
     def _compute_cod_nombre_horas(self):
         for record in self:
             record.cod_nombre_horas = (
                 f"{record.cod_nombre} ({record.total_horas} horas)"
-            )
+            ) """
