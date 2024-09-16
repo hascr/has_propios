@@ -53,7 +53,7 @@ class estudiantes(models.Model):
     	to_char(t.date_begin, 'yyyy-mm-dd'::text) AS inicio_corto,
     	t.date_end AS final,
     	e.nota AS nota,
-    	((t.cantsesion)::numeric * (t.hsesion)::numeric) AS tiempototal,
+    	round(((t.cantsesion)::numeric * (t.hsesion)::numeric),0) AS tiempototal,
     	e.asistencia AS horas,
     	(SELECT rp1.email FROM res_partner rp1 JOIN res_users ru1 on ru1.partner_id = rp1.id WHERE ru1.id = e.asesor) AS asesor,
     	e.id AS estudiante,
