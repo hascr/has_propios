@@ -175,7 +175,7 @@ class has_event(models.Model):
             "url": "https://forms.office.com/r/SrhgBh0u8v",
         }
 
-    @api.depends()
+    @api.depends("cedula_contrato")
     def _compute_contrato(self):
         for record in self:
             # Search for cursos records with matching codigo in the id field
