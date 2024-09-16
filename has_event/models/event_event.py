@@ -86,7 +86,8 @@ class has_event(models.Model):
         string="Tipo de certificado",
     )
 
-    cedula_contrato = fields.Char(string="Nombre contrato", compute="_compute_contrato", store=True)
+    cedula_contrato = fields.Char(string="Cédula contrato")
+    cursos_id = fields.Many2one("cursos")
 
     def go_to_contratos(self):
         name_form = "Contratos"
@@ -175,12 +176,17 @@ class has_event(models.Model):
             "url": "https://forms.office.com/r/SrhgBh0u8v",
         }
 
-    @api.depends("cedula_contrato")
+    """ @api.depends("id")
     def _compute_contrato(self):
         for record in self:
             # Search for cursos records with matching codigo in the id field
-            curso_record = self.env["cursos"].search([("id", "=", record.id)])
+            curso_record = self.env["cursos"].search([("codigo", "=", record.id)])
             if curso_record:
                 record.cedula_contrato = curso_record.cedula_contrato  # Update instructor
             else:
                 record.cedula_contrato = ""  # Set empty string if no match
+ """
+    @api.depends('cursos_id')
+    def _compute_nombre_contrato(self):
+        for record in self:
+            record.cedula_contrato = record.cursos_id.cedula_contrato
