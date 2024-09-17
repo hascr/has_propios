@@ -86,7 +86,7 @@ class has_event(models.Model):
         string="Tipo de certificado",
     )
 
-    cedula_contrato = fields.Char(string="Cédula contrato")
+    cedula_contrato = fields.Char(string="Cédula contrato", compute="_compute_cedula_contrato", store=True)
     cursos_id = fields.Many2one("cursos")
 
     def go_to_contratos(self):
@@ -187,6 +187,6 @@ class has_event(models.Model):
                 record.cedula_contrato = ""  # Set empty string if no match
  """
     @api.depends('cursos_id')
-    def _compute_nombre_contrato(self):
+    def _compute_cedula_contrato(self):
         for record in self:
             record.cedula_contrato = record.cursos_id.cedula_contrato
