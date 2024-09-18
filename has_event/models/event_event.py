@@ -44,9 +44,6 @@ class has_event(models.Model):
         comodel_name="res.users",
         tracking=True,
         string="Realizar evaluación",
-        domain=lambda self: [
-            ("groups_id", "=", self.env.ref("sales_team.group_sale_salesman").id)
-        ],
     )
     contrato_firmado = fields.Binary(attachment=True)
     contrato_name = fields.Char()
