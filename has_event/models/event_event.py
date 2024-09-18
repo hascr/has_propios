@@ -83,8 +83,10 @@ class has_event(models.Model):
         string="Tipo de certificado",
     )
 
-    cedula_contrato = fields.Char(string="Cédula contrato", compute="_compute_contrato", store=True)
-    #cursos_id = fields.Many2one("cursos")
+    cedula_contrato = fields.Char(
+        string="Cédula contrato", compute="_compute_contrato", store=True
+    )
+    # cursos_id = fields.Many2one("cursos")
 
     def go_to_contratos(self):
         name_form = "Contratos"
@@ -173,7 +175,7 @@ class has_event(models.Model):
             "url": "https://forms.office.com/r/SrhgBh0u8v",
         }
 
-    #@api.depends("id")
+    @api.depends("cedula_contrato")
     def _compute_contrato(self):
         for record in self:
             curso = self.env["cursos"].search([("codigo", "=", record.id)])
