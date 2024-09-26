@@ -58,18 +58,22 @@ class PartnerElectronic(models.Model):
     )
     type_exoneration = fields.Many2one(
         comodel_name="aut.ex",
-        string="Authorization Type"
+        string="Authorization Type",
+        default=3
     )
-    exoneration_number = fields.Char()
+    exoneration_number = fields.Char(default="Ley 9635")
     percentage_exoneration = fields.Float(
         string="Percentage of VAT Exoneration",
-        required=False
+        required=False,
+        default=4
     )
     institution_name = fields.Char(
-        string="Exoneration Issuer"
+        string="Exoneration Issuer",
+        default="Ministerio de Hacienda"
     )
     date_issue = fields.Date(
-        string="Issue Date"
+        string="Issue Date",
+        default="2018-12-04"
     )
     date_expiration = fields.Date(
         string="Expiration Date"

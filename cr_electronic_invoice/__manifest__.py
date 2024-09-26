@@ -45,6 +45,7 @@
         'data/res.currency.xml',
         'data/res_partner_data.xml',
         'data/decimal_precision.xml',
+        'data/fiscal_position.xml',
         'views/uom_views.xml',
         'views/account_move_views.xml',
         'views/account_journal_views.xml',

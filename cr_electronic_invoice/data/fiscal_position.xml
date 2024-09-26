@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="zona_franca_fiscal" model="account.fiscal.position">
+        <field name="name">Zona Franca</field>
+    </record>
+
+    <record id="no_sujeto_fiscal" model="account.fiscal.position">
+        <field name="name">No sujeto (Municipalidades, CCSS)</field>
+    </record>
+
+    <record id="diplomaticos_fiscal" model="account.fiscal.position">
+        <field name="name">Venta exenta a diplomático</field>
+    </record>
+
+    <record id="alquileres_fiscal" model="account.fiscal.position">
+        <field name="name">Exoneración por alquiler</field>
+    </record>
+
+    <record id="exportacion_fiscal" model="account.fiscal.position">
+        <field name="name">Cliente en el exterior</field>
+    </record>
+
+    <record id="otra_exoneracion_fiscal" model="account.fiscal.position">
+        <field name="name">Otra exoneración</field>
+    </record>
+
+    <record id="zona_franca_13_s" model="account.fiscal.position.tax">
+        <field name="position_id" ref="cr_electronic_invoice.zona_franca_fiscal"/>
+        <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_01"/>
+        <field name="tax_dest_id" ref="cr_electronic_invoice.iva_tax_01_s_ex"/>
+    </record>
+
+    <record id="zona_franca_13_b" model="account.fiscal.position.tax">
+        <field name="position_id" ref="cr_electronic_invoice.zona_franca_fiscal"/>
+        <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_01_b"/>
+        <field name="tax_dest_id" ref="cr_electronic_invoice.iva_tax_01_b_ex"/>
+    </record>
+
+    <record id="zona_franca_2_s" model="account.fiscal.position.tax">
+        <field name="position_id" ref="cr_electronic_invoice.zona_franca_fiscal"/>
+        <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_05"/>
+        <field name="tax_dest_id" ref="cr_electronic_invoice.iva_tax_05_s_ex"/>
+    </record>
+
+    <record id="zona_franca_2_b" model="account.fiscal.position.tax">
+        <field name="position_id" ref="cr_electronic_invoice.zona_franca_fiscal"/>
+        <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_05_b"/>
+        <field name="tax_dest_id" ref="cr_electronic_invoice.iva_tax_05_b_ex"/>
+    </record>
+
+    <record id="zona_franca_4_s" model="account.fiscal.position.tax">
+        <field name="position_id" ref="cr_electronic_invoice.zona_franca_fiscal"/>
+        <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_07"/>
+        <field name="tax_dest_id" ref="cr_electronic_invoice.iva_tax_07_s_ex"/>
+    </record>
+
+    <record id="zona_franca_4_b" model="account.fiscal.position.tax">
+        <field name="position_id" ref="cr_electronic_invoice.zona_franca_fiscal"/>
+        <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_07_b"/>
+        <field name="tax_dest_id" ref="cr_electronic_invoice.iva_tax_07_b_ex"/>
+    </record>
+
+    <record id="no_sujeto_13_s" model="account.fiscal.position.tax">
+        <field name="position_id" ref="cr_electronic_invoice.no_sujeto_fiscal"/>
+        <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_01"/>
+        <field name="tax_dest_id" ref="cr_electronic_invoice.no_sujeto"/>
+    </record>
+
+    <record id="no_sujeto_13_b" model="account.fiscal.position.tax">
+        <field name="position_id" ref="cr_electronic_invoice.no_sujeto_fiscal"/>
+        <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_01_b"/>
+        <field name="tax_dest_id" ref="cr_electronic_invoice.no_sujeto"/>
+    </record>
+
+    <record id="no_sujeto_2_s" model="account.fiscal.position.tax">
+        <field name="position_id" ref="cr_electronic_invoice.no_sujeto_fiscal"/>
+        <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_05"/>
+        <field name="tax_dest_id" ref="cr_electronic_invoice.no_sujeto"/>
+    </record>
+
+    <record id="no_sujeto_2_b" model="account.fiscal.position.tax">
+        <field name="position_id" ref="cr_electronic_invoice.no_sujeto_fiscal"/>
+        <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_05_b"/>
+        <field name="tax_dest_id" ref="cr_electronic_invoice.no_sujeto"/>
+    </record>
+
+    <record id="no_sujeto_4_s" model="account.fiscal.position.tax">
+        <field name="position_id" ref="cr_electronic_invoice.no_sujeto_fiscal"/>
+        <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_07"/>
+        <field name="tax_dest_id" ref="cr_electronic_invoice.no_sujeto"/>
+    </record>
+
+    <record id="no_sujeto_4_b" model="account.fiscal.position.tax">
+        <field name="position_id" ref="cr_electronic_invoice.no_sujeto_fiscal"/>
+        <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_07_b"/>
+        <field name="tax_dest_id" ref="cr_electronic_invoice.no_sujeto"/>
+    </record>
+
+    <record id="diplomaticos_fiscal_13_s" model="account.fiscal.position.tax">
+        <field name="position_id" ref="cr_electronic_invoice.diplomaticos_fiscal"/>
+        <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_01"/>
+        <field name="tax_dest_id" ref="cr_electronic_invoice.iva_tax_01_s_ex"/>
+    </record>
+
+    <record id="diplomaticos_fiscal_13_b" model="account.fiscal.position.tax">
+        <field name="position_id" ref="cr_electronic_invoice.diplomaticos_fiscal"/>
+        <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_01_b"/>
+        <field name="tax_dest_id" ref="cr_electronic_invoice.iva_tax_01_b_ex"/>
+    </record>
+
+    <record id="diplomaticos_fiscal_2_s" model="account.fiscal.position.tax">
+        <field name="position_id" ref="cr_electronic_invoice.diplomaticos_fiscal"/>
+        <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_05"/>
+        <field name="tax_dest_id" ref="cr_electronic_invoice.iva_tax_05_s_ex"/>
+    </record>
+
+    <record id="diplomaticos_fiscal_2_b" model="account.fiscal.position.tax">
+        <field name="position_id" ref="cr_electronic_invoice.diplomaticos_fiscal"/>
+        <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_05_b"/>
+        <field name="tax_dest_id" ref="cr_electronic_invoice.iva_tax_05_b_ex"/>
+    </record>
+
+    <record id="diplomaticos_fiscal_4_s" model="account.fiscal.position.tax">
+        <field name="position_id" ref="cr_electronic_invoice.diplomaticos_fiscal"/>
+        <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_07"/>
+        <field name="tax_dest_id" ref="cr_electronic_invoice.iva_tax_07_s_ex"/>
+    </record>
+
+    <record id="diplomaticos_fiscal_4_b" model="account.fiscal.position.tax">
+        <field name="position_id" ref="cr_electronic_invoice.diplomaticos_fiscal"/>
+        <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_07_b"/>
+        <field name="tax_dest_id" ref="cr_electronic_invoice.iva_tax_07_b_ex"/>
+    </record>
+
+    <record id="alquieres_s" model="account.fiscal.position.tax">
+        <field name="position_id" ref="cr_electronic_invoice.alquileres_fiscal"/>
+        <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_01"/>
+        <field name="tax_dest_id" ref="cr_electronic_invoice.iva_tax_0"/>
+    </record>
+
+    <record id="exportacion_fiscal_13_s" model="account.fiscal.position.tax">
+        <field name="position_id" ref="cr_electronic_invoice.exportacion_fiscal"/>
+        <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_01"/>
+        <field name="tax_dest_id" ref="cr_electronic_invoice.iva_tax_01_s_ex"/>
+    </record>
+
+    <record id="exportacion_fiscal_13_b" model="account.fiscal.position.tax">
+        <field name="position_id" ref="cr_electronic_invoice.exportacion_fiscal"/>
+        <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_01_b"/>
+        <field name="tax_dest_id" ref="cr_electronic_invoice.iva_tax_01_b_ex"/>
+    </record>
+
+    <record id="exportacion_fiscal_2_s" model="account.fiscal.position.tax">
+        <field name="position_id" ref="cr_electronic_invoice.exportacion_fiscal"/>
+        <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_05"/>
+        <field name="tax_dest_id" ref="cr_electronic_invoice.iva_tax_05_s_ex"/>
+    </record>
+
+    <record id="exportacion_fiscal_2_b" model="account.fiscal.position.tax">
+        <field name="position_id" ref="cr_electronic_invoice.exportacion_fiscal"/>
+        <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_05_b"/>
+        <field name="tax_dest_id" ref="cr_electronic_invoice.iva_tax_05_b_ex"/>
+    </record>
+
+    <record id="exportacion_fiscal_4_s" model="account.fiscal.position.tax">
+        <field name="position_id" ref="cr_electronic_invoice.exportacion_fiscal"/>
+        <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_07"/>
+        <field name="tax_dest_id" ref="cr_electronic_invoice.iva_tax_07_s_ex"/>
+    </record>
+
+    <record id="exportacion_fiscal_4_b" model="account.fiscal.position.tax">
+        <field name="position_id" ref="cr_electronic_invoice.exportacion_fiscal"/>
+        <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_07_b"/>
+        <field name="tax_dest_id" ref="cr_electronic_invoice.iva_tax_07_b_ex"/>
+    </record>
+
+    <record id="otra_exoneracion_fiscal_13_s" model="account.fiscal.position.tax">
+        <field name="position_id" ref="cr_electronic_invoice.otra_exoneracion_fiscal"/>
+        <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_01"/>
+        <field name="tax_dest_id" ref="cr_electronic_invoice.iva_tax_01_s_ex"/>
+    </record>
+
+    <record id="otra_exoneracion_fiscal_13_b" model="account.fiscal.position.tax">
+        <field name="position_id" ref="cr_electronic_invoice.otra_exoneracion_fiscal"/>
+        <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_01_b"/>
+        <field name="tax_dest_id" ref="cr_electronic_invoice.iva_tax_01_b_ex"/>
+    </record>
+
+    <record id="otra_exoneracion_fiscal_2_s" model="account.fiscal.position.tax">
+        <field name="position_id" ref="cr_electronic_invoice.otra_exoneracion_fiscal"/>
+        <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_05"/>
+        <field name="tax_dest_id" ref="cr_electronic_invoice.iva_tax_05_s_ex"/>
+    </record>
+
+    <record id="otra_exoneracion_fiscal_2_b" model="account.fiscal.position.tax">
+        <field name="position_id" ref="cr_electronic_invoice.otra_exoneracion_fiscal"/>
+        <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_05_b"/>
+        <field name="tax_dest_id" ref="cr_electronic_invoice.iva_tax_05_b_ex"/>
+    </record>
+
+    <record id="otra_exoneracion_fiscal_4_s" model="account.fiscal.position.tax">
+        <field name="position_id" ref="cr_electronic_invoice.otra_exoneracion_fiscal"/>
+        <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_07"/>
+        <field name="tax_dest_id" ref="cr_electronic_invoice.iva_tax_07_s_ex"/>
+    </record>
+
+    <record id="otra_exoneracion_fiscal_4_b" model="account.fiscal.position.tax">
+        <field name="position_id" ref="cr_electronic_invoice.otra_exoneracion_fiscal"/>
+        <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_07_b"/>
+        <field name="tax_dest_id" ref="cr_electronic_invoice.iva_tax_07_b_ex"/>
+    </record>
+
+</odoo>

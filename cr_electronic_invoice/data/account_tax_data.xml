@@ -82,7 +82,7 @@
         <field name="iva_tax_code">08</field>
     </record>
 
-<record id="iva_tax_01_b" model="account.tax">
+    <record id="iva_tax_01_b" model="account.tax">
         <field name="tax_code">01</field>
         <field name="name">IVA 13% (Bienes)</field>
         <field name="amount">13</field>
@@ -92,6 +92,39 @@
         <field name="sequence">10</field>
         <field name="invoice_label">Tarifa General 13%</field>
         <field name="iva_tax_desc">Tarifa General 13%</field>
+        <field name="iva_tax_code">08</field>
+    </record>
+
+    <record id="iva_tax_01_s_ex" model="account.tax">
+        <field name="tax_code">01</field>
+        <field name="name">IVA 13% (Exoner. servicios)</field>
+        <field name="amount">0</field>
+        <field name="type_tax_use">sale</field>
+        <field name="tax_group_id" ref="cr_electronic_invoice.tax_group_IVA13"/>
+        <field name="has_exoneration">True</field>
+        <field name="percentage_exoneration">13</field>
+        <field name="tax_root" ref="cr_electronic_invoice.iva_tax_01"/>
+        <field name="description">IVA 13% (Exoner. servicios)</field>
+        <field name="sequence">10</field>
+        <field name="invoice_label">IVA 13% (Exoner. servicios)</field>
+        <field name="iva_tax_desc">IVA 13% (Exoner. servicios)</field>
+        <field name="iva_tax_code">08</field>
+
+    </record>
+
+    <record id="iva_tax_01_b_ex" model="account.tax">
+        <field name="tax_code">01</field>
+        <field name="name">IVA 13% (Exoner. bienes)</field>
+        <field name="amount">0</field>
+        <field name="type_tax_use">sale</field>
+        <field name="tax_group_id" ref="cr_electronic_invoice.tax_group_IVA13"/>
+        <field name="has_exoneration">True</field>
+        <field name="percentage_exoneration">13</field>
+        <field name="tax_root" ref="cr_electronic_invoice.iva_tax_01_b"/>
+        <field name="description">IVA 13% (Exoner. bienes)</field>
+        <field name="sequence">10</field>
+        <field name="invoice_label">IVA 13% (Exoner. bienes)</field>
+        <field name="iva_tax_desc">IVA 13% (Exoner. bienes)</field>
         <field name="iva_tax_code">08</field>
     </record>
 
@@ -205,6 +238,38 @@
         <field name="iva_tax_code">03</field>
     </record>
 
+    <record id="iva_tax_05_s_ex" model="account.tax">
+        <field name="tax_code">01</field>
+        <field name="name">IVA 2% (Exoner. servicios)</field>
+        <field name="amount">0</field>
+        <field name="type_tax_use">sale</field>
+        <field name="tax_group_id" ref="cr_electronic_invoice.tax_group_IVA2"/>
+        <field name="has_exoneration">True</field>
+        <field name="percentage_exoneration">2</field>
+        <field name="tax_root" ref="cr_electronic_invoice.iva_tax_05"/>
+        <field name="description">IVA 2% (Exoner. servicios)</field>
+        <field name="sequence">10</field>
+        <field name="invoice_label">IVA 2% (Exoner. servicios)</field>
+        <field name="iva_tax_desc">IVA 2% (Exoner. servicios)</field>
+        <field name="iva_tax_code">03</field>
+    </record>
+
+    <record id="iva_tax_05_b_ex" model="account.tax">
+        <field name="tax_code">01</field>
+        <field name="name">IVA 2% (Exoner. bienes)</field>
+        <field name="amount">0</field>
+        <field name="type_tax_use">sale</field>
+        <field name="tax_group_id" ref="cr_electronic_invoice.tax_group_IVA2"/>
+        <field name="has_exoneration">True</field>
+        <field name="percentage_exoneration">2</field>
+        <field name="tax_root" ref="cr_electronic_invoice.iva_tax_05_b"/>
+        <field name="description">IVA 2% (Exoner. bienes)</field>
+        <field name="sequence">10</field>
+        <field name="invoice_label">IVA 2% (Exoner. bienes)</field>
+        <field name="iva_tax_desc">IVA 2% (Exoner. bienes)</field>
+        <field name="iva_tax_code">03</field>
+    </record>
+
     <record id="iva_tax_06" model="account.tax">
         <field name="tax_code">01</field>
         <field name="name">IVA 2% (Servicios)</field>
@@ -252,9 +317,10 @@
         <field name="amount">4</field>
         <field name="type_tax_use">sale</field>
         <field name="tax_group_id" ref="cr_electronic_invoice.tax_group_IVA4"/>
+        <field name="dev_tax_id" ref="cr_electronic_invoice.iva_tax_07_dev"/>
         <field name="description">IVA 4% (Servicios)</field>
         <field name="sequence">10</field>
-        <field name="invoice_label">Tarifa reducida 2%</field>
+        <field name="invoice_label">Tarifa reducida 4%</field>
         <field name="iva_tax_desc">Tarifa reducida 4%</field>
         <field name="iva_tax_code">04</field>
     </record>
@@ -283,6 +349,38 @@
         <field name="invoice_label">Tarifa reducida 4%</field>
         <field name="iva_tax_desc">Tarifa reducida 4%</field>
         <field name="iva_tax_code">DEV04</field>
+    </record>
+
+    <record id="iva_tax_07_s_ex" model="account.tax">
+        <field name="tax_code">01</field>
+        <field name="name">IVA 4% (Exoner. servicios)</field>
+        <field name="amount">0</field>
+        <field name="type_tax_use">sale</field>
+        <field name="tax_group_id" ref="cr_electronic_invoice.tax_group_IVA4"/>
+        <field name="has_exoneration">True</field>
+        <field name="percentage_exoneration">4</field>
+        <field name="tax_root" ref="cr_electronic_invoice.iva_tax_07"/>
+        <field name="description">IVA 4% (Exoner. servicios)</field>
+        <field name="sequence">10</field>
+        <field name="invoice_label">IVA 4% (Exoner. servicios)</field>
+        <field name="iva_tax_desc">IVA 4% (Exoner. servicios)</field>
+        <field name="iva_tax_code">04</field>
+    </record>
+
+    <record id="iva_tax_07_b_ex" model="account.tax">
+        <field name="tax_code">01</field>
+        <field name="name">IVA 4% (Exoner. bienes)</field>
+        <field name="amount">0</field>
+        <field name="type_tax_use">sale</field>
+        <field name="tax_group_id" ref="cr_electronic_invoice.tax_group_IVA4"/>
+        <field name="has_exoneration">True</field>
+        <field name="percentage_exoneration">4</field>
+        <field name="tax_root" ref="cr_electronic_invoice.iva_tax_07_b"/>
+        <field name="description">IVA 4% (Exoner. bienes)</field>
+        <field name="sequence">10</field>
+        <field name="invoice_label">IVA 4% (Exoner. bienes)</field>
+        <field name="iva_tax_desc">IVA 4% (Exoner. bienes)</field>
+        <field name="iva_tax_code">04</field>
     </record>
 
     <record id="iva_tax_08" model="account.tax">
@@ -534,7 +632,7 @@
         <field name="active">False</field>
     </record>
 
-    <record id="iva_tax_20" 
+    <record id="iva_tax_20"
         model="account.tax">
         <field name="tax_code">04</field>
         <field name="name">Impuesto específico de Bebidas Alcohólicas</field>
@@ -711,6 +809,7 @@
         <field name="sequence">10</field>
         <field name="iva_tax_desc">N/A</field>
         <field name="iva_tax_code">N/A</field>
+        <field name="active">False</field>
     </record>
 
     <record id="iva_tax_32" model="account.tax">
@@ -722,6 +821,7 @@
         <field name="sequence">10</field>
         <field name="iva_tax_desc">N/A</field>
         <field name="iva_tax_code">N/A</field>
+        <field name="active">False</field>
     </record>
 
     <record id="iva_tax_32_ND" model="account.tax">
@@ -828,4 +928,19 @@
         <field name="iva_tax_code">N/A</field>
         <field name="active">False</field>
     </record>
+
+    <record id="no_sujeto" model="account.tax">
+        <field name="tax_code">00</field>
+        <field name="name">No sujeto</field>
+        <field name="amount">0</field>
+        <field name="type_tax_use">sale</field>
+        <field name="tax_group_id" ref="cr_electronic_invoice.tax_group_no_sujeto"/>
+        <field name="description">No sujeto</field>
+        <field name="sequence">10</field>
+        <field name="invoice_label">No sujeto</field>
+        <field name="iva_tax_desc">N/A</field>
+        <field name="iva_tax_code">N/A</field>
+    </record>
+
+
 </odoo>
