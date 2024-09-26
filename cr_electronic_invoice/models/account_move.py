@@ -235,7 +235,7 @@ class AccountInvoiceElectronic(models.Model):
         default=False
     )
     error_count = fields.Integer(
-        string="Number of errors",
+        string="Número de errores",
         default="0",
         copy=False
     )

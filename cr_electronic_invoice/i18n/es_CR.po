@@ -2082,7 +2082,7 @@ msgstr "Métodos de pagos"
 #: model:ir.model.fields,field_description:cr_electronic_invoice.field_res_partner__percentage_exoneration
 #: model:ir.model.fields,field_description:cr_electronic_invoice.field_res_users__percentage_exoneration
 msgid "Percentage of VAT Exoneration"
-msgstr "Porcentaje de exoneración del IVA"
+msgstr "Tarifa exonerada"
 
 #. module: cr_electronic_invoice
 #: model:ir.model.fields,field_description:cr_electronic_invoice.field_res_company__frm_pin

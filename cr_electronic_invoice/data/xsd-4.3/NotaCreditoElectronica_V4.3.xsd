@@ -253,7 +253,7 @@
 										<xs:element name="MontoTotalLinea" type="DecimalDineroType">
 											<xs:annotation>
 												<xs:documentation>Existe dos maneras de obtener el resultado del campo:
--	Cuando no existe exoneración, se obtiene de la sumatoria de los campos “subtotal”, “monto del impuesto” 
+-	Cuando no existe exoneración, se obtiene de la sumatoria de los campos “subtotal”, “monto del impuesto”
 -	Cuando posee una exoneración, se obtiene de la sumatoria de los campos “Subtotal”, “Impuesto Neto”</xs:documentation>
 											</xs:annotation>
 										</xs:element>
@@ -554,7 +554,7 @@
 			<xs:element name="Fax" type="TelefonoType" nillable="true" minOccurs="0"/>
 			<xs:element name="CorreoElectronico">
 				<xs:annotation>
-					<xs:documentation>Debe cumplir con la siguiente estructura: 
+					<xs:documentation>Debe cumplir con la siguiente estructura:
  \s*\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*\s*
 </xs:documentation>
 				</xs:annotation>
@@ -614,7 +614,7 @@
 			<xs:element name="Fax" type="TelefonoType" minOccurs="0"/>
 			<xs:element name="CorreoElectronico" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation>Este campo será de condición obligatoria, cuando el cliente lo requiera. Debe cumplir con la siguiente estructura: 
+					<xs:documentation>Este campo será de condición obligatoria, cuando el cliente lo requiera. Debe cumplir con la siguiente estructura:
  \s*\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*\s*
 </xs:documentation>
 				</xs:annotation>
@@ -815,7 +815,7 @@
 			</xs:element>
 			<xs:element name="PorcentajeExoneracion">
 				<xs:annotation>
-					<xs:documentation>Porcentaje de la exoneración</xs:documentation>
+					<xs:documentation>Tarifa exonerada</xs:documentation>
 				</xs:annotation>
 				<xs:simpleType>
 					<xs:restriction base="xs:positiveInteger">
