@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
     <!-- The top margin on the default A4 format is way too big -->
     <record id="paperformat_for_invoice" model="report.paperformat">
         <field name="name">A4 - Invoice</field>
@@ -17,43 +16,35 @@
         <field name="header_spacing">0</field>
         <field name="dpi">90</field>
     </record>
-
     <!-- QWeb Reports -->
     <record id="account.account_invoices" model="ir.actions.report">
         <field name="paperformat_id" ref="paperformat_for_invoice"/>
     </record>
-
-
     <record id="account.account_invoices_without_payment" model="ir.actions.report">
         <field name="paperformat_id" ref="paperformat_for_invoice"/>
     </record>
-
     <template id="custom_header">
-
         <t t-set="report_date" t-value="o.invoice_date"/>
         <t t-set="report_number" t-value="int(o.name)"/>
         <t t-set="pre_printed_report" t-value="report_type == 'pdf'"/>
         <t t-set="report_name" t-value="o.tipo_documento"/>
         <t t-set="header_address" t-value="o.company_id.partner_id"/>
-<!--        <t t-set="custom_footer">-->
-<!--            <t t-call="cr_electronic_invoice.custom_footer"/>-->
-<!--        </t>-->
+        <!--        <t t-set="custom_footer">-->
+        <!--            <t t-call="cr_electronic_invoice.custom_footer"/>-->
+        <!--        </t>-->
         <div>
         </div>
     </template>
-
     <template id="custom_footer">
         <span>test</span>
-<!--        <div name="footer_left_column" class="col-8 text-center"/>-->
+        <!--        <div name="footer_left_column" class="col-8 text-center"/>-->
     </template>
-
     <template id="report_invoice_document" inherit_id="account.report_invoice_document">
         <!--        reemplazar custom header-->
         <t t-set="o" position="after">
             <t t-set="custom_header" t-value="'cr_electronic_invoice.custom_header'"/>
             <t t-set="custom_footer" t-value="'-'"/>
         </t>
-
         <xpath expr="//t/div[1]" position="before">
             <div class="row">
                 <div name="left-upper-side" class="col-8">
@@ -90,22 +81,18 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </xpath>
-
         <!--        remover espacio de inicio-->
-        <xpath expr="//t/div[@class='mt-5 clearfix']" position="attributes">
+        <xpath expr="//t/div[hasclass('mt-5','clearfix')]" position="attributes">
             <attribute name="class">clearfix</attribute>
         </xpath>
-
         <!--        se reemplaza el numero de factura que venia con el texto "Factura", se deja solo el numero-->
         <xpath expr="//h2" position="replace">
             <h2>
                 <span t-if="o.name != '/'" t-field="o.name">INV/2023/0001</span>
             </h2>
         </xpath>
-
         <!-- Remove the partner address -->
         <xpath expr="//div[@name='address_not_same_as_shipping']" position="replace">
             <div name="address_not_same_as_shipping"/>
@@ -116,7 +103,6 @@
         <xpath expr="//div[@name='no_shipping']" position="replace">
             <div name="no_shipping"/>
         </xpath>
-
         <!-- Add a few extra items to Informations (and rename a field) -->
         <xpath expr="//div[@id='informations']" position="replace">
             <div id="informations" class="row mt-3 mb-1">
@@ -145,30 +131,34 @@
             </div>
             <div id="receptor_line1" class="row mt-3 mb-1">
                 <div class="col-6 mb-2 mw-100">
-                    <strong>Razón Social:</strong><br/>
+                    <strong>Razón Social:</strong>
+                    <br/>
                     <span t-field="o.partner_id.name"/>
                 </div>
                 <div class="col-3 mb-2 mw-100">
-                    <strong>Cédula No.:</strong><br/>
+                    <strong>Cédula No.:</strong>
+                    <br/>
                     <span t-field="o.partner_id.vat"/>
                 </div>
                 <div class="col-3 mb-2 mw-100">
-                    <strong>Teléfono:</strong><br/>
+                    <strong>Teléfono:</strong>
+                    <br/>
                     <span t-field="o.partner_id.phone"/>
                 </div>
             </div>
             <div id="receptor_line2" class="row mt-3 mb-1">
                 <div class="col-4 mb-2 mw-100">
-                    <strong>Email:</strong><br/>
+                    <strong>Email:</strong>
+                    <br/>
                     <span t-field="o.partner_id.email"/>
                 </div>
                 <div class="col-8 mb-2 mw-100">
-                    <strong>Dirección:</strong><br/>
+                    <strong>Dirección:</strong>
+                    <br/>
                     <span t-out="o.partner_id._display_address(True)"/>
                 </div>
             </div>
         </xpath>
-
         <!--        CODIGO CABYS-->
         <xpath expr="//table[@name='invoice_line_table']/thead/tr[1]/th[1]" position="before">
             <th name="th_cabys_cod" class="text-start">
@@ -180,7 +170,6 @@
                 <span t-esc="line.product_id.cabys_code or ''"/>
             </td>
         </xpath>
-
         <!--        leyenda final -->
         <xpath expr="//t/div[3]/div/div[last()]" position="after">
             <p class="text-center">
