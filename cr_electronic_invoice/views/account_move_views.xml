@@ -5,7 +5,6 @@
         <field name="model">account.move</field>
         <field name="inherit_id" ref="account.view_move_form"/>
         <field name="arch" type="xml">
-
             <xpath expr="//sheet" position="before">
                 <group invisible="move_type in ('in_invoice', 'in_refund', 'entry') or tipo_documento == 'disabled'">
                     <br/>
@@ -16,7 +15,6 @@
                                 The document has not yet been issued, it will be sent automatically in 5 minutes, if you
                                 need to send it manually press
                             </div>
-
                             <div>
                                 <button class="btn btn-primary" name="generate_and_send_invoice" type="object"
                                         string="Send Document"/>
@@ -24,7 +22,6 @@
                         </div>
                     </div>
                 </group>
-
                 <group invisible="move_type in ('in_invoice', 'in_refund', 'entry') or tipo_documento == 'disabled'">
                     <br/>
                     <div class="alert alert-warning" role="alert" colspan="2"
@@ -35,7 +32,6 @@
                                 be
                                 consulted in 10 minutes, if you wish to consult it manually press
                             </div>
-
                             <div>
                                 <button class="btn btn-primary" name="action_check_hacienda" type="object"
                                         string="Consult Document"/>
@@ -44,8 +40,6 @@
                     </div>
                 </group>
             </xpath>
-
-
             <xpath expr="//button[@name='button_draft']" position="after">
                 <button name="update_dev_tax" type="object" string="AGG impuesto" invisible="True"/>
                 <button name="action_send_mrs_to_hacienda" type="object" string="Send Receiver Message"
@@ -55,12 +49,10 @@
                 <button name="create_partner_from_xml" class="oe_highlight" type="object" string="Create Provider"
                         invisible="move_type in ('entry', 'out_invoice', 'out_refund') or partner_id != False or xml_supplier_approval == False"/>
             </xpath>
-
             <xpath expr="//field[@name='narration']/.." position="inside">
                 <br/>
                 <field name="invoice_amount_text" class="oe_inline" nolabel="1"/>
             </xpath>
-
             <field name="partner_id" position="after">
                 <field name="economic_activities_ids" invisible="1" readonly="1"
                        options='{"active_test": [("move_type","in", ("in_invoice", "in_refund"))]}'/>
@@ -75,11 +67,9 @@
                        required="move_type in ('in_invoice', 'in_refund')"
                        invisible="move_type not in ('out_invoice', 'out_refund', 'in_invoice', 'in_refund')"/>
             </field>
-
             <field name="invoice_date" position="attributes">
                 <attribute name="readonly"></attribute>
             </field>
-
             <field name="invoice_date" position="after">
                 <field name="date_issuance" readonly="1"
                        invisible="move_type not in ('out_invoice', 'out_refund', 'in_invoice', 'in_refund')"/>
@@ -93,7 +83,6 @@
                        required="move_type in ('out_invoice', 'out_refund', 'in_invoice', 'in_refund')"/>
                 <!--                <field name="mensualidad"/>-->
             </field>
-
             <xpath expr="//field[@name='invoice_line_ids']//tree//field[@name='name']" position="after">
                 <field name="categ_name" invisible="1" readonly="1"/>
                 <field name="product_code" invisible="1" readonly="1"/>
@@ -105,7 +94,6 @@
                 <field name="product_code" invisible="1" readonly="1"/>
                 <field name="third_party_id" invisible="product_code != '04'" optional="hide"/>
             </xpath>
-
             <xpath expr="//field[@name='invoice_line_ids']//tree//field[@name='discount']" position="after">
                 <field name="discount_note" optional="hide"/>
                 <field name="tariff_head" optional="hide"/>
@@ -115,18 +103,15 @@
                 <field name="discount_note" optional="hide"/>
                 <field name="tariff_head" optional="hide"/>
             </xpath>
-
             <xpath expr="//button[@name='action_invoice_sent']" position="attributes">
                 <attribute name="invisible">False</attribute>
             </xpath>
-
             <xpath expr="(//field[@name='tax_totals'])[last()]" position="after">
                 <field name="amount_tax_electronic_invoice"
                        invisible="move_type in ('out_invoice', 'out_refund')"/>
                 <field name="amount_total_electronic_invoice"
                        invisible="move_type in ('out_invoice', 'out_refund')"/>
             </xpath>
-
             <xpath expr="//page[2]" position="after">
                 <page name="fe_invoice_data" string="Electronic Information"
                       invisible="move_type not in ('out_invoice', 'out_refund', 'in_invoice', 'in_refund')">
@@ -161,13 +146,13 @@
                                 <field name="electronic_invoice_return_message" readonly="1"/>
                             </group>
                         </group>
-
                     </group>
                 </page>
             </xpath>
+            <field name="invoice_payment_term_id" position="attributes">
+                <attribute name="required">1</attribute> </field>
         </field>
     </record>
-
     <record id="view_move_tree_inherit" model="ir.ui.view">
         <field name="name">account.invoice.tree.inherit</field>
         <field name="model">account.move</field>
@@ -184,7 +169,6 @@
             </field>
         </field>
     </record>
-
     <record id="view_account_invoice_filter" model="ir.ui.view">
         <field name="name">account.invoice.select.inherited</field>
         <field name="model">account.move</field>
