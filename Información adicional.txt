@@ -72,5 +72,5 @@ VENTAS A NO SUJETOS (CCSS, Municipalidades)
 #8
 ALQUILERES EXENTOS
 -. Seleccionar posición fiscal
--. Verificar en productos la unidad de medida
+-. Asignar y verificar en productos la unidad de medida
 ------------------------------------------------------------------------------------------------------------------------------

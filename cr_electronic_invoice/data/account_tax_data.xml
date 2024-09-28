@@ -317,7 +317,7 @@
         <field name="amount">4</field>
         <field name="type_tax_use">sale</field>
         <field name="tax_group_id" ref="cr_electronic_invoice.tax_group_IVA4"/>
-        <field name="dev_tax_id" ref="cr_electronic_invoice.iva_tax_07_dev"/>
+        <!-- <field name="dev_tax_id" ref="cr_electronic_invoice.iva_tax_07_dev"/> -->
         <field name="description">IVA 4% (Servicios)</field>
         <field name="sequence">10</field>
         <field name="invoice_label">Tarifa reducida 4%</field>
