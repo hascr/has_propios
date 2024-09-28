@@ -25,6 +25,10 @@
         <field name="name">Otra exoneración</field>
     </record>
 
+    <record id="regular_fiscal" model="account.fiscal.position">
+        <field name="name">Cliente general</field>
+    </record>
+
     <record id="zona_franca_13_s" model="account.fiscal.position.tax">
         <field name="position_id" ref="cr_electronic_invoice.zona_franca_fiscal"/>
         <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_01"/>

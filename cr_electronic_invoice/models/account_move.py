@@ -445,8 +445,8 @@ class AccountInvoiceElectronic(models.Model):
 
         if self.move_type == 'out_invoice':
             # tipo de identificación
-            if self.partner_id and self.partner_id.vat and not self.partner_id.identification_id:
-                raise UserError(_('Select the type of client identification in your profile'))
+            if self.partner_id and self.partner_id.vat and not self.partner_id.identification_id and not self.partner_id.property_account_position_id:
+                raise UserError(_('Indique la cédula, el tipo de identificación y la posición fiscal al cliente relacionado.'))
 
             if tipo_documento == 'FE' and \
                     (not self.partner_id.vat or self.partner_id.identification_id.code == '05'):
@@ -1871,3 +1871,10 @@ class AccountInvoiceElectronic(models.Model):
         if not self.payment_methods_id:
             value = self.env.ref("cr_electronic_invoice.PaymentMethods_4", False)
             self.payment_methods_id = value
+
+    @api.constrains('amount_total_signed')
+    def validar_monto(self):
+        for record in self:
+            if record.amount_total_signed > 15000000:  # 15 millones
+                if not self.env.user.has_group('sales_team.group_sale_manager'):
+                    raise UserError("Solo los usuarios administradores pueden validar facturas con un monto superior a 15 millones.")
