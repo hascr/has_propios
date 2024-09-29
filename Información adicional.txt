@@ -33,6 +33,7 @@ CONFIGURACIÓN DE FACTURA ELECTRONICA
 -. Habilitar unidades de medida de productos (Ventas --> Configuración)
 -. Revisar configuración de productos (Código Cabys, unidades de medida, impuestos de cliente y proveedor, categoría, tipo de producto, actividad económica).
 -. Asignar a clientes (Posición fiscal, Tipo de identificación, cédula, correo electrónico, Posición fiscal, Exoneración, País, Provincia, Cantón, Distrito, barrio, ciudad, dirección exacta)
+-. Asignar consecutivos
 -. Revisar API de consulta de cédulas
 -. Revisar API de consulta de Cabys
 ------------------------------------------------------------------------------------------------------------------------------
