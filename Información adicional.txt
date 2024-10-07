@@ -35,6 +35,7 @@ CONFIGURACIÓN DE FACTURA ELECTRONICA
 -. Asignar a clientes (Posición fiscal, Tipo de identificación, cédula, correo electrónico, Posición fiscal, Exoneración, País, Provincia, Cantón, Distrito, barrio, ciudad, dirección exacta)
 -. Asignar consecutivos
 -. Revisar API de consulta de cédulas
+-. Revisar API de consulta de actividades
 -. Revisar API de consulta de Cabys
 ------------------------------------------------------------------------------------------------------------------------------
 #5

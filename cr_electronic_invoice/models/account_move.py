@@ -1254,7 +1254,7 @@ class AccountInvoiceElectronic(models.Model):
                                     inv_line.product_uom_id.category_id.name in ('Service',
                                                                                  'Services',
                                                                                  'Servicio',
-                                                                                 'Servicios'):
+                                                                                 'Servicios','Renta'):
                                 if taxes:
                                     if _tax_exoneration:
                                         if _percentage_exoneration < 1:

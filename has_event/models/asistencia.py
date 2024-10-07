@@ -13,6 +13,7 @@ class asistencia(models.Model):
     _rec_name = "nombre"
     _inherit = ["mail.thread", "mail.activity.mixin"]
 
+    active = fields.Boolean(string="Activo", default=True)
     codigo = fields.Char(string="Código", tracking=True)
     nombre = fields.Char(string="Nombre completo", tracking=True)
     correo = fields.Char(string="Correo electrónico", tracking=True)

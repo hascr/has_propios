@@ -13,6 +13,7 @@ class Programacion(models.Model):
     _rec_name = "cod_nombre"
     _inherit = ["mail.thread", "mail.activity.mixin"]
 
+    active = fields.Boolean(string="Activo", default=True)
     codigo = fields.Char(string="Código", tracking=True)
     curso = fields.Char(string="Curso", tracking=True)
     cuenta = fields.Char(string="Cuenta ", compute="_compute_cuenta", tracking=True)
@@ -78,7 +79,7 @@ class Programacion(models.Model):
         for record in self:
             record.cuenta_nombre = record.cuenta
 
-    @api.depends('soporte')
+    @api.depends("soporte")
     def _compute_soporte_nombre(self):
         for record in self:
             if record.soporte:
