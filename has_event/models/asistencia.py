@@ -18,9 +18,9 @@ class asistencia(models.Model):
     nombre = fields.Char(string="Nombre completo", tracking=True)
     correo = fields.Char(string="Correo electrónico", tracking=True)
     telefono = fields.Char(
-        string="Teléfono", tracking=True, compute="_compute_telefono"
+        string="Teléfono", tracking=True, compute="_compute_telefono", store=True
     )
-    celular = fields.Char(string="Celular", tracking=True, compute="_compute_celular")
+    celular = fields.Char(string="Celular", tracking=True, compute="_compute_celular", store=True)
     curso = fields.Char(string="Curso", tracking=True)
     # cuenta = fields.Char(string="Cuenta")
     fecha = fields.Datetime(string="Fecha", tracking=True)
@@ -31,9 +31,9 @@ class asistencia(models.Model):
     cod_nombre = fields.Char(string="N. Curso", tracking=True)
     # asesor = fields.Integer(string="Asesor", compute='_compute_asesor')
     user_id = fields.Many2one(
-        "res.users", string="Asesor tecnológico", compute="_compute_asesor"
+        "res.users", string="Asesor tecnológico", compute="_compute_asesor", store=True
     )
-    total_horas = fields.Integer(string="Total horas", compute="_compute_total_horas")
+    total_horas = fields.Integer(string="Total horas", compute="_compute_total_horas",store=True)
 
     #cod_nombre_horas = fields.Char(
     #    string="Código y Horas", compute="_compute_cod_nombre_horas")
@@ -91,7 +91,7 @@ class asistencia(models.Model):
             curso_record = self.env["event.registration"].search(
                 [
                     ("event_id", "=", codigo_int),
-                    ("email","=",record.correo,),  # Buscar en 'email' si no hay coincidencia
+                    ("email","=",record.correo),  # Buscar en 'email' si no hay coincidencia
                     ("state", "=", "open")
                 ]
             )
@@ -139,7 +139,7 @@ class asistencia(models.Model):
             curso_record = self.env["event.registration"].search(
                 [
                     ("event_id", "=", codigo_int),
-                    ("email","=",record.correo,),  # Buscar en 'email' si no hay coincidencia
+                    ("email","=",record.correo),  # Buscar en 'email' si no hay coincidencia
                     ("state", "=", "open")
                 ]
             )

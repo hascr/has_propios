@@ -58,6 +58,7 @@
         <field name="arch" type="xml">
             <search>
                 <field name="cod_nombre" string="Buscar por código, curso, nombre, correo" filter_domain="['|','|', ('cod_nombre','ilike',self), ('correo','ilike',self), ('nombre', 'ilike', self)]"> </field>
+                <filter name="inactivos" string="Inactivos" domain="[('active', '=', False)]"></filter>
                 <group expand="1" string="Group By">
                     <filter string="Código" name="codigo" domain="[]" context="{'group_by':'codigo'}"/>
                     <filter string="Tipo" name="tipo" domain="[]" context="{'group_by':'tipo'}"/>
