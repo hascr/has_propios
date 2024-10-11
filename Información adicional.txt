@@ -76,3 +76,12 @@ ALQUILERES EXENTOS
 -. Seleccionar posición fiscal
 -. Asignar y verificar en productos la unidad de medida
 ------------------------------------------------------------------------------------------------------------------------------
+#9
+CAMBIAR CODIGO ACCOUNT_MOVE
+-. Cuando se usa el módulo om_account_asset
+-. Buscar texto: The entry %s (id %s) must be in draft.
+-. Línea aproximada #3843
+-. account > models > account_move.py > AccountMove > _post
+-. Cambiar ----> if move.state in ['posted', 'cancel']:
+-. Por     ----> if move.state in ['posted', 'cancel'] and move.journal_id.code not in ['PPE']:
+------------------------------------------------------------------------------------------------------------------------------
