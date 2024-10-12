@@ -40,13 +40,13 @@ class ProductTemplate(models.Model):
             _logger.warning(f"CABYS code '{cabys_code}' not found in response.")
             raise UserError(f"El código CABYS '{cabys_code}' no se encontró. Verifique el código ingresado.")
 
-    @api.model
-    def create(self, vals):
-        if 'cabys_code' in vals:
-            record = super(ProductTemplate, self).create(vals)
-            record.get_cabys_info(vals['cabys_code'])
+    @api.model_create_multi
+    def create(self, vals_list):
+        if 'cabys_code' in vals_list:
+            record = super(ProductTemplate, self).create(vals_list)
+            record.get_cabys_info(vals_list['cabys_code'])
         else:
-            record = super(ProductTemplate, self).create(vals)
+            record = super(ProductTemplate, self).create(vals_list)
         return record
 
     def write(self, vals):

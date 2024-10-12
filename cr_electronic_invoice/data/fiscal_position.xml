@@ -26,7 +26,7 @@
     </record>
 
     <record id="regular_fiscal" model="account.fiscal.position">
-        <field name="name">Cliente general</field>
+        <field name="name">General</field>
     </record>
 
     <record id="zona_franca_13_s" model="account.fiscal.position.tax">

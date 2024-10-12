@@ -84,9 +84,9 @@
         <field name="name">Alquiler de uso habitacional</field>
         <field name="type">service</field>
         <field name="default_code">ALQ_HAB</field>
-        <field name="categ_id" ref="product_category_otros_cargos" />
+        <!-- <field name="categ_id" ref="product_category_otros_cargos" /> -->
         <field name="code_type_id" ref="cr_electronic_invoice.CodeTypeProduct_99" />
-        <field name="taxes_id" eval="[(5,0,0)]" />
+        <!-- <field name="taxes_id" eval="[(5,0,0)]"/> -->
         <field name="uom_id" ref="cr_electronic_invoice.product_uom_al" />
         <field name="uom_po_id" ref="cr_electronic_invoice.product_uom_al" />
     </record>
@@ -94,9 +94,9 @@
         <field name="name">Alquiler de uso comercial</field>
         <field name="type">service</field>
         <field name="default_code">ALQ_COM</field>
-        <field name="categ_id" ref="product_category_otros_cargos" />
+        <!-- <field name="categ_id" ref="product_category_otros_cargos" /> -->
         <field name="code_type_id" ref="cr_electronic_invoice.CodeTypeProduct_99" />
-        <field name="taxes_id" eval="[(5,0,0)]" />
+        <!-- <field name="taxes_id" eval="[(5,0,0)]" /> -->
         <field name="uom_id" ref="cr_electronic_invoice.product_uom_alc" />
         <field name="uom_po_id" ref="cr_electronic_invoice.product_uom_alc" />
     </record>

@@ -25,7 +25,8 @@ CONFIGURACIÓN DE FACTURA ELECTRONICA
 -. Configurar Tipos de cambio (Facturación --> Configuración --> Divisas)
 -. Marcar información tributaria (Facturación --> Ajustes --> Facturación Electrónica Costa Rica)
 -. Información de la empresa (Llave critográfica, usuario, contraseña, PIN, actividad económica, correo, tipo de identificación, país, provincia, cantón, distrito, barrio, ciudad, dirección exacta, teléfono)
--. Establecer secuencias en diarios de Ventas y Compras (Facturas, tiquetes, exportación, notas crédito, notas débito, Sucursal, Terminal)
+-. Establecer secuencias en diarios de Ventas (Facturas, tiquetes, exportación, notas crédito, notas débito, Sucursal, Terminal)
+-. Establecer producto, cuenta y analítica por defecto en diario de Compras.
 -. Asignar condiciones de ventas a los términos de pago (Facturación --> Configuración --> Términos de pago)
 -. Agregar cuenta contable a impuestos.
 -. Definir impuestos bases (Facturación --> Configuración --> Ajustes --> Impuestos)
@@ -33,6 +34,8 @@ CONFIGURACIÓN DE FACTURA ELECTRONICA
 -. Habilitar unidades de medida de productos (Ventas --> Configuración)
 -. Revisar configuración de productos (Código Cabys, unidades de medida, impuestos de cliente y proveedor, categoría, tipo de producto, actividad económica).
 -. Asignar a clientes (Posición fiscal, Tipo de identificación, cédula, correo electrónico, Posición fiscal, Exoneración, País, Provincia, Cantón, Distrito, barrio, ciudad, dirección exacta)
+-. Revisar traducción de monedas
+-. Cambiar decimales de Product Price en Ajustes > Técnico > Precisión decimal
 -. Asignar consecutivos
 -. Revisar API de consulta de cédulas
 -. Revisar API de consulta de actividades
