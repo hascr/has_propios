@@ -61,10 +61,10 @@
                        domain="[('id', 'in', economic_activities_ids)]"
                        options='{"no_open": True, "no_create": True, "active_test": [("move_type","in", ("in_invoice", "in_refund"))]}'/>
                 <field name="number_electronic" readonly="move_type not in ('in_invoice', 'in_refund') or state != 'draft'"
-                       required="move_type not in ('in_invoice', 'in_refund','out_invoice', 'out_refund')"
+
                        invisible="move_type not in ('out_invoice', 'out_refund', 'in_invoice', 'in_refund')"/>
                 <field name="sequence" readonly="move_type not in ('in_invoice', 'in_refund') or state != 'draft'"
-                       required="move_type not in ('in_invoice', 'in_refund','out_invoice', 'out_refund')"
+
                        invisible="move_type in ('in_invoice', 'in_refund')"/>
             </field>
             <field name="invoice_date" position="attributes">
@@ -150,7 +150,8 @@
                 </page>
             </xpath>
             <field name="invoice_payment_term_id" position="attributes">
-                <attribute name="required">0</attribute> </field>
+                <attribute name="required">0</attribute>
+            </field>
         </field>
     </record>
     <record id="view_move_tree_inherit" model="ir.ui.view">
