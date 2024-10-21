@@ -1,20 +1,18 @@
 # -*- coding: utf-8 -*-
 from odoo import api, fields, models, tools
-#from odoo.addons.base.models.res_currency import Currency
+
+# from odoo.addons.base.models.res_currency import Currency
 
 
 class AccountPayment(models.Model):
-    _inherit = 'account.payment'
+    _inherit = "account.payment"
 
-    material = fields.Float(
-        string='Material'
-    )
+    material = fields.Float(string="Material")
 
-    consultoria = fields.Boolean(
-        string='Pago de consultoría'
-    )
+    consultoria = fields.Boolean(string="Pago de consultoría")
 
     certificacion_retenciones = fields.Binary(attachment=True)
+
 
 #    company_currency_id = fields.Many2one(
 #        comodel_name='res.currency',
@@ -30,7 +28,7 @@ class AccountPayment(models.Model):
 #        compute='_compute_amount'
 #    )
 
-    ##@api.one
+##@api.one
 #    @api.depends('currency_id', 'company_id')
 #    @api.constrains('currency_id', 'company_id')
 #    def _compute_amount(self):
@@ -42,98 +40,76 @@ class AccountPayment(models.Model):
 
 
 class AccountPaymentReport(models.Model):
-    _name = 'account.payment.report'
+    _name = "account.payment.report"
     _auto = False
-    _description = 'Reporte gestión cobro'
+    _description = "Reporte gestión cobro"
 
-    payment_date = fields.Date(
-        string='Fecha de pago'
-    )
-    partner_id = fields.Many2one(
-        'res.partner',
-        string='Cliente'
-    )
+    payment_date = fields.Date(string="Fecha de pago")
+    partner_id = fields.Many2one("res.partner", string="Cliente")
     user_id = fields.Many2one(
-        'res.users',
-        string='Asesor',
+        "res.users",
+        string="Asesor",
     )
-    amount = fields.Float(
-        string='Cobro bruto'
-    )
-    number_invoice = fields.Char(
-        string='Número de factura'
-    )
-    material = fields.Float(
-        string='Material'
-    )
-#    partner_type = fields.Selection(
-#        [
-#            ('customer', 'Customer'),
-#            ('supplier', 'Vendor')
-#        ]
-#    )
-    amount_untaxed = fields.Float(
-        string='Cobro Neto'
-    )
-    commission = fields.Float(
-        string='Comisión'
-    )
-    retencion = fields.Float(
-        string='Retención'
-    )
-    net_commission = fields.Float(
-        string='Comisión neta'
-    )
+    amount = fields.Float(string="Cobro bruto")
+    number_invoice = fields.Char(string="Número de factura")
+    material = fields.Float(string="Material")
+    #    partner_type = fields.Selection(
+    #        [
+    #            ('customer', 'Customer'),
+    #            ('supplier', 'Vendor')
+    #        ]
+    #    )
+    amount_untaxed = fields.Float(string="Cobro Neto")
+    commission = fields.Float(string="Comisión")
+    retencion = fields.Float(string="Retención")
+    net_commission = fields.Float(string="Comisión neta")
 
-    net_amount_usd = fields.Float(
-        string='Cobro neto USD'
-    )
+    net_amount_usd = fields.Float(string="Cobro neto USD")
 
-    tipo_comision = fields.Char (
-        'Tipo de comisión'
-    )
+    tipo_comision = fields.Char("Tipo de comisión")
 
-#    @api.model_cr
+    #    @api.model_cr
     def init(self):
-#        tools.drop_view_if_exists(self._cr, "account_payment_report")
-        self._cr.execute("""
+        #        tools.drop_view_if_exists(self._cr, "account_payment_report")
+        self._cr.execute(
+            """
             CREATE OR REPLACE VIEW account_payment_report AS (
             SELECT 	a.id AS id,
 			m.ref AS number_invoice,
 			m.date AS payment_date,
 			m.partner_id AS partner_id,
-			ROUND(m.amount_total_signed * (SELECT m1.amount_untaxed/m1.amount_total FROM account_move m1 WHERE m1.payment_reference = m.ref AND m1.move_type <> 'entry' ),2) amount,
-			ROUND(m.amount_total_signed * (SELECT m1.amount_untaxed/m1.amount_total FROM account_move m1 WHERE m1.payment_reference = m.ref AND m1.move_type <> 'entry' ) - CASE WHEN a.material::numeric IS NULL THEN 0 ELSE a.material::numeric END,2) amount_untaxed,
+			ROUND(m.amount_total_signed * (SELECT m1.amount_untaxed/m1.amount_total FROM account_move m1 WHERE m1.payment_reference = m.ref AND m1.move_type <> 'entry' AND m1.payment_state <> 'reversed' ),2) amount,
+			ROUND(m.amount_total_signed * (SELECT m1.amount_untaxed/m1.amount_total FROM account_move m1 WHERE m1.payment_reference = m.ref AND m1.move_type <> 'entry' AND m1.payment_state <> 'reversed' ) - CASE WHEN a.material::numeric IS NULL THEN 0 ELSE a.material::numeric END,2) amount_untaxed,
 			a.material material,
-			(SELECT m1.invoice_user_id FROM account_move m1 WHERE m1.payment_reference = m.ref AND m1.move_type <> 'entry' ) AS user_id,
+			(SELECT m1.invoice_user_id FROM account_move m1 WHERE m1.payment_reference = m.ref AND m1.move_type <> 'entry' AND m1.payment_state <> 'reversed' ) AS user_id,
 
-			ROUND(CASE WHEN a.consultoria = TRUE THEN (m.amount_total_signed * (SELECT m1.amount_untaxed/m1.amount_total FROM account_move m1 WHERE m1.payment_reference = m.ref AND m1.move_type <> 'entry' ) - CASE WHEN a.material::numeric IS NULL THEN 0 ELSE a.material::numeric END) *0.02 ELSE (m.amount_total_signed * (SELECT m1.amount_untaxed/m1.amount_total FROM account_move m1 WHERE m1.payment_reference = m.ref AND m1.move_type <> 'entry' ) - CASE WHEN a.material::numeric IS NULL THEN 0 ELSE a.material::numeric END) *0.04 END,2) commission,
-			ROUND(CASE WHEN a.consultoria = TRUE THEN (m.amount_total_signed * (SELECT m1.amount_untaxed/m1.amount_total FROM account_move m1 WHERE m1.payment_reference = m.ref AND m1.move_type <> 'entry' ) - CASE WHEN a.material::numeric IS NULL THEN 0 ELSE a.material::numeric END) *0.02 ELSE (m.amount_total_signed * (SELECT m1.amount_untaxed/m1.amount_total FROM account_move m1 WHERE m1.payment_reference = m.ref AND m1.move_type <> 'entry' ) - CASE WHEN a.material::numeric IS NULL THEN 0 ELSE a.material::numeric END) *0.04 END * 0.15,2) retencion,
-			ROUND(CASE WHEN a.consultoria = TRUE THEN (m.amount_total_signed * (SELECT m1.amount_untaxed/m1.amount_total FROM account_move m1 WHERE m1.payment_reference = m.ref AND m1.move_type <> 'entry' ) - CASE WHEN a.material::numeric IS NULL THEN 0 ELSE a.material::numeric END) *0.02 ELSE (m.amount_total_signed * (SELECT m1.amount_untaxed/m1.amount_total FROM account_move m1 WHERE m1.payment_reference = m.ref AND m1.move_type <> 'entry' ) - CASE WHEN a.material::numeric IS NULL THEN 0 ELSE a.material::numeric END) *0.04 END * 0.85,2) net_commission,
-			
-			ROUND(ROUND(m.amount_total_signed * (SELECT m1.amount_untaxed/m1.amount_total FROM account_move m1 WHERE m1.payment_reference = m.ref AND m1.move_type <> 'entry' ) - CASE WHEN a.material::numeric IS NULL THEN 0 ELSE a.material::numeric END,2) * CASE WHEN (SELECT rate FROM res_currency_rate rcr WHERE rcr.currency_id = 1 AND m.date = rcr.name) IS NULL THEN (SELECT rate FROM res_currency_rate rcr WHERE rcr.currency_id = 1 AND m.date = rcr.name LIMIT 1) ELSE (SELECT rate FROM res_currency_rate rcr WHERE rcr.currency_id = 1 AND m.date = rcr.name) END,2) net_amount_usd,
+			ROUND(CASE WHEN a.consultoria = TRUE THEN (m.amount_total_signed * (SELECT m1.amount_untaxed/m1.amount_total FROM account_move m1 WHERE m1.payment_reference = m.ref AND m1.move_type <> 'entry' AND m1.payment_state <> 'reversed' ) - CASE WHEN a.material::numeric IS NULL THEN 0 ELSE a.material::numeric END) *0.02 ELSE (m.amount_total_signed * (SELECT m1.amount_untaxed/m1.amount_total FROM account_move m1 WHERE m1.payment_reference = m.ref AND m1.move_type <> 'entry' AND m1.payment_state <> 'reversed' ) - CASE WHEN a.material::numeric IS NULL THEN 0 ELSE a.material::numeric END) *0.04 END,2) commission,
+			ROUND(CASE WHEN a.consultoria = TRUE THEN (m.amount_total_signed * (SELECT m1.amount_untaxed/m1.amount_total FROM account_move m1 WHERE m1.payment_reference = m.ref AND m1.move_type <> 'entry' AND m1.payment_state <> 'reversed' ) - CASE WHEN a.material::numeric IS NULL THEN 0 ELSE a.material::numeric END) *0.02 ELSE (m.amount_total_signed * (SELECT m1.amount_untaxed/m1.amount_total FROM account_move m1 WHERE m1.payment_reference = m.ref AND m1.move_type <> 'entry' AND m1.payment_state <> 'reversed' ) - CASE WHEN a.material::numeric IS NULL THEN 0 ELSE a.material::numeric END) *0.04 END * 0.15,2) retencion,
+			ROUND(CASE WHEN a.consultoria = TRUE THEN (m.amount_total_signed * (SELECT m1.amount_untaxed/m1.amount_total FROM account_move m1 WHERE m1.payment_reference = m.ref AND m1.move_type <> 'entry' AND m1.payment_state <> 'reversed' ) - CASE WHEN a.material::numeric IS NULL THEN 0 ELSE a.material::numeric END) *0.02 ELSE (m.amount_total_signed * (SELECT m1.amount_untaxed/m1.amount_total FROM account_move m1 WHERE m1.payment_reference = m.ref AND m1.move_type <> 'entry' AND m1.payment_state <> 'reversed' ) - CASE WHEN a.material::numeric IS NULL THEN 0 ELSE a.material::numeric END) *0.04 END * 0.85,2) net_commission,
+
+			ROUND(ROUND(m.amount_total_signed * (SELECT m1.amount_untaxed/m1.amount_total FROM account_move m1 WHERE m1.payment_reference = m.ref AND m1.move_type <> 'entry' AND m1.payment_state <> 'reversed' ) - CASE WHEN a.material::numeric IS NULL THEN 0 ELSE a.material::numeric END,2) * CASE WHEN (SELECT rate FROM res_currency_rate rcr WHERE rcr.currency_id = 1 AND m.date = rcr.name) IS NULL THEN (SELECT rate FROM res_currency_rate rcr WHERE rcr.currency_id = 1 AND m.date = rcr.name LIMIT 1) ELSE (SELECT rate FROM res_currency_rate rcr WHERE rcr.currency_id = 1 AND m.date = rcr.name) END,2) net_amount_usd,
 			CASE WHEN a.consultoria = TRUE THEN 'Consultoría' ELSE 'Capacitación' END tipo_comision
 
 	FROM account_payment a
 	JOIN	account_move m ON m.id = a.move_id
-		
+
 	WHERE	a.payment_type = 'inbound'
 	AND	m.state = 'posted'
 	AND a.is_internal_transfer = FALSE
 	AND a.partner_type = 'customer'
-            )""")
-        
+            )"""
+        )
+
     def go_to_pagos(self):
-        name_form = ('Pagos')
+        name_form = "Pagos"
         return {
-        'name': name_form,
-        'type': 'ir.actions.act_window',
-        'view_type': 'form',
-        'view_mode': 'form',
-        'res_model': 'account.payment',
-        'res_id': self.id,  # Reference to the other model
-        'target': 'current',
-        'view_id': self.env.ref(
-            'account.view_account_payment_form').id,
-        'context': {} # Optional
-            }
+            "name": name_form,
+            "type": "ir.actions.act_window",
+            "view_type": "form",
+            "view_mode": "form",
+            "res_model": "account.payment",
+            "res_id": self.id,  # Reference to the other model
+            "target": "current",
+            "view_id": self.env.ref("account.view_account_payment_form").id,
+            "context": {},  # Optional
+        }
