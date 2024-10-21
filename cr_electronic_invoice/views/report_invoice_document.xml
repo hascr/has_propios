@@ -55,7 +55,7 @@
                     <span name="company_activity" class="fst-italic" t-field="o.company_id.report_header"/>
                     <div/>
                     <div>
-                        <strong>Cédula No.</strong>
+                        <strong>Cédula N°:</strong>
                         <span t-field="o.company_id.partner_id.vat"/>
                         <br/>
                         <strong>Teléfono: </strong>
@@ -131,12 +131,12 @@
             </div>
             <div id="receptor_line1" class="row mt-3 mb-1">
                 <div class="col-6 mb-2 mw-100">
-                    <strong>Razón Social:</strong>
+                    <strong>Nombre completo:</strong>
                     <br/>
                     <span t-field="o.partner_id.name"/>
                 </div>
                 <div class="col-3 mb-2 mw-100">
-                    <strong>Cédula No.:</strong>
+                    <strong>Identificación N°:</strong>
                     <br/>
                     <span t-field="o.partner_id.vat"/>
                 </div>
