@@ -35,6 +35,7 @@ class estudiantes(models.Model):
     nombres = fields.Char(string="Nombres")
     apellidos = fields.Char(string="Apellidos")
     cumple = fields.Char(string="Cumplimiento")
+    tipo_curso = fields.Char(string="Tipo")
 
     def init(self):
         self._cr.execute(
@@ -64,11 +65,13 @@ class estudiantes(models.Model):
     	t.fechas_teams_pres AS fechas,
     	btrim((e.name)::text) AS nombres,
 		concat('(',e.id,')') AS apellidos,
-        e.cumple as cumple
+      e.cumple as cumple,
+      (SELECT et1.name->> 'es_CR' FROM event_type et1 WHERE et1.id = t.event_type_id) AS tipo_curso
 
    FROM event_registration e
    	JOIN event_event t ON t.id = e.event_id
   	WHERE t.stage_id != 5
-	AND e.state != 'cancel');
+	AND e.state != 'cancel'
+ );
             """
         )
