@@ -27,8 +27,8 @@
                     <field name="grupo" invisible = "event_type_id == 2"/>
                     <field name="instructor_id"/>
                     <field name="materiallearn" invisible = "event_type_id == 2"/>
-                    <field name="urllearn" widget="url" invisible = "event_type_id == 2"/>
-                    <field name="urlmatricula" widget="url" invisible = "presencial"/>
+                    <field name="urllearn" widget="url"/>
+                    <field name="urlmatricula" widget="url"/>
                     <field name="fechas_teams_pres"/>
                     <field name="cantsesion" groups="event.group_event_manager"/>
                     <field name="hsesion" groups="event.group_event_manager"/>
