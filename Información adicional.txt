@@ -141,7 +141,7 @@ FALTA AGREGAR LAS CUENTAS BANCARIAS
             Do not hesitate to contact us if you have any questions.
         <t t-if="not is_html_empty(object.invoice_user_id.signature)">
             <br><br>
-            <t t-out="object.invoice_user_id.signature or ''">--<br>Mitchell Admin</t>
+            <t t-out="object.company_id.name or ''">--<br>Mitchell Admin</t>
         </t>
     </p>
 </div>
@@ -195,7 +195,7 @@ FALTA AGREGAR LAS CUENTAS BANCARIAS
         No dude en contactarnos si tiene alguna consulta.
         <t t-if="not is_html_empty(object.invoice_user_id.signature)">
             <br><br>
-            <t t-out="object.invoice_user_id.signature or ''">--<br>Mitchell Admin</t>
+            <t t-out="object.company_id.name or ''">--<br>Mitchell Admin</t>
         </t>
     </p>
 </div>
@@ -206,6 +206,6 @@ FALTA AGREGAR LAS CUENTAS BANCARIAS
 
 -------    CON COPIA (CC)    -------
 
-{{ object.invoice_user_id.email_formatted }}
+{{ object.company_id.email_formatted }}
 
 ------------------------------------------------------------------------------------------------------------------------------
