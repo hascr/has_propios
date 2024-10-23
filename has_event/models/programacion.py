@@ -23,6 +23,7 @@ class Programacion(models.Model):
     inicio = fields.Datetime(string="Inicio", tracking=True)
     fin = fields.Datetime(string="Fin", tracking=True)
     u_clase = fields.Boolean(string="Última clase", tracking=True)
+    p_clase = fields.Boolean(string="Primera clase", tracking=True)
 
     cod_nombre = fields.Char(string="N. Curso", compute="_computeVar", tracking=True)
     instructor = fields.Char(

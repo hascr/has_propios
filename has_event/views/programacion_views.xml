@@ -16,6 +16,7 @@
                 <field name="matricula" optional="hide"/>
                 <field name="inicio" optional="show"/>
                 <field name="fin" optional="show"/>
+                <field name="p_clase" optional="show"/>
                 <field name="u_clase" optional="show"/>
                 <field name="asistencia" optional="hide" invisible="cuenta not in ('Teams','Presencial')"/>
                 <field name="video" optional="hide" invisible="cuenta != 'Teams'"/>
@@ -47,6 +48,7 @@
                             <field name="matricula" readonly="1"/>
                             <field name="inicio"/>
                             <field name="fin"/>
+                            <field name="p_clase"/>
                             <field name="u_clase"/>
                             <field name="asistencia" invisible="cuenta not in ('Teams','Presencial')"/>
                             <field name="video" invisible="cuenta != 'Teams'"/>
@@ -68,9 +70,11 @@
         <field name="arch" type="xml">
             <search string="Programacion">
                 <field name="codigo" string="Buscar por código y/o curso" filter_domain="['|',('codigo','ilike',self), ('curso','ilike',self)]"> </field>
+                <filter name="inactivos" string="Inactivos" domain="[('active', '=', False)]"></filter>
                 <group expand="1" string="Group By">
                     <filter string="Cuenta" name="cuenta" domain="[]" context="{'group_by':'cuenta_nombre'}"/>
                     <filter string="Soporte" name="soporte" domain="[]" context="{'group_by':'soporte_nombre'}"/>
+                    <filter string="Primera clase" name="p_clase" domain="[('p_clase', 'like', 'true')]"/>
                     <filter string="Última clase" name="u_clase" domain="[('u_clase', 'like', 'true')]"/>
                     <filter string="Fecha inicio" name="fecha_inicio_month" context="{'group_by':'inicio:month'}"/>
                     <filter string="Próximos" name="fecha_inicio_ge_today" domain="[('inicio','&gt;=',(datetime.datetime.now().strftime('%Y-%m-%d')))]"/>
