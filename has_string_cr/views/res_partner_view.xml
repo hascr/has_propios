@@ -22,7 +22,7 @@
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
                 <field name="vat" position="attributes">
-                    <attribute name="string">Identificación</attribute>
+                    <attribute name="string">ID:</attribute>
                 </field>
             </field>
         </record>

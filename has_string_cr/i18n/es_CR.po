@@ -1,0 +1,127 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* has_string_cr
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0-20240504\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-23 17:31+0000\n"
+"PO-Revision-Date: 2024-10-23 11:33-0600\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es_CR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.5\n"
+
+#. module: has_string_cr
+#: model_terms:ir.ui.view,arch_db:has_string_cr.report_saleorder_document_inherit
+msgid ""
+"<strong>Currency:</strong>\n"
+"                    <br/>"
+msgstr ""
+"<strong>Moneda:</strong>\n"
+"                    <br/>"
+
+#. module: has_string_cr
+#: model_terms:ir.ui.view,arch_db:has_string_cr.view_invoice_tree_inherit
+msgid "Amount Due"
+msgstr "Monto vencido"
+
+#. module: has_string_cr
+#: model_terms:ir.ui.view,arch_db:has_string_cr.view_invoice_tree_inherit
+msgid "Asesor"
+msgstr ""
+
+#. module: has_string_cr
+#: model_terms:ir.ui.view,arch_db:has_string_cr.view_quotation_search
+msgid "Buscador"
+msgstr ""
+
+#. module: has_string_cr
+#: model_terms:ir.ui.view,arch_db:has_string_cr.report_saleorder_document_inherit
+msgid "Colones"
+msgstr ""
+
+#. module: has_string_cr
+#: model_terms:ir.ui.view,arch_db:has_string_cr.view_invoice_tree_inherit
+msgid "Fecha"
+msgstr ""
+
+#. module: has_string_cr
+#: model_terms:ir.ui.view,arch_db:has_string_cr.view_invoice_tree_inherit
+msgid "Fecha contable"
+msgstr ""
+
+#. module: has_string_cr
+#: model_terms:ir.ui.view,arch_db:has_string_cr.res_partner_form_inherit
+msgid "ID:"
+msgstr "Identificación:"
+
+#. module: has_string_cr
+#: model_terms:ir.ui.view,arch_db:has_string_cr.view_invoice_tree_inherit
+msgid "Impuesto colones"
+msgstr ""
+
+#. module: has_string_cr
+#: model_terms:ir.ui.view,arch_db:has_string_cr.view_invoice_tree_inherit
+msgid "Invoices"
+msgstr ""
+
+#. module: has_string_cr
+#: model_terms:ir.ui.view,arch_db:has_string_cr.view_invoice_tree_inherit
+msgid "Pago"
+msgstr ""
+
+#. module: has_string_cr
+#: model_terms:ir.ui.view,arch_db:has_string_cr.view_invoice_tree_inherit
+msgid "Pendiente"
+msgstr ""
+
+#. module: has_string_cr
+#: model_terms:ir.ui.view,arch_db:has_string_cr.view_invoice_tree_inherit
+msgid "Presupuesto"
+msgstr ""
+
+#. module: has_string_cr
+#: model_terms:ir.ui.view,arch_db:has_string_cr.view_invoice_tree_inherit
+msgid "Proveedor"
+msgstr ""
+
+#. module: has_string_cr
+#: model_terms:ir.ui.view,arch_db:has_string_cr.view_invoice_tree_inherit
+msgid "Referencia"
+msgstr ""
+
+#. module: has_string_cr
+#: model_terms:ir.ui.view,arch_db:has_string_cr.view_invoice_tree_inherit
+msgid "Referencia de pago"
+msgstr ""
+
+#. module: has_string_cr
+#: model_terms:ir.ui.view,arch_db:has_string_cr.view_invoice_tree_inherit
+msgid "Register Payment"
+msgstr "Pago registrado"
+
+#. module: has_string_cr
+#: model_terms:ir.ui.view,arch_db:has_string_cr.view_invoice_tree_inherit
+msgid "Subtotal colones"
+msgstr ""
+
+#. module: has_string_cr
+#: model_terms:ir.ui.view,arch_db:has_string_cr.view_invoice_tree_inherit
+msgid "Total"
+msgstr ""
+
+#. module: has_string_cr
+#: model_terms:ir.ui.view,arch_db:has_string_cr.view_invoice_tree_inherit
+msgid "Total colones"
+msgstr ""
+
+#. module: has_string_cr
+#: model_terms:ir.ui.view,arch_db:has_string_cr.view_invoice_tree_inherit
+msgid "cliente"
+msgstr ""
