@@ -18,9 +18,9 @@ class asistencia(models.Model):
     nombre = fields.Char(string="Nombre completo", tracking=True)
     correo = fields.Char(string="Correo electrónico", tracking=True)
     telefono = fields.Char(
-        string="Teléfono", tracking=True, compute="_compute_telefono", store=True
-    )
-    celular = fields.Char(string="Celular", tracking=True, compute="_compute_celular", store=True)
+        string="Teléfono", tracking=True, compute="_compute_telefono")
+    celular = fields.Char(
+        string="Celular", tracking=True, compute="_compute_celular")
     curso = fields.Char(string="Curso", tracking=True)
     # cuenta = fields.Char(string="Cuenta")
     fecha = fields.Datetime(string="Fecha", tracking=True)
@@ -31,11 +31,12 @@ class asistencia(models.Model):
     cod_nombre = fields.Char(string="N. Curso", tracking=True)
     # asesor = fields.Integer(string="Asesor", compute='_compute_asesor')
     user_id = fields.Many2one(
-        "res.users", string="Asesor tecnológico", compute="_compute_asesor", store=True
+        "res.users", string="Asesor tecnológico", compute="_compute_asesor")
+    total_horas = fields.Integer(
+        string="Total horas", compute="_compute_total_horas", store=True
     )
-    total_horas = fields.Integer(string="Total horas", compute="_compute_total_horas",store=True)
 
-    #cod_nombre_horas = fields.Char(
+    # cod_nombre_horas = fields.Char(
     #    string="Código y Horas", compute="_compute_cod_nombre_horas")
 
     _sql_constraints = [
@@ -84,15 +85,19 @@ class asistencia(models.Model):
                 [
                     ("event_id", "=", codigo_int),
                     ("correo", "=", record.correo),  # Buscar primero en 'correo'
-                    ("state", "=", "open")
+                    ("state", "=", "open"),
                 ]
             )
         if not curso_record:
             curso_record = self.env["event.registration"].search(
                 [
                     ("event_id", "=", codigo_int),
-                    ("email","=",record.correo),  # Buscar en 'email' si no hay coincidencia
-                    ("state", "=", "open")
+                    (
+                        "email",
+                        "=",
+                        record.correo,
+                    ),  # Buscar en 'email' si no hay coincidencia
+                    ("state", "=", "open"),
                 ]
             )
         if curso_record:
@@ -113,16 +118,24 @@ class asistencia(models.Model):
         for record in self:
             codigo_int = int(record.codigo)  # Convert codigo to integer
             curso_record = self.env["event.registration"].search(
-                [("event_id", "=", codigo_int), ("email", "=", record.correo),("state", "=", "open")]
+                [
+                    ("event_id", "=", codigo_int),
+                    ("email", "=", record.correo),
+                    ("state", "=", "open"),
+                ]
             )
         if not curso_record:
-                    curso_record = self.env["event.registration"].search(
-                        [
-                            ("event_id", "=", codigo_int),
-                            ("email","=",record.correo,),  # Buscar en 'email' si no hay coincidencia
-                            ("state", "=", "open")
-                        ]
-                    )
+            curso_record = self.env["event.registration"].search(
+                [
+                    ("event_id", "=", codigo_int),
+                    (
+                        "email",
+                        "=",
+                        record.correo,
+                    ),  # Buscar en 'email' si no hay coincidencia
+                    ("state", "=", "open"),
+                ]
+            )
         if curso_record:
             record.telefono = curso_record.phone
         else:
@@ -133,14 +146,22 @@ class asistencia(models.Model):
         for record in self:
             codigo_int = int(record.codigo)  # Convert codigo to integer
             curso_record = self.env["event.registration"].search(
-                [("event_id", "=", codigo_int), ("email", "=", record.correo),("state", "=", "open")]
+                [
+                    ("event_id", "=", codigo_int),
+                    ("email", "=", record.correo),
+                    ("state", "=", "open"),
+                ]
             )
         if not curso_record:
             curso_record = self.env["event.registration"].search(
                 [
                     ("event_id", "=", codigo_int),
-                    ("email","=",record.correo),  # Buscar en 'email' si no hay coincidencia
-                    ("state", "=", "open")
+                    (
+                        "email",
+                        "=",
+                        record.correo,
+                    ),  # Buscar en 'email' si no hay coincidencia
+                    ("state", "=", "open"),
                 ]
             )
         if curso_record:
