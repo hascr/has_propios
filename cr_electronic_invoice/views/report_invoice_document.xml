@@ -90,7 +90,10 @@
         <!--        se reemplaza el numero de factura que venia con el texto "Factura", se deja solo el numero-->
         <xpath expr="//h2" position="replace">
             <h2>
-                <span t-if="o.name != '/'" t-field="o.name">INV/2023/0001</span>
+                <!-- <span t-if="o.name != '/'" t-field="o.name">INV/2023/0001</span> -->
+                <span t-if="o.name != '/'">
+                    <t t-esc="o.tipo_documento + ': ' + o.name" />
+                </span>
             </h2>
         </xpath>
         <!-- Remove the partner address -->
@@ -113,6 +116,7 @@
                 <div class="col-4 mw-100 mb-2">
                     <strong>Tipo Documento:</strong>
                     <p class="m-0" t-field="o.tipo_documento"/>
+                    <!-- <p class="m-0" t-field="o.get_tipo_cambio()"/> -->
                 </div>
             </div>
             <div id="informations_2" class="row mt-3 mb-1">
