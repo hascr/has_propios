@@ -1591,6 +1591,7 @@ class AccountInvoiceElectronic(models.Model):
                                     "Servicio",
                                     "Servicios",
                                     "Renta",
+                                    "Rent",
                                 )
                             ):
                                 if taxes:
