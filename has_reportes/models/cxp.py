@@ -65,7 +65,8 @@ LEFT JOIN	res_bank b ON p.bank_id = b.id
 
 WHERE			a.move_type IN ('in_invoice','in_refund')
 AND 			a.state IN ('posted')
-AND			a.payment_state NOT IN ('paid'))
+AND			a.payment_state NOT IN ('paid','reversed')
+                         )
                          ;
             """)
         
