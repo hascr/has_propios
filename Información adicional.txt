@@ -29,9 +29,10 @@ CONFIGURACIÓN DE FACTURA ELECTRONICA
 -. Establecer producto, cuenta y analítica por defecto en diario de Compras.
 -. Asignar condiciones de ventas a los términos de pago (Facturación --> Configuración --> Términos de pago)
 -. Agregar cuenta contable a impuestos.
+-. Traducción de impuestos.
 -. Definir impuestos bases (Facturación --> Configuración --> Ajustes --> Impuestos)
 -. Asignar devolución de IVA en impuestos(Si aplica).
--. Habilitar unidades de medida de productos (Ventas --> Configuración)
+-. Habilitar unidades de medida de productos (Ventas --> Configuración --> Catálogo de productos --> Unidades de medida)
 -. Revisar configuración de productos (Código Cabys, unidades de medida, impuestos de cliente y proveedor, categoría, tipo de producto, actividad económica).
 -. Asignar a clientes (Posición fiscal, Tipo de identificación, cédula, correo electrónico, Posición fiscal, Exoneración, País, Provincia, Cantón, Distrito, barrio, ciudad, dirección exacta)
 -. Revisar traducción de monedas
