@@ -147,12 +147,15 @@ class PartnerElectronic(models.Model):
                                 + "sin ceros al inicio y sin guiones."
                             )
                         )
+#----------------------------------------------------------------------------------
+#SE COMENTÓ ESTE CÓDIGO PARA QUE NO HICIERA LA CONSULTA DE LA EXONERACIÓN
 
-    @api.onchange("exoneration_number")
-    def _onchange_exoneration_number(self):
-        if self.exoneration_number:
-            self.definir_informacion_exo(self.exoneration_number)
 
+    #@api.onchange("exoneration_number")
+    #def _onchange_exoneration_number(self):
+    #    if self.exoneration_number:
+    #        self.definir_informacion_exo(self.exoneration_number)
+#----------------------------------------------------------------------------------
     # -------------------------------------------------------------------------
     # TOOLING
     # -------------------------------------------------------------------------
