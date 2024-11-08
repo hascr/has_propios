@@ -46,9 +46,6 @@
                     </group>
                 </page>
             </xpath>
-            <field name="property_account_position_id" position="attributes">
-                <attribute name="required">1</attribute>
-            </field>
         </field>
     </record>
 </odoo>
