@@ -24,7 +24,7 @@
                     <attribute name="string">RUC</attribute>
                 </field>
                 <field name="vat" position="after">
-                    <field name="property_account_position_id" required="1"/>
+                    <field name="property_account_position_id"/>
                 </field>
             </field>
         </record>
