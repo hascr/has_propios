@@ -179,7 +179,6 @@
         <field name="invoice_label">Tarifa reducida 1%</field>
         <field name="iva_tax_desc">Tarifa reducida 1%</field>
         <field name="iva_tax_code">02</field>
-        <field name="active">False</field>
     </record>
     <record id="iva_tax_04_ND" model="account.tax">
         <field name="tax_code">01</field>
@@ -868,6 +867,18 @@
         <field name="description">No sujeto</field>
         <field name="sequence">10</field>
         <field name="invoice_label">No sujeto</field>
+        <field name="iva_tax_desc">N/A</field>
+        <field name="iva_tax_code">N/A</field>
+    </record>
+    <record id="exempt_tax_sale_exterior" model="account.tax">
+        <field name="tax_code">00</field>
+        <field name="name">Exento (Exportación)</field>
+        <field name="amount">0</field>
+        <field name="type_tax_use">sale</field>
+        <field name="tax_group_id" ref="cr_electronic_invoice.tax_group_Exento"/>
+        <field name="description">Exento (Exportación)</field>
+        <field name="sequence">10</field>
+        <field name="invoice_label">Exento</field>
         <field name="iva_tax_desc">N/A</field>
         <field name="iva_tax_code">N/A</field>
     </record>

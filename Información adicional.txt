@@ -69,7 +69,7 @@ CLIENTE EN EL EXTERIOR
 -. Seleccionar posición fiscal
 -. Marcar es exportador
 -. Indicar el país
--. Facturar en tiquete electrónico
+-. Facturar en Factura electrónica de exportación
 ------------------------------------------------------------------------------------------------------------------------------
 #8
 VENTAS A NO SUJETOS (CCSS, Municipalidades)

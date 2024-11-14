@@ -146,37 +146,37 @@
     <record id="exportacion_fiscal_13_s" model="account.fiscal.position.tax">
         <field name="position_id" ref="cr_electronic_invoice.exportacion_fiscal"/>
         <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_01"/>
-        <field name="tax_dest_id" ref="cr_electronic_invoice.iva_tax_01_s_ex"/>
+        <field name="tax_dest_id" ref="cr_electronic_invoice.exempt_tax_sale_exterior"/>
     </record>
 
     <record id="exportacion_fiscal_13_b" model="account.fiscal.position.tax">
         <field name="position_id" ref="cr_electronic_invoice.exportacion_fiscal"/>
         <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_01_b"/>
-        <field name="tax_dest_id" ref="cr_electronic_invoice.iva_tax_01_b_ex"/>
+        <field name="tax_dest_id" ref="cr_electronic_invoice.exempt_tax_sale_exterior"/>
     </record>
 
     <record id="exportacion_fiscal_2_s" model="account.fiscal.position.tax">
         <field name="position_id" ref="cr_electronic_invoice.exportacion_fiscal"/>
         <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_05"/>
-        <field name="tax_dest_id" ref="cr_electronic_invoice.iva_tax_05_s_ex"/>
+        <field name="tax_dest_id" ref="cr_electronic_invoice.exempt_tax_sale_exterior"/>
     </record>
 
     <record id="exportacion_fiscal_2_b" model="account.fiscal.position.tax">
         <field name="position_id" ref="cr_electronic_invoice.exportacion_fiscal"/>
         <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_05_b"/>
-        <field name="tax_dest_id" ref="cr_electronic_invoice.iva_tax_05_b_ex"/>
+        <field name="tax_dest_id" ref="cr_electronic_invoice.exempt_tax_sale_exterior"/>
     </record>
 
     <record id="exportacion_fiscal_4_s" model="account.fiscal.position.tax">
         <field name="position_id" ref="cr_electronic_invoice.exportacion_fiscal"/>
         <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_07"/>
-        <field name="tax_dest_id" ref="cr_electronic_invoice.iva_tax_07_s_ex"/>
+        <field name="tax_dest_id" ref="cr_electronic_invoice.exempt_tax_sale_exterior"/>
     </record>
 
     <record id="exportacion_fiscal_4_b" model="account.fiscal.position.tax">
         <field name="position_id" ref="cr_electronic_invoice.exportacion_fiscal"/>
         <field name="tax_src_id" ref="cr_electronic_invoice.iva_tax_07_b"/>
-        <field name="tax_dest_id" ref="cr_electronic_invoice.iva_tax_07_b_ex"/>
+        <field name="tax_dest_id" ref="cr_electronic_invoice.exempt_tax_sale_exterior"/>
     </record>
 
     <record id="otra_exoneracion_fiscal_13_s" model="account.fiscal.position.tax">
