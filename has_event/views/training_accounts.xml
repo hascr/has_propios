@@ -1,31 +1,25 @@
 <odoo>
   <data>
     <!-- Vista de cuenta de training -->
-
     <record model="ir.ui.view" id="has_event.list">
       <field name="name">Cuenta de Training</field>
       <field name="model">training.account</field>
       <field name="arch" type="xml">
         <tree>
-           <field name="cuenta"/>
-       </tree>
+          <field name="cuenta"/>
+          <field name="expiration_date"/>
+          <field name="active" invisible="1"/>
+        </tree>
       </field>
     </record>
-
-    
     <!-- acciones para abrir vista de cuenta de trainings -->
-
     <record model="ir.actions.act_window" id="has_event.action_window">
       <field name="name">Cuentas training</field>
       <field name="res_model">training.account</field>
       <field name="view_mode">tree,form</field>
     </record>
-
-
     <!-- acciones de menú -->
-
     <menuitem name="Cuenta Training" id="has_event.traning_cuenta_list" parent="event.menu_event_configuration"
               action="has_event.action_window"/>
-
   </data>
 </odoo>
