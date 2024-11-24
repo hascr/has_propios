@@ -12,6 +12,7 @@
                 <field name="soporte" optional="show"/>
                 <field name="cuenta" optional="show"/>
                 <field name="instructor" optional="show"/>
+                <field name="asesor_curso" optional="show"/>
                 <field name="matricula" optional="hide"/>
                 <field name="inicio" optional="show"/>
                 <field name="fin" optional="show"/>
@@ -112,8 +113,9 @@
                 <field name="cuenta" filters="1"/>
                 <field name="soporte" filters="1"/>
                 <field name="instructor" filters="1"/>
+                <field name="asesor_curso" widget="many2manyattendee"/>
                 <!-- <field name="u_clase"/> -->
-                <field name="soporte"/>
+                <!-- <field name="soporte"/> -->
                 <!-- <field name="event_type_id" filters="1" invisible="1"/> -->
             </calendar>
         </field>
