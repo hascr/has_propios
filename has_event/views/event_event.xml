@@ -1,13 +1,12 @@
 <odoo>
-  <data>
+    <data>
         <!-- Vista de eventos modificada -->
-
-<record id="view_view_event_form" model="ir.ui.view">
-        <field name="name">view_event_form</field>
-        <field name="model">event.event</field>
-        <field name="inherit_id" ref="event.view_event_form"/>
-        <field name="arch" type="xml">
-            <field name="tag_ids" position="after">
+        <record id="view_view_event_form" model="ir.ui.view">
+            <field name="name">view_event_form</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="event.view_event_form"/>
+            <field name="arch" type="xml">
+                <field name="tag_ids" position="after">
                     <field name="tipo_certificado" widget="radio" invisible = "event_type_id == 2" required = "event_type_id != 2"/>
                     <field name="contrato_name" invisible="1" groups="event.group_event_manager"/>
                     <field name="presencial" widget="boolean_toggle" invisible = "event_type_id == 2"/>
@@ -17,13 +16,14 @@
                     <field name="contrato_firmado" filename="contrato_name" groups="event.group_event_manager" widget="drag_and_drop" invisible = "nocontrato"/>
                     <field name="titulo" widget="boolean_toggle"/>
                     <field name="cuenta_id" invisible = "presencial"/>
+                    <field name="asesor_curso" widget="many2many_tags"/>
                     <field name="asesor"/>
+                    <field name="soporte"/>
                     <field name="temario" filename="temario_name" widget="drag_and_drop" invisible = "event_type_id == 2"/>
                     <field name="temario_name" invisible="1"/>
-                    <field name="soporte"/>
                     <field name="id" string="Código de curso"/>
             </field>
-            <field name="badge_format" position="after">
+                <field name="badge_format" position="after">
                     <field name="grupo" invisible = "event_type_id == 2"/>
                     <field name="instructor_id"/>
                     <field name="materiallearn" invisible = "event_type_id == 2"/>
@@ -37,163 +37,153 @@
                     <field name="monto_contrato" groups="event.group_event_manager" invisible = "nocontrato"/>
                     <field name="account_move_id" groups="event.group_event_manager" invisible = "nocontrato"/>
             </field>
-            <field name="address_id" position="attributes">
+                <field name="address_id" position="attributes">
                     <attribute name="invisible">not presencial</attribute>
-            </field>
-            <field name="organizer_id" position="attributes">
+                </field>
+                <field name="organizer_id" position="attributes">
                     <attribute name="invisible">1</attribute>
-            </field>
-            <field name="tag_ids" position="attributes">
+                </field>
+                <field name="tag_ids" position="attributes">
                     <attribute name="invisible">1</attribute>
-            </field>
-            <field name="user_id" position="attributes">
+                </field>
+                <field name="user_id" position="attributes">
                     <attribute name="invisible">1</attribute>
-            </field>
-            <!-- <field name="address_id" position="attributes">
+                </field>
+                <!-- <field name="address_id" position="attributes">
                     <attribute name="invisible">1</attribute>
             </field> -->
-            <field name="badge_format" position="attributes">
+                <field name="badge_format" position="attributes">
                     <attribute name="invisible">1</attribute>
-            </field>
-            <field name="badge_image" position="attributes">
+                </field>
+                <field name="badge_image" position="attributes">
                     <attribute name="invisible">1</attribute>
+                </field>
+                <xpath expr="//header" position="inside">
+                    <button name="solicitar_programacion" type="object" string="Solicitar prog." class="oe_highlight"/>
+                    <button name="crear_programacion" type="object" string="Crear prog." groups="event.group_event_manager" class="oe_highlight"/>
+                    <button name="correo_bienvenida" type="object" string="Correo bienv." groups="event.group_event_manager" invisible = "noenviar or stage_id != 2" class="oe_highlight"/>
+                    <button name="enviar_contratos" type="object" string="Contrato manual" groups="event.group_event_manager" invisible = "nocontrato or contrato_firmado != False" class="oe_highlight"/>
+                    <button name="videos_moodle" type="object" string="Videos" groups="event.group_event_manager" class="oe_highlight"/>
+                    <button name="generar_asistencia" type="object" string="Asistencia manual" groups="event.group_event_manager" invisible = "titulo" class="oe_highlight"/>
+                    <button name="generar_titulos" type="object" string="Generar títulos" groups="event.group_event_manager" invisible = "titulo" class="oe_highlight"/>
+                    <button name="enviar_titulos" type="object" string="Enviar títulos" groups="event.group_event_manager" invisible = "titulo" class="oe_highlight"/>
+                    <button name="enviar_instructor" type="object" string="Enviar form. inst." groups="event.group_event_manager" class="oe_highlight"/>
+                </xpath>
+                <xpath expr="//header/button" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
             </field>
-            <xpath expr="//header" position="inside">
-                <button name="solicitar_programacion" type="object" string="Solicitar prog." class="oe_highlight"/>
-                <button name="crear_programacion" type="object" string="Crear prog." groups="event.group_event_manager" class="oe_highlight"/>
-                <button name="correo_bienvenida" type="object" string="Correo bienv." groups="event.group_event_manager" invisible = "noenviar or stage_id != 2" class="oe_highlight"/>
-                <button name="enviar_contratos" type="object" string="Contrato manual" groups="event.group_event_manager" invisible = "nocontrato or contrato_firmado != False" class="oe_highlight"/>
-                <button name="videos_moodle" type="object" string="Videos" groups="event.group_event_manager" class="oe_highlight"/>
-                <button name="generar_asistencia" type="object" string="Asistencia manual" groups="event.group_event_manager" invisible = "titulo" class="oe_highlight"/>
-                <button name="generar_titulos" type="object" string="Generar títulos" groups="event.group_event_manager" invisible = "titulo" class="oe_highlight"/>
-                <button name="enviar_titulos" type="object" string="Enviar títulos" groups="event.group_event_manager" invisible = "titulo" class="oe_highlight"/>
-                <button name="enviar_instructor" type="object" string="Enviar form. inst." groups="event.group_event_manager" class="oe_highlight"/>
-            </xpath>
-            <xpath expr="//header/button" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </xpath>
-        </field>
-    </record>
-
-<record id="view_view_event_form_inherit" model="ir.ui.view">
-        <field name="name">view_event_form_inherit</field>
-        <field name="model">event.event</field>
-        <field name="inherit_id" ref="mass_mailing_event.event_event_view_form_inherit_mass_mailing"/>
-        <field name="arch" type="xml">
-            <xpath expr="//button[@name='action_mass_mailing_attendees']" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </xpath>
-            <xpath expr="//button[@name='action_invite_contacts']" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </xpath>
-        </field>
-    </record>
-
-<!-- Búsqueda por código de curso -->
-
-<record id="event_event_view_search_has" model="ir.ui.view">
-        <field name="name">event.event.search.inherit.has</field>
-        <field name="model">event.event</field>
-        <field name="inherit_id" ref="event.view_event_search"/>
-        <field name="arch" type="xml">
-            <xpath expr="//field[@name='name']" position="before">
-                <separator/>
-                <field name="name" string="Buscar por código, curso, instructor" filter_domain="['|','|', ('id','ilike',self), ('name','ilike',self), ('instructor_id', 'ilike', self)]"></field>
-                <filter name="filter_temarios" string="Temarios pendientes" domain="[('temario', '=', False),('event_type_id', '=', 1),('stage_id', '!=', 5)]"></filter>
-                <filter name="filter_fpendientes" string="Facturas pendientes" domain="[('account_move_id', '=', False),('nocontrato', '=', False),('stage_id', '!=', 5),('date_end','&lt;=',(datetime.datetime.now().strftime('%Y-%m-%d')))]"></filter>
-                <filter name="filter_cpendientes" string="Contratos pendientes" domain="[('contrato_firmado', '=', False),('nocontrato', '=', False),('stage_id', '!=', 5),('date_begin','&lt;=',(datetime.datetime.now().strftime('%Y-%m-%d')))]"></filter>
-                <filter name="filter_ipendientes" string="Instructor pendiente" domain="[('instructor_id', '=', False),('stage_id', '!=', 5)]"></filter>
-                <filter name="filter_noforminstructor" string="Formulario instrucción" domain="[('cedula_contrato', '=', False),('nocontrato', '=', False),('instructor_id', '!=', False),('stage_id', '!=', 5)]"></filter>
-                <filter name="filter_spendiente" string="Soporte pendiente" domain="[('soporte', '=', False),('stage_id', '!=', 5)]"></filter>
-                <filter name="filter_tpendientes" string="Títulos pendientes" domain="[('titulo', '=', False),('date_end','&lt;=',(datetime.datetime.now().strftime('%Y-%m-%d'))),('stage_id', '!=', 5)]"></filter>
-                <separator/>
-                <filter string="Cursos" name="cursos" domain="[('event_type_id', '=', 1)]"/>
-                <filter string="Eventos" name="eventos" domain="[('event_type_id', '=', 2)]"/>
-                <group expand="0" string="Group by">
-				<filter string="Instructor" name="instructor" context="{'group_by':'instructor_id'}"/>
-                <filter string="Soporte" name="soporte" context="{'group_by':'soporte'}"/>
-				</group>
-            </xpath>
-        </field>
-    </record>
-
-
-<record model="ir.ui.view" id="view_event_kanban">
-        <field name="name">event.event.kanban</field>
-        <field name="model">event.event</field>
-        <field name="inherit_id" ref="event.view_event_kanban"/>
-        <field name="arch" type="xml">
-        <xpath expr="//kanban" position="replace">
-            <kanban class="o_event_kanban_view" default_group_by="stage_id" quick_create_view="event.event_event_view_form_quick_create" sample="1">
-                <field name="user_id"/>
-                <field name="name"/>
-                <field name="stage_id" options="{&quot;group_by_tooltip&quot;: {&quot;description&quot;: &quot;Description&quot;}}"/>
-                <field name="address_id"/>
-                <field name="date_begin"/>
-                <field name="date_end"/>
-                <field name="seats_reserved"/>
-                <field name="seats_used"/>
-                <field name="seats_taken"/>
-                <field name="legend_blocked"/>
-                <field name="legend_normal"/>
-                <field name="legend_done"/>
-                <field name="activity_ids"/>
-                <field name="activity_state"/>
-                <templates>
-                    <t t-name="kanban-box">
-                        <div t-attf-class="d-flex flex-column p-0 oe_kanban_card oe_kanban_global_click">
-                            <div class="o_kanban_content p-0 m-0 position-relative row d-flex flex-fill">
-                                <div class="col-4 text-bg-primary p-2 text-center d-flex flex-column justify-content-center">
-
-                                    <div class="o_event_fontsize_20 text-center">
-                                            <field name="id"/>
+        </record>
+        <record id="view_view_event_form_inherit" model="ir.ui.view">
+            <field name="name">view_event_form_inherit</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="mass_mailing_event.event_event_view_form_inherit_mass_mailing"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_mass_mailing_attendees']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_invite_contacts']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+        <!-- Búsqueda por código de curso -->
+        <record id="event_event_view_search_has" model="ir.ui.view">
+            <field name="name">event.event.search.inherit.has</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="event.view_event_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="before">
+                    <separator/>
+                    <field name="name" string="Buscar por código, curso, instructor" filter_domain="['|','|', ('id','ilike',self), ('name','ilike',self), ('instructor_id', 'ilike', self)]"></field>
+                    <filter name="filter_temarios" string="Temarios pendientes" domain="[('temario', '=', False),('event_type_id', '=', 1),('stage_id', '!=', 5)]"></filter>
+                    <filter name="filter_fpendientes" string="Facturas pendientes" domain="[('account_move_id', '=', False),('nocontrato', '=', False),('stage_id', '!=', 5),('date_end','&lt;=',(datetime.datetime.now().strftime('%Y-%m-%d')))]"></filter>
+                    <filter name="filter_cpendientes" string="Contratos pendientes" domain="[('contrato_firmado', '=', False),('nocontrato', '=', False),('stage_id', '!=', 5),('date_begin','&lt;=',(datetime.datetime.now().strftime('%Y-%m-%d')))]"></filter>
+                    <filter name="filter_ipendientes" string="Instructor pendiente" domain="[('instructor_id', '=', False),('stage_id', '!=', 5)]"></filter>
+                    <filter name="filter_noforminstructor" string="Formulario instrucción" domain="[('cedula_contrato', '=', False),('nocontrato', '=', False),('instructor_id', '!=', False),('stage_id', '!=', 5)]"></filter>
+                    <filter name="filter_spendiente" string="Soporte pendiente" domain="[('soporte', '=', False),('stage_id', '!=', 5)]"></filter>
+                    <filter name="filter_tpendientes" string="Títulos pendientes" domain="[('titulo', '=', False),('date_end','&lt;=',(datetime.datetime.now().strftime('%Y-%m-%d'))),('stage_id', '!=', 5)]"></filter>
+                    <separator/>
+                    <filter string="Cursos" name="cursos" domain="[('event_type_id', '=', 1)]"/>
+                    <filter string="Eventos" name="eventos" domain="[('event_type_id', '=', 2)]"/>
+                    <group expand="0" string="Group by">
+                        <filter string="Instructor" name="instructor" context="{'group_by':'instructor_id'}"/>
+                        <filter string="Soporte" name="soporte" context="{'group_by':'soporte'}"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_event_kanban">
+            <field name="name">event.event.kanban</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="event.view_event_kanban"/>
+            <field name="arch" type="xml">
+                <xpath expr="//kanban" position="replace">
+                    <kanban class="o_event_kanban_view" default_group_by="stage_id" quick_create_view="event.event_event_view_form_quick_create" sample="1">
+                        <field name="user_id"/>
+                        <field name="name"/>
+                        <field name="stage_id" options="{&quot;group_by_tooltip&quot;: {&quot;description&quot;: &quot;Description&quot;}}"/>
+                        <field name="address_id"/>
+                        <field name="date_begin"/>
+                        <field name="date_end"/>
+                        <field name="seats_reserved"/>
+                        <field name="seats_used"/>
+                        <field name="seats_taken"/>
+                        <field name="legend_blocked"/>
+                        <field name="legend_normal"/>
+                        <field name="legend_done"/>
+                        <field name="activity_ids"/>
+                        <field name="activity_state"/>
+                        <templates>
+                            <t t-name="kanban-box">
+                                <div t-attf-class="d-flex flex-column p-0 oe_kanban_card oe_kanban_global_click">
+                                    <div class="o_kanban_content p-0 m-0 position-relative row d-flex flex-fill">
+                                        <div class="col-4 text-bg-primary p-2 text-center d-flex flex-column justify-content-center">
+                                            <div class="o_event_fontsize_20 text-center">
+                                                <field name="id"/>
+                                            </div>
+                                            <div>
+                                                <t t-esc="luxon.DateTime.fromISO(record.date_begin.raw_value).toFormat('d MMM yyyy t')"/>
+                                            </div>
+                                            <div t-if="record.date_begin.raw_value !== record.date_end.raw_value">
+                                                <i class="oi oi-arrow-right me-2 o_event_fontsize_09" title="End date"/>
+                                                <t t-esc="luxon.DateTime.fromISO(record.date_end.raw_value).toFormat('d MMM t')"/>
+                                            </div>
                                         </div>
-
-                                    <div>
-                                        <t t-esc="luxon.DateTime.fromISO(record.date_begin.raw_value).toFormat('d MMM yyyy t')"/>
-                                    </div>
-                                        <div t-if="record.date_begin.raw_value !== record.date_end.raw_value">
-                                            <i class="oi oi-arrow-right me-2 o_event_fontsize_09" title="End date"/>
-                                            <t t-esc="luxon.DateTime.fromISO(record.date_end.raw_value).toFormat('d MMM t')"/>
-                                        </div>
-                                </div>
-                                <div class="col-8 py-2 px-3 d-flex flex-column justify-content-between pt-3">
-                                    <div>
-                                        <!-- <div class="o_kanban_record_title o_event_fontsize_09 d-flex ps-1">
+                                        <div class="col-8 py-2 px-3 d-flex flex-column justify-content-between pt-3">
+                                            <div>
+                                                <!-- <div class="o_kanban_record_title o_event_fontsize_09 d-flex ps-1">
                                             <field name="id"/>
                                         </div> -->
-                                        <div class="o_kanban_record_title" t-att-title="record.name.value">
-                                            <field name="name"/>
-                                        </div>
-                                        <div t-att-title="record.event_type_id">
-                                            <field name="event_type_id"/>
-                                        </div>
-                                        <div class="d-flex ps-1">
-                                            <i class="fa fa-group mt-1 me-2 text-center" title="Attendees"/>
-                                            <span t-out="record.seats_taken.raw_value" class="me-1"/> Participantes
-                                        </div>
-                                    </div>
-                                    <div class="o_kanban_record_bottom">
-                                        <div class="oe_kanban_bottom_left">
-                                            <field name="activity_ids" widget="kanban_activity"/>
-                                            <field name="instructor_id" widget="many2one_avatar_user"/>
-                                        </div>
-                                        <div class="oe_kanban_bottom_right">
-                                            <!-- <field name="kanban_state" widget="state_selection"/> -->
-                                            <field name="asesor" widget="many2one_avatar_employee"/>
+                                                <div class="o_kanban_record_title" t-att-title="record.name.value">
+                                                    <field name="name"/>
+                                                </div>
+                                                <div t-att-title="record.event_type_id">
+                                                    <field name="event_type_id"/>
+                                                </div>
+                                                <div class="d-flex ps-1">
+                                                    <i class="fa fa-group mt-1 me-2 text-center" title="Attendees"/>
+                                                    <span t-out="record.seats_taken.raw_value" class="me-1"/> Participantes
+                                                </div>
+                                            </div>
+                                            <div class="o_kanban_record_bottom">
+                                                <div class="oe_kanban_bottom_left">
+                                                    <field name="activity_ids" widget="kanban_activity"/>
+                                                    <field name="instructor_id" widget="many2one_avatar_user"/>
+                                                </div>
+                                                <div class="oe_kanban_bottom_right">
+                                                    <!-- <field name="kanban_state" widget="state_selection"/> -->
+                                                    <field name="asesor" widget="many2one_avatar_user"/>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </t>
-                </templates>
-            </kanban>
-        </xpath>
-        </field>
-    </record>
-
-
-
+                            </t>
+                        </templates>
+                    </kanban>
+                </xpath>
+            </field>
+        </record>
     </data>
 </odoo>

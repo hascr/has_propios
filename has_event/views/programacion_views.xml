@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
     <!-- View programacion View Tree -->
     <record id="view_programacion_tree" model="ir.ui.view">
         <field name="name">view.programacion.tree</field>
@@ -31,7 +30,6 @@
             </tree> -->
         </field>
     </record>
-
     <!-- View programacion form -->
     <record id="view_programacion_form" model="ir.ui.view">
         <field name="name">view.programacion.form</field>
@@ -40,19 +38,20 @@
             <form string="Programacion">
                 <sheet>
                     <group col="4">
-                            <field name="codigo" readonly="1"/>
-                            <field name="curso" readonly="1"/>
-                            <field name="soporte" readonly="1"/>
-                            <field name="cuenta" readonly="1"/>
-                            <field name="instructor" readonly="1"/>
-                            <field name="matricula" readonly="1"/>
-                            <field name="inicio"/>
-                            <field name="fin"/>
-                            <field name="p_clase"/>
-                            <field name="u_clase"/>
-                            <field name="asistencia" invisible="cuenta not in ('Teams','Presencial')"/>
-                            <field name="video" invisible="cuenta != 'Teams'"/>
-                </group>
+                        <field name="codigo" readonly="1"/>
+                        <field name="curso" readonly="1"/>
+                        <field name="asesor_curso" widget="many2many_tags" readonly="1"/>
+                        <field name="soporte" readonly="1"/>
+                        <field name="cuenta" readonly="1"/>
+                        <field name="instructor" readonly="1"/>
+                        <field name="matricula" readonly="1"/>
+                        <field name="inicio"/>
+                        <field name="fin"/>
+                        <field name="p_clase"/>
+                        <field name="u_clase"/>
+                        <field name="asistencia" invisible="cuenta not in ('Teams','Presencial')"/>
+                        <field name="video" invisible="cuenta != 'Teams'"/>
+                    </group>
                 </sheet>
                 <div class="oe_chatter">
                     <field name="message_follower_ids" widget="mail_followers"/>
@@ -62,7 +61,6 @@
             </form>
         </field>
     </record>
-
     <!-- View programacion search -->
     <record id="view_programacion_search" model="ir.ui.view">
         <field name="name">view.programacion.search</field>
@@ -70,22 +68,23 @@
         <field name="arch" type="xml">
             <search string="Programacion">
                 <field name="codigo" string="Buscar por código y/o curso" filter_domain="['|',('codigo','ilike',self), ('curso','ilike',self)]"> </field>
+                <field name="asesor_curso"> </field>
                 <filter name="inactivos" string="Inactivos" domain="[('active', '=', False)]"></filter>
                 <group expand="1" string="Group By">
                     <filter string="Cuenta" name="cuenta" domain="[]" context="{'group_by':'cuenta_nombre'}"/>
                     <filter string="Soporte" name="soporte" domain="[]" context="{'group_by':'soporte_nombre'}"/>
                     <filter string="Primera clase" name="p_clase" domain="[('p_clase', 'like', 'true')]"/>
                     <filter string="Última clase" name="u_clase" domain="[('u_clase', 'like', 'true')]"/>
+                    <!-- <filter string="Asesor: Nancy" name="asesor_nancy" domain="[('asesor_curso.id', 'in', 7)]"/>
+                    <filter string="Asesor: Ricardo" name="asesor_ricardo" domain="[('asesor_curso.id', 'in', 8)]"/> -->
                     <filter string="Fecha inicio" name="fecha_inicio_month" context="{'group_by':'inicio:month'}"/>
                     <filter string="Próximos" name="fecha_inicio_ge_today" domain="[('inicio','&gt;=',(datetime.datetime.now().strftime('%Y-%m-%d')))]"/>
                     <filter name="filter_asispend" string="Asistencia pendiente" domain="[('asistencia', '=', False),('cuenta_nombre', 'not like', '%@advancecr.com'),('fin','&lt;=',(datetime.datetime.now().strftime('%Y-%m-%d')))]"></filter>
                     <filter name="filter_videopend" string="Video pendiente" domain="[('video', '=', False),('cuenta_nombre', '=', 'Teams'),('fin','&lt;=',(datetime.datetime.now().strftime('%Y-%m-%d')))]"></filter>
-
                 </group>
             </search>
         </field>
     </record>
-
     <!-- Action programacion -->
     <record id="action_programacion" model="ir.actions.act_window">
         <field name="name">Programación</field>
@@ -102,7 +101,6 @@
             </p>
         </field>
     </record>
-
     <record model="ir.ui.view" id="view_event_calendar">
         <field name="name">programacion.calendar</field>
         <field name="model">programacion</field>
@@ -120,18 +118,10 @@
             </calendar>
         </field>
     </record>
-
-
-
-
     <!-- Menú superior -->
-
     <menuitem 	name="Programación"
 				id="programacion_id"
 				sequence="5"
 				action="action_programacion"
 				parent="event.event_main_menu"/>
-
-
-
 </odoo>

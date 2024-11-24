@@ -48,6 +48,20 @@ class Programacion(models.Model):
     asistencia = fields.Boolean(string="Asistencia", tracking=True)
     video = fields.Boolean(string="Videos", tracking=True)
 
+    asesor_curso = fields.Many2many(
+        "res.users",
+        string="Asesor/es",
+        compute="_compute_asesores",
+    )
+
+    @api.depends('codigo')
+    def _compute_asesores(self):
+        for record in self:
+            # Filtramos los eventos cuyo código coincida con el código del registro actual
+            events = self.env["event.event"].search([("id", "=", record.codigo)])
+            # Asignamos los asesores de los eventos filtrados al campo asesor_curso
+            record.asesor_curso = events.asesor_curso
+
     @api.depends("codigo", "curso")
     def _computeVar(self):
         for line in self:

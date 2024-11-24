@@ -31,6 +31,12 @@ class has_eventregistration(models.Model):
         string="Total horas", compute="_compute_float_field"
     )
 
+    contacto = fields.Many2many(
+        comodel_name="res.partner",
+        tracking=True,
+        string="Contacto relacionado",
+    )
+
     @api.depends("event_id")
     def _compute_float_field(self):
         for record in self:

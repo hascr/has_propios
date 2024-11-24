@@ -16,7 +16,7 @@ class has_event(models.Model):
     materiallearn = fields.Char(string="Material Learn", tracking=True)
     urllearn = fields.Char(string="URL Learn", tracking=True)
     urlmatricula = fields.Char(string="URL matrícula", tracking=True)
-    fechas_teams_pres = fields.Char(string="Fechas (Teams o presencial)", tracking=True)
+    fechas_teams_pres = fields.Char(string="Fechas", tracking=True)
     cantsesion = fields.Float(string="Cantidad de sesiones", tracking=True)
     hsesion = fields.Float(string="Horas por sesión", tracking=True)
     husd = fields.Float(string="Hora USD", tracking=True)
@@ -45,6 +45,14 @@ class has_event(models.Model):
         tracking=True,
         string="Realizar evaluación",
     )
+
+    asesor_curso = fields.Many2many(
+        comodel_name="res.users",
+        tracking=True,
+        string="Asesor/es",
+    )
+
+
     contrato_firmado = fields.Binary(attachment=True)
     contrato_name = fields.Char()
     account_move_id = fields.Many2one(
