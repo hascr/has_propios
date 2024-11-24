@@ -113,7 +113,7 @@
                 <field name="cuenta" filters="1"/>
                 <field name="soporte" filters="1"/>
                 <field name="instructor" filters="1"/>
-                <field name="asesor_curso" widget="many2manyattendee"/>
+                <field name="asesor_curso" widget="many2many_tags"/>
                 <!-- <field name="u_clase"/> -->
                 <!-- <field name="soporte"/> -->
                 <!-- <field name="event_type_id" filters="1" invisible="1"/> -->
