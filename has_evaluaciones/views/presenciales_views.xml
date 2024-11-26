@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- View presenciales View Tree -->
+    <record id="view_presenciales_tree" model="ir.ui.view">
+        <field name="name">view.presenciales.tree</field>
+        <field name="model">presenciales</field>
+        <field name="arch" type="xml">
+            <tree default_order = "curso desc, fecha_evaluacion desc">
+                <field name="fecha_evaluacion" optional="show"/>
+                <button type="object" name="go_to_presenciales" string="Ir a" icon="fa-search-plus"/>
+                <field name="curso" optional="show"/>
+                <field name="duracion" avg="Promedio" optional="hide"/>
+                <field name="instructor" optional="show"/>
+                <field name="asesor" optional="show"/>
+                <field name="nota" avg="Promedio" optional="show"/>
+                <field name="contenido" avg="Promedio" optional="show"/>
+                <field name="expectativa" avg="Promedio" optional="hide"/>
+                <field name="estructura" avg="Promedio" optional="hide"/>
+                <field name="instructor_nota" avg="Promedio" optional="show"/>
+                <field name="conocimiento" avg="Promedio" optional="hide"/>
+                <field name="puntualidad" avg="Promedio" optional="hide"/>
+                <field name="ejemplos" avg="Promedio" optional="hide"/>
+                <field name="dudas" avg="Promedio" optional="hide"/>
+                <field name="presentacion" avg="Promedio" optional="hide"/>
+                <field name="otros" avg="Promedio" optional="show"/>
+                <field name="material" avg="Promedio" optional="hide"/>
+                <field name="lugar" avg="Promedio" optional="hide"/>
+                <field name="maquinas" avg="Promedio" optional="hide"/>
+                <field name="refrigerio" avg="Promedio" optional="hide"/>
+                <field name="name" optional="show"/>
+                <field name="empresa" optional="hide"/>
+                <field name="correo" optional="show"/>
+                <field name="telefono" optional="hide"/>
+                <field name="enviar_info" optional="hide"/>
+                <field name="intereses" optional="hide"/>
+                <field name="correo_intereses" optional="hide"/>
+                <field name="whatsapp" optional="hide"/>
+                <field name="comentarios" optional="hide"/>
+                <field name="area_trabajo" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- View presenciales form -->
+    <!-- <record id="view_presenciales_form" model="ir.ui.view">
+        <field name="name">view.presenciales.form</field>
+        <field name="model">presenciales</field>
+        <field name="arch" type="xml">
+            <form string="Presenciales">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="Name..."/>
+                        </h1>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record> -->
+
+    <!-- View presenciales search -->
+    <record id="view_presenciales_search" model="ir.ui.view">
+        <field name="name">view.presenciales.search</field>
+        <field name="model">presenciales</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Buscar por nombre, curso, interes o instructor" filter_domain="['|','|','|', ('intereses','ilike',self), ('name','ilike',self), ('curso','ilike',self), ('instructor', 'ilike', self)]"> </field>
+                <filter string="Enviar Info" name="enviar" domain="[('enviar_info','=','Si')]"/>
+                <group expand="1" string="Group By">
+                    <filter string="Curso" name="curso" domain="[]" context="{'group_by':'curso'}"/>
+                    <filter string="Asesor" name="asesor" domain="[]" context="{'group_by':'asesor'}"/>
+                    <filter string="Instructor" name="instructor" domain="[]" context="{'group_by':'instructor'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action presenciales -->
+    <record id="action_presenciales" model="ir.actions.act_window">
+        <field name="name">Presenciales</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">presenciales</field>
+        <field name="view_mode">tree,pivot,graph</field>
+        <field name="domain">[]</field>
+        <field name="context">{"search_default_curso":1}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                There is no examples click here to add new Evaluaciones.
+            </p>
+        </field>
+    </record>
+
+<!-- menú de categoría con acción -->
+
+    <menuitem name="Presenciales" id="has_survey.menu_2_list" parent="has_survey.menu_1" action="action_presenciales"/>
+
+
+</odoo>

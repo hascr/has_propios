@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- View virtuales View Tree -->
+    <record id="view_virtuales_tree" model="ir.ui.view">
+        <field name="name">view.virtuales.tree</field>
+        <field name="model">virtuales</field>
+        <field name="arch" type="xml">
+            <tree default_order = "curso desc, fecha_evaluacion desc">
+                <field name="fecha_evaluacion" optional="show"/>
+                <button type="object" name="go_to_virtuales" string="Ir a" icon="fa-search-plus"/>
+                <field name="curso" optional="show"/>
+                <field name="duracion" avg="Promedio" optional="hide"/>
+                <field name="instructor" optional="show"/>
+                <field name="asesor" optional="show"/>
+                <field name="nota" avg="Promedio" optional="show"/>
+                <field name="contenido" avg="Promedio" optional="show"/>
+                <field name="expectativa" avg="Promedio" optional="hide"/>
+                <field name="estructura" avg="Promedio" optional="hide"/>
+                <field name="instructor_nota" avg="Promedio" optional="show"/>
+                <field name="conocimiento" avg="Promedio" optional="hide"/>
+                <field name="puntualidad" avg="Promedio" optional="hide"/>
+                <field name="ejemplos" avg="Promedio" optional="hide"/>
+                <field name="dudas" avg="Promedio" optional="hide"/>
+                <field name="otros" avg="Promedio" optional="show"/>
+                <field name="material" avg="Promedio" optional="hide"/>
+                <field name="herramienta" avg="Promedio" optional="hide"/>
+                <field name="metodologia" avg="Promedio" optional="hide"/>
+                <field name="name" optional="show"/>
+                <field name="empresa" optional="hide"/>
+                <field name="correo" optional="show"/>
+                <field name="telefono" optional="hide"/>
+                <field name="enviar_info" optional="hide"/>
+                <field name="intereses" optional="hide"/>
+                <field name="correo_intereses" optional="hide"/>
+                <field name="whatsapp" optional="hide"/>
+                <field name="comentarios" optional="hide"/>
+                <field name="area_trabajo" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <!-- View virtuales form -->
+    <!-- <record id="view_virtuales_form" model="ir.ui.view">
+        <field name="name">view.virtuales.form</field>
+        <field name="model">virtuales</field>
+        <field name="arch" type="xml">
+            <form string="virtuales">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="Name..."/>
+                        </h1>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record> -->
+
+    <!-- View virtuales search -->
+    <record id="view_virtuales_search" model="ir.ui.view">
+        <field name="name">view.virtuales.search</field>
+        <field name="model">virtuales</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Buscar por nombre, curso, interes o instructor" filter_domain="['|','|','|', ('intereses','ilike',self), ('name','ilike',self), ('curso','ilike',self), ('instructor', 'ilike', self)]"> </field>
+                <filter string="Enviar Info" name="enviar" domain="[('enviar_info','=','Si')]"/>
+                <group expand="1" string="Group By">
+                    <filter string="Curso" name="curso" domain="[]" context="{'group_by':'curso'}"/>
+                    <filter string="Asesor" name="asesor" domain="[]" context="{'group_by':'asesor'}"/>
+                    <filter string="Instructor" name="instructor" domain="[]" context="{'group_by':'instructor'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action virtuales -->
+    <record id="action_virtuales" model="ir.actions.act_window">
+        <field name="name">Virtuales v2</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">virtuales</field>
+        <field name="view_mode">tree,pivot,graph</field>
+        <field name="domain">[]</field>
+        <field name="context">{"search_default_curso":1}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                There is no examples click here to add new virtuales.
+            </p>
+        </field>
+    </record>
+
+ <!-- menu superior -->
+
+    <menuitem name="virtuales" id="has_survey.menu_1" parent="event.menu_reporting_events"/>
+    
+    <!-- menú de categoría con acción -->
+
+    <menuitem name="Virtuales" id="has_survey.menu_1_list" parent="has_survey.menu_1" action="action_virtuales"/>
+
+
+
+</odoo>
