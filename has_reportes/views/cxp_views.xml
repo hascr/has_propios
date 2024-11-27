@@ -60,7 +60,7 @@
 
     <!-- Action cxp -->
     <record id="action_cxp" model="ir.actions.act_window">
-        <field name="name">Cxp</field>
+        <field name="name">Pagos programados</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">cxp</field>
         <field name="view_mode">tree</field>
