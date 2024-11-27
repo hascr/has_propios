@@ -10,10 +10,10 @@
     'depends': ['base','survey'],
     "data": [
         "views/virtuales_views.xml",
-        "security/ir.model.access.csv",
+        #"security/ir.model.access.csv",
         #"views/presenciales_views.xml",
         #"views/webinars_views.xml",
-        "views/survey_templates.xml",
+        #"views/survey_templates.xml",
         #"views/survey_user_input_views.xml",
     ],
     'application': True,

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
     <!-- View virtuales View Tree -->
     <record id="view_virtuales_tree" model="ir.ui.view">
         <field name="name">view.virtuales.tree</field>
@@ -8,7 +7,7 @@
         <field name="arch" type="xml">
             <tree default_order = "curso desc, fecha_evaluacion desc">
                 <field name="fecha_evaluacion" optional="show"/>
-                <button type="object" name="go_to_virtuales" string="Ir a" icon="fa-search-plus"/>
+                <!-- <button type="object" name="go_to_virtuales" string="Ir a" icon="fa-search-plus"/> -->
                 <field name="curso" optional="show"/>
                 <field name="duracion" avg="Promedio" optional="hide"/>
                 <field name="instructor" optional="show"/>
@@ -39,8 +38,6 @@
             </tree>
         </field>
     </record>
-
-
     <!-- View virtuales form -->
     <!-- <record id="view_virtuales_form" model="ir.ui.view">
         <field name="name">view.virtuales.form</field>
@@ -58,7 +55,6 @@
             </form>
         </field>
     </record> -->
-
     <!-- View virtuales search -->
     <record id="view_virtuales_search" model="ir.ui.view">
         <field name="name">view.virtuales.search</field>
@@ -75,10 +71,9 @@
             </search>
         </field>
     </record>
-
     <!-- Action virtuales -->
     <record id="action_virtuales" model="ir.actions.act_window">
-        <field name="name">Virtuales v2</field>
+        <field name="name">Virtuales</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">virtuales</field>
         <field name="view_mode">tree,pivot,graph</field>
@@ -90,15 +85,8 @@
             </p>
         </field>
     </record>
-
- <!-- menu superior -->
-
-    <menuitem name="virtuales" id="has_survey.menu_1" parent="event.menu_reporting_events"/>
-    
+    <!-- menu superior -->
+    <menuitem name="Evaluaciones" id="has_evaluaciones.menu_1" parent="event.menu_reporting_events"/>
     <!-- menú de categoría con acción -->
-
-    <menuitem name="Virtuales" id="has_survey.menu_1_list" parent="has_survey.menu_1" action="action_virtuales"/>
-
-
-
+    <menuitem name="Virtuales" id="has_evaluaciones.menu_1_list" parent="has_evaluaciones.menu_1" action="action_virtuales"/>
 </odoo>

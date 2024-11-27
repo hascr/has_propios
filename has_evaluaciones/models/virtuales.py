@@ -9,7 +9,6 @@ _logger = logging.getLogger(__name__)
 
 class virtuales(models.Model):
     _name = 'virtuales'
-    _auto = False
     _description = _('Virtuales')
 
     name = fields.Char(_('Participante'))

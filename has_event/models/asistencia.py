@@ -18,9 +18,9 @@ class asistencia(models.Model):
     nombre = fields.Char(string="Nombre completo", tracking=True)
     correo = fields.Char(string="Correo electrónico", tracking=True)
     telefono = fields.Char(
-        string="Teléfono", tracking=True, compute="_compute_telefono")
+        string="Teléfono", tracking=True, compute="_compute_telefono", store=False)
     celular = fields.Char(
-        string="Celular", tracking=True, compute="_compute_celular")
+        string="Celular", tracking=True, compute="_compute_celular", store=False)
     curso = fields.Char(string="Curso", tracking=True)
     # cuenta = fields.Char(string="Cuenta")
     fecha = fields.Datetime(string="Fecha", tracking=True)
@@ -139,7 +139,7 @@ class asistencia(models.Model):
         if curso_record:
             record.telefono = curso_record.phone
         else:
-            record.telefono = ""  # Set asesor to None if no match
+            record.telefono = ''  # Set asesor to None if no match
 
     @api.depends("codigo", "correo")
     def _compute_celular(self):
@@ -167,7 +167,7 @@ class asistencia(models.Model):
         if curso_record:
             record.celular = curso_record.celular
         else:
-            record.celular = ""  # Set asesor to None if no match
+            record.celular = ''  # Set asesor to None if no match
 
     @api.depends("codigo")
     def _compute_total_horas(self):
@@ -181,7 +181,7 @@ class asistencia(models.Model):
                     curso_record.total_horas, 0
                 )  # Update instructor
             else:
-                record.total_horas = ""  # Set empty string if no match
+                record.total_horas = ''  # Set empty string if no match
 
     """ @api.depends("cod_nombre", "total_horas")
     def _compute_cod_nombre_horas(self):
