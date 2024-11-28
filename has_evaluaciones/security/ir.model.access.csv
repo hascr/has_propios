@@ -1,2 +1,2 @@
 id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
-access_virtuales_manager,virtuales_manager,model_virtuales,event.group_event_user,1,1,1,1
+has_evaluaciones.access_virtuales,access_virtuales,has_evaluaciones.model_virtuales,event.group_event_user,1,1,1,1
