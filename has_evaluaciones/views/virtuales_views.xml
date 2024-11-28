@@ -7,6 +7,7 @@
         <field name="arch" type="xml">
             <tree default_order = "curso desc, fecha_evaluacion desc">
                 <field name="fecha_evaluacion" optional="show"/>
+                <field name="id" string="Código" optional="show"/>
                 <field name="curso" optional="show"/>
                 <field name="duracion" avg="Promedio" optional="hide"/>
                 <field name="instructor" optional="show"/>
@@ -46,42 +47,43 @@
                 <sheet>
                     <group string="General" name="general">
                         <group name="group_left">
-                            <field name="fecha_evaluacion"/>
-                            <field name="curso"/>
-                            <field name="duracion"/>
-                            <field name="instructor"/>
-                            <field name="asesor"/>
-                            <field name="name"/>
-                            <field name="empresa"/>
-                            <field name="area_trabajo"/>
+                            <field name="fecha_evaluacion" />
+                            <field name="id" string="Código" />
+                            <field name="curso" />
+                            <field name="duracion" />
+                            <field name="instructor" />
+                            <field name="asesor" />
+                            <field name="name" />
+                            <field name="empresa" />
+                            <field name="area_trabajo" />
                         </group>
                         <group name="group_right">
-                            <field name="correo"/>
-                            <field name="telefono"/>
-                            <field name="enviar_info"/>
-                            <field name="intereses"/>
-                            <field name="correo_intereses"/>
-                            <field name="whatsapp"/>
-                            <field name="comentarios"/>
+                            <field name="correo" />
+                            <field name="telefono" />
+                            <field name="enviar_info" />
+                            <field name="intereses" />
+                            <field name="correo_intereses" />
+                            <field name="whatsapp" />
+                            <field name="comentarios" />
                         </group>
                     </group>
                     <group string="Notas" name="notas">
                         <group name="group_left">
-                            <field name="nota"/>
-                            <field name="instructor_nota"/>
-                            <field name="conocimiento"/>
-                            <field name="puntualidad"/>
-                            <field name="ejemplos"/>
-                            <field name="dudas"/>
+                            <field name="nota" />
+                            <field name="instructor_nota" />
+                            <field name="conocimiento" />
+                            <field name="puntualidad" />
+                            <field name="ejemplos" />
+                            <field name="dudas" />
                         </group>
                         <group name="group_right">
-                            <field name="contenido"/>
-                            <field name="estructura"/>
-                            <field name="expectativa"/>
-                            <field name="otros"/>
-                            <field name="material"/>
-                            <field name="herramienta"/>
-                            <field name="metodologia"/>
+                            <field name="contenido" />
+                            <field name="estructura" />
+                            <field name="expectativa" />
+                            <field name="otros" />
+                            <field name="material" />
+                            <field name="herramienta" />
+                            <field name="metodologia" />
                         </group>
                     </group>
                 </sheet>
@@ -111,7 +113,7 @@
         <field name="res_model">virtuales</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[]</field>
-        <field name="context">{}</field>
+        <field name="context">{"search_default_curso":1}</field>
         <field name="help" type="html">
             <p class="oe_view_nocontent_create">
                 There is no examples click here to add new Virtuales.
@@ -122,8 +124,6 @@
     <menuitem name="Evaluaciones" id="has_evaluaciones.menu_1" parent="event.menu_reporting_events"/>
     <!-- menú de categoría con acción -->
     <menuitem name="Virtuales - Pruebas" id="has_evaluaciones.menu_1_list" parent="has_evaluaciones.menu_1" action="action_virtuales"/>
-
-
     <record id="view_view_event_form" model="ir.ui.view">
         <field name="name">view_event_form</field>
         <field name="model">event.event</field>
