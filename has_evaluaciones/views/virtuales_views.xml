@@ -111,7 +111,7 @@
         <field name="name">Virtuales</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">virtuales</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,pivot,graph</field>
         <field name="domain">[]</field>
         <field name="context">{"search_default_curso":1}</field>
         <field name="help" type="html">

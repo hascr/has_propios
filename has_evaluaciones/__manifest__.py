@@ -11,7 +11,8 @@
     "data": [
         "views/virtuales_views.xml",
         "security/ir.model.access.csv",
-        "views/presenciales_views.xml"
+        "views/presenciales_views.xml",
+        "views/webinars_views.xml"
     ],
     'application': True,
     #'installable': True,
