@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
-from odoo.exceptions import UserError
-import json
-
+from odoo import models, fields
 
 class Event(models.Model):
     _inherit = "event.event"

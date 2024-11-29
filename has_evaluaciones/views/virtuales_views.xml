@@ -111,7 +111,7 @@
         <field name="name">Virtuales</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">virtuales</field>
-        <field name="view_mode">tree,pivot,graph</field>
+        <field name="view_mode">tree,form</field>
         <field name="domain">[]</field>
         <field name="context">{"search_default_curso":1}</field>
         <field name="help" type="html">
@@ -123,7 +123,7 @@
     <!-- menu superior -->
     <menuitem name="Evaluaciones" id="has_evaluaciones.menu_1" parent="event.menu_reporting_events"/>
     <!-- menú de categoría con acción -->
-    <menuitem name="Virtuales - Pruebas" id="has_evaluaciones.menu_1_list" parent="has_evaluaciones.menu_1" action="action_virtuales"/>
+    <menuitem name="Virtuales" id="has_evaluaciones.menu_1_list" parent="has_evaluaciones.menu_1" action="action_virtuales"/>
     <record id="view_view_event_form" model="ir.ui.view">
         <field name="name">view_event_form</field>
         <field name="model">event.event</field>

@@ -7,7 +7,7 @@
     'author': 'HAS',
     'website': '',
     'category': '',
-    'depends': ['base','survey'],
+    'depends': ['base','event'],
     "data": [
         "views/virtuales_views.xml",
         "security/ir.model.access.csv",

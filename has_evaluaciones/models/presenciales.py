@@ -10,7 +10,6 @@ _logger = logging.getLogger(__name__)
 class virtuales(models.Model):
     _name = "presenciales"
     _description = _("Presenciales")
-    _rec_name = "name"
 
     name = fields.Char(_("Participante"))
     fecha_evaluacion = fields.Datetime(_("Fecha Realizada"))

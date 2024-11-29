@@ -10,7 +10,6 @@ _logger = logging.getLogger(__name__)
 class virtuales(models.Model):
     _name = "webinars"
     _description = _("Webinars")
-    _rec_name = "curso"
 
     fecha_evaluacion = fields.Datetime(_("Fecha Realizada"))
     nota = fields.Float(_("Nota"), group_operator="avg")

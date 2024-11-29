@@ -1,7 +1,4 @@
 id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
-has_evaluaciones.access_virtuales,access_virtuales,has_evaluaciones.model_virtuales,event.group_event_user,1,0,0,0
-has_evaluaciones.access_virtuales_manger,access_virtuales_manager,has_evaluaciones.model_virtuales,event.group_event_manager,1,1,1,1
-has_evaluaciones.access_presenciales,presenciales,has_evaluaciones.model_presenciales,event.group_event_user,1,0,0,0
-has_evaluaciones.access_presenciales_manager,presenciales_manager,has_evaluaciones.model_presenciales,event.group_event_manager,1,1,1,1
-has_evaluaciones.access_webinars,webinars,has_evaluaciones.model_webinars,event.group_event_user,1,0,0,0
-has_evaluaciones.access_webinars_manager,webinars_manager,has_evaluaciones.model_webinars,event.group_event_manager,1,1,1,1
+has_evaluaciones.access_virtuales,access_virtuales,has_evaluaciones.model_virtuales,base.group_user,1,1,1,1
+has_evaluaciones.access_presenciales,access_presenciales,has_evaluaciones.model_presenciales,base.group_user,1,1,1,1
+has_evaluaciones.access_webinars,access_webinars,has_evaluaciones.model_webinars,base.group_user,1,1,1,1
