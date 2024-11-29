@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data> 
-
+    <data>
         <!-- Campo en vista ciente/proveedor -->
-
         <record id="res_partner_form_inherit" model="ir.ui.view">
             <field name="name">res.partner.form</field>
             <field name="model">res.partner</field>
@@ -11,14 +9,13 @@
             <field name="arch" type="xml">
                 <field name="category_id" position="after">
                     <field name="instructor" widget="boolean_toggle"/>
+                    <field name="is_factura_recordatorio" widget="boolean_toggle" invisible='not instructor'/>
                     <!-- <field name="IBAN"/> -->
                     <field name="gobierno" widget="boolean_toggle"/>
                 </field>
             </field>
         </record>
-
         <!-- Campo en vista de factura de proveedor -->
-
         <record id="res_account_move_form_inherit" model="ir.ui.view">
             <field name="name">account.move.form</field>
             <field name="model">account.move</field>
@@ -31,18 +28,12 @@
                     <!-- <field name="aprobada" widget="boolean_toggle" invisible="move_type in ('out_invoice', 'out_refund')"/> -->
                     <field name="validado" widget="boolean_toggle" invisible="move_type in ('out_invoice', 'out_refund')"/>
                 </field>
-
                 <field name="invoice_date" position="after">
                     <field name="fecha_arreglo" invisible="move_type not in ('in_invoice', 'in_refund')"/>
                 </field>
-
-
-
             </field>
         </record>
-
         <!-- Filtro en vista de facturas de proveedor -->
-
         <record id="account_move_filter_inherit" model="ir.ui.view">
             <field name="name">account.move.form</field>
             <field name="model">account.move</field>
@@ -56,6 +47,5 @@
                 </field>
             </field>
         </record>
-        
     </data>
 </odoo>
