@@ -15,6 +15,7 @@ class virtuales(models.Model):
     fecha_evaluacion = fields.Datetime(_("Fecha Realizada"))
     nota = fields.Float(_("Nota"), group_operator="avg")
     enviar_info = fields.Char(_("Enviar Información"))
+    codigo = fields.Integer(string='Código de curso')
     curso = fields.Many2one("event.event", string="Curso")
     asesor = fields.Many2one("res.users", string="Asesor")
     intereses = fields.Char(_("Intereses"))

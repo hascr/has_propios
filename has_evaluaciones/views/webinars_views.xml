@@ -6,9 +6,9 @@
         <field name="name">view.webinars.tree</field>
         <field name="model">webinars</field>
         <field name="arch" type="xml">
-            <tree default_order = "curso desc, fecha_evaluacion desc">
+            <tree default_order = "codigo desc, fecha_evaluacion desc">
                 <field name="fecha_evaluacion" optional="show"/>
-                <field name="id" string="Código" optional="show"/>
+                <field name="codigo" optional="show"/>
                 <field name="curso" optional="show"/>
                 <field name="instructor" optional="show"/>
                 <field name="nota" avg="Promedio" optional="show"/>
@@ -39,7 +39,7 @@
                     <group string="General" name="general">
                         <group name="group_left">
                             <field name="fecha_evaluacion" />
-                            <field name="id" string="Código" />
+                            <field name="codigo" />
                             <field name="curso" />
                             <field name="instructor" />
                             <field name="area_trabajo" />
@@ -77,10 +77,11 @@
         <field name="model">webinars</field>
         <field name="arch" type="xml">
             <search>
-                <field name="intereses" string="Buscar por curso, interes o instructor" filter_domain="['|','|', ('intereses','ilike',self), ('curso','ilike',self), ('instructor', 'ilike', self)]"> </field>
+                <field name="intereses" string="Buscar por curso, interes o instructor" filter_domain="['|','|','|', ('intereses','ilike',self), ('curso','ilike',self), ('codigo','ilike',self), ('instructor', 'ilike', self)]"> </field>
                 <filter string="Enviar Info" name="enviar" domain="[('enviar_info','=','Si')]"/>
                 <group expand="1" string="Group By">
                     <filter string="Curso" name="curso" domain="[]" context="{'group_by':'curso'}"/>
+                    <filter string="Código" name="codigo" domain="[]" context="{'group_by':'codigo'}"/>
                     <filter string="Instructor" name="instructor" domain="[]" context="{'group_by':'instructor'}"/>
                 </group>
             </search>
@@ -94,7 +95,7 @@
         <field name="res_model">webinars</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[]</field>
-        <field name="context">{"search_default_curso":1}</field>
+        <field name="context">{"search_default_codigo":1}</field>
         <field name="help" type="html">
             <p class="oe_view_nocontent_create">
                 There is no examples click here to add new Webinars.
