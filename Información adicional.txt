@@ -210,3 +210,18 @@ FALTA AGREGAR LAS CUENTAS BANCARIAS
 {{ object.company_id.email_formatted }}
 
 ------------------------------------------------------------------------------------------------------------------------------
+#11
+INICIO DE WEBHOOK
+
+model.search([],limit=1)
+
+vals = {
+    'name': payload.get('name'),
+    'type': payload.get('type'),
+    'stage_id': payload.get('stage_id'),
+    'automated_probability': payload.get('automated_probability'),
+    'user_id': payload.get('user_id'),
+    'team_id': payload.get('team_id')
+}
+env['crm.lead'].create(vals)
+

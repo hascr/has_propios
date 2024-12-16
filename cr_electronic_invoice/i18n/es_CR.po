@@ -948,7 +948,7 @@ msgstr "Documento electrónico deshabilitado"
 #. module: cr_electronic_invoice
 #: model_terms:ir.ui.view,arch_db:cr_electronic_invoice.view_move_form_inherit
 msgid "Electronic Information"
-msgstr "Informacion Electronica"
+msgstr "Información Electrónica"
 
 #. module: cr_electronic_invoice
 #: model:ir.ui.menu,name:cr_electronic_invoice.menu_electronic_invoice
