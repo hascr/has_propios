@@ -81,6 +81,7 @@
                        readonly="state != 'draft'"
                        invisible="move_type not in ('out_invoice', 'out_refund', 'in_invoice', 'in_refund')"
                        required="move_type in ('out_invoice', 'out_refund', 'in_invoice', 'in_refund')"/>
+                <field name="currency_rate" readonly="1" invisible="currency_rate == 1"/>
                 <!--                <field name="mensualidad"/>-->
             </field>
             <xpath expr="//field[@name='invoice_line_ids']//tree//field[@name='name']" position="after">

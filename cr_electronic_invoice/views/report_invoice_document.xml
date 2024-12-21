@@ -181,6 +181,11 @@
                 <br></br>
                 <span>FE Version 4.3</span>
             </p>
+            <t t-if="o.currency_rate != 1">
+                <p class="text-center">
+                    <span>Tipo de Cambio: <t t-esc="o.currency_rate"/></span>
+                </p>
+            </t>
         </xpath>
     </template>
 </odoo>

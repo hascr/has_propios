@@ -2439,5 +2439,15 @@ class AccountInvoiceElectronic(models.Model):
                         "Solo los usuarios administradores pueden validar facturas con un monto superior a 15 millones."
                     )
 
-    """ def get_tipo_cambio(self):
-        return self.amount_total_signed / self.amount_total """
+    currency_rate = fields.Float(string='Tipo de Cambio', compute='_compute_currency_rate')
+
+    @api.depends('currency_id', 'amount_untaxed_signed', 'amount_untaxed')
+    def _compute_currency_rate(self):
+        for move in self:
+            if move.currency_id.name == "USD":
+                if move.amount_untaxed != 0:
+                    move.currency_rate = round(move.amount_untaxed_signed / move.amount_untaxed, 2)
+                else:
+                    move.currency_rate = 1
+            else:
+                move.currency_rate = 1

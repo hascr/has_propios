@@ -63,8 +63,8 @@
                         <!-- <field name="name" decoration-bf="1" decoration-danger="made_sequence_hole"/> -->
                         <field name="invoice_date" string="Fecha" optional="show" column_invisible="context.get('default_move_type') not in ('in_invoice', 'in_refund', 'in_receipt')" readonly="state != 'draft'"/>
                         <field name="invoice_date" string="Fecha" optional="show" column_invisible="context.get('default_move_type') not in ('out_invoice', 'out_refund', 'out_receipt')" readonly="state != 'draft'"/>
-                        <field name="ref" string="Referencia" optional="show"/>
-                        <field name="name" decoration-bf="1" decoration-danger="made_sequence_hole" optional="hide"/>
+                        <field name="ref" string="Referencia" optional="hide"/>
+                        <field name="name" decoration-bf="1" decoration-danger="made_sequence_hole" optional="show"/>
                         <field name="invoice_partner_display_name" string="Proveedor" column_invisible="context.get('default_move_type') not in ('in_invoice', 'in_refund', 'in_receipt')" groups="base.group_user"/>
                         <field name="invoice_partner_display_name" string="cliente" column_invisible="context.get('default_move_type') not in ('out_invoice', 'out_refund', 'out_receipt')" groups="base.group_user"/>
                         <field name="date" string="Fecha contable" optional="hide" readonly="state in ['cancel', 'posted']"/>
