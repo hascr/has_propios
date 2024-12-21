@@ -10,4 +10,4 @@ _logger = logging.getLogger(__name__)
 class Hr_leave(models.Model):
     _inherit = 'hr.leave'
 
-    signature = fields.Binary('Firma colaborador', required=True)
+    signature = fields.Binary('Firma colaborador')
