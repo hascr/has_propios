@@ -52,7 +52,6 @@ class has_event(models.Model):
         string="Asesor/es",
     )
 
-
     contrato_firmado = fields.Binary(attachment=True)
     contrato_name = fields.Char()
     account_move_id = fields.Many2one(
@@ -128,11 +127,14 @@ class has_event(models.Model):
         }
 
     def crear_programacion(self):
-        return {
-            "type": "ir.actions.act_url",
-            "target": "new",
-            "url": "https://form.jotform.com/232511329331042",
-        }
+        base_url = "https://form.jotform.com/232511329331042"
+        for event in self:
+            url = f"{base_url}?numero={event.id}"
+            return {
+                "type": "ir.actions.act_url",
+                "url": url,
+                "target": "new",
+            }
 
     def videos_moodle(self):
         return {
