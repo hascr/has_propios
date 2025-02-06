@@ -225,3 +225,186 @@ vals = {
 }
 env['crm.lead'].create(vals)
 
+------------------------------------------------------------------------------------------------------------------------------
+#12
+HABILITAR PYTHON E INSTALAR PIP EN WINDOWS
+
+https://www.guru99.com/es/how-to-install-pip-on-windows.html
+
+------------------------------------------------------------------------------------------------------------------------------
+#13
+CONFIGURACION LAUNCH.JSON
+PASOS:
+1. Ejecutar > Agregar configuración
+2. Pegar el siguiente texto.
+
+
+
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "odoo 17",
+            "type": "debugpy",
+            "request": "launch",
+            "stopOnEntry": false,
+            "python": "C:\\Odoo\\odoo17\\python\\python.exe",
+            "program": "${workspaceFolder}\\odoo-bin",
+            "console": "integratedTerminal",
+            "args": [
+                "--config=${workspaceRoot}\\odoo.conf",
+            ],
+            "cwd": "${workspaceRoot}",
+            "env": {},
+            "envFile": "${workspaceFolder}/.env",
+            "debugOptions": [
+                "RedirectOutput"
+            ]
+        }
+    ]
+}
+
+------------------------------------------------------------------------------------------------------------------------------
+#14
+CONFIGURACION SETTINGS.JSON
+PASOS:
+1. Ctrl + shift + P > Preferencias: Abrir configuración del área de trabajo (JSON)
+2. Pegar el siguiente texto.
+
+{
+    "black-formatter.args": [
+        "--line-length",
+        "79"
+    ],
+    "editor.autoClosingQuotes": "always",
+    "editor.linkedEditing": true,
+    "editor.mouseWheelZoom": true,
+    //reset la fuente cursiva a normal (parametros, atributos)
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": [
+                    "entity.name.variable.parameter",
+                    "entity.other.attribute-name",
+                    "variable.parameter",
+                    "variable.parameter.function.language.special",
+                ],
+                "settings": {
+                    "fontStyle": ""
+                }
+            }
+        ],
+        "[Sublime Text 4 Theme]": {
+            "textMateRules": [
+                {
+                    "scope": "comment",
+                    "settings": {
+                        "foreground": "#74705D",
+                    }
+                },
+            ]
+        },
+    },
+    "explorer.compactFolders": false,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/.idea": true,
+        "**/__pycache__": true,
+        "**/Thumbs.db": true
+    },
+    "flake8.args": [
+        "--max-line-length=79",
+        "--ignore=F401,F841",
+    ],
+    "html.autoClosingTags": true,
+    "html.autoCreateQuotes": true,
+    "html.completion.attributeDefaultValue": "doublequotes",
+    "python.autoComplete.extraPaths": [
+        "./odoo",
+        "./odoo/odoo",
+        "./odoo/addons",
+        "./extra-addons/enterprise",
+    ],
+    "python.analysis.extraPaths": [
+        "./odoo",
+        "./odoo/odoo",
+        "./odoo/addons",
+        "./extra-addons/enterprise",
+        "./extra-addons/pos_es_edi",
+    ],
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnType": true,
+        "editor.rulers": [
+            79
+        ],
+    },
+    "python.terminal.activateEnvironment": true,
+    "workbench.tree.indent": 20,
+    "workbench.tree.expandMode": "singleClick",
+    "xml.completion.autoCloseTags": true,
+    "xml.completion.autoCloseRemovesContent": true,
+    "terminal.integrated.mouseWheelZoom": true,
+    "workbench.colorCustomizations": {
+        "tab.activeBorder": "#48ff00",
+        "tab.unfocusedActiveBorder": "#000000",
+        "editor.background": "#1f1f1f",
+        "tab.inactiveBackground": "#0e0e0e",
+        "editorGroupHeader.tabsBackground": "#1b1b1b",
+        "terminal.background": "#1a1919",
+        "panel.background": "#2b2b2b",
+        "statusBarItem.remoteBackground": "#5dac5d",
+        "icon.foreground": "#72cf5f",
+        "activityBar.activeBorder": "#72f192",
+        "activityBar.foreground": "#89f3a4",
+        "activityBar.inactiveForeground": "#575757"
+    },
+    "python.languageServer": "Pylance",
+    "editor.tabCompletion": "on",
+    // sublime 4 theme
+    //"breadcrumbs.enabled": false,
+    "editor.letterSpacing": 0.55,
+    "editor.lineHeight": 19,
+}
+------------------------------------------------------------------------------------------------------------------------------
+#15
+CONFIGURACIÓN DE ACCESO REMOTO
+
+Host Odoo17_Advance
+    HostName 77.37.74.99
+    User root
+    IdentityFile "C:\Users\Harol\OneDrive\Documentos\Servidores\PrivateKeyServers"
+
+Host Odoo17_vahuvet
+    HostName 62.72.27.167
+    User root
+    IdentityFile "C:\Users\Harol\OneDrive\Documentos\Servidores\PrivateKeyServers"
+
+------------------------------------------------------------------------------------------------------------------------------
+#16
+ERROR CUANDO NO SE DETECTA LA BASE DE DATOS POSTGRESQL AL INSTALAR EN WINDOWS
+Realizar los siguientes pasos y reinstalar Odoo:
+
+press windows + R
+type regedit & enter
+select HK-Key_current_user
+Select software
+choose postgresql folder and delete
+
+
+------------------------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------------------------------------------
