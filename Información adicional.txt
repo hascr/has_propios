@@ -400,6 +400,14 @@ choose postgresql folder and delete
 
 
 ------------------------------------------------------------------------------------------------------------------------------
+#17
+ERROR EN REGISTRO DE COSTO DE VENTAS, SE CAMBIA EL METODO AUTOMÁTICO A MANUAL
+
+https://github.com/odoo/odoo/commit/9932e38897ca68188805ecc139c0aeaa84e33f14
+
+LAS VERSIONES RECIENTES DE ODOO (ENERO 2025) YA LO TIENEN CORREGIDO
+
+
 
 ------------------------------------------------------------------------------------------------------------------------------
 
