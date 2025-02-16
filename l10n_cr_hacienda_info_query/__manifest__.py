@@ -6,7 +6,7 @@
     "website": "https://github.com/odoocr/l10n_cr",
     "category": "API",
     "summary": """Consultar Nombre de Clientes en Hacienda Costa Rica""",
-    "description": """Actualización automática de nombre de clientes a partir del API de Hacienda""",
+    #"description": """Actualización automática de nombre de clientes a partir del API de Hacienda""",
     "depends": ['base', 'contacts', 'base_setup', 'l10n_cr_country_codes'],
     "data": [
         'views/res_config_settings_views.xml',
